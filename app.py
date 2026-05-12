@@ -399,7 +399,7 @@ def page_overview(pos: pd.DataFrame, demo: bool) -> None:
 
     st.dataframe(
         display_table,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         height=500
     )
@@ -468,7 +468,7 @@ def page_detail(ticker: str, pos: pd.DataFrame) -> None:
     sel = st.radio("Okres", list(period_map.keys()), horizontal=True, index=2, key="period_sel")
     fig = price_chart(ticker, period_map[sel], ep, fv)
     if fig:
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     else:
         st.info("Nie udało się pobrać danych historycznych.")
 
