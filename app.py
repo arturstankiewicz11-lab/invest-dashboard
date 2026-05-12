@@ -227,12 +227,80 @@ REC_DOT    = {"BUY": "dot-buy", "SELL": "dot-sell", "REDUCE": "dot-warn", "HOLD"
 REC_ACTION = {"BUY": "a-buy", "SELL": "a-sell", "REDUCE": "a-warn", "HOLD": "a-warn"}
 REC_ROW    = {"BUY": "row-buy", "SELL": "row-sell", "REDUCE": "row-reduce", "HOLD": "row-hold"}
 
+# ─── PORTFOLIO NORMALIZATION ──────────────────────────────────────────────────
+NAME_TO_TICKER = {
+    "microsoft":  "MSFT",
+    "eutelsat":   "ETL.PA",
+    "rheinmetal": "RHM.DE",
+    "rheinmetall":"RHM.DE",
+    "btc":        "BTC-USD",
+    "eth":        "ETH-USD",
+    "ethereum":   "ETH-USD",
+    "pzu":        "PZU.WA",
+    "tencent":    "0700.HK",
+}
+ETF_MAP = {
+    "SXRV": "SXRV.DE", "SECO": "SECO.DE", "2B76": "2B76.DE",
+    "2B78": "2B78.DE", "SXR8": "SXR8.DE", "IS3N": "IS3N.DE", "EUNA": "EUNA.DE",
+}
+CCY_MAP = {
+    "dolar": "USD", "dollar": "USD", "usd": "USD",
+    "euro": "EUR", "eur": "EUR",
+    "pln": "PLN", "zł": "PLN",
+    "hkd": "HKD",
+}
+
+def to_float(v):
+    try:
+        return float(str(v).replace(",", "").replace(" ", "").replace("\xa0", ""))
+    except Exception:
+        return 0.0
+
+def normalize_portfolio(df: pd.DataFrame) -> pd.DataFrame:
+    # Flexible column rename
+    rename = {}
+    for col in df.columns:
+        cl = col.strip().lower()
+        if cl == "nazwa":    rename[col] = "Nazwa"
+        elif cl == "ticker": rename[col] = "Ticker_raw"
+        elif cl == "waluta": rename[col] = "Waluta"
+        elif cl == "volume": rename[col] = "Ilosc"
+        elif cl == "price":  rename[col] = "Srednia_cena"
+    df = df.rename(columns=rename)
+
+    def resolve_ticker(row):
+        raw = str(row.get("Ticker_raw", "")).strip()
+        if raw and raw.lower() not in ("nan", ""):
+            return ETF_MAP.get(raw, raw)
+        name = str(row.get("Nazwa", "")).strip().lower()
+        for key, val in NAME_TO_TICKER.items():
+            if key in name:
+                return val
+        return ""
+
+    df["Ticker"] = df.apply(resolve_ticker, axis=1)
+    df["Waluta"] = df["Waluta"].apply(
+        lambda x: CCY_MAP.get(str(x).strip().lower(), str(x).strip().upper()))
+    df["Ilosc"]        = df["Ilosc"].apply(to_float)
+    df["Srednia_cena"] = df["Srednia_cena"].apply(to_float)
+    df = df[df["Ticker"].notna() & (df["Ticker"] != "") & (df["Ilosc"] > 0)].copy()
+
+    # Aggregate same ticker across brokers (weighted avg price)
+    rows = []
+    for (ticker, ccy), g in df.groupby(["Ticker", "Waluta"]):
+        vol  = g["Ilosc"].sum()
+        wavg = (g["Ilosc"] * g["Srednia_cena"]).sum() / vol if vol > 0 else 0
+        rows.append({"Ticker": ticker, "Nazwa": g["Nazwa"].iloc[0],
+                     "Ilosc": vol, "Srednia_cena": wavg, "Waluta": ccy})
+    return pd.DataFrame(rows)
+
 # ─── DATA ─────────────────────────────────────────────────────────────────────
 @st.cache_data(ttl=300)
 def load_portfolio():
     try:
         url = st.secrets["gsheets"]["portfolio_url"]
-        return pd.read_csv(url), False
+        raw = pd.read_csv(url)
+        return normalize_portfolio(raw), False
     except Exception:
         return pd.read_csv(io.StringIO(SAMPLE_CSV)), True
 
