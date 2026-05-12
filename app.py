@@ -300,8 +300,10 @@ def load_portfolio():
     try:
         url = st.secrets["gsheets"]["portfolio_url"]
         raw = pd.read_csv(url)
-        return normalize_portfolio(raw), False
-    except Exception:
+        normalized = normalize_portfolio(raw)
+        return normalized, False
+    except Exception as e:
+        st.warning(f"⚠️ Błąd ładowania danych: {e}")
         return pd.read_csv(io.StringIO(SAMPLE_CSV)), True
 
 @st.cache_data(ttl=300)
