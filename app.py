@@ -295,13 +295,17 @@ def normalize_portfolio(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 # ─── DATA ─────────────────────────────────────────────────────────────────────
+SHEETS_URL = "https://docs.google.com/spreadsheets/d/1TpTWtiHNK5brEKr0EJHMr8lumDNDviOGpEiJ-bpVAlA/export?format=csv&gid=0"
+
 @st.cache_data(ttl=300)
 def load_portfolio():
     try:
-        url = st.secrets["gsheets"]["portfolio_url"]
+        url = st.secrets.get("gsheets", {}).get("portfolio_url", SHEETS_URL)
+    except Exception:
+        url = SHEETS_URL
+    try:
         raw = pd.read_csv(url)
-        normalized = normalize_portfolio(raw)
-        return normalized, False
+        return normalize_portfolio(raw), False
     except Exception as e:
         st.warning(f"⚠️ Błąd ładowania danych: {e}")
         return pd.read_csv(io.StringIO(SAMPLE_CSV)), True
