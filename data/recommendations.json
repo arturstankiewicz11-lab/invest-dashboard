@@ -276,5 +276,26 @@
     "last_updated": "2026-05-12",
     "next_earnings": null,
     "priority_action": null
+  },
+  "NVDA": {
+    "name": "NVIDIA",
+    "recommendation": "HOLD",
+    "fair_value": 135,
+    "fair_value_currency": "USD",
+    "entry_point": 100,
+    "upside_pct": 8,
+    "thesis_short": "Monopol GPU AI. Wycena już wysoka — czekaj na korektę do $100.",
+    "thesis_full": "NVIDIA to jedyny dostawca GPU klasy datacenter (H100/H200/B200). ~80% udział w rynku AI chips. Data Center revenue +100%+ YoY. Moat: CUDA ecosystem (10+ lat przewagi software). Zakup przy $125 — blisko fair value. Nie dokupuj przy obecnej cenie. Czekaj na korektę do $100-110 żeby zwiększyć pozycję.",
+    "thesis_breaker": "AMD MI400 lub Google TPU przejmują >20% rynku datacenter GPU. US export controls rozszerzają się na kolejne kraje.",
+    "risks": [
+      "Wycena premium (P/E 40x+)",
+      "US export controls — utrata rynku China",
+      "Konkurencja AMD/Intel/custom chips",
+      "Cykl capex cloud hyperscalerów"
+    ],
+    "buffett_moat": "Wide",
+    "last_updated": "2026-05-13",
+    "next_earnings": null,
+    "priority_action": null
   }
 }

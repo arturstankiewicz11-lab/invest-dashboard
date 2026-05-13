@@ -229,6 +229,7 @@ REC_ROW    = {"BUY": "row-buy", "SELL": "row-sell", "REDUCE": "row-reduce", "HOL
 
 # ─── PORTFOLIO NORMALIZATION ──────────────────────────────────────────────────
 NAME_TO_TICKER = {
+    "nvidia":     "NVDA",
     "microsoft":  "MSFT",
     "eutelsat":   "ETL.PA",
     "rheinmetal": "RHM.DE",
@@ -251,8 +252,13 @@ CCY_MAP = {
 }
 
 def to_float(v):
+    s = str(v).strip().replace("\xa0", "").replace(" ", "")
+    if "," in s and "." in s:
+        s = s.replace(",", "")          # 2,200.00  → 2200.00
+    elif "," in s:
+        s = s.replace(",", ".")         # 46198,00  → 46198.00
     try:
-        return float(str(v).replace(",", "").replace(" ", "").replace("\xa0", ""))
+        return float(s)
     except Exception:
         return 0.0
 
