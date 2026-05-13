@@ -921,7 +921,7 @@ def page_detail(ticker, pos, prices):
 
     with t_wykres:
         periods = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "3Y": "3y"}
-        sel = st.radio("", list(periods.keys()), horizontal=True, index=2,
+        sel = st.radio("Okres", list(periods.keys()), horizontal=True, index=2,
                        key=f"p_{ticker}", label_visibility="collapsed")
         fig = price_chart(ticker, periods[sel], ep, fv)
         if fig:
@@ -1020,7 +1020,7 @@ def main():
             labels.append(label)
             keys.append(t)
 
-        page_idx = st.radio("", labels, label_visibility="collapsed")
+        page_idx = st.radio("Nawigacja", labels, label_visibility="collapsed")
         page_key = keys[labels.index(page_idx)] if page_idx in labels else "__overview__"
 
         st.markdown("---")
