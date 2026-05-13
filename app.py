@@ -1059,14 +1059,14 @@ SEARCH_TOOL = {
 def do_search(query: str, tavily_key: str) -> str:
     try:
         from tavily import TavilyClient
-        client = TavilyClient(api_key=tavily_key)
-        results = client.search(query=query, max_results=5, search_depth="advanced")
-        lines = []
+        client  = TavilyClient(api_key=tavily_key)
+        results = client.search(query=query, max_results=5, search_depth="basic")
+        lines   = []
         for r in results.get("results", []):
             lines.append(f"**{r.get('title','')}** ({r.get('url','')})\n{r.get('content','')[:400]}")
         return "\n\n---\n\n".join(lines) if lines else "Brak wyników."
     except Exception as e:
-        return f"Błąd wyszukiwania: {e}"
+        return f"[Web search niedostępny: {e}] Odpowiadam na podstawie wiedzy."
 
 def page_chat(pos, recs, prices, fx):
     st.markdown("""
@@ -1076,11 +1076,14 @@ def page_chat(pos, recs, prices, fx):
     </div>""", unsafe_allow_html=True)
 
     try:
-        api_key    = st.secrets["anthropic"]["api_key"]
-        tavily_key = st.secrets["tavily"]["api_key"]
-    except Exception as e:
-        st.error(f"Brak klucza API w Streamlit Secrets: {e}")
+        api_key = st.secrets["anthropic"]["api_key"]
+    except Exception:
+        st.error("Brak klucza Anthropic API w Secrets. Dodaj sekcję [anthropic] z api_key.")
         return
+    try:
+        tavily_key = st.secrets["tavily"]["api_key"]
+    except Exception:
+        tavily_key = None
 
     if "chat_messages" not in st.session_state:
         st.session_state.chat_messages = []
@@ -1114,20 +1117,17 @@ def page_chat(pos, recs, prices, fx):
                     )
 
                     if response.stop_reason == "tool_use":
-                        # Extract tool calls
                         tool_results = []
-                        search_info  = []
                         for block in response.content:
                             if block.type == "tool_use" and block.name == "web_search":
                                 query = block.input.get("query", "")
                                 placeholder.markdown(f"🔍 Szukam: *{query}*...")
-                                result = do_search(query, tavily_key)
+                                result = do_search(query, tavily_key) if tavily_key else "[Web search wyłączony — brak klucza Tavily]"
                                 tool_results.append({
                                     "type": "tool_result",
                                     "tool_use_id": block.id,
                                     "content": result,
                                 })
-                                search_info.append(query)
 
                         messages.append({"role": "assistant", "content": response.content})
                         messages.append({"role": "user", "content": tool_results})
