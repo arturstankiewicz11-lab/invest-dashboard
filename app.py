@@ -1068,17 +1068,10 @@ def do_search(query: str, tavily_key: str) -> str:
     except Exception as e:
         return f"[Web search niedostępny: {e}] Odpowiadam na podstawie wiedzy."
 
-def page_chat(pos, recs, prices, fx):
-    st.markdown("""
-    <div style="margin-bottom:24px">
-        <div style="font-size:22px;font-weight:800;color:#f8fafc;margin-bottom:6px">💬 Asystent inwestycyjny</div>
-        <div style="font-size:13px;color:#475569">Ma dostęp do Twojego portfela, live cen i internetu. Pytaj o wyceny, newsy, strategie.</div>
-    </div>""", unsafe_allow_html=True)
-
+def render_chat(pos, recs, prices, fx, current_ticker=None):
     try:
         api_key = st.secrets["anthropic"]["api_key"]
     except Exception:
-        st.error("Brak klucza Anthropic API w Secrets. Dodaj sekcję [anthropic] z api_key.")
         return
     try:
         tavily_key = st.secrets["tavily"]["api_key"]
@@ -1088,64 +1081,70 @@ def page_chat(pos, recs, prices, fx):
     if "chat_messages" not in st.session_state:
         st.session_state.chat_messages = []
 
-    for msg in st.session_state.chat_messages:
-        with st.chat_message(msg["role"]):
-            st.markdown(msg["content"])
-
-    if prompt := st.chat_input("Zapytaj o spółkę, newsy, wycenę, strategię..."):
-        st.session_state.chat_messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
-
-        with st.chat_message("assistant"):
-            placeholder = st.empty()
-            try:
-                client  = anthropic.Anthropic(api_key=api_key)
-                system  = build_system_prompt(pos, recs, prices, fx)
-                messages = [{"role": m["role"], "content": m["content"]}
-                            for m in st.session_state.chat_messages]
-
-                # Agentic loop: handle tool_use
-                for _ in range(5):
-                    placeholder.markdown("🔍 Analizuję...")
-                    response = client.messages.create(
-                        model="claude-opus-4-7",
-                        max_tokens=4096,
-                        system=system,
-                        tools=[SEARCH_TOOL],
-                        messages=messages,
-                    )
-
-                    if response.stop_reason == "tool_use":
-                        tool_results = []
-                        for block in response.content:
-                            if block.type == "tool_use" and block.name == "web_search":
-                                query = block.input.get("query", "")
-                                placeholder.markdown(f"🔍 Szukam: *{query}*...")
-                                result = do_search(query, tavily_key) if tavily_key else "[Web search wyłączony — brak klucza Tavily]"
-                                tool_results.append({
-                                    "type": "tool_result",
-                                    "tool_use_id": block.id,
-                                    "content": result,
-                                })
-
-                        messages.append({"role": "assistant", "content": response.content})
-                        messages.append({"role": "user", "content": tool_results})
-
-                    else:
-                        # Final answer
-                        answer = next((b.text for b in response.content if hasattr(b, "text")), "")
-                        placeholder.markdown(answer)
-                        st.session_state.chat_messages.append({"role": "assistant", "content": answer})
-                        break
-
-            except Exception as e:
-                placeholder.error(f"Błąd: {e}")
-
+    # Show history in expander
     if st.session_state.chat_messages:
-        if st.button("🗑️ Wyczyść rozmowę", type="secondary"):
-            st.session_state.chat_messages = []
-            st.rerun()
+        label = f"💬 Rozmowa ({len(st.session_state.chat_messages)} wiad.)"
+        with st.expander(label, expanded=True):
+            for msg in st.session_state.chat_messages:
+                with st.chat_message(msg["role"]):
+                    st.markdown(msg["content"])
+            if st.button("🗑️ Wyczyść", type="secondary", key="clear_chat"):
+                st.session_state.chat_messages = []
+                st.rerun()
+
+    # Always-visible input at bottom
+    ticker_hint = f"{current_ticker} — " if current_ticker else ""
+    prompt = st.chat_input(f"💬 {ticker_hint}zapytaj o wycenę, newsy, strategię...")
+
+    if prompt:
+        st.session_state.chat_messages.append({"role": "user", "content": prompt})
+        with st.expander("💬 Rozmowa", expanded=True):
+            for msg in st.session_state.chat_messages:
+                with st.chat_message(msg["role"]):
+                    st.markdown(msg["content"])
+
+            with st.chat_message("assistant"):
+                placeholder = st.empty()
+                try:
+                    client   = anthropic.Anthropic(api_key=api_key)
+                    # Inject current ticker context
+                    extra = f"\nUżytkownik aktualnie przegląda: {current_ticker}" if current_ticker else ""
+                    system   = build_system_prompt(pos, recs, prices, fx) + extra
+                    messages = [{"role": m["role"], "content": m["content"]}
+                                for m in st.session_state.chat_messages]
+
+                    for _ in range(5):
+                        placeholder.markdown("🔍 Analizuję...")
+                        response = client.messages.create(
+                            model="claude-opus-4-7",
+                            max_tokens=4096,
+                            system=system,
+                            tools=[SEARCH_TOOL],
+                            messages=messages,
+                        )
+
+                        if response.stop_reason == "tool_use":
+                            tool_results = []
+                            for block in response.content:
+                                if block.type == "tool_use" and block.name == "web_search":
+                                    query = block.input.get("query", "")
+                                    placeholder.markdown(f"🔍 Szukam: *{query}*...")
+                                    result = do_search(query, tavily_key) if tavily_key else "[Web search niedostępny]"
+                                    tool_results.append({
+                                        "type": "tool_result",
+                                        "tool_use_id": block.id,
+                                        "content": result,
+                                    })
+                            messages.append({"role": "assistant", "content": response.content})
+                            messages.append({"role": "user", "content": tool_results})
+                        else:
+                            answer = next((b.text for b in response.content if hasattr(b, "text")), "")
+                            placeholder.markdown(answer)
+                            st.session_state.chat_messages.append({"role": "assistant", "content": answer})
+                            break
+
+                except Exception as e:
+                    placeholder.error(f"Błąd: {e}")
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
@@ -1165,8 +1164,8 @@ def main():
             <span style="font-size:20px;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px">📈 Invest Dashboard</span>
         </div>""", unsafe_allow_html=True)
 
-        labels = ["📊 Overview", "💬 Asystent"]
-        keys   = ["__overview__", "__chat__"]
+        labels = ["📊 Overview"]
+        keys   = ["__overview__"]
         for t, r in recs.items():
             emoji = REC_EMOJI.get(r.get("recommendation"), "⚪")
             labels.append(f"{emoji} {t}")
@@ -1191,10 +1190,10 @@ def main():
 
     if page_key == "__overview__":
         page_overview(pos, demo)
-    elif page_key == "__chat__":
-        page_chat(pos, recs, prices, fx)
+        render_chat(pos, recs, prices, fx)
     else:
         page_detail(page_key, pos, prices)
+        render_chat(pos, recs, prices, fx, current_ticker=page_key)
 
 if __name__ == "__main__" or True:
     main()
