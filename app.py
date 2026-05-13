@@ -1003,37 +1003,38 @@ def main():
     prices   = get_live_prices(tuple(all_tickers))
     pos      = build_positions(df, prices, fx, recs)
 
-    with st.sidebar:
-        st.markdown(f"""
-        <div style="padding:8px 0 20px">
-            <div style="font-size:18px;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px">📈 Invest</div>
-            <div style="font-size:11px;color:#475569;margin-top:2px">Dashboard · {datetime.now().strftime('%H:%M')}</div>
-        </div>
-        """, unsafe_allow_html=True)
+    # ── Top navigation bar
+    nav_col, fx_col = st.columns([3, 1])
+
+    with nav_col:
+        st.markdown("""
+        <div style="display:flex;align-items:center;gap:10px;padding:4px 0 16px">
+            <span style="font-size:20px;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px">📈 Invest Dashboard</span>
+        </div>""", unsafe_allow_html=True)
 
         labels = ["📊 Overview"]
         keys   = ["__overview__"]
         for t, r in recs.items():
             emoji = REC_EMOJI.get(r.get("recommendation"), "⚪")
-            in_portfolio = t in df["Ticker"].values
-            label = f"{emoji} {t}"
-            if not in_portfolio:
-                label += " ·"  # subtle dot for watchlist items not in portfolio
-            labels.append(label)
+            labels.append(f"{emoji} {t}")
             keys.append(t)
 
-        page_idx = st.radio("Nawigacja", labels, label_visibility="collapsed")
-        page_key = keys[labels.index(page_idx)] if page_idx in labels else "__overview__"
+        sel = st.selectbox("Wybierz widok", labels, label_visibility="collapsed")
+        page_key = keys[labels.index(sel)]
 
-        st.markdown("---")
+    with fx_col:
         st.markdown(f"""
-        <div style="font-size:11px;color:#334155;line-height:2.2">
-            <b style="color:#475569">Kursy FX</b><br>
-            USD/PLN &nbsp; <span style="color:#94a3b8">{fx.get('USD',0):.3f}</span><br>
-            EUR/PLN &nbsp; <span style="color:#94a3b8">{fx.get('EUR',0):.3f}</span><br>
-            HKD/PLN &nbsp; <span style="color:#94a3b8">{fx.get('HKD',0):.3f}</span>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+             border-radius:12px;padding:12px 16px;margin-top:4px;font-size:11px;line-height:2;color:#64748b">
+            <span style="color:#475569;font-weight:600">FX</span><br>
+            USD/PLN <span style="color:#94a3b8;float:right">{fx.get('USD',0):.3f}</span><br>
+            EUR/PLN <span style="color:#94a3b8;float:right">{fx.get('EUR',0):.3f}</span><br>
+            HKD/PLN <span style="color:#94a3b8;float:right">{fx.get('HKD',0):.3f}</span>
         </div>
         """, unsafe_allow_html=True)
+
+    st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
+                unsafe_allow_html=True)
 
     if page_key == "__overview__":
         page_overview(pos, demo)
