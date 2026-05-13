@@ -288,13 +288,14 @@ NAME_TO_TICKER = {
     "pzu": "PZU.WA", "tencent": "0700.HK",
 }
 ETF_MAP = {
-    "SXRV": "SXRV.DE", "SECO": "SECO.DE", "2B76": "2B76.DE",
+    "SXRV": "SXRV.DE", "SECO": "SEMI.L", "2B76": "2B76.DE",
     "2B78": "2B78.DE", "SXR8": "SXR8.DE", "IS3N": "IS3N.DE", "EUNA": "EUNA.DE",
 }
 CCY_MAP = {
     "dolar": "USD", "dollar": "USD", "usd": "USD",
     "euro": "EUR", "eur": "EUR",
     "pln": "PLN", "zł": "PLN", "hkd": "HKD",
+    "gbp": "GBP", "funt": "GBP", "pound": "GBP",
 }
 
 def to_float(v):
@@ -379,11 +380,11 @@ def get_live_prices(tickers: tuple) -> dict:
 @st.cache_data(ttl=1800)
 def get_fx() -> dict:
     rates = {"PLN": 1.0}
-    for ccy, sym in {"USD": "USDPLN=X", "EUR": "EURPLN=X", "HKD": "HKDPLN=X"}.items():
+    for ccy, sym in {"USD": "USDPLN=X", "EUR": "EURPLN=X", "HKD": "HKDPLN=X", "GBP": "GBPPLN=X"}.items():
         try:
             rates[ccy] = float(yf.Ticker(sym).history(period="5d")["Close"].iloc[-1])
         except Exception:
-            rates[ccy] = {"USD": 3.98, "EUR": 4.30, "HKD": 0.51}[ccy]
+            rates[ccy] = {"USD": 3.98, "EUR": 4.30, "HKD": 0.51, "GBP": 5.05}[ccy]
     return rates
 
 @st.cache_data(ttl=3600)
@@ -1185,6 +1186,7 @@ def main():
             <span style="color:#475569;font-weight:600">FX</span><br>
             USD/PLN <span style="color:#94a3b8;float:right">{fx.get('USD',0):.3f}</span><br>
             EUR/PLN <span style="color:#94a3b8;float:right">{fx.get('EUR',0):.3f}</span><br>
+            GBP/PLN <span style="color:#94a3b8;float:right">{fx.get('GBP',0):.3f}</span><br>
             HKD/PLN <span style="color:#94a3b8;float:right">{fx.get('HKD',0):.3f}</span>
         </div>
         """, unsafe_allow_html=True)
