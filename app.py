@@ -442,7 +442,7 @@ def build_positions(df, prices, fx, recs):
         rows.append({
             "Ticker": t, "Nazwa": r["Nazwa"], "Cena": price, "Waluta": ccy,
             "Dzień%": chg, "Ilość": qty, "Avg": avg,
-            "Val_PLN": cur_val, "PnL_PLN": pnl, "PnL%": pnl_pct,
+            "Val_PLN": cur_val, "Cost_PLN": cost, "PnL_PLN": pnl, "PnL%": pnl_pct,
             "FV": fv, "FV_ccy": rec.get("fair_value_currency", ccy),
             "Upside": upside, "Rec": rec.get("recommendation", "—"),
             "Rec_sort": REC_ORDER.get(rec.get("recommendation", "HOLD"), 3),
@@ -773,9 +773,9 @@ def page_overview(pos, demo):
         Skonfiguruj Google Sheets ze swoimi pozycjami żeby zobaczyć P&L.
         </div>""", unsafe_allow_html=True)
 
-    total_val  = pos["Val_PLN"].sum() if pos["Val_PLN"].notna().any() else None
-    total_cost = pos.apply(lambda r: r["Ilość"] * r["Avg"] if r["Ilość"] and r["Avg"] else 0, axis=1).sum()
-    total_pnl  = pos["PnL_PLN"].sum() if pos["PnL_PLN"].notna().any() else None
+    total_val  = pos["Val_PLN"].dropna().sum() or None
+    total_cost = pos["Cost_PLN"].dropna().sum() or None
+    total_pnl  = pos["PnL_PLN"].dropna().sum() or None
     pnl_pct    = (total_pnl / total_cost * 100) if total_pnl and total_cost else None
     n_pos      = len(pos)
 
