@@ -380,11 +380,16 @@ def get_live_prices(tickers: tuple) -> dict:
 @st.cache_data(ttl=1800)
 def get_fx() -> dict:
     rates = {"PLN": 1.0}
+    fallback = {"USD": 3.63, "EUR": 4.25, "HKD": 0.46, "GBP": 4.90}
     for ccy, sym in {"USD": "USDPLN=X", "EUR": "EURPLN=X", "HKD": "HKDPLN=X", "GBP": "GBPPLN=X"}.items():
         try:
-            rates[ccy] = float(yf.Ticker(sym).history(period="5d")["Close"].iloc[-1])
+            hist = yf.Ticker(sym).history(period="5d")
+            if not hist.empty:
+                rates[ccy] = float(hist["Close"].iloc[-1])
+            else:
+                rates[ccy] = fallback[ccy]
         except Exception:
-            rates[ccy] = {"USD": 3.98, "EUR": 4.30, "HKD": 0.51, "GBP": 5.05}[ccy]
+            rates[ccy] = fallback[ccy]
     return rates
 
 @st.cache_data(ttl=3600)
