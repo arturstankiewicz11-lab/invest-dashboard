@@ -47,8 +47,10 @@ html, body, [data-testid="stAppViewContainer"] {{
     backdrop-filter: blur(20px);
 }}
 
-#MainMenu, footer, header {{ visibility: hidden; }}
+#MainMenu, footer {{ visibility: hidden; }}
+header {{ visibility: hidden; height: 0 !important; min-height: 0 !important; }}
 [data-testid="stDecoration"] {{ display: none; }}
+[data-testid="stSidebarCollapsedControl"] {{ visibility: visible !important; height: auto !important; }}
 
 /* ── TABS ── */
 [data-testid="stTabs"] > div:first-child {{
