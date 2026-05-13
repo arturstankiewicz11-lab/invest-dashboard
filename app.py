@@ -6,6 +6,7 @@ import json
 import io
 import math
 from datetime import datetime
+import anthropic
 
 st.set_page_config(
     page_title="Invest Dashboard",
@@ -994,6 +995,106 @@ def page_detail(ticker, pos, prices):
                 {ne_html}
             </div>""", unsafe_allow_html=True)
 
+# ─── PAGE: CHAT ───────────────────────────────────────────────────────────────
+def build_system_prompt(pos, recs, prices, fx):
+    portfolio_lines = []
+    for _, r in pos.iterrows():
+        price = r["Cena"]
+        pnl   = r["PnL_PLN"]
+        portfolio_lines.append(
+            f"- {r['Ticker']} ({r['Nazwa']}): {r['Ilość']} szt., avg {r['Avg']:.2f} {r['Waluta']}, "
+            f"cena {f'{price:.2f}' if price else 'N/A'}, P&L {f'{pnl:+.0f} PLN' if pnl else 'N/A'}"
+        )
+
+    rec_lines = []
+    for t, rec in recs.items():
+        fv  = rec.get("fair_value")
+        cur = prices.get(t, {}).get("price")
+        upside = f"{(fv-cur)/cur*100:+.0f}%" if fv and cur else "N/A"
+        rec_lines.append(
+            f"- {t}: {rec.get('recommendation','?')} | FV {fv} {rec.get('fair_value_currency','')} | "
+            f"upside {upside} | {rec.get('thesis_short','')}"
+        )
+
+    return f"""Jesteś profesjonalnym doradcą inwestycyjnym użytkownika. Analizujesz spółki moonshot (AI, Energy/fusion/SMR, Space).
+
+PROFIL INWESTORA:
+- Horyzont: 1–3 lata
+- Kapitał: 50k–250k PLN
+- Tolerancja ryzyka: wysoka, szuka 10–50x asymetrii
+- Giełdy: globalny mandat (US, EU, PL)
+- Narzędzia: Morningstar (aktywna subskrypcja), DCF
+
+AKTUALNY PORTFEL (live dane):
+{chr(10).join(portfolio_lines) if portfolio_lines else 'Brak danych portfela'}
+
+REKOMENDACJE I FAIR VALUES:
+{chr(10).join(rec_lines)}
+
+KURSY FX:
+USD/PLN: {fx.get('USD',0):.3f} | EUR/PLN: {fx.get('EUR',0):.3f} | HKD/PLN: {fx.get('HKD',0):.3f}
+
+ZASADY ODPOWIEDZI:
+- Zawsze podawaj datę analizy i zaznaczaj że dane mają datę ważności
+- Przy wycenie używaj DCF + Buffett tenets (moat, management, business simplicity)
+- Podawaj konkretne liczby: WACC, growth rate, fair value, entry point, margin of safety
+- Wskazuj top 3 ryzyka i czynnik geopolityczny
+- Odpowiadaj po polsku, konkretnie i profesjonalnie
+- Dzisiejsza data: {datetime.now().strftime('%Y-%m-%d')}"""
+
+def page_chat(pos, recs, prices, fx):
+    st.markdown("""
+    <div style="margin-bottom:24px">
+        <div style="font-size:22px;font-weight:800;color:#f8fafc;margin-bottom:6px">💬 Asystent inwestycyjny</div>
+        <div style="font-size:13px;color:#475569">Pytaj o wyceny, DCF, rekomendacje, analizę spółek. Ma dostęp do Twojego portfela i live cen.</div>
+    </div>""", unsafe_allow_html=True)
+
+    try:
+        api_key = st.secrets["anthropic"]["api_key"]
+    except Exception:
+        st.error("Brak klucza Anthropic API w Streamlit Secrets. Dodaj sekcję [anthropic] z api_key.")
+        return
+
+    if "chat_messages" not in st.session_state:
+        st.session_state.chat_messages = []
+
+    # Display history
+    for msg in st.session_state.chat_messages:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
+
+    # Input
+    if prompt := st.chat_input("Zapytaj o spółkę, wycenę, strategię..."):
+        st.session_state.chat_messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        with st.chat_message("assistant"):
+            with st.spinner("Analizuję..."):
+                try:
+                    client = anthropic.Anthropic(api_key=api_key)
+                    system = build_system_prompt(pos, recs, prices, fx)
+                    messages = [
+                        {"role": m["role"], "content": m["content"]}
+                        for m in st.session_state.chat_messages
+                    ]
+                    response = client.messages.create(
+                        model="claude-sonnet-4-6",
+                        max_tokens=2048,
+                        system=system,
+                        messages=messages,
+                    )
+                    answer = response.content[0].text
+                    st.markdown(answer)
+                    st.session_state.chat_messages.append({"role": "assistant", "content": answer})
+                except Exception as e:
+                    st.error(f"Błąd API: {e}")
+
+    if st.session_state.chat_messages:
+        if st.button("🗑️ Wyczyść rozmowę", type="secondary"):
+            st.session_state.chat_messages = []
+            st.rerun()
+
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
     df, demo = load_portfolio()
@@ -1012,8 +1113,8 @@ def main():
             <span style="font-size:20px;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px">📈 Invest Dashboard</span>
         </div>""", unsafe_allow_html=True)
 
-        labels = ["📊 Overview"]
-        keys   = ["__overview__"]
+        labels = ["📊 Overview", "💬 Asystent"]
+        keys   = ["__overview__", "__chat__"]
         for t, r in recs.items():
             emoji = REC_EMOJI.get(r.get("recommendation"), "⚪")
             labels.append(f"{emoji} {t}")
@@ -1038,6 +1139,8 @@ def main():
 
     if page_key == "__overview__":
         page_overview(pos, demo)
+    elif page_key == "__chat__":
+        page_chat(pos, recs, prices, fx)
     else:
         page_detail(page_key, pos, prices)
 
