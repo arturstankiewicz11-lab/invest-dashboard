@@ -831,6 +831,8 @@ def page_overview(pos, demo):
     for _, r in df.iterrows():
         rec     = r["Rec"]
         row_cls = REC_ROW.get(rec, "row-hold")
+        qty_s   = f'<span style="color:#e2e8f0">{r["Ilość"]:.4f}'.rstrip('0').rstrip('.') + '</span>'
+        avg_s   = f'<span style="color:#94a3b8">{r["Avg"]:.2f} <span class="t-ccy">{r["Waluta"]}</span></span>' if r["Avg"] else "—"
         price_s = f'<span class="t-price">{r["Cena"]:.2f}</span> <span class="t-ccy">{r["Waluta"]}</span>' if r["Cena"] else "—"
         chg_s   = f'<span class="{pclass(r["Dzień%"])}">{fmt_pct(r["Dzień%"])}</span>' if r["Dzień%"] is not None else '<span class="t-neu">—</span>'
         val_s   = f'<span class="{pclass(r["Val_PLN"])}">{fmt_pln(r["Val_PLN"])}</span>' if r["Val_PLN"] else '<span class="t-neu">—</span>'
@@ -842,6 +844,7 @@ def page_overview(pos, demo):
         rows_html += f"""<tr class="{row_cls}">
             <td><span class="t-ticker">{r['Ticker']}</span></td>
             <td><span class="t-name">{r['Nazwa']}</span></td>
+            <td>{qty_s}</td><td>{avg_s}</td>
             <td>{price_s}</td><td>{chg_s}</td>
             <td>{val_s}</td><td>{pnl_s}</td><td>{pnlp_s}</td>
             <td>{fv_s}</td><td>{up_s}</td><td>{badge}</td>
@@ -851,7 +854,8 @@ def page_overview(pos, demo):
     <div class="pos-table-wrap">
     <table class="pos-table">
         <thead><tr>
-            <th>Ticker</th><th>Nazwa</th><th>Cena</th><th>Dzień</th>
+            <th>Ticker</th><th>Nazwa</th><th>Ilość</th><th>Śr. cena</th>
+            <th>Cena</th><th>Dzień</th>
             <th>Wartość PLN</th><th>P&L</th><th>P&L%</th>
             <th>Fair Value</th><th>Upside</th><th>Rec</th>
         </tr></thead>
