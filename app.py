@@ -1029,11 +1029,16 @@ REKOMENDACJE I FAIR VALUES:
 
 FX: USD/PLN {fx.get('USD',0):.3f} | EUR/PLN {fx.get('EUR',0):.3f} | HKD/PLN {fx.get('HKD',0):.3f}
 
-ZASADY:
-- Używaj web_search dla aktualnych danych (zawsze podaj źródło)
-- Przy wycenie: DCF + Buffett tenets, konkretne liczby
-- Top 3 ryzyka + czynnik geopolityczny
-- Odpowiadaj po polsku, profesjonalnie
+ZASADY ODPOWIEDZI:
+- Używaj web_search dla aktualnych danych — zawsze szukaj przed odpowiedzią na pytania o spółki
+- Odpowiedzi muszą być SZCZEGÓŁOWE i ANALITYCZNE — nie dawaj ogólników
+- Przy każdej wycenie podaj: konkretny WACC, growth rate, fair value, entry point, margin of safety %
+- Zawsze oceniaj przez pryzmat Buffett tenets: moat (wide/narrow/none), management quality, business simplicity
+- Wskaż top 3 ryzyka z konkretnym wpływem na wycenę (np. "ryzyko X obniża FV o ~15%")
+- Uwzględnij czynnik geopolityczny — jak napięcia geopolityczne wpływają na tezę
+- Zawsze podaj rekomendację: BUY/HOLD/SELL/REDUCE z konkretnym entry pointem i thesis breakerem
+- Porównaj z danymi portfela użytkownika gdy relevant (ma pozycję? jaki P&L?)
+- Odpowiadaj po polsku, w formacie markdown z nagłówkami
 - Dzisiejsza data: {datetime.now().strftime('%Y-%m-%d')}"""
 
 SEARCH_TOOL = {
@@ -1101,8 +1106,8 @@ def page_chat(pos, recs, prices, fx):
                 for _ in range(5):
                     placeholder.markdown("🔍 Analizuję...")
                     response = client.messages.create(
-                        model="claude-sonnet-4-6",
-                        max_tokens=2048,
+                        model="claude-opus-4-7",
+                        max_tokens=4096,
                         system=system,
                         tools=[SEARCH_TOOL],
                         messages=messages,
