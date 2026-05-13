@@ -1005,7 +1005,6 @@ def build_system_prompt(pos, recs, prices, fx):
             f"- {r['Ticker']} ({r['Nazwa']}): {r['Ilość']} szt., avg {r['Avg']:.2f} {r['Waluta']}, "
             f"cena {f'{price:.2f}' if price else 'N/A'}, P&L {f'{pnl:+.0f} PLN' if pnl else 'N/A'}"
         )
-
     rec_lines = []
     for t, rec in recs.items():
         fv  = rec.get("fair_value")
@@ -1015,80 +1014,128 @@ def build_system_prompt(pos, recs, prices, fx):
             f"- {t}: {rec.get('recommendation','?')} | FV {fv} {rec.get('fair_value_currency','')} | "
             f"upside {upside} | {rec.get('thesis_short','')}"
         )
-
-    return f"""Jesteś profesjonalnym doradcą inwestycyjnym użytkownika. Analizujesz spółki moonshot (AI, Energy/fusion/SMR, Space).
+    return f"""Jesteś profesjonalnym doradcą inwestycyjnym. Analizujesz spółki moonshot (AI, Energy/fusion/SMR, Space).
+Masz dostęp do narzędzia web_search — używaj go zawsze gdy pytanie dotyczy aktualnych wydarzeń, newsów, wyników finansowych lub cen.
 
 PROFIL INWESTORA:
-- Horyzont: 1–3 lata
-- Kapitał: 50k–250k PLN
-- Tolerancja ryzyka: wysoka, szuka 10–50x asymetrii
-- Giełdy: globalny mandat (US, EU, PL)
-- Narzędzia: Morningstar (aktywna subskrypcja), DCF
+- Horyzont: 1–3 lata | Kapitał: 50k–250k PLN | Ryzyko: wysoka tolerancja, szuka 10–50x
+- Giełdy: globalny mandat (US, EU, PL) | Narzędzia: Morningstar, DCF
 
-AKTUALNY PORTFEL (live dane):
-{chr(10).join(portfolio_lines) if portfolio_lines else 'Brak danych portfela'}
+AKTUALNY PORTFEL (live ceny z yfinance):
+{chr(10).join(portfolio_lines) if portfolio_lines else 'Brak danych'}
 
 REKOMENDACJE I FAIR VALUES:
 {chr(10).join(rec_lines)}
 
-KURSY FX:
-USD/PLN: {fx.get('USD',0):.3f} | EUR/PLN: {fx.get('EUR',0):.3f} | HKD/PLN: {fx.get('HKD',0):.3f}
+FX: USD/PLN {fx.get('USD',0):.3f} | EUR/PLN {fx.get('EUR',0):.3f} | HKD/PLN {fx.get('HKD',0):.3f}
 
-ZASADY ODPOWIEDZI:
-- Zawsze podawaj datę analizy i zaznaczaj że dane mają datę ważności
-- Przy wycenie używaj DCF + Buffett tenets (moat, management, business simplicity)
-- Podawaj konkretne liczby: WACC, growth rate, fair value, entry point, margin of safety
-- Wskazuj top 3 ryzyka i czynnik geopolityczny
-- Odpowiadaj po polsku, konkretnie i profesjonalnie
+ZASADY:
+- Używaj web_search dla aktualnych danych (zawsze podaj źródło)
+- Przy wycenie: DCF + Buffett tenets, konkretne liczby
+- Top 3 ryzyka + czynnik geopolityczny
+- Odpowiadaj po polsku, profesjonalnie
 - Dzisiejsza data: {datetime.now().strftime('%Y-%m-%d')}"""
+
+SEARCH_TOOL = {
+    "name": "web_search",
+    "description": "Wyszukuje aktualne informacje w internecie. Używaj dla newsów, wyników finansowych, aktualnych cen, wydarzeń rynkowych.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "Zapytanie wyszukiwania po angielsku dla lepszych wyników finansowych"
+            }
+        },
+        "required": ["query"]
+    }
+}
+
+def do_search(query: str, tavily_key: str) -> str:
+    try:
+        from tavily import TavilyClient
+        client = TavilyClient(api_key=tavily_key)
+        results = client.search(query=query, max_results=5, search_depth="advanced")
+        lines = []
+        for r in results.get("results", []):
+            lines.append(f"**{r.get('title','')}** ({r.get('url','')})\n{r.get('content','')[:400]}")
+        return "\n\n---\n\n".join(lines) if lines else "Brak wyników."
+    except Exception as e:
+        return f"Błąd wyszukiwania: {e}"
 
 def page_chat(pos, recs, prices, fx):
     st.markdown("""
     <div style="margin-bottom:24px">
         <div style="font-size:22px;font-weight:800;color:#f8fafc;margin-bottom:6px">💬 Asystent inwestycyjny</div>
-        <div style="font-size:13px;color:#475569">Pytaj o wyceny, DCF, rekomendacje, analizę spółek. Ma dostęp do Twojego portfela i live cen.</div>
+        <div style="font-size:13px;color:#475569">Ma dostęp do Twojego portfela, live cen i internetu. Pytaj o wyceny, newsy, strategie.</div>
     </div>""", unsafe_allow_html=True)
 
     try:
-        api_key = st.secrets["anthropic"]["api_key"]
-    except Exception:
-        st.error("Brak klucza Anthropic API w Streamlit Secrets. Dodaj sekcję [anthropic] z api_key.")
+        api_key    = st.secrets["anthropic"]["api_key"]
+        tavily_key = st.secrets["tavily"]["api_key"]
+    except Exception as e:
+        st.error(f"Brak klucza API w Streamlit Secrets: {e}")
         return
 
     if "chat_messages" not in st.session_state:
         st.session_state.chat_messages = []
 
-    # Display history
     for msg in st.session_state.chat_messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    # Input
-    if prompt := st.chat_input("Zapytaj o spółkę, wycenę, strategię..."):
+    if prompt := st.chat_input("Zapytaj o spółkę, newsy, wycenę, strategię..."):
         st.session_state.chat_messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
-            with st.spinner("Analizuję..."):
-                try:
-                    client = anthropic.Anthropic(api_key=api_key)
-                    system = build_system_prompt(pos, recs, prices, fx)
-                    messages = [
-                        {"role": m["role"], "content": m["content"]}
-                        for m in st.session_state.chat_messages
-                    ]
+            placeholder = st.empty()
+            try:
+                client  = anthropic.Anthropic(api_key=api_key)
+                system  = build_system_prompt(pos, recs, prices, fx)
+                messages = [{"role": m["role"], "content": m["content"]}
+                            for m in st.session_state.chat_messages]
+
+                # Agentic loop: handle tool_use
+                for _ in range(5):
+                    placeholder.markdown("🔍 Analizuję...")
                     response = client.messages.create(
                         model="claude-sonnet-4-6",
                         max_tokens=2048,
                         system=system,
+                        tools=[SEARCH_TOOL],
                         messages=messages,
                     )
-                    answer = response.content[0].text
-                    st.markdown(answer)
-                    st.session_state.chat_messages.append({"role": "assistant", "content": answer})
-                except Exception as e:
-                    st.error(f"Błąd API: {e}")
+
+                    if response.stop_reason == "tool_use":
+                        # Extract tool calls
+                        tool_results = []
+                        search_info  = []
+                        for block in response.content:
+                            if block.type == "tool_use" and block.name == "web_search":
+                                query = block.input.get("query", "")
+                                placeholder.markdown(f"🔍 Szukam: *{query}*...")
+                                result = do_search(query, tavily_key)
+                                tool_results.append({
+                                    "type": "tool_result",
+                                    "tool_use_id": block.id,
+                                    "content": result,
+                                })
+                                search_info.append(query)
+
+                        messages.append({"role": "assistant", "content": response.content})
+                        messages.append({"role": "user", "content": tool_results})
+
+                    else:
+                        # Final answer
+                        answer = next((b.text for b in response.content if hasattr(b, "text")), "")
+                        placeholder.markdown(answer)
+                        st.session_state.chat_messages.append({"role": "assistant", "content": answer})
+                        break
+
+            except Exception as e:
+                placeholder.error(f"Błąd: {e}")
 
     if st.session_state.chat_messages:
         if st.button("🗑️ Wyczyść rozmowę", type="secondary"):
