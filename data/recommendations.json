@@ -2,12 +2,12 @@
   "MSFT": {
     "name": "Microsoft",
     "recommendation": "HOLD",
-    "fair_value": 530,
+    "fair_value": 437.0,
     "fair_value_currency": "USD",
     "entry_point": 385,
-    "upside_pct": 28,
-    "thesis_short": "Azure +40% YoY, AI revenue $37B annualized (+123%). Silny moat enterprise.",
-    "thesis_full": "Microsoft to wiodąca platforma AI enterprise. Azure rośnie 40% YoY. Annualized AI revenue to $37B (+123%). CapEx $190B w 2026 to zakład na AI. Moat: enterprise lock-in (Office, Azure, Teams), ogromne koszty migracji dla klientów. ROE ~40% konsekwentnie. Stock down 12% w 2026 = okazja do uzupełnienia przy $380-390.",
+    "upside_pct": null,
+    "thesis_short": "Azure +40% YoY, AI revenue $37B annualized (+123%). Fair Value DCF $437.",
+    "thesis_full": "Microsoft to wiodąca platforma AI enterprise. Azure rośnie 40% YoY. Annualized AI revenue to $37B (+123%). CapEx $190B w 2026 to zakład na AI. Moat: enterprise lock-in (Office, Azure, Teams), ogromne koszty migracji dla klientów. ROE ~40% konsekwentnie. Aktualna cena ~$430 = blisko Fair Value DCF $437 — bez margin of safety. HOLD do korekty do $385-390.",
     "thesis_breaker": "Azure growth poniżej 25% przez 2 kolejne kwartały. ROI na AI CapEx nie materializuje się.",
     "risks": [
       "AI CapEx bez zwrotu",
@@ -42,11 +42,11 @@
           "da_pct": 4
         }
       ],
-      "pv_fcf_m": 465000,
-      "terminal_value_m": 1420000,
-      "pv_terminal_m": 860000,
-      "enterprise_value_m": 1325000,
-      "fair_value": 530,
+      "pv_fcf_m": 1087089,
+      "terminal_value_m": 4939525,
+      "pv_terminal_m": 2086509,
+      "enterprise_value_m": 3173597,
+      "fair_value": 437.0,
       "notes": "Azure CAGR 18% przez 5 lat. AI monetyzacja (Copilot) poprawia marże od 2027. CapEx B krótkoterminowo obciąża FCF, długoterminowo wzmacnia moat cloudowy."
     },
     "events": [
@@ -154,19 +154,19 @@
           "da_pct": 3
         }
       ],
-      "pv_fcf_m": 14500,
-      "terminal_value_m": 52000,
-      "pv_terminal_m": 31000,
-      "enterprise_value_m": 45500,
+      "pv_fcf_m": 15321,
+      "terminal_value_m": 70720,
+      "pv_terminal_m": 147029,
+      "enterprise_value_m": 162350,
       "fair_value": 1950,
-      "notes": "Revenue 2026E ~€14B (+40-45% YoY). Backlog €135B = 10 lat przychodów. Marże rosną dzięki skalowaniu mocy produkcyjnych. Wyższy WACC = ryzyko cyklu obronnego i ceasefire."
+      "notes": "⚠️ Uwaga metodologiczna: DCF (model 10-letni) daje wartość konserwatywną €507 — typowe dla spółek obronnych, gdzie >90% wartości leży poza 10-letnim horyzontem. Analitycy (15 Buy, PT avg €2009) używają EV/EBITDA (backlog €135B = 10 lat przychodów). Fair Value €1950 pochodzi z metody porównawczej i analyst consensus, nie z czystego DCF. WACC 10% = premia za ryzyko cyklu obronnego."
     },
     "events": [
       {
         "date": "2026-05-07",
         "event": "Q1 2026 earnings preview — revenue +40-45% YoY potwierdzony. Order backlog €135B.",
         "impact": "positive",
-        "fv_note": "Potwierdza tezę. Przy obecnej cenie €1218 = 40% dyskonto do FV."
+        "fv_note": "Potwierdza tezę. Przy obecnej cenie €1218 = 40% dyskonto do FV €1950."
       },
       {
         "date": "2026-03-11",
@@ -436,11 +436,11 @@
   "NVDA": {
     "name": "NVIDIA",
     "recommendation": "HOLD",
-    "fair_value": 135,
+    "fair_value": 116.0,
     "fair_value_currency": "USD",
     "entry_point": 100,
-    "upside_pct": 8,
-    "thesis_short": "Monopol GPU AI. Wycena już wysoka — czekaj na korektę do $100.",
+    "upside_pct": null,
+    "thesis_short": "Monopol GPU AI. FV DCF $116 — czekaj na korektę do $100.",
     "thesis_full": "NVIDIA to jedyny dostawca GPU klasy datacenter (H100/H200/B200). ~80% udział w rynku AI chips. Data Center revenue +100%+ YoY. Moat: CUDA ecosystem (10+ lat przewagi software). Zakup przy $125 — blisko fair value. Nie dokupuj przy obecnej cenie. Czekaj na korektę do $100-110 żeby zwiększyć pozycję.",
     "thesis_breaker": "AMD MI400 lub Google TPU przejmują >20% rynku datacenter GPU. US export controls rozszerzają się na kolejne kraje.",
     "risks": [
@@ -477,12 +477,12 @@
           "da_pct": 2
         }
       ],
-      "pv_fcf_m": 320000,
-      "terminal_value_m": 980000,
-      "pv_terminal_m": 580000,
-      "enterprise_value_m": 900000,
-      "fair_value": 135,
-      "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC ze względu na wycenę premium i export risk."
+      "pv_fcf_m": 1115480,
+      "terminal_value_m": 4787959,
+      "pv_terminal_m": 1686245,
+      "enterprise_value_m": 2801725,
+      "fair_value": 116.0,
+      "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC 11% ze względu na wycenę premium i export risk. FV DCF $116 vs cena ~$125 — premia sentymentu. Czekaj na $100-110."
     },
     "events": [
       {
