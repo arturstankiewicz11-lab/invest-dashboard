@@ -581,13 +581,13 @@ def tab_dcf(rec: dict):
     <table class="dcf-table"><thead>{header}</thead><tbody>{body}</tbody></table>
     </div>""", unsafe_allow_html=True)
 
-    # ── Bridge to fair value
+    # ── Bridge to fair value — all values from stored JSON for consistency
     st.markdown('<div class="sh">🌉 Od wartości przedsiębiorstwa do ceny akcji</div>', unsafe_allow_html=True)
-    ev = dcf.get("enterprise_value_m", pv_sum + dcf.get("pv_terminal_m", pv_tv))
-    eq_val = ev - dcf.get("net_debt_m", 0)
-    fv_calc = eq_val / dcf["shares_m"] if dcf["shares_m"] else None
-
+    pv_fcf_display     = dcf.get("pv_fcf_m", pv_sum)
     pv_terminal_display = dcf.get("pv_terminal_m", round(pv_tv))
+    ev     = dcf.get("enterprise_value_m", pv_fcf_display + pv_terminal_display)
+    eq_val = ev - dcf.get("net_debt_m", 0)
+
     net_debt = dcf.get("net_debt_m", 0)
     nd_label = "– Dług netto" if net_debt > 0 else "+ Gotówka netto"
     nd_val   = -net_debt if net_debt > 0 else abs(net_debt)
@@ -598,7 +598,7 @@ def tab_dcf(rec: dict):
         <div class="dcf-bridge">
             <div class="dcf-row">
                 <span class="dcf-row-label">PV wolnych przepływów gotówkowych (10 lat)</span>
-                <span class="dcf-row-value">{fmt_m(pv_sum)}</span>
+                <span class="dcf-row-value">{fmt_m(pv_fcf_display)}</span>
             </div>
             <div class="dcf-row">
                 <span class="dcf-row-label">+ PV wartości terminalnej (wzrost {dcf['terminal_growth_pct']}% ∞)</span>
@@ -627,7 +627,7 @@ def tab_dcf(rec: dict):
         </div>""", unsafe_allow_html=True)
 
     with col_b:
-        tv_share = pv_terminal_display / (pv_sum + pv_terminal_display) * 100 if (pv_sum + pv_terminal_display) > 0 else 0
+        tv_share = pv_terminal_display / (pv_fcf_display + pv_terminal_display) * 100 if (pv_fcf_display + pv_terminal_display) > 0 else 0
         st.markdown(f"""
         <div style="background:{CARD};border:1px solid {BORDER};border-radius:14px;padding:20px">
             <div style="font-size:10px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px">Struktura wartości</div>
