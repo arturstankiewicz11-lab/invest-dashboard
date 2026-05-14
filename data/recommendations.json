@@ -544,5 +544,31 @@
         "fv_note": "Momentum potwierdzone. Thesis breaker nie aktywowany."
       }
     ]
+  },
+  "RKLB": {
+    "events": [
+      {
+        "date": "2026-05-14",
+        "event": "DCF analysis 2026-05-14: FV $81 (WACC 11%, terminal 3.5%, revenue CAGR 45% 2026-2030). Cena $117.5 po +43% post-earnings rally (Q1 rev $200M rekord, backlog $2.2B). HOLD — entry zone $65-80. Bull $135 / Base $81 / Bear $42.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na HOLD."
+      }
+    ],
+    "recommendation": "HOLD",
+    "last_updated": "2026-05-14",
+    "name": "Rocket Lab USA",
+    "fair_value": 81,
+    "fair_value_currency": "USD",
+    "entry_point": 80,
+    "thesis_short": "Space duopol w budowie (Electron monopol + Neutron Q4 2026), ale cena $117 vs FV $81 = -31% downside.",
+    "thesis_full": "Rocket Lab to drugi po SpaceX zintegrowany pure-play space company. Electron = monopol w small-launch, Space Systems (~70% rev) to Tier-1 supplier z marżami 43% gross. Neutron (medium-lift, debut Q4 2026) otwiera TAM $10B+ i tworzy duopol z Falconem 9. Backlog $2.2B + cash $2B daje runway. DCF: revenue CAGR 45% (2026-2030), EBITDA margin 22% w 2030, WACC 11%, terminal growth 3.5% → FV $81. Probability-weighted FV $85 (bull $135 / base $81 / bear $42). Konsensus Wall Street $88.",
+    "thesis_breaker": "Neutron failure przy pierwszym locie LUB wykluczenie z NSSL Phase 3 LUB cash burn >$300M/rok bez ścieżki do FCF+. BUY trigger: pullback do $80-85 lub Neutron static fire success.",
+    "buffett_moat": "Narrow → Wide w budowie. Electron = monopol w small-launch (najczęściej latający po SpaceX). Neutron tworzy duopol medium-lift. Vertical integration (silniki Rutherford/Archimedes, satelity, komponenty). Founder-CEO Peter Beck z skin in the game.",
+    "risks": [
+      "Neutron failure/opóźnienie (-38% na FV, pierwszy lot Q4 2026 binary event)",
+      "Dilution — share count +19.7% YoY, kolejna emisja na build-out możliwa (-7% na FV)",
+      "SpaceX Starship economics zalewa medium-lift, presja na marże Neutrona (-15% na FV)"
+    ],
+    "priority_action": "Czekaj na pullback do $80-85 lub Neutron static fire success"
   }
 }
