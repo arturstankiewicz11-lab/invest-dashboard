@@ -909,11 +909,12 @@ def page_detail(ticker, pos, prices):
     fv_c = rec.get("fair_value_currency", "")
     ep   = rec.get("entry_point")
 
-    price  = row["Cena"]   if row is not None else prices.get(ticker, {}).get("price")
-    ccy    = row["Waluta"] if row is not None else fv_c
-    chg    = row["Dzień%"] if row is not None else None
+    price  = row["Cena"]    if row is not None else prices.get(ticker, {}).get("price")
+    ccy    = row["Waluta"]  if row is not None else fv_c
+    chg    = row["Dzień%"]  if row is not None else None
     pnl    = row["PnL_PLN"] if row is not None else None
-    pnl_p  = row["PnL%"]  if row is not None else None
+    pnl_p  = row["PnL%"]   if row is not None else None
+    val    = row["Val_PLN"] if row is not None else None
     upside = (fv - price) / price * 100 if fv and price else rec.get("upside_pct")
 
     # ── Header
@@ -944,9 +945,9 @@ def page_detail(ticker, pos, prices):
             <div class="dcard-sub {kpiclass(upside)}">{fmt_pct(upside)} upside</div>
         </div>
         <div class="dcard">
-            <div class="dcard-label">Twój P&L</div>
-            <div class="dcard-value {kpiclass(pnl)}">{fmt_pln(pnl)}</div>
-            <div class="dcard-sub {kpiclass(pnl_p)}">{fmt_pct(pnl_p)}</div>
+            <div class="dcard-label">Wartość pozycji</div>
+            <div class="dcard-value">{fmt_pln(val) if val else '—'}</div>
+            <div class="dcard-sub {kpiclass(pnl)}">{fmt_pln(pnl)} ({fmt_pct(pnl_p)})</div>
         </div>
         <div class="dcard">
             <div class="dcard-label">Punkt wejścia</div>
