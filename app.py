@@ -256,8 +256,8 @@ button[data-baseweb="tab"][aria-selected="true"] {{
 .ti-hold {{ background: rgba(100,116,139,0.06); border: 1px solid rgba(100,116,139,0.15); color: #94a3b8; }}
 .ti-icon {{ font-size: 14px; margin-top: 1px; flex-shrink: 0; }}
 
-/* Disable smooth scroll — prevents "flying" on chat rerender */
-html, [data-testid="stMainBlockContainer"] {{ scroll-behavior: auto !important; }}
+/* Disable smooth scroll globally — prevents "flying" on chat rerender */
+* {{ scroll-behavior: auto !important; }}
 
 /* Demo banner */
 .demo-banner {{
@@ -1721,11 +1721,9 @@ def main():
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
 
-    # Scroll to top on page change
-    if st.session_state.get("_last_page") != page_key:
+    page_just_changed = st.session_state.get("_last_page") != page_key
+    if page_just_changed:
         st.session_state["_last_page"] = page_key
-        import streamlit.components.v1 as _stc
-        _stc.html("<script>window.parent.scrollTo({top:0,behavior:'instant'});</script>", height=0)
 
     if page_key == "__overview__":
         page_overview(pos, demo)
@@ -1736,6 +1734,16 @@ def main():
     else:
         page_detail(page_key, pos, prices)
         render_chat(pos, recs, prices, fx, current_ticker=page_key, watchlist=watchlist)
+
+    # Scroll to top AFTER all content (incl. chat) renders — overrides browser auto-scroll to new DOM nodes
+    if page_just_changed:
+        import streamlit.components.v1 as _stc
+        _stc.html("""<script>
+        setTimeout(function(){
+            var el=window.parent.document.querySelector('[data-testid="stMainBlockContainer"]');
+            if(el) el.scrollTop=0; else window.parent.scrollTo(0,0);
+        },300);
+        </script>""", height=0)
 
 if __name__ == "__main__" or True:
     main()
