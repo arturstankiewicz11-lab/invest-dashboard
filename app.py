@@ -316,11 +316,12 @@ def normalize_portfolio(df: pd.DataFrame) -> pd.DataFrame:
     rename = {}
     for col in df.columns:
         cl = col.strip().lower()
-        if cl == "nazwa":    rename[col] = "Nazwa"
-        elif cl == "ticker": rename[col] = "Ticker_raw"
-        elif cl == "waluta": rename[col] = "Waluta"
-        elif cl == "volume": rename[col] = "Ilosc"
-        elif cl == "price":  rename[col] = "Srednia_cena"
+        if cl == "nazwa":      rename[col] = "Nazwa"
+        elif cl == "ticker":   rename[col] = "Ticker_raw"
+        elif cl == "waluta":   rename[col] = "Waluta"
+        elif cl == "volume":   rename[col] = "Ilosc"
+        elif cl == "price":    rename[col] = "Srednia_cena"
+        elif cl == "instrument": rename[col] = "Instrument"
     df = df.rename(columns=rename)
 
     def resolve_ticker(row):
@@ -339,12 +340,16 @@ def normalize_portfolio(df: pd.DataFrame) -> pd.DataFrame:
     df["Ilosc"]        = df["Ilosc"].apply(to_float)
     df["Srednia_cena"] = df["Srednia_cena"].apply(to_float)
     df = df[df["Ticker"].notna() & (df["Ticker"] != "") & (df["Ilosc"] > 0)].copy()
+    INSTR_SORT = {"Shares": 0, "ETF": 1, "Crypto": 2}
     rows = []
     for (ticker, ccy), g in df.groupby(["Ticker", "Waluta"]):
-        vol  = g["Ilosc"].sum()
-        wavg = (g["Ilosc"] * g["Srednia_cena"]).sum() / vol if vol > 0 else 0
+        vol   = g["Ilosc"].sum()
+        wavg  = (g["Ilosc"] * g["Srednia_cena"]).sum() / vol if vol > 0 else 0
+        instr = g["Instrument"].iloc[0] if "Instrument" in g.columns else "Shares"
         rows.append({"Ticker": ticker, "Nazwa": g["Nazwa"].iloc[0],
-                     "Ilosc": vol, "Srednia_cena": wavg, "Waluta": ccy})
+                     "Ilosc": vol, "Srednia_cena": wavg, "Waluta": ccy,
+                     "Instrument": instr,
+                     "Instr_sort": INSTR_SORT.get(instr, 1)})
     return pd.DataFrame(rows)
 
 # ─── DATA LOADING ─────────────────────────────────────────────────────────────
@@ -456,6 +461,7 @@ def build_positions(df, prices, fx, recs):
             "Thesis_breaker": rec.get("thesis_breaker", ""),
             "Upside": upside, "Rec": rec.get("recommendation", "—"),
             "Rec_sort": REC_ORDER.get(rec.get("recommendation", "HOLD"), 3),
+            "Instr_sort": r.get("Instr_sort", 1),
         })
     return pd.DataFrame(rows)
 
@@ -837,7 +843,7 @@ def page_overview(pos, demo):
         st.markdown(html, unsafe_allow_html=True)
 
     st.markdown('<div class="sh">📊 Pozycje</div>', unsafe_allow_html=True)
-    df = pos.sort_values("Rec_sort")
+    df = pos.sort_values(["Instr_sort", "Rec_sort"])
     rows_html = ""
     for _, r in df.iterrows():
         rec     = r["Rec"]
