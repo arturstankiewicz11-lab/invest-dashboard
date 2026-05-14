@@ -596,5 +596,31 @@
       "Uranium feedstock cost squeeze po Russia ban — wpływ -10% FV"
     ],
     "priority_action": "Starter 15-20 szt przy $207, dokup 15-20 szt przy pullbacku do $180-185"
+  },
+  "CCJ": {
+    "events": [
+      {
+        "date": "2026-05-14",
+        "event": "Inicjacja pokrycia: HOLD, FV $80 (DCF, WACC 8.5%, terminal 2.5%). Cena $122 = -34% downside. Wide moat (Cigar Lake tier-1 + 49% Westinghouse), ale drogi po YTD +26%. Komplement do LEU w łańcuchu wartości uranium → enrichment → SMR fuel.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na HOLD."
+      }
+    ],
+    "recommendation": "HOLD",
+    "last_updated": "2026-05-14",
+    "name": "Cameco Corporation",
+    "fair_value": 80,
+    "fair_value_currency": "USD",
+    "entry_point": 90,
+    "thesis_short": "Tier-1 uranium miner + 49% Westinghouse stake (AP1000/AP300 SMR). High quality, ale drogo po YTD +26%.",
+    "thesis_full": "Cameco to druga największa kopalnia uranu globalnie (~15% produkcji) z tier-1 deposits (Cigar Lake = grade 20x globalna średnia). 49% stake w Westinghouse daje optionality na AP1000 builds + AP300 SMR (NRC cert Q4 2027+). 80% revenue z long-term utility contracts = recurring. Uranium thesis: globalny deficit 25M lb/rok rosnący do 50M lb do 2030, spot $80/lb (z $20 w 2020). Problem: cena $122 vs DCF FV $80 (-34%), premium do konsensusu CA$156. Czekamy na pullback uranium cycle do $60-70/lb lub korektę kursu do $90.",
+    "thesis_breaker": "Uranium spot trwale &lt;$50/lb (recall popytu) | Westinghouse AP300 program anulowany lub poślizg &gt;3 lat | Kazatomprom dumping (output flood) | Major Cigar Lake operational disruption",
+    "buffett_moat": "WIDE — Cigar Lake to jedno z 3 najwyższej jakości złóż uranu na świecie, nieduplikowalny tier-1 asset. 50-letnie kontrakty utility. Westinghouse = jedyny zachodni reactor OEM z aktywnym pipeline.",
+    "risks": [
+      "Cykl uranium - spadek spot do $60 kompresuje EBITDA -40% (wpływ -25% FV)",
+      "Westinghouse execution - AP1000/AP300 opóźnienia historycznie typowe (-15% FV)",
+      "Kazatomprom dumping - 40% globalnej produkcji może flood market (-20% FV)"
+    ],
+    "priority_action": "Watch — BUY zone $70-90, no-buy &gt;$110. Czekaj na uranium cycle pullback lub korektę kursu."
   }
 }
