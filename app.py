@@ -1435,11 +1435,11 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
 
     msgs = st.session_state[sess_key]
 
-    # Show history in expander
+    # Collapsed history — doesn't trigger page scroll on load
     if msgs:
         ctx_label = current_ticker if current_ticker else "Dashboard"
-        label = f"💬 {ctx_label} ({len(msgs)} wiad.)"
-        with st.expander(label, expanded=True):
+        storage = "☁️" if gh_token else "💾"
+        with st.expander(f"💬 Historia {ctx_label} ({len(msgs)} wiad.)", expanded=False):
             for msg in msgs:
                 with st.chat_message(msg["role"]):
                     st.markdown(msg["content"])
@@ -1450,116 +1450,114 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                     save_chat_history([], gh_token, gh_gist, context)
                     st.rerun()
             with col_info:
-                storage = "☁️ Gist" if gh_token else "💾 lokalnie"
-                st.markdown(f'<span style="font-size:11px;color:#475569">{storage} · {ctx_label} · {len(msgs)} wiad.</span>', unsafe_allow_html=True)
+                st.markdown(f'<span style="font-size:11px;color:#475569">{storage} · {len(msgs)} wiad.</span>', unsafe_allow_html=True)
 
-    # Always-visible input at bottom
+    # Chat input
     ticker_hint = f"{current_ticker} — " if current_ticker else ""
     prompt = st.chat_input(f"💬 {ticker_hint}zapytaj o wycenę, newsy, strategię...")
 
     if prompt:
-        st.session_state[sess_key].append({"role": "user", "content": prompt})
-        save_chat_history(st.session_state[sess_key], gh_token, gh_gist, context)
+        msgs.append({"role": "user", "content": prompt})
+        save_chat_history(msgs, gh_token, gh_gist, context)
 
-        with st.expander(f"💬 {current_ticker or 'Dashboard'}", expanded=True):
-            for msg in st.session_state[sess_key]:
-                with st.chat_message(msg["role"]):
-                    st.markdown(msg["content"])
+        # Render only new exchange inline — no full history re-render, no expander
+        with st.chat_message("user"):
+            st.markdown(prompt)
 
-            with st.chat_message("assistant"):
-                placeholder = st.empty()
-                try:
-                    client   = anthropic.Anthropic(api_key=api_key)
-                    extra = f"\nUżytkownik aktualnie przegląda: {current_ticker}" if current_ticker else ""
-                    system   = build_system_prompt(pos, recs, prices, fx, watchlist) + extra
-                    all_msgs = st.session_state[sess_key]
-                    ctx_msgs = all_msgs[-CHAT_CONTEXT_LIMIT:] if len(all_msgs) > CHAT_CONTEXT_LIMIT else all_msgs
-                    messages = [{"role": m["role"], "content": m["content"]} for m in ctx_msgs]
+        with st.chat_message("assistant"):
+            placeholder = st.empty()
+            try:
+                client   = anthropic.Anthropic(api_key=api_key)
+                extra = f"\nUżytkownik aktualnie przegląda: {current_ticker}" if current_ticker else ""
+                system   = build_system_prompt(pos, recs, prices, fx, watchlist) + extra
+                all_msgs = st.session_state[sess_key]
+                ctx_msgs = all_msgs[-CHAT_CONTEXT_LIMIT:] if len(all_msgs) > CHAT_CONTEXT_LIMIT else all_msgs
+                messages = [{"role": m["role"], "content": m["content"]} for m in ctx_msgs]
 
-                    tools = [SEARCH_TOOL]
-                    if gh_token:
-                        tools += [UPDATE_REC_TOOL, ADD_WATCHLIST_TOOL, REMOVE_WATCHLIST_TOOL]
+                tools = [SEARCH_TOOL]
+                if gh_token:
+                    tools += [UPDATE_REC_TOOL, ADD_WATCHLIST_TOOL, REMOVE_WATCHLIST_TOOL]
 
-                    import time as _time
-                    PRICE_IN  = 15.0 / 1_000_000   # $ per input token
-                    PRICE_OUT = 75.0 / 1_000_000   # $ per output token
-                    total_in = total_out = 0
+                import time as _time
+                PRICE_IN  = 15.0 / 1_000_000
+                PRICE_OUT = 75.0 / 1_000_000
+                total_in = total_out = 0
 
-                    for _ in range(8):
-                        placeholder.markdown("🔍 Analizuję...")
-                        response = None
-                        for attempt in range(3):
-                            try:
-                                response = client.messages.create(
-                                    model="claude-opus-4-7",
-                                    max_tokens=4096,
-                                    system=system,
-                                    tools=tools,
-                                    messages=messages,
-                                )
-                                break
-                            except Exception as api_err:
-                                if attempt < 2 and "overloaded" in str(api_err).lower():
-                                    placeholder.markdown(f"⏳ Serwer przeciążony, ponawianie za {5*(attempt+1)}s...")
-                                    _time.sleep(5 * (attempt + 1))
-                                else:
-                                    raise
-                        if response is None:
-                            break
-
-                        total_in  += getattr(response.usage, "input_tokens",  0)
-                        total_out += getattr(response.usage, "output_tokens", 0)
-
-                        if response.stop_reason == "tool_use":
-                            tool_results = []
-                            for block in response.content:
-                                if block.type != "tool_use":
-                                    continue
-                                if block.name == "web_search":
-                                    query = block.input.get("query", "")
-                                    placeholder.markdown(f"🔍 Szukam: *{query}*...")
-                                    result = do_search(query, tavily_key) if tavily_key else "[Web search niedostępny]"
-                                elif block.name == "update_recommendation":
-                                    ticker_u = block.input.get("ticker", "?")
-                                    rec_u    = block.input.get("recommendation", "?")
-                                    placeholder.markdown(f"💾 Aktualizuję rekomendację **{ticker_u}** → **{rec_u}**...")
-                                    result = do_update_recommendation(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
-                                elif block.name == "add_to_watchlist":
-                                    t_w = block.input.get("ticker", "?")
-                                    s_w = block.input.get("sector", "?")
-                                    placeholder.markdown(f"👁️ Dodaję **{t_w}** do watchlisty ({s_w})...")
-                                    result = do_add_to_watchlist(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
-                                elif block.name == "remove_from_watchlist":
-                                    t_w = block.input.get("ticker", "?")
-                                    placeholder.markdown(f"🗑️ Usuwam **{t_w}** z watchlisty...")
-                                    result = do_remove_from_watchlist(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
-                                else:
-                                    result = "Nieznane narzędzie."
-                                tool_results.append({
-                                    "type": "tool_result",
-                                    "tool_use_id": block.id,
-                                    "content": result,
-                                })
-                            messages.append({"role": "assistant", "content": response.content})
-                            messages.append({"role": "user", "content": tool_results})
-                        else:
-                            answer = next((b.text for b in response.content if hasattr(b, "text")), "")
-                            cost = total_in * PRICE_IN + total_out * PRICE_OUT
-                            usage_line = (
-                                f'\n\n<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);'
-                                f'font-size:10px;color:#334155;display:flex;gap:12px">'
-                                f'<span>⬆️ {total_in:,} in</span>'
-                                f'<span>⬇️ {total_out:,} out</span>'
-                                f'<span style="color:#475569">~${cost:.3f}</span>'
-                                f'</div>'
+                for _ in range(8):
+                    placeholder.markdown("🔍 Analizuję...")
+                    response = None
+                    for attempt in range(3):
+                        try:
+                            response = client.messages.create(
+                                model="claude-opus-4-7",
+                                max_tokens=4096,
+                                system=system,
+                                tools=tools,
+                                messages=messages,
                             )
-                            placeholder.markdown(answer + usage_line, unsafe_allow_html=True)
-                            st.session_state[sess_key].append({"role": "assistant", "content": answer})
-                            save_chat_history(st.session_state[sess_key], gh_token, gh_gist, context)
                             break
+                        except Exception as api_err:
+                            if attempt < 2 and "overloaded" in str(api_err).lower():
+                                placeholder.markdown(f"⏳ Serwer przeciążony, ponawianie za {5*(attempt+1)}s...")
+                                _time.sleep(5 * (attempt + 1))
+                            else:
+                                raise
+                    if response is None:
+                        break
 
-                except Exception as e:
-                    placeholder.error(f"Błąd: {e}")
+                    total_in  += getattr(response.usage, "input_tokens",  0)
+                    total_out += getattr(response.usage, "output_tokens", 0)
+
+                    if response.stop_reason == "tool_use":
+                        tool_results = []
+                        for block in response.content:
+                            if block.type != "tool_use":
+                                continue
+                            if block.name == "web_search":
+                                query = block.input.get("query", "")
+                                placeholder.markdown(f"🔍 Szukam: *{query}*...")
+                                result = do_search(query, tavily_key) if tavily_key else "[Web search niedostępny]"
+                            elif block.name == "update_recommendation":
+                                ticker_u = block.input.get("ticker", "?")
+                                rec_u    = block.input.get("recommendation", "?")
+                                placeholder.markdown(f"💾 Aktualizuję rekomendację **{ticker_u}** → **{rec_u}**...")
+                                result = do_update_recommendation(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
+                            elif block.name == "add_to_watchlist":
+                                t_w = block.input.get("ticker", "?")
+                                s_w = block.input.get("sector", "?")
+                                placeholder.markdown(f"👁️ Dodaję **{t_w}** do watchlisty ({s_w})...")
+                                result = do_add_to_watchlist(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
+                            elif block.name == "remove_from_watchlist":
+                                t_w = block.input.get("ticker", "?")
+                                placeholder.markdown(f"🗑️ Usuwam **{t_w}** z watchlisty...")
+                                result = do_remove_from_watchlist(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
+                            else:
+                                result = "Nieznane narzędzie."
+                            tool_results.append({
+                                "type": "tool_result",
+                                "tool_use_id": block.id,
+                                "content": result,
+                            })
+                        messages.append({"role": "assistant", "content": response.content})
+                        messages.append({"role": "user", "content": tool_results})
+                    else:
+                        answer = next((b.text for b in response.content if hasattr(b, "text")), "")
+                        cost = total_in * PRICE_IN + total_out * PRICE_OUT
+                        usage_line = (
+                            f'\n\n<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);'
+                            f'font-size:10px;color:#334155;display:flex;gap:12px">'
+                            f'<span>⬆️ {total_in:,} in</span>'
+                            f'<span>⬇️ {total_out:,} out</span>'
+                            f'<span style="color:#475569">~${cost:.3f}</span>'
+                            f'</div>'
+                        )
+                        placeholder.markdown(answer + usage_line, unsafe_allow_html=True)
+                        msgs.append({"role": "assistant", "content": answer})
+                        save_chat_history(msgs, gh_token, gh_gist, context)
+                        break
+
+            except Exception as e:
+                placeholder.error(f"Błąd: {e}")
 
 # ─── PAGE: WATCHLISTA ────────────────────────────────────────────────────────
 def page_watchlist(watchlist, prices, recs, pos, labels, keys):
