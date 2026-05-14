@@ -257,7 +257,7 @@ button[data-baseweb="tab"][aria-selected="true"] {{
 .ti-icon {{ font-size: 14px; margin-top: 1px; flex-shrink: 0; }}
 
 /* Disable smooth scroll — prevents "flying" on chat rerender */
-html, [data-testid="stMainBlockContainer"] { scroll-behavior: auto !important; }
+html, [data-testid="stMainBlockContainer"] {{ scroll-behavior: auto !important; }}
 
 /* Demo banner */
 .demo-banner {{
