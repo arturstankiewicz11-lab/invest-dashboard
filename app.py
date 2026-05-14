@@ -1615,11 +1615,6 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
             t = stock["ticker"]
             rec_d = recs.get(t, {})
             emoji_r = REC_EMOJI.get(rec_d.get("recommendation", ""), "⚪") if rec_d else "👁"
-            # Find the exact label used in selectbox
-            if t in keys:
-                target_label = labels[keys.index(t)]
-            else:
-                target_label = f"👁 {t}"
             with btn_cols[i % ncols]:
                 if st.button(f"{emoji_r} {t} →", key=f"wl_goto_{t}", use_container_width=True):
                     st.session_state["_nav_goto"] = t
