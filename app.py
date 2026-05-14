@@ -452,6 +452,8 @@ def build_positions(df, prices, fx, recs):
             "Dzień%": chg, "Ilość": qty, "Avg": avg,
             "Val_PLN": cur_val, "Cost_PLN": cost, "PnL_PLN": pnl, "PnL%": pnl_pct,
             "FV": fv, "FV_ccy": rec.get("fair_value_currency", ccy),
+            "Entry": rec.get("entry_point"),
+            "Thesis_breaker": rec.get("thesis_breaker", ""),
             "Upside": upside, "Rec": rec.get("recommendation", "—"),
             "Rec_sort": REC_ORDER.get(rec.get("recommendation", "HOLD"), 3),
         })
@@ -850,13 +852,28 @@ def page_overview(pos, demo):
         fv_s    = f'<span class="t-fv">{r["FV"]:.0f} <span class="t-ccy">{r["FV_ccy"]}</span></span>' if r["FV"] else '<span class="t-neu">—</span>'
         up_s    = f'<span class="{pclass(r["Upside"])}">{fmt_pct(r["Upside"])}</span>' if r["Upside"] is not None else '<span class="t-neu">—</span>'
         badge   = f'<span class="badge b-{rec}">{rec}</span>' if rec != "—" else "—"
+        entry_s = f'<span style="color:#10b981;font-weight:600">{r["Entry"]:.2f}</span> <span class="t-ccy">{r["FV_ccy"]}</span>' if r["Entry"] else '<span class="t-neu">—</span>'
+        tb      = str(r["Thesis_breaker"])
+        if rec == "SELL":
+            exit_s = '<span style="color:#ef4444;font-weight:600;font-size:12px">Sprzedaj teraz</span>'
+        elif r["FV"]:
+            short_tb = (tb[:38] + "…") if len(tb) > 38 else tb
+            exit_s = f'<span class="t-fv" title="{tb}">{r["FV"]:.0f} {r["FV_ccy"]}</span><br><span style="font-size:10px;color:#475569" title="{tb}">{short_tb}</span>'
+        elif tb:
+            short_tb = (tb[:38] + "…") if len(tb) > 38 else tb
+            exit_s = f'<span style="font-size:11px;color:#475569" title="{tb}">{short_tb}</span>'
+        else:
+            exit_s = '<span class="t-neu">—</span>'
+
         rows_html += f"""<tr class="{row_cls}">
             <td><span class="t-ticker">{r['Ticker']}</span></td>
             <td><span class="t-name">{r['Nazwa']}</span></td>
             <td>{qty_s}</td><td>{avg_s}</td>
             <td>{price_s}</td><td>{chg_s}</td>
             <td>{val_s}</td><td>{pnl_s}</td><td>{pnlp_s}</td>
-            <td>{fv_s}</td><td>{up_s}</td><td>{badge}</td>
+            <td>{entry_s}</td><td>{fv_s}</td><td>{up_s}</td>
+            <td style="max-width:180px;white-space:normal;line-height:1.4">{exit_s}</td>
+            <td>{badge}</td>
         </tr>"""
 
     st.markdown(f"""
@@ -866,7 +883,8 @@ def page_overview(pos, demo):
             <th>Ticker</th><th>Nazwa</th><th>Ilość</th><th>Śr. cena</th>
             <th>Cena</th><th>Dzień</th>
             <th>Wartość PLN</th><th>P&L</th><th>P&L%</th>
-            <th>Fair Value</th><th>Upside</th><th>Rec</th>
+            <th>Entry rec.</th><th>Fair Value</th><th>Upside</th>
+            <th>Kiedy wychodzić</th><th>Rec</th>
         </tr></thead>
         <tbody>{rows_html}</tbody>
     </table>
