@@ -575,6 +575,18 @@
     "events": [
       {
         "date": "2026-05-14",
+        "event": "Aktualizacja FV po deep-dive HALEU+space+reload cycle (14 maja 2026). Stary FV $245 był zbyt konserwatywny (market share 30%, $35k/kg, no space optionality). Nowy base FV $340, prob-weighted $362, bull $520, mega-bull $750. Drivery upgrade: (1) pebble-bed reactors continuous reload = utility-like recurring revenue z X-energy/Kairos, (2) space HALEU optionality (NASA FSP, DRACO) z 3-5x pricing premium, (3) GM execution risk niedoceniony przez rynek. Entry strategy: 3 transze 40/40/20 z entry zone $185, $170, $140. Cena $192 dziś = +77% upside base, +89% prob-weighted, MoS 44%.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      },
+      {
+        "date": "2026-05-14",
+        "event": "14.05.2026: Aktualizacja FV po deep-dive HALEU TAM + reload cycle + space optionality. Stary FV $245 (konserwatywny) → nowy base FV $340, prob-weighted $362, bull $520. Cena $192 = +77% upside base, +89% prob-weighted. Margin of safety 44%. Sizing: 40/40/20 transze, NIE all-in. Entry zone $165-185.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      },
+      {
+        "date": "2026-05-14",
         "event": "Pełna analiza DCF: FV $245 (WACC 9.5%, terminal 3%). Q1 2026: revenue $76.7M (+5% YoY), cash $1.87B po January capital raise, FY guidance podniesiony do $450-500M. Mega-katalizatory: $2.7B federalny program (split z General Matter + Orano), $900M DOE HALEU contract, Russia ban od 2028 = LEU monopol. AI hyperscalers (Amazon/X-energy, Google/Kairos) zmieniają HALEU z government niche w Big Tech infrastructure play. Cross-sell z FRMI w portfelu — ten sam łańcuch wartości.",
         "impact": "neutral",
         "fv_note": "Rekomendacja zmieniona na BUY."
@@ -583,19 +595,19 @@
     "recommendation": "BUY",
     "last_updated": "2026-05-14",
     "name": "Centrus Energy",
-    "fair_value": 245,
+    "fair_value": 340,
     "fair_value_currency": "USD",
     "entry_point": 185,
-    "thesis_short": "Jedyny US enrichmer HALEU z licencją NRC i operacyjną produkcją — pickaxe play na nuclear renaissance i AI power demand.",
-    "thesis_full": "Centrus to \"incumbent z fosą\" w HALEU — jedyna firma w USA z aktywną NRC license i operacyjną produkcją (900 kg w 2024-25). $1.87B cash + $3.8B backlog + $900M DOE contract daje 4-5 lat przewagi nad General Matter (private, Thiel-backed, produkcja dopiero 2028-2030). HALEU TAM rośnie z $0.5B (2026) do $3.5B (2035, US only), napędzany przez Gen IV SMR-y (X-energy, TerraPower, Oklo, Kairos) deployowane dla hyperscalerów (Amazon, Google, Meta) jako AI power infrastructure. Marża HALEU 60%+ vs 30% legacy SWU = mix shift napędza margin expansion. Russia ban od 2028 = wymuszony reshoring uranu = Centrus beneficjent #1. DCF base case FV $245 (WACC 9.5%, terminal 3%), prob-weighted FV $258.",
-    "thesis_breaker": "General Matter osiąga komercyjną produkcję HALEU przed 2028 | DOE redukuje nuclear funding o >30% | Centrus traci NRC license lub poważny incident w Piketon | X-energy/TerraPower wybiera General Matter jako primary supplier",
-    "buffett_moat": "WIDE — jedyny licencjonowany US enrichmer HALEU. NRC license + DOE relationship (Daniel Poneman ex-DOE) + operacyjna produkcja = nieduplikowalne w <5 lat. Management quality: Poneman = perfekcyjny rolodex w nuclear policy.",
+    "thesis_short": "Jedyny US enrichmer HALEU z NRC license i operacyjną produkcją — incumbent pickaxe na nuclear renaissance, AI power demand i space nuclear propulsion. +77% upside z $192.",
+    "thesis_full": "Centrus Energy to jedyny operacyjny producent HALEU w USA z NRC license — Piketon Ohio. Q1 2026 cash $1.87B, backlog $3.8B, capacity expansion w toku. Trzy strumienie revenue: (1) LEU enrichment dla commercial reactors, (2) HALEU dla nowej generacji SMR (X-energy Xe-100, Kairos KP-FHR, TerraPower Natrium, Oklo Aurora) z pricing premium $35-50k/kg, (3) Tech Solutions (DOE contracts). HALEU TAM rośnie z ~$0.5B (2026) → $3.5B (2035 US only) → $5-7B globalnie. Pebble-bed reactors (X-energy, Kairos) = continuous reload = recurring revenue model jak SaaS — każdy Xe-100 deployment = ~$50M/rok przez 60 lat. Space optionality: NASA Fission Surface Power Phase 2 awards 2026-2027 + DRACO/NTP HALEU premium pricing 3-5x commercial. General Matter to jedyny poważny konkurent, ale 4-5 lat za Centrusem w execution.",
+    "thesis_breaker": "General Matter ogłasza komercyjną HALEU production przed 2028 z >40% allocation od DOE | LEU traci NRC license lub kluczowy DOE contract | Trump admin pivot ku alternative supplier z redukcją Centrus allocation >40% | Major nuclear accident globally → policy reversal anti-nuclear",
+    "buffett_moat": "WIDE. (1) Jedyna operacyjna NRC-licensed HALEU plant w USA — 5+ letni regulatory moat dla competitors. (2) DOE relationship 70 lat + sole-source contracts. (3) Capital moat — Piketon expansion $1.87B cash on hand, GM musi dopiero zebrać porównywalny kapitał. (4) Execution moat — already producing, GM jeszcze w design phase. Management: Daniel Poneman (former Deputy Secretary of Energy) = ideal regulatory navigator.",
     "risks": [
-      "Konkurencja General Matter (Thiel, Founders Fund) zjada market share — wpływ -30% FV",
-      "Government policy / DOE shutdown ryzyko — wpływ -15% FV",
-      "Uranium feedstock cost squeeze po Russia ban — wpływ -10% FV"
+      "General Matter ramp faster than expected — Series B/IPO 2026-2027 może dać im $1B+ capital i Centrus traci share z 30% do 20% = -25% FV",
+      "Capital intensity Piketon expansion — może wymagać dilutive raise jeśli DOE contract opóźniony = -15% FV",
+      "Reactor deployment delays — jeśli X-energy/Kairos/TerraPower ślizgają się 2030→2032, HALEU demand ramp opóźniony = -20% FV w short term"
     ],
-    "priority_action": "Starter 15-20 szt przy $207, dokup 15-20 szt przy pullbacku do $180-185"
+    "priority_action": "BUY transza #1 teraz 40% target position (16 szt @ $192 dla balanced wariantu). Dry powder na transza #2 @ $165-175 (40%) i #3 @ $130-150 (20%). NIE all-in single-shot."
   },
   "CCJ": {
     "events": [
@@ -622,5 +634,31 @@
       "Kazatomprom dumping - 40% globalnej produkcji może flood market (-20% FV)"
     ],
     "priority_action": "Watch — BUY zone $70-90, no-buy &gt;$110. Czekaj na uranium cycle pullback lub korektę kursu."
+  },
+  "OKLO": {
+    "events": [
+      {
+        "date": "2026-05-14",
+        "event": "Dodano OKLO do watchlisty po deep-dive 14 maja 2026. Cena $72 post-earnings dip (-5.8%). FV base $110, prob-weighted $134, bull $220. Pipeline 14 GW (Meta 1.2GW, Equinix 500MW, F-35, NVIDIA partnership). Pierwsza criticality 4 lipca 2026 (Groves), commercial 2028 (INL Aurora). Utility-like recurring revenue model z 20-letnimi PPA = lepszy biznes niż reactor selling.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      }
+    ],
+    "recommendation": "BUY",
+    "last_updated": "2026-05-14",
+    "name": "Oklo Inc.",
+    "fair_value": 134,
+    "fair_value_currency": "USD",
+    "entry_point": 75,
+    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) — utility-like recurring revenue model 20+ lat PPA, +86% upside prob-weighted.",
+    "thesis_full": "Oklo to nie reactor builder, lecz build-own-operate nuclear utility. Aurora powerhouse (15-75MW sodium fast reactor, HALEU fuel) ma 20-letni reload cycle = capacity factor >95%, LCOE $40-60/MWh (vs $65-90 dla NuScale LWR). Każdy reactor generuje ~$33M annual revenue przez 20 lat PPA ($660M lifetime). Pipeline 14 GW (~280 units) = $9.2B annual run-rate przy pełnym deployment 2030+. Trzy strumienie revenue: (1) Aurora PPAs z hyperscalers, (2) Atomic Alchemy medical isotopes (first revenue 2026), (3) Tennessee fuel recycling facility $1.68B. Pierwsza criticality Groves Isotope Test Reactor 4 lipca 2026, INL Aurora commercial operations 2028. NVIDIA Genesis Mission partnership + Meta Pike County 1.2GW + F-35 Eielson AFB = execution validation.",
+    "thesis_breaker": "INL first criticality slips >2029 (12+ miesięcy delay) | Meta cancels Pike County deal | NRC license application denied/delayed >2 lat | Forced capital raise z dilution >25% w jednym roku",
+    "buffett_moat": "Narrow → Wide w trakcie budowy. Pierwszy operacyjny commercial SMR będzie miał 5-letni NRC regulatory moat + execution moat. Vertically integrated model (reactor + fuel recycling + isotopes) buduje compound moat. Sam Altman backing + Jacob DeWitte (MIT PhD nuclear) = high-quality management. Risk: pre-revenue, dilution-heavy, execution-dependent.",
+    "risks": [
+      "Execution timeline slippage — nuclear builds notorycznie ślizgają się 2-3 lata, slip >2029 = -50% FV",
+      "Capital intensity — $25B capex required dla 280 units pipeline, multiple dilutive raises (10-20%/rok do 2030) = -25% FV cumulative",
+      "HALEU supply bottleneck — jeśli LEU/General Matter nie wyprodukują HALEU na czas, Oklo nie ma paliwa = -20% FV"
+    ],
+    "priority_action": "BUY starter 20 szt @ $72 (50% target position). Dokupić 12-16 szt przy pullback do $55-60. Rezerwa 8 szt na mega-dip <$50."
   }
 }
