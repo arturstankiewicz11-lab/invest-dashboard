@@ -72,12 +72,12 @@
   },
   "ETL.PA": {
     "name": "Eutelsat",
-    "recommendation": "SELL",
-    "fair_value": 1.8,
+    "recommendation": "BUY",
+    "fair_value": 8.0,
     "fair_value_currency": "EUR",
-    "entry_point": null,
+    "entry_point": 3.5,
     "upside_pct": -35,
-    "thesis_short": "Teza złamana. 630 satelitów vs Starlink 10 000+. Avg analyst PT poniżej ceny.",
+    "thesis_short": "EU sovereignty LEO play — IRIS² €10.6B + 340 nowych satelitów OneWeb. Peer-relative gap vs ASTS ($29B mcap) ekstremalny.",
     "thesis_full": "Eutelsat po fuzji z OneWeb miał być europejskim Starlinkiem. Nie jest. SpaceX ma 10 000+ satelitów vs 630 LEO Eutelsatu. Rekapitalizacja państwowa €1.5B = dilucja akcjonariuszy. Dług netto €1.3B mimo dofinansowania. Średni analyst target (€2.40) jest PONIŻEJ aktualnej ceny €2.79. Brak moat.",
     "thesis_breaker": "N/A — rekomendujemy sprzedaż.",
     "risks": [
@@ -87,10 +87,16 @@
       "Dalsze dilucje"
     ],
     "buffett_moat": "None",
-    "last_updated": "2026-05-11",
+    "last_updated": "2026-05-14",
     "next_earnings": null,
-    "priority_action": "PRIORYTET 1: Sprzedaj całość. Uwolniony kapitał → Rheinmetall.",
+    "priority_action": "Trzymaj pozycję, dokupuj do €3.50. Monitoruj IRIS² milestones i ewentualną emisję akcji.",
     "events": [
+      {
+        "date": "2026-05-14",
+        "event": "Re-ocena tezy z SELL na BUY. Kluczowe katalizatory: (1) IRIS² kontrakt €10.6B formalnie przyznany konsorcjum SpaceRISE, (2) zamówienie 340 nowych satelitów OneWeb gen2, (3) peer-relative gap vs ASTS @ $29B mcap absurdalny przy €1.2B przychodów Eutelsat. EU sovereignty premium niedoceniony. FV podniesiony z €1.8 do €8.0 (blended DCF + peer multiple).",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      },
       {
         "date": "2026-04-XX",
         "event": "Q1 2026: Revenue €592M (-2.4% reported). LEO revenues +60%. EBITDA margin 52.1% (spada).",
