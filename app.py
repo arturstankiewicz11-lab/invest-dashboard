@@ -256,9 +256,6 @@ button[data-baseweb="tab"][aria-selected="true"] {{
 .ti-hold {{ background: rgba(100,116,139,0.06); border: 1px solid rgba(100,116,139,0.15); color: #94a3b8; }}
 .ti-icon {{ font-size: 14px; margin-top: 1px; flex-shrink: 0; }}
 
-/* Disable smooth scroll globally — prevents "flying" on chat rerender */
-* {{ scroll-behavior: auto !important; }}
-
 /* Demo banner */
 .demo-banner {{
     background: rgba(0,217,163,0.06); border: 1px solid rgba(0,217,163,0.2);
