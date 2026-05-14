@@ -859,15 +859,15 @@ def page_overview(pos, demo):
         up_s    = f'<span class="{pclass(r["Upside"])}">{fmt_pct(r["Upside"])}</span>' if r["Upside"] is not None else '<span class="t-neu">—</span>'
         badge   = f'<span class="badge b-{rec}">{rec}</span>' if rec != "—" else "—"
         entry_s = f'<span style="color:#10b981;font-weight:600">{r["Entry"]:.2f}</span> <span class="t-ccy">{r["FV_ccy"]}</span>' if r["Entry"] else '<span class="t-neu">—</span>'
-        tb      = str(r["Thesis_breaker"])
+        tb      = str(r["Thesis_breaker"]).replace('"', '&quot;').replace('<', '&lt;')
         if rec == "SELL":
             exit_s = '<span style="color:#ef4444;font-weight:600;font-size:12px">Sprzedaj teraz</span>'
         elif r["FV"]:
-            short_tb = (tb[:38] + "…") if len(tb) > 38 else tb
-            exit_s = f'<span class="t-fv" title="{tb}">{r["FV"]:.0f} {r["FV_ccy"]}</span><br><span style="font-size:10px;color:#475569" title="{tb}">{short_tb}</span>'
-        elif tb:
-            short_tb = (tb[:38] + "…") if len(tb) > 38 else tb
-            exit_s = f'<span style="font-size:11px;color:#475569" title="{tb}">{short_tb}</span>'
+            short_tb = (tb[:40] + "…") if len(tb) > 40 else tb
+            exit_s = f'<span style="color:#f59e0b;font-weight:600">{r["FV"]:.0f} {r["FV_ccy"]}</span><br><span style="font-size:10px;color:#64748b">{short_tb}</span>'
+        elif tb and tb != "None":
+            short_tb = (tb[:40] + "…") if len(tb) > 40 else tb
+            exit_s = f'<span style="font-size:11px;color:#64748b">{short_tb}</span>'
         else:
             exit_s = '<span class="t-neu">—</span>'
 
@@ -952,6 +952,35 @@ def page_detail(ticker, pos, prices):
             <div class="dcard-label">Punkt wejścia</div>
             <div class="dcard-value" style="font-size:20px">{ep_txt}</div>
             <div class="dcard-sub neu">Margin of safety 20–30%</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ── Entry / Exit bar — always visible
+    tb = rec.get("thesis_breaker", "")
+    if recommendation == "SELL":
+        entry_html = '<span style="color:#ef4444;font-size:15px;font-weight:700">Sprzedaj — nie dokupuj</span>'
+        exit_html  = '<span style="color:#ef4444;font-size:15px;font-weight:700">Wyjdź z pozycji natychmiast</span>'
+    else:
+        ep_color   = "#10b981" if ep and price and price <= ep * 1.05 else "#f59e0b"
+        entry_html = f'<span style="color:{ep_color};font-size:16px;font-weight:700">{ep_txt}</span><span style="color:#475569;font-size:12px;margin-left:8px">rekomendowany entry z 20–30% MoS</span>' if ep else '<span style="color:#475569">Brak konkretnego entry — obserwuj</span>'
+        if fv:
+            exit_html = f'<span style="color:#f59e0b;font-size:16px;font-weight:700">{fv:.0f} {fv_c}</span><span style="color:#475569;font-size:12px;margin-left:8px">realizuj zysk przy Fair Value</span>'
+        else:
+            exit_html = '<span style="color:#475569;font-size:13px">Brak ceny docelowej — patrz thesis breaker poniżej</span>'
+
+    tb_html = f'<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(239,68,68,0.15);font-size:13px;color:#fca5a5"><span style="color:#ef4444;font-weight:600;margin-right:8px">⛔ Thesis Breaker:</span>{tb}</div>' if tb else ""
+
+    st.markdown(f"""
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+        <div style="background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.15);border-radius:14px;padding:16px 20px">
+            <div style="font-size:10px;font-weight:600;color:#10b981;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">🟢 Kiedy wchodzić</div>
+            {entry_html}
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:14px;padding:16px 20px">
+            <div style="font-size:10px;font-weight:600;color:#ef4444;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">🔴 Kiedy wychodzić</div>
+            {exit_html}
+            {tb_html}
         </div>
     </div>
     """, unsafe_allow_html=True)
