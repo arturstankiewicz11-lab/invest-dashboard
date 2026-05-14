@@ -412,6 +412,21 @@ def load_recs() -> dict:
     except Exception:
         return {}
 
+WATCHLIST_SECTORS = ["Space", "Defence", "AI", "Energy", "Quantum", "Robots", "Health"]
+SECTOR_EMOJI = {"Space": "🚀", "Defence": "🛡️", "AI": "🤖", "Energy": "⚡", "Quantum": "⚛️", "Robots": "🦾", "Health": "🏥"}
+GH_WATCHLIST_PATH = "data/watchlist.json"
+
+@st.cache_data(ttl=300)
+def load_watchlist() -> dict:
+    try:
+        with open("data/watchlist.json", encoding="utf-8") as f:
+            data = json.load(f)
+            for s in WATCHLIST_SECTORS:
+                data.setdefault(s, [])
+            return data
+    except Exception:
+        return {s: [] for s in WATCHLIST_SECTORS}
+
 @st.cache_data(ttl=300)
 def get_history(ticker: str, period: str) -> pd.DataFrame:
     try:
@@ -1122,7 +1137,7 @@ def save_chat_history(messages: list, token: str = None, gist_id: str = None, co
         pass
 
 # ─── PAGE: CHAT ───────────────────────────────────────────────────────────────
-def build_system_prompt(pos, recs, prices, fx):
+def build_system_prompt(pos, recs, prices, fx, watchlist=None):
     portfolio_lines = []
     for _, r in pos.iterrows():
         price = r["Cena"]
@@ -1140,8 +1155,17 @@ def build_system_prompt(pos, recs, prices, fx):
             f"- {t}: {rec.get('recommendation','?')} | FV {fv} {rec.get('fair_value_currency','')} | "
             f"upside {upside} | {rec.get('thesis_short','')}"
         )
+    watch_section = ""
+    if watchlist:
+        watch_lines = []
+        for sector, stocks in watchlist.items():
+            if stocks:
+                names = ", ".join(f"{s['ticker']} ({s.get('name','')})" for s in stocks)
+                watch_lines.append(f"  {sector}: {names}")
+        if watch_lines:
+            watch_section = "\nWATCHLISTA (obserwowane, nie w portfelu):\n" + "\n".join(watch_lines)
     return f"""Jesteś profesjonalnym doradcą inwestycyjnym. Analizujesz spółki moonshot (AI, Energy/fusion/SMR, Space).
-Masz dostęp do narzędzia web_search — używaj go zawsze gdy pytanie dotyczy aktualnych wydarzeń, newsów, wyników finansowych lub cen.
+Masz dostęp do narzędzi web_search, add_to_watchlist, remove_from_watchlist, update_recommendation.
 
 PROFIL INWESTORA:
 - Horyzont: 1–3 lata | Kapitał: 50k–250k PLN | Ryzyko: wysoka tolerancja, szuka 10–50x
@@ -1151,7 +1175,7 @@ AKTUALNY PORTFEL (live ceny z yfinance):
 {chr(10).join(portfolio_lines) if portfolio_lines else 'Brak danych'}
 
 REKOMENDACJE I FAIR VALUES:
-{chr(10).join(rec_lines)}
+{chr(10).join(rec_lines)}{watch_section}
 
 FX: USD/PLN {fx.get('USD',0):.3f} | EUR/PLN {fx.get('EUR',0):.3f} | HKD/PLN {fx.get('HKD',0):.3f}
 
@@ -1167,9 +1191,13 @@ ZASADY ODPOWIEDZI:
 - Odpowiadaj po polsku, w formacie markdown z nagłówkami
 - Dzisiejsza data: {datetime.now().strftime('%Y-%m-%d')}
 
+WATCHLISTA — zasady:
+- Dodaj spółkę: add_to_watchlist gdy użytkownik prosi "dodaj X do watchlisty" lub podobnie
+- Usuń spółkę: remove_from_watchlist gdy użytkownik prosi "usuń X z watchlisty"
+- Sektory: {', '.join(WATCHLIST_SECTORS)}
+
 AKTUALIZACJA REKOMENDACJI (update_recommendation):
 - Możesz aktualizować rekomendacje TYLKO gdy użytkownik WYRAŹNIE potwierdza zmianę
-- Przykłady potwierdzenia: "tak zmień", "ok zaktualizuj", "zgadzam się", "zrób to"
 - Przed użyciem narzędzia ZAWSZE podsumuj co zamierzasz zmienić i poczekaj na potwierdzenie
 - Po aktualizacji poinformuj użytkownika że dashboard odświeży się za ~1 minutę"""
 
@@ -1200,6 +1228,33 @@ UPDATE_REC_TOOL = {
             "event_text":      {"type": "string",  "description": "Opis powodu zmiany — pojawi się w timeline wydarzeń"}
         },
         "required": ["ticker", "recommendation", "event_text"]
+    }
+}
+
+ADD_WATCHLIST_TOOL = {
+    "name": "add_to_watchlist",
+    "description": "Dodaje spółkę do listy obserwowanych. Używaj gdy użytkownik prosi o dodanie do watchlisty.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "ticker":  {"type": "string", "description": "Ticker spółki np. RKLB, IONQ, PLTR"},
+            "name":    {"type": "string", "description": "Pełna nazwa spółki"},
+            "sector":  {"type": "string", "enum": ["Space", "Defence", "AI", "Energy", "Quantum", "Robots", "Health"]},
+            "note":    {"type": "string", "description": "Krótka notatka dlaczego obserwujemy (1-2 zdania)"}
+        },
+        "required": ["ticker", "name", "sector"]
+    }
+}
+
+REMOVE_WATCHLIST_TOOL = {
+    "name": "remove_from_watchlist",
+    "description": "Usuwa spółkę z listy obserwowanych.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "ticker": {"type": "string", "description": "Ticker spółki do usunięcia"}
+        },
+        "required": ["ticker"]
     }
 }
 
@@ -1250,6 +1305,65 @@ def do_update_recommendation(inputs: dict, gh_token: str) -> str:
         return f"✅ Rekomendacja **{ticker}** zaktualizowana na **{inputs['recommendation']}**. Dashboard odświeży się automatycznie za ~1 minutę."
     return f"Błąd zapisu do GitHub: {put.status_code} — {put.text[:300]}"
 
+def do_add_to_watchlist(inputs: dict, gh_token: str) -> str:
+    import requests as _req, base64 as _b64
+    api  = f"https://api.github.com/repos/{GH_REPO}/contents/{GH_WATCHLIST_PATH}"
+    hdrs = {"Authorization": f"Bearer {gh_token}", "Accept": "application/vnd.github+json"}
+    r = _req.get(api, headers=hdrs, timeout=10)
+    if r.status_code != 200:
+        return f"Błąd pobierania watchlisty z GitHub: {r.status_code}"
+    sha     = r.json()["sha"]
+    current = json.loads(_b64.b64decode(r.json()["content"]).decode())
+    ticker  = inputs["ticker"].strip().upper()
+    sector  = inputs["sector"]
+    if sector not in WATCHLIST_SECTORS:
+        return f"Nieznany sektor: {sector}. Dostępne: {', '.join(WATCHLIST_SECTORS)}"
+    for s in WATCHLIST_SECTORS:
+        for item in current.get(s, []):
+            if item.get("ticker", "").upper() == ticker:
+                return f"Ticker {ticker} już jest na watchliście (sektor: {s})"
+    current.setdefault(sector, []).append({
+        "ticker": ticker, "name": inputs.get("name", ticker),
+        "note": inputs.get("note", ""), "added": datetime.now().strftime("%Y-%m-%d")
+    })
+    new_content = _b64.b64encode(json.dumps(current, ensure_ascii=False, indent=2).encode()).decode()
+    put = _req.put(api, headers=hdrs, json={
+        "message": f"chore: add {ticker} to watchlist ({sector})",
+        "content": new_content, "sha": sha
+    }, timeout=10)
+    if put.status_code in (200, 201):
+        load_watchlist.clear()
+        return f"✅ **{ticker}** ({inputs.get('name', ticker)}) dodany do watchlisty, sektor: **{sector}**. Dashboard odświeży się za ~1 minutę."
+    return f"Błąd zapisu do GitHub: {put.status_code}"
+
+def do_remove_from_watchlist(inputs: dict, gh_token: str) -> str:
+    import requests as _req, base64 as _b64
+    api  = f"https://api.github.com/repos/{GH_REPO}/contents/{GH_WATCHLIST_PATH}"
+    hdrs = {"Authorization": f"Bearer {gh_token}", "Accept": "application/vnd.github+json"}
+    r = _req.get(api, headers=hdrs, timeout=10)
+    if r.status_code != 200:
+        return f"Błąd pobierania watchlisty: {r.status_code}"
+    sha     = r.json()["sha"]
+    current = json.loads(_b64.b64decode(r.json()["content"]).decode())
+    ticker  = inputs["ticker"].strip().upper()
+    removed = False
+    for s in WATCHLIST_SECTORS:
+        before = len(current.get(s, []))
+        current[s] = [i for i in current.get(s, []) if i.get("ticker", "").upper() != ticker]
+        if len(current[s]) < before:
+            removed = True
+    if not removed:
+        return f"Ticker {ticker} nie znaleziono na watchliście."
+    new_content = _b64.b64encode(json.dumps(current, ensure_ascii=False, indent=2).encode()).decode()
+    put = _req.put(api, headers=hdrs, json={
+        "message": f"chore: remove {ticker} from watchlist",
+        "content": new_content, "sha": sha
+    }, timeout=10)
+    if put.status_code in (200, 201):
+        load_watchlist.clear()
+        return f"✅ **{ticker}** usunięty z watchlisty."
+    return f"Błąd zapisu do GitHub: {put.status_code}"
+
 def do_search(query: str, tavily_key: str) -> str:
     try:
         from tavily import TavilyClient
@@ -1262,7 +1376,7 @@ def do_search(query: str, tavily_key: str) -> str:
     except Exception as e:
         return f"[Web search niedostępny: {e}] Odpowiadam na podstawie wiedzy."
 
-def render_chat(pos, recs, prices, fx, current_ticker=None):
+def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
     try:
         api_key = st.secrets["anthropic"]["api_key"]
     except Exception:
@@ -1321,13 +1435,14 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
                 try:
                     client   = anthropic.Anthropic(api_key=api_key)
                     extra = f"\nUżytkownik aktualnie przegląda: {current_ticker}" if current_ticker else ""
-                    system   = build_system_prompt(pos, recs, prices, fx) + extra
+                    system   = build_system_prompt(pos, recs, prices, fx, watchlist) + extra
                     all_msgs = st.session_state[sess_key]
                     ctx_msgs = all_msgs[-CHAT_CONTEXT_LIMIT:] if len(all_msgs) > CHAT_CONTEXT_LIMIT else all_msgs
                     messages = [{"role": m["role"], "content": m["content"]} for m in ctx_msgs]
 
                     tools = [SEARCH_TOOL]
-                    if gh_token: tools.append(UPDATE_REC_TOOL)
+                    if gh_token:
+                        tools += [UPDATE_REC_TOOL, ADD_WATCHLIST_TOOL, REMOVE_WATCHLIST_TOOL]
 
                     for _ in range(8):
                         placeholder.markdown("🔍 Analizuję...")
@@ -1353,6 +1468,15 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
                                     rec_u    = block.input.get("recommendation", "?")
                                     placeholder.markdown(f"💾 Aktualizuję rekomendację **{ticker_u}** → **{rec_u}**...")
                                     result = do_update_recommendation(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
+                                elif block.name == "add_to_watchlist":
+                                    t_w = block.input.get("ticker", "?")
+                                    s_w = block.input.get("sector", "?")
+                                    placeholder.markdown(f"👁️ Dodaję **{t_w}** do watchlisty ({s_w})...")
+                                    result = do_add_to_watchlist(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
+                                elif block.name == "remove_from_watchlist":
+                                    t_w = block.input.get("ticker", "?")
+                                    placeholder.markdown(f"🗑️ Usuwam **{t_w}** z watchlisty...")
+                                    result = do_remove_from_watchlist(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
                                 else:
                                     result = "Nieznane narzędzie."
                                 tool_results.append({
@@ -1372,14 +1496,118 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
                 except Exception as e:
                     placeholder.error(f"Błąd: {e}")
 
+# ─── PAGE: WATCHLISTA ────────────────────────────────────────────────────────
+def page_watchlist(watchlist, prices, recs, pos, labels, keys):
+    total = sum(len(v) for v in watchlist.values())
+    active_sectors = len([s for s in watchlist if watchlist[s]])
+
+    st.markdown(f"""
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06)">
+        <div>
+            <div style="font-size:28px;font-weight:800;color:#f8fafc;letter-spacing:-0.5px">👁️ Lista Obserwowanych</div>
+            <div style="font-size:13px;color:#475569;margin-top:3px">{total} spółek · {active_sectors} aktywnych sektorów</div>
+        </div>
+        <div style="margin-left:auto;font-size:12px;color:#334155;line-height:1.8">
+            Dodaj przez chat: <span style="color:#00d9a3">"Dodaj RKLB Rocket Lab do watchlisty, sektor Space"</span><br>
+            Usuń przez chat: <span style="color:#ef4444">"Usuń RKLB z watchlisty"</span>
+        </div>
+    </div>""", unsafe_allow_html=True)
+
+    # Sector overview chips
+    chips_html = '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px">'
+    for s in WATCHLIST_SECTORS:
+        count = len(watchlist.get(s, []))
+        alpha = "1" if count else "0.35"
+        chips_html += f'<div style="opacity:{alpha};background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#94a3b8">{SECTOR_EMOJI[s]} {s} <span style="color:#f8fafc;margin-left:4px">{count}</span></div>'
+    chips_html += '</div>'
+    st.markdown(chips_html, unsafe_allow_html=True)
+
+    for sector in WATCHLIST_SECTORS:
+        stocks = watchlist.get(sector, [])
+        st.markdown(f'<div class="sh">{SECTOR_EMOJI[sector]} {sector}</div>', unsafe_allow_html=True)
+
+        if not stocks:
+            st.markdown(f'<div style="color:#334155;font-size:13px;padding:10px 0 18px">Brak spółek. Dodaj przez chat np. "Dodaj IONQ do watchlisty, sektor {sector}"</div>', unsafe_allow_html=True)
+            continue
+
+        rows_html = ""
+        for stock in stocks:
+            t    = stock["ticker"]
+            name = stock.get("name", t)
+            note = stock.get("note", "")
+            added = stock.get("added", "")
+
+            pd_  = prices.get(t, {})
+            price = pd_.get("price")
+            chg   = pd_.get("change_pct")
+            rec_d = recs.get(t, {})
+            fv    = rec_d.get("fair_value")
+            fv_c  = rec_d.get("fair_value_currency", "")
+            ep    = rec_d.get("entry_point")
+            recommendation = rec_d.get("recommendation", "")
+            upside = (fv - price) / price * 100 if fv and price else rec_d.get("upside_pct")
+            in_port = not pos[pos["Ticker"] == t].empty
+
+            price_s = f'<span class="t-price">{price:.2f}</span> <span class="t-ccy">{fv_c}</span>' if price else '<span class="t-neu">—</span>'
+            chg_s   = f'<span class="{pclass(chg)}">{fmt_pct(chg)}</span>' if chg is not None else '<span class="t-neu">—</span>'
+            fv_s    = f'<span class="t-fv">{fv:.0f} <span class="t-ccy">{fv_c}</span></span>' if fv else '<span class="t-neu">—</span>'
+            ep_s    = f'<span style="color:#10b981;font-weight:600">{ep:.0f}</span> <span class="t-ccy">{fv_c}</span>' if ep else '<span class="t-neu">—</span>'
+            up_s    = f'<span class="{pclass(upside)}">{fmt_pct(upside)}</span>' if upside is not None else '<span class="t-neu">—</span>'
+            badge   = f'<span class="badge b-{recommendation}">{recommendation}</span>' if recommendation else '<span style="color:#334155;font-size:11px">brak analizy</span>'
+            port_tag = ' <span style="font-size:9px;background:rgba(0,217,163,0.1);color:#00d9a3;border:1px solid rgba(0,217,163,0.2);border-radius:4px;padding:1px 5px">portfel</span>' if in_port else ""
+            rows_html += f"""<tr>
+                <td><span class="t-ticker">{_e(t)}</span>{port_tag}</td>
+                <td><span class="t-name" style="max-width:130px">{_e(name)}</span></td>
+                <td>{price_s}</td><td>{chg_s}</td><td>{fv_s}</td>
+                <td>{ep_s}</td><td>{up_s}</td><td>{badge}</td>
+                <td style="max-width:180px;white-space:normal;font-size:11px;color:#64748b">{_e(note)}</td>
+                <td style="color:#475569;font-size:10px">{_e(added)}</td>
+            </tr>"""
+
+        st.markdown(f"""
+        <div class="pos-table-wrap">
+        <table class="pos-table">
+            <thead><tr>
+                <th>Ticker</th><th>Nazwa</th><th>Cena</th><th>Dzień%</th>
+                <th>FV</th><th>Entry</th><th>Upside</th><th>Rec</th>
+                <th>Notatka</th><th>Dodano</th>
+            </tr></thead>
+            <tbody>{rows_html}</tbody>
+        </table>
+        </div>""", unsafe_allow_html=True)
+
+        # Navigation buttons to detail pages
+        n = len(stocks)
+        ncols = min(n, 5)
+        btn_cols = st.columns(ncols)
+        for i, stock in enumerate(stocks):
+            t = stock["ticker"]
+            rec_d = recs.get(t, {})
+            emoji_r = REC_EMOJI.get(rec_d.get("recommendation", ""), "⚪") if rec_d else "👁"
+            # Find the exact label used in selectbox
+            if t in keys:
+                target_label = labels[keys.index(t)]
+            else:
+                target_label = f"👁 {t}"
+            with btn_cols[i % ncols]:
+                if st.button(f"{emoji_r} {t} →", key=f"wl_goto_{t}", use_container_width=True):
+                    st.session_state["nav_sel"] = target_label
+                    st.rerun()
+
+        st.markdown("<div style='margin-bottom:8px'></div>", unsafe_allow_html=True)
+
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
     df, demo = load_portfolio()
-    fx       = get_fx()
-    recs     = load_recs()
-    all_tickers = list(set(df["Ticker"].tolist()) | set(recs.keys()))
-    prices   = get_live_prices(tuple(all_tickers))
-    pos      = build_positions(df, prices, fx, recs)
+    fx        = get_fx()
+    recs      = load_recs()
+    watchlist = load_watchlist()
+
+    # Collect all tickers: portfolio + recs + watchlist
+    wl_tickers = {s["ticker"] for stocks in watchlist.values() for s in stocks}
+    all_tickers = list(set(df["Ticker"].tolist()) | set(recs.keys()) | wl_tickers)
+    prices = get_live_prices(tuple(all_tickers))
+    pos    = build_positions(df, prices, fx, recs)
 
     # ── Top navigation bar
     nav_col, fx_col = st.columns([3, 1])
@@ -1390,14 +1618,19 @@ def main():
             <span style="font-size:20px;font-weight:800;color:#f1f5f9;letter-spacing:-0.3px">📈 Invest Dashboard</span>
         </div>""", unsafe_allow_html=True)
 
-        labels = ["📊 Overview"]
-        keys   = ["__overview__"]
+        labels = ["📊 Overview", "👁️ Watchlista"]
+        keys   = ["__overview__", "__watchlist__"]
         for t, r in recs.items():
             emoji = REC_EMOJI.get(r.get("recommendation"), "⚪")
             labels.append(f"{emoji} {t}")
             keys.append(t)
+        # Watchlist-only tickers (not in recs)
+        for t in sorted(wl_tickers):
+            if t not in keys:
+                labels.append(f"👁 {t}")
+                keys.append(t)
 
-        sel = st.selectbox("Wybierz widok", labels, label_visibility="collapsed")
+        sel = st.selectbox("Wybierz widok", labels, label_visibility="collapsed", key="nav_sel")
         page_key = keys[labels.index(sel)]
 
     with fx_col:
@@ -1417,10 +1650,13 @@ def main():
 
     if page_key == "__overview__":
         page_overview(pos, demo)
-        render_chat(pos, recs, prices, fx)
+        render_chat(pos, recs, prices, fx, watchlist=watchlist)
+    elif page_key == "__watchlist__":
+        page_watchlist(watchlist, prices, recs, pos, labels, keys)
+        render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=watchlist)
     else:
         page_detail(page_key, pos, prices)
-        render_chat(pos, recs, prices, fx, current_ticker=page_key)
+        render_chat(pos, recs, prices, fx, current_ticker=page_key, watchlist=watchlist)
 
 if __name__ == "__main__" or True:
     main()
