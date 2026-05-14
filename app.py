@@ -1593,7 +1593,7 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
                 target_label = f"👁 {t}"
             with btn_cols[i % ncols]:
                 if st.button(f"{emoji_r} {t} →", key=f"wl_goto_{t}", use_container_width=True):
-                    st.session_state["nav_sel"] = target_label
+                    st.session_state["_nav_goto"] = t
                     st.rerun()
 
         st.markdown("<div style='margin-bottom:8px'></div>", unsafe_allow_html=True)
@@ -1631,6 +1631,12 @@ def main():
             if t not in keys:
                 labels.append(f"👁 {t}")
                 keys.append(t)
+
+        # Apply programmatic navigation BEFORE rendering the selectbox
+        if "_nav_goto" in st.session_state:
+            goto = st.session_state.pop("_nav_goto")
+            if goto in keys:
+                st.session_state["nav_sel"] = labels[keys.index(goto)]
 
         sel = st.selectbox("Wybierz widok", labels, label_visibility="collapsed", key="nav_sel")
         page_key = keys[labels.index(sel)]
