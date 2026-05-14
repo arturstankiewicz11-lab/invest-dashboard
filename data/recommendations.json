@@ -451,13 +451,19 @@
     "buffett_moat": "None (za wczesna faza)",
     "last_updated": "2026-05-14",
     "next_earnings": null,
-    "priority_action": "Mała pozycja spekulacyjna. Nie dokupuj przed pierwszym kontraktem.",
+    "priority_action": "Pozycja zbudowana (400 szt., avg $6.74). Trzymaj. Kolejny zakup dopiero po ogłoszeniu pierwszego kontraktu z hyperscalerem.",
     "events": [
       {
         "date": "2026-05-14",
-        "event": "Fermi Inc. — IPO 2025. Buduje grid-independent AI power campuses w Teksasie. Brak przychodów, cap $4.5B.",
+        "event": "Dokupiono 200 szt. po $7.20 — pozycja powiększona do 400 szt. Avg cena zakupu: $6.74.",
         "impact": "neutral",
-        "fv_note": "Pre-revenue. Brak DCF. Wycena oparta na potencjale kontraktów z hyperscalerami."
+        "fv_note": "Pre-revenue. Pozycja spekulacyjna zbudowana. Czekaj na katalizator (kontrakt AI)."
+      },
+      {
+        "date": "2026-05-14",
+        "event": "Fermi Inc. — IPO 2025. Buduje grid-independent AI power campuses w Teksasie. Cap ~$4.5B, brak przychodów.",
+        "impact": "neutral",
+        "fv_note": "Wycena oparta wyłącznie na potencjale kontraktów z hyperscalerami. Wysokie ryzyko."
       }
     ]
   },
