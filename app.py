@@ -256,6 +256,9 @@ button[data-baseweb="tab"][aria-selected="true"] {{
 .ti-hold {{ background: rgba(100,116,139,0.06); border: 1px solid rgba(100,116,139,0.15); color: #94a3b8; }}
 .ti-icon {{ font-size: 14px; margin-top: 1px; flex-shrink: 0; }}
 
+/* Disable smooth scroll — prevents "flying" on chat rerender */
+html, [data-testid="stMainBlockContainer"] { scroll-behavior: auto !important; }
+
 /* Demo banner */
 .demo-banner {{
     background: rgba(0,217,163,0.06); border: 1px solid rgba(0,217,163,0.2);
@@ -1538,6 +1541,13 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                             placeholder.markdown(answer + usage_line, unsafe_allow_html=True)
                             st.session_state[sess_key].append({"role": "assistant", "content": answer})
                             save_chat_history(st.session_state[sess_key], gh_token, gh_gist, context)
+                            import streamlit.components.v1 as _stc
+                            _stc.html("""<script>
+                            setTimeout(function(){
+                                var el=window.parent.document.querySelector('[data-testid="stMainBlockContainer"]');
+                                if(el) el.scrollTop=el.scrollHeight;
+                            },150);
+                            </script>""", height=0)
                             break
 
                 except Exception as e:
