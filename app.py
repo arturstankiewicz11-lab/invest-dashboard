@@ -1463,6 +1463,10 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                         tools += [UPDATE_REC_TOOL, ADD_WATCHLIST_TOOL, REMOVE_WATCHLIST_TOOL]
 
                     import time as _time
+                    PRICE_IN  = 15.0 / 1_000_000   # $ per input token
+                    PRICE_OUT = 75.0 / 1_000_000   # $ per output token
+                    total_in = total_out = 0
+
                     for _ in range(8):
                         placeholder.markdown("🔍 Analizuję...")
                         response = None
@@ -1484,6 +1488,9 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                                     raise
                         if response is None:
                             break
+
+                        total_in  += getattr(response.usage, "input_tokens",  0)
+                        total_out += getattr(response.usage, "output_tokens", 0)
 
                         if response.stop_reason == "tool_use":
                             tool_results = []
@@ -1519,7 +1526,16 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                             messages.append({"role": "user", "content": tool_results})
                         else:
                             answer = next((b.text for b in response.content if hasattr(b, "text")), "")
-                            placeholder.markdown(answer)
+                            cost = total_in * PRICE_IN + total_out * PRICE_OUT
+                            usage_line = (
+                                f'\n\n<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);'
+                                f'font-size:10px;color:#334155;display:flex;gap:12px">'
+                                f'<span>⬆️ {total_in:,} in</span>'
+                                f'<span>⬇️ {total_out:,} out</span>'
+                                f'<span style="color:#475569">~${cost:.3f}</span>'
+                                f'</div>'
+                            )
+                            placeholder.markdown(answer + usage_line, unsafe_allow_html=True)
                             st.session_state[sess_key].append({"role": "assistant", "content": answer})
                             save_chat_history(st.session_state[sess_key], gh_token, gh_gist, context)
                             break
