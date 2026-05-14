@@ -1,5 +1,12 @@
 {
-  "Space": [],
+  "Space": [
+    {
+      "ticker": "RKLB",
+      "name": "Rocket Lab USA",
+      "note": "Drugi po SpaceX gracz w small-launch + rozwój rakiety Neutron (medium-lift). Pionowo zintegrowany space prime — launch + satellites + components. Moonshot na komercjalizację LEO.",
+      "added": "2026-05-14"
+    }
+  ],
   "Defence": [],
   "AI": [],
   "Energy": [],
