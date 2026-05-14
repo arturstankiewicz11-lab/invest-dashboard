@@ -135,21 +135,21 @@ button[data-baseweb="tab"][aria-selected="true"] {{
 
 /* ── POSITIONS TABLE ── */
 .pos-table-wrap {{ overflow-x: auto; border-radius: 16px; border: 1px solid {BORDER}; }}
-.pos-table {{ width: 100%; border-collapse: collapse; font-size: 13px; font-family: 'Inter', sans-serif; }}
+.pos-table {{ width: 100%; border-collapse: collapse; font-size: 11px; font-family: 'Inter', sans-serif; table-layout: fixed; }}
 .pos-table thead th {{
     background: rgba(255,255,255,0.02); color: #475569;
-    font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
-    padding: 14px 16px; text-align: left;
+    font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;
+    padding: 8px 8px; text-align: left;
     border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap;
 }}
 .pos-table tbody tr {{ border-bottom: 1px solid rgba(255,255,255,0.03); transition: background .15s; }}
 .pos-table tbody tr:last-child {{ border-bottom: none; }}
 .pos-table tbody tr:hover {{ background: rgba(255,255,255,0.025); }}
-.pos-table td {{ padding: 14px 16px; color: #cbd5e1; vertical-align: middle; white-space: nowrap; }}
-.t-ticker {{ font-weight: 700; font-size: 13px; color: #f1f5f9; letter-spacing: 0.3px; }}
-.t-name   {{ color: #94a3b8; font-size: 12px; max-width: 140px; overflow: hidden; text-overflow: ellipsis; }}
-.t-price  {{ font-weight: 600; color: #f1f5f9; font-size: 13px; }}
-.t-ccy    {{ color: #475569; font-size: 11px; }}
+.pos-table td {{ padding: 7px 8px; color: #cbd5e1; vertical-align: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
+.t-ticker {{ font-weight: 700; font-size: 12px; color: #f1f5f9; letter-spacing: 0.3px; }}
+.t-name   {{ color: #94a3b8; font-size: 11px; max-width: 100px; overflow: hidden; text-overflow: ellipsis; display: block; }}
+.t-price  {{ font-weight: 600; color: #f1f5f9; font-size: 11px; }}
+.t-ccy    {{ color: #475569; font-size: 10px; }}
 .t-pos    {{ color: #10b981; font-weight: 600; }} .t-neg {{ color: #ef4444; font-weight: 600; }}
 .t-neu    {{ color: #64748b; }} .t-fv {{ color: #94a3b8; }}
 .row-buy    td:first-child {{ border-left: 3px solid #10b981; }}
@@ -855,20 +855,22 @@ def page_overview(pos, demo):
         chg_s   = f'<span class="{pclass(r["Dzień%"])}">{fmt_pct(r["Dzień%"])}</span>' if r["Dzień%"] is not None else '<span class="t-neu">—</span>'
         val_s   = f'<span class="{pclass(r["Val_PLN"])}">{fmt_pln(r["Val_PLN"])}</span>' if r["Val_PLN"] else '<span class="t-neu">—</span>'
         pnl_s   = f'<span class="{pclass(r["PnL_PLN"])}">{fmt_pln(r["PnL_PLN"])}</span>' if r["PnL_PLN"] is not None else '<span class="t-neu">—</span>'
-        pnlp_s  = f'<span class="{pclass(r["PnL%"])}">{fmt_pct(r["PnL%"])}</span>' if r["PnL%"] is not None else '<span class="t-neu">—</span>'
+        # P&L combined
+        if r["PnL_PLN"] is not None and r["PnL%"] is not None:
+            pnl_combined = f'<span class="{pclass(r["PnL_PLN"])}">{fmt_pln(r["PnL_PLN"])}</span><br><span class="{pclass(r["PnL%"])}" style="font-size:10px">{fmt_pct(r["PnL%"])}</span>'
+        else:
+            pnl_combined = '<span class="t-neu">—</span>'
+
         fv_s    = f'<span class="t-fv">{r["FV"]:.0f} <span class="t-ccy">{r["FV_ccy"]}</span></span>' if r["FV"] else '<span class="t-neu">—</span>'
         up_s    = f'<span class="{pclass(r["Upside"])}">{fmt_pct(r["Upside"])}</span>' if r["Upside"] is not None else '<span class="t-neu">—</span>'
         badge   = f'<span class="badge b-{rec}">{rec}</span>' if rec != "—" else "—"
-        entry_s = f'<span style="color:#10b981;font-weight:600">{r["Entry"]:.2f}</span> <span class="t-ccy">{r["FV_ccy"]}</span>' if r["Entry"] else '<span class="t-neu">—</span>'
-        tb      = str(r["Thesis_breaker"]).replace('"', '&quot;').replace('<', '&lt;')
+        entry_s = f'<span style="color:#10b981;font-weight:600;font-size:11px">{r["Entry"]:.0f}</span> <span class="t-ccy">{r["FV_ccy"]}</span>' if r["Entry"] else '<span class="t-neu">—</span>'
+        tb      = str(r["Thesis_breaker"]).replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
         if rec == "SELL":
-            exit_s = '<span style="color:#ef4444;font-weight:600;font-size:12px">Sprzedaj teraz</span>'
-        elif r["FV"]:
-            short_tb = (tb[:40] + "…") if len(tb) > 40 else tb
-            exit_s = f'<span style="color:#f59e0b;font-weight:600">{r["FV"]:.0f} {r["FV_ccy"]}</span><br><span style="font-size:10px;color:#64748b">{short_tb}</span>'
+            exit_s = '<span style="color:#ef4444;font-weight:600">Sprzedaj</span>'
         elif tb and tb != "None":
-            short_tb = (tb[:40] + "…") if len(tb) > 40 else tb
-            exit_s = f'<span style="font-size:11px;color:#64748b">{short_tb}</span>'
+            short_tb = (tb[:32] + "…") if len(tb) > 32 else tb
+            exit_s = f'<span style="font-size:10px;color:#64748b">{short_tb}</span>'
         else:
             exit_s = '<span class="t-neu">—</span>'
 
@@ -877,9 +879,9 @@ def page_overview(pos, demo):
             <td><span class="t-name">{r['Nazwa']}</span></td>
             <td>{qty_s}</td><td>{avg_s}</td>
             <td>{price_s}</td><td>{chg_s}</td>
-            <td>{val_s}</td><td>{pnl_s}</td><td>{pnlp_s}</td>
+            <td>{val_s}</td><td style="white-space:normal;line-height:1.4">{pnl_combined}</td>
             <td>{entry_s}</td><td>{fv_s}</td><td>{up_s}</td>
-            <td style="max-width:180px;white-space:normal;line-height:1.4">{exit_s}</td>
+            <td style="max-width:140px;white-space:normal;line-height:1.4">{exit_s}</td>
             <td>{badge}</td>
         </tr>"""
 
@@ -887,11 +889,11 @@ def page_overview(pos, demo):
     <div class="pos-table-wrap">
     <table class="pos-table">
         <thead><tr>
-            <th>Ticker</th><th>Nazwa</th><th>Ilość</th><th>Śr. cena</th>
-            <th>Cena</th><th>Dzień</th>
-            <th>Wartość PLN</th><th>P&L</th><th>P&L%</th>
-            <th>Entry rec.</th><th>Fair Value</th><th>Upside</th>
-            <th>Kiedy wychodzić</th><th>Rec</th>
+            <th>Ticker</th><th>Nazwa</th><th>Szt.</th><th>Śr. cena</th>
+            <th>Cena</th><th>Dzień%</th>
+            <th>Wartość</th><th>P&amp;L</th>
+            <th>Entry</th><th>FV</th><th>Upside</th>
+            <th>Wyjście</th><th>Rec</th>
         </tr></thead>
         <tbody>{rows_html}</tbody>
     </table>
