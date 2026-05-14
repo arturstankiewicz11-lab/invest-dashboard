@@ -628,5 +628,31 @@
       "Kazatomprom dumping - 40% globalnej produkcji może flood market (-20% FV)"
     ],
     "priority_action": "Watch — BUY zone $70-90, no-buy &gt;$110. Czekaj na uranium cycle pullback lub korektę kursu."
+  },
+  "OKLO": {
+    "events": [
+      {
+        "date": "2026-05-14",
+        "event": "Dodano OKLO do watchlisty po deep-dive 14 maja 2026. Cena $72 post-earnings dip (-5.8%). FV base $110, prob-weighted $134, bull $220. Pipeline 14 GW (Meta 1.2GW, Equinix 500MW, F-35, NVIDIA partnership). Pierwsza criticality 4 lipca 2026 (Groves), commercial 2028 (INL Aurora). Utility-like recurring revenue model z 20-letnimi PPA = lepszy biznes niż reactor selling.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      }
+    ],
+    "recommendation": "BUY",
+    "last_updated": "2026-05-14",
+    "name": "Oklo Inc.",
+    "fair_value": 134,
+    "fair_value_currency": "USD",
+    "entry_point": 75,
+    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) — utility-like recurring revenue model 20+ lat PPA, +86% upside prob-weighted.",
+    "thesis_full": "Oklo to nie reactor builder, lecz build-own-operate nuclear utility. Aurora powerhouse (15-75MW sodium fast reactor, HALEU fuel) ma 20-letni reload cycle = capacity factor >95%, LCOE $40-60/MWh (vs $65-90 dla NuScale LWR). Każdy reactor generuje ~$33M annual revenue przez 20 lat PPA ($660M lifetime). Pipeline 14 GW (~280 units) = $9.2B annual run-rate przy pełnym deployment 2030+. Trzy strumienie revenue: (1) Aurora PPAs z hyperscalers, (2) Atomic Alchemy medical isotopes (first revenue 2026), (3) Tennessee fuel recycling facility $1.68B. Pierwsza criticality Groves Isotope Test Reactor 4 lipca 2026, INL Aurora commercial operations 2028. NVIDIA Genesis Mission partnership + Meta Pike County 1.2GW + F-35 Eielson AFB = execution validation.",
+    "thesis_breaker": "INL first criticality slips >2029 (12+ miesięcy delay) | Meta cancels Pike County deal | NRC license application denied/delayed >2 lat | Forced capital raise z dilution >25% w jednym roku",
+    "buffett_moat": "Narrow → Wide w trakcie budowy. Pierwszy operacyjny commercial SMR będzie miał 5-letni NRC regulatory moat + execution moat. Vertically integrated model (reactor + fuel recycling + isotopes) buduje compound moat. Sam Altman backing + Jacob DeWitte (MIT PhD nuclear) = high-quality management. Risk: pre-revenue, dilution-heavy, execution-dependent.",
+    "risks": [
+      "Execution timeline slippage — nuclear builds notorycznie ślizgają się 2-3 lata, slip >2029 = -50% FV",
+      "Capital intensity — $25B capex required dla 280 units pipeline, multiple dilutive raises (10-20%/rok do 2030) = -25% FV cumulative",
+      "HALEU supply bottleneck — jeśli LEU/General Matter nie wyprodukują HALEU na czas, Oklo nie ma paliwa = -20% FV"
+    ],
+    "priority_action": "BUY starter 20 szt @ $72 (50% target position). Dokupić 12-16 szt przy pullback do $55-60. Rezerwa 8 szt na mega-dip <$50."
   }
 }
