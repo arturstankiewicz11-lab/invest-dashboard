@@ -290,12 +290,15 @@ NAME_TO_TICKER = {
 ETF_MAP = {
     "SXRV": "SXRV.DE", "SECO": "SEMI.L", "2B76": "2B76.DE",
     "2B78": "2B78.DE", "SXR8": "SXR8.DE", "IS3N": "IS3N.DE", "EUNA": "EUNA.DE",
+    "ETL": "ETL.PA", "RHM": "RHM.DE", "PZU": "PZU.WA",
+    "BTC": "BTC-USD", "ETH": "ETH-USD", "700": "0700.HK",
 }
 CCY_MAP = {
     "dolar": "USD", "dollar": "USD", "usd": "USD",
     "euro": "EUR", "eur": "EUR",
     "pln": "PLN", "zł": "PLN", "hkd": "HKD",
     "gbp": "GBP", "funt": "GBP", "pound": "GBP",
+    "dolar hk": "HKD", "hk": "HKD",
 }
 
 def to_float(v):
@@ -1005,6 +1008,55 @@ def page_detail(ticker, pos, prices):
                 {ne_html}
             </div>""", unsafe_allow_html=True)
 
+# ─── CHAT HISTORY PERSISTENCE ────────────────────────────────────────────────
+CHAT_HISTORY_FILE = "data/chat_history.json"
+CHAT_CONTEXT_LIMIT = 20  # max messages sent to API (saves tokens)
+
+def _gist_headers(token: str) -> dict:
+    return {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+
+def load_chat_history(token: str = None, gist_id: str = None) -> list:
+    import requests as _req
+    if token and gist_id:
+        try:
+            r = _req.get(
+                f"https://api.github.com/gists/{gist_id}",
+                headers=_gist_headers(token), timeout=6
+            )
+            if r.status_code == 200:
+                content = r.json().get("files", {}).get("chat_history.json", {}).get("content", "[]")
+                data = json.loads(content)
+                return data if isinstance(data, list) else []
+        except Exception:
+            pass
+    # local fallback
+    try:
+        with open(CHAT_HISTORY_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+            return data if isinstance(data, list) else []
+    except Exception:
+        return []
+
+def save_chat_history(messages: list, token: str = None, gist_id: str = None):
+    import requests as _req
+    payload = json.dumps(messages, ensure_ascii=False, indent=2)
+    if token and gist_id:
+        try:
+            _req.patch(
+                f"https://api.github.com/gists/{gist_id}",
+                headers=_gist_headers(token),
+                json={"files": {"chat_history.json": {"content": payload}}},
+                timeout=6
+            )
+        except Exception:
+            pass
+    # always cache locally
+    try:
+        with open(CHAT_HISTORY_FILE, "w", encoding="utf-8") as f:
+            f.write(payload)
+    except Exception:
+        pass
+
 # ─── PAGE: CHAT ───────────────────────────────────────────────────────────────
 def build_system_prompt(pos, recs, prices, fx):
     portfolio_lines = []
@@ -1087,9 +1139,14 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
         tavily_key = st.secrets["tavily"]["api_key"]
     except Exception:
         tavily_key = None
+    try:
+        gh_token  = st.secrets["github"]["token"]
+        gh_gist   = st.secrets["github"]["gist_id"]
+    except Exception:
+        gh_token = gh_gist = None
 
     if "chat_messages" not in st.session_state:
-        st.session_state.chat_messages = []
+        st.session_state.chat_messages = load_chat_history(gh_token, gh_gist)
 
     # Show history in expander
     if st.session_state.chat_messages:
@@ -1098,9 +1155,15 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
             for msg in st.session_state.chat_messages:
                 with st.chat_message(msg["role"]):
                     st.markdown(msg["content"])
-            if st.button("🗑️ Wyczyść", type="secondary", key="clear_chat"):
-                st.session_state.chat_messages = []
-                st.rerun()
+            col_clear, col_info = st.columns([1, 3])
+            with col_clear:
+                if st.button("🗑️ Wyczyść historię", type="secondary", key="clear_chat"):
+                    st.session_state.chat_messages = []
+                    save_chat_history([], gh_token, gh_gist)
+                    st.rerun()
+            with col_info:
+                storage = "☁️ Gist" if gh_token else "💾 lokalnie"
+                st.markdown(f'<span style="font-size:11px;color:#475569">{storage} · {len(st.session_state.chat_messages)} wiadomości</span>', unsafe_allow_html=True)
 
     # Always-visible input at bottom
     ticker_hint = f"{current_ticker} — " if current_ticker else ""
@@ -1108,6 +1171,8 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
 
     if prompt:
         st.session_state.chat_messages.append({"role": "user", "content": prompt})
+        save_chat_history(st.session_state.chat_messages, gh_token, gh_gist)
+
         with st.expander("💬 Rozmowa", expanded=True):
             for msg in st.session_state.chat_messages:
                 with st.chat_message(msg["role"]):
@@ -1117,11 +1182,12 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
                 placeholder = st.empty()
                 try:
                     client   = anthropic.Anthropic(api_key=api_key)
-                    # Inject current ticker context
                     extra = f"\nUżytkownik aktualnie przegląda: {current_ticker}" if current_ticker else ""
                     system   = build_system_prompt(pos, recs, prices, fx) + extra
-                    messages = [{"role": m["role"], "content": m["content"]}
-                                for m in st.session_state.chat_messages]
+                    # Send only last CHAT_CONTEXT_LIMIT messages to API to limit token usage
+                    all_msgs = st.session_state.chat_messages
+                    context  = all_msgs[-CHAT_CONTEXT_LIMIT:] if len(all_msgs) > CHAT_CONTEXT_LIMIT else all_msgs
+                    messages = [{"role": m["role"], "content": m["content"]} for m in context]
 
                     for _ in range(5):
                         placeholder.markdown("🔍 Analizuję...")
@@ -1151,6 +1217,7 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
                             answer = next((b.text for b in response.content if hasattr(b, "text")), "")
                             placeholder.markdown(answer)
                             st.session_state.chat_messages.append({"role": "assistant", "content": answer})
+                            save_chat_history(st.session_state.chat_messages, gh_token, gh_gist)
                             break
 
                 except Exception as e:

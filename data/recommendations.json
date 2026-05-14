@@ -282,7 +282,7 @@
     "next_earnings": null,
     "priority_action": null
   },
-  "SECO.DE": {
+  "SEMI.L": {
     "name": "iShares MSCI Semiconductors",
     "recommendation": "HOLD",
     "fair_value": null,
@@ -430,6 +430,34 @@
         "event": "Pectra upgrade — poprawa UX portfeli i skalowalności. Kolejny krok po Merge.",
         "impact": "positive",
         "fv_note": "Technicznie wzmacnia propozycję wartości. Nie zmienia short-term ceny."
+      }
+    ]
+  },
+  "FRMI": {
+    "name": "Fermi Inc.",
+    "recommendation": "BUY",
+    "fair_value": null,
+    "fair_value_currency": "USD",
+    "entry_point": 6.0,
+    "upside_pct": null,
+    "thesis_short": "AI power campus REIT. Grid-independent HPC infrastructure. Brak przychodów — zakład na AI buildout.",
+    "thesis_full": "Fermi Inc. to spółka z 2025 roku budująca autonomiczne kampusy energetyczne dla AI. Model: kupuje ziemię, uzyskuje pozwolenia, buduje grid-independent power generation + HPC infrastructure, oddaje w długoterminowy leasing klientom AI. Cap ~$4.5B bez przychodów = wycena oparta wyłącznie na potencjale. Amarillo, Texas — strategiczna lokalizacja (tania energia, dostęp do OZE, przestrzeń). Teza: hyperscalerzy (Microsoft, Google, Meta) desperacko potrzebują mocy obliczeniowej poza kongestowanymi sieciami energetycznymi. Fermi dostarcza infrastrukturę pod klucz. Ryzyko: przedwczesna wycena, brak przychodów, ryzyko wykonawcze. Potencjał: jeden kontrakt z hyperscalerem może 3-5x wycenę.",
+    "thesis_breaker": "Brak kontraktów z klientami AI przez kolejne 12 miesięcy. Hyperscalerzy wybierają własną infrastrukturę zamiast leasingu.",
+    "risks": [
+      "Brak przychodów — pure pre-revenue bet",
+      "Ryzyko wykonawcze (budowa kampusów)",
+      "Konkurencja ze strony Digital Realty, Equinix, własnych kampusów hyperscalerów"
+    ],
+    "buffett_moat": "None (za wczesna faza)",
+    "last_updated": "2026-05-14",
+    "next_earnings": null,
+    "priority_action": "Mała pozycja spekulacyjna. Nie dokupuj przed pierwszym kontraktem.",
+    "events": [
+      {
+        "date": "2026-05-14",
+        "event": "Fermi Inc. — IPO 2025. Buduje grid-independent AI power campuses w Teksasie. Brak przychodów, cap $4.5B.",
+        "impact": "neutral",
+        "fv_note": "Pre-revenue. Brak DCF. Wycena oparta na potencjale kontraktów z hyperscalerami."
       }
     ]
   },
