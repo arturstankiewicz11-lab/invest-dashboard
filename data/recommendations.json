@@ -660,5 +660,60 @@
       "HALEU supply bottleneck — jeśli LEU/General Matter nie wyprodukują HALEU na czas, Oklo nie ma paliwa = -20% FV"
     ],
     "priority_action": "BUY starter 20 szt @ $72 (50% target position). Dokupić 12-16 szt przy pullback do $55-60. Rezerwa 8 szt na mega-dip <$50."
+  },
+  "IONQ": {
+    "name": "IonQ",
+    "recommendation": "HOLD",
+    "fair_value": 29.0,
+    "fair_value_currency": "USD",
+    "entry_point": 32.0,
+    "upside_pct": null,
+    "thesis_short": "Trapped-ion quantum leader. Q1 2026 +755% YoY, $265M FY guidance, $470M RPO. DCF FV $29 (bull) / $16 (base). Cena $55 = 67x revenue — overvalued. Czekaj na $30-35.",
+    "thesis_full": "IonQ to niekwestionowany lider trapped-ion quantum computing. Q1 2026: $64.7M revenue (+755% YoY), FY guidance podniesiony do $260-270M, RPO $470M (+554% YoY). Cash: $3.1B przy $30M długu = fort finansowy. Technologia trapped-ion oferuje najwyższe gate fidelities wśród wszystkich platform. Kluczowi klienci: DoD, NSA, US Airforce + komercja przez AWS/Azure/Google Cloud. Moat: patenty na trapped-ion, 6-letnia przewaga czasu na rynku nad INFQ. JEDNAK: przy cenie $55 spółka wyceniana jest na 67x 2026 revenue i $20.8B market cap — DCF FV base $16, bull $29. Rynek wycenia scenariusz ultra-bull ($3-4B revenue do 2030+). Nie kupuj teraz — obserwuj korektę do $30-35.",
+    "thesis_breaker": "Revenue growth spada poniżej 50% w 2027 LUB Google/IBM demonstruje quantum advantage na komercyjnych workloadach przed IonQ LUB top-3 klientów odpowiada za ponad 60% revenue (koncentracja).",
+    "buffett_moat": "Narrow",
+    "risks": [
+      "Wycena 67x revenue — każde rozczarowanie wyników może ciąć 30-50%",
+      "Technologiczna konkurencja: neutral-atom (INFQ/Quantinuum) i superconducting (Google Willow) skalują się szybciej qubits",
+      "Pre-profitability do ~2029 — EBITDA guidance 2026: -$320M (większa strata niż revenue)"
+    ],
+    "priority_action": "Obserwuj. Cena $55 = 67x 2026 revenue. Brak margin of safety. Otwórz pozycję przy korekcie do $30-35.",
+    "last_updated": "2026-05-15",
+    "dcf": {
+      "wacc_pct": 12.0,
+      "terminal_growth_pct": 4.0,
+      "shares_m": 373.27,
+      "net_cash_m": 3070,
+      "notes": "Base case (WACC 12%): FV $16. Bull case (WACC 10%, aggressive growth): FV $29. Cena $55 implikuje ultra-bull scenario z $3-4B revenue do 2030. Stages: 2026 $265M→2027 $530M→2028 $900M→2029 $1.3B→2030 $1.7B. FCF margin: -120%→-40%→-5%→+10%→+20% terminal 22%.",
+      "stages": [
+        {
+          "period": "2026-2028",
+          "rev_cagr_pct": 84,
+          "fcf_margin_pct": -55,
+          "note": "Scaling phase — heavy R&D + SG&A, FCF deeply negative"
+        },
+        {
+          "period": "2029-2030",
+          "rev_cagr_pct": 37,
+          "fcf_margin_pct": 15,
+          "note": "Path to profitability — fixed costs amortize over growing revenue base"
+        }
+      ],
+      "pv_fcf_m": 84,
+      "terminal_value_m": 4863,
+      "pv_terminal_m": 2760,
+      "enterprise_value_m": 2844,
+      "fair_value_base": 15.9,
+      "fair_value_bull": 29.0,
+      "fair_value": 29.0
+    },
+    "events": [
+      {
+        "date": "2026-05-06",
+        "event": "Q1 2026: $64.7M revenue (+755% YoY). FY guidance podniesiony do $260-270M. RPO $470M (+554%). Cash $3.1B. EBITDA loss guidance -$310 do -$330M.",
+        "impact": "positive",
+        "fv_note": "Potwierdzenie bull case — growth bez precedensu w quantum. FV bez zmian ($29 bull / $16 base)."
+      }
+    ]
   }
 }

@@ -29,7 +29,14 @@
       "added": "2026-05-14"
     }
   ],
-  "Quantum": [],
+  "Quantum": [
+    {
+      "ticker": "IONQ",
+      "name": "IonQ",
+      "note": "Trapped-ion #1. Q1 2026 +755% YoY, $265M FY guidance, $470M RPO. Cash $3.1B. DCF FV $29 (bull) / $16 (base). Cena $55 = 67x revenue — drogo. Entry $30-35.",
+      "added": "2026-05-15"
+    }
+  ],
   "Robots": [],
   "Health": []
 }
