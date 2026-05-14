@@ -377,12 +377,13 @@ def get_live_prices(tickers: tuple) -> dict:
     result = {}
     for ticker in tickers:
         try:
-            hist = yf.Ticker(ticker).history(period="5d")
-            if len(hist) >= 2:
-                prev, curr = float(hist["Close"].iloc[-2]), float(hist["Close"].iloc[-1])
+            hist = yf.Ticker(ticker).history(period="10d")
+            close = hist["Close"].dropna() if not hist.empty else pd.Series(dtype=float)
+            if len(close) >= 2:
+                prev, curr = float(close.iloc[-2]), float(close.iloc[-1])
                 result[ticker] = {"price": curr, "change_pct": (curr - prev) / prev * 100}
-            elif len(hist) == 1:
-                result[ticker] = {"price": float(hist["Close"].iloc[-1]), "change_pct": 0.0}
+            elif len(close) == 1:
+                result[ticker] = {"price": float(close.iloc[0]), "change_pct": 0.0}
             else:
                 result[ticker] = {"price": None, "change_pct": None}
         except Exception:
@@ -436,7 +437,7 @@ def get_history(ticker: str, period: str) -> pd.DataFrame:
 
 # ─── HELPERS ──────────────────────────────────────────────────────────────────
 def fmt_pln(v):
-    if v is None: return "—"
+    if v is None or (isinstance(v, float) and math.isnan(v)): return "—"
     s = "+" if v >= 0 else ""
     if abs(v) >= 1_000_000: return f"{s}{v/1_000_000:.2f}M PLN"
     if abs(v) >= 1_000:     return f"{s}{v/1_000:.1f}k PLN"
@@ -449,7 +450,7 @@ def fmt_m(v):
     return f"${v:.0f}M"
 
 def fmt_pct(v):
-    if v is None: return "—"
+    if v is None or (isinstance(v, float) and math.isnan(v)): return "—"
     return f"{'+'if v>=0 else ''}{v:.1f}%"
 
 def pclass(v):
@@ -465,6 +466,8 @@ def build_positions(df, prices, fx, recs):
     for _, r in df.iterrows():
         t   = r["Ticker"]; ccy = r["Waluta"]; qty = float(r["Ilosc"]); avg = float(r["Srednia_cena"])
         p   = prices.get(t, {}); price = p.get("price"); chg = p.get("change_pct")
+        if isinstance(price, float) and math.isnan(price): price = None
+        if isinstance(chg,   float) and math.isnan(chg):   chg   = None
         rate = fx.get(ccy, 1.0); rec = recs.get(t, {}); fv = rec.get("fair_value")
         cur_val = price * qty * rate if price and qty else None
         cost    = avg * qty * rate   if avg and qty else None
