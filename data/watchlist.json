@@ -9,7 +9,14 @@
   ],
   "Defence": [],
   "AI": [],
-  "Energy": [],
+  "Energy": [
+    {
+      "ticker": "LEU",
+      "name": "Centrus Energy",
+      "note": "Jedyny US enrichmer HALEU z aktywną NRC license. $1.87B cash, $3.8B backlog, $900M DOE contract. Wide moat — 4-5 lat przewagi nad General Matter. AI hyperscalers (Amazon/Google) = nowy popyt poza government.",
+      "added": "2026-05-14"
+    }
+  ],
   "Quantum": [],
   "Robots": [],
   "Health": []
