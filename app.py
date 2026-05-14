@@ -1462,15 +1462,28 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                     if gh_token:
                         tools += [UPDATE_REC_TOOL, ADD_WATCHLIST_TOOL, REMOVE_WATCHLIST_TOOL]
 
+                    import time as _time
                     for _ in range(8):
                         placeholder.markdown("🔍 Analizuję...")
-                        response = client.messages.create(
-                            model="claude-opus-4-7",
-                            max_tokens=4096,
-                            system=system,
-                            tools=tools,
-                            messages=messages,
-                        )
+                        response = None
+                        for attempt in range(3):
+                            try:
+                                response = client.messages.create(
+                                    model="claude-opus-4-7",
+                                    max_tokens=4096,
+                                    system=system,
+                                    tools=tools,
+                                    messages=messages,
+                                )
+                                break
+                            except Exception as api_err:
+                                if attempt < 2 and "overloaded" in str(api_err).lower():
+                                    placeholder.markdown(f"⏳ Serwer przeciążony, ponawianie za {5*(attempt+1)}s...")
+                                    _time.sleep(5 * (attempt + 1))
+                                else:
+                                    raise
+                        if response is None:
+                            break
 
                         if response.stop_reason == "tool_use":
                             tool_results = []
