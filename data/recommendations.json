@@ -570,5 +570,31 @@
       "SpaceX Starship economics zalewa medium-lift, presja na marże Neutrona (-15% na FV)"
     ],
     "priority_action": "Czekaj na pullback do $80-85 lub Neutron static fire success"
+  },
+  "LEU": {
+    "events": [
+      {
+        "date": "2026-05-14",
+        "event": "Pełna analiza DCF: FV $245 (WACC 9.5%, terminal 3%). Q1 2026: revenue $76.7M (+5% YoY), cash $1.87B po January capital raise, FY guidance podniesiony do $450-500M. Mega-katalizatory: $2.7B federalny program (split z General Matter + Orano), $900M DOE HALEU contract, Russia ban od 2028 = LEU monopol. AI hyperscalers (Amazon/X-energy, Google/Kairos) zmieniają HALEU z government niche w Big Tech infrastructure play. Cross-sell z FRMI w portfelu — ten sam łańcuch wartości.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      }
+    ],
+    "recommendation": "BUY",
+    "last_updated": "2026-05-14",
+    "name": "Centrus Energy",
+    "fair_value": 245,
+    "fair_value_currency": "USD",
+    "entry_point": 185,
+    "thesis_short": "Jedyny US enrichmer HALEU z licencją NRC i operacyjną produkcją — pickaxe play na nuclear renaissance i AI power demand.",
+    "thesis_full": "Centrus to \"incumbent z fosą\" w HALEU — jedyna firma w USA z aktywną NRC license i operacyjną produkcją (900 kg w 2024-25). $1.87B cash + $3.8B backlog + $900M DOE contract daje 4-5 lat przewagi nad General Matter (private, Thiel-backed, produkcja dopiero 2028-2030). HALEU TAM rośnie z $0.5B (2026) do $3.5B (2035, US only), napędzany przez Gen IV SMR-y (X-energy, TerraPower, Oklo, Kairos) deployowane dla hyperscalerów (Amazon, Google, Meta) jako AI power infrastructure. Marża HALEU 60%+ vs 30% legacy SWU = mix shift napędza margin expansion. Russia ban od 2028 = wymuszony reshoring uranu = Centrus beneficjent #1. DCF base case FV $245 (WACC 9.5%, terminal 3%), prob-weighted FV $258.",
+    "thesis_breaker": "General Matter osiąga komercyjną produkcję HALEU przed 2028 | DOE redukuje nuclear funding o >30% | Centrus traci NRC license lub poważny incident w Piketon | X-energy/TerraPower wybiera General Matter jako primary supplier",
+    "buffett_moat": "WIDE — jedyny licencjonowany US enrichmer HALEU. NRC license + DOE relationship (Daniel Poneman ex-DOE) + operacyjna produkcja = nieduplikowalne w <5 lat. Management quality: Poneman = perfekcyjny rolodex w nuclear policy.",
+    "risks": [
+      "Konkurencja General Matter (Thiel, Founders Fund) zjada market share — wpływ -30% FV",
+      "Government policy / DOE shutdown ryzyko — wpływ -15% FV",
+      "Uranium feedstock cost squeeze po Russia ban — wpływ -10% FV"
+    ],
+    "priority_action": "Starter 15-20 szt przy $207, dokup 15-20 szt przy pullbacku do $180-185"
   }
 }
