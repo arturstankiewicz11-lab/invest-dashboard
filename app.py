@@ -1680,6 +1680,12 @@ def main():
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
 
+    # Scroll to top on page change
+    if st.session_state.get("_last_page") != page_key:
+        st.session_state["_last_page"] = page_key
+        import streamlit.components.v1 as _stc
+        _stc.html("<script>window.parent.scrollTo({top:0,behavior:'instant'});</script>", height=0)
+
     if page_key == "__overview__":
         page_overview(pos, demo)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
