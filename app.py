@@ -301,6 +301,10 @@ CCY_MAP = {
     "dolar hk": "HKD", "hk": "HKD",
 }
 
+def _e(s):
+    """Escape HTML special characters in text content."""
+    return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
 def to_float(v):
     s = str(v).strip().replace("\xa0", "").replace(" ", "")
     if "," in s and "." in s:
@@ -689,7 +693,7 @@ def tab_actions(rec: dict, row, prices: dict):
     c, bg, bd = colors.get(recommendation, colors["HOLD"])
 
     prio = rec.get("priority_action", "")
-    prio_html = f'<div style="margin-top:10px;font-size:14px;color:{c};line-height:1.6">{prio}</div>' if prio else ""
+    prio_html = f'<div style="margin-top:10px;font-size:14px;color:{c};line-height:1.6">{_e(prio)}</div>' if prio else ""
 
     st.markdown(f"""
     <div style="background:{bg};border:1px solid {bd};border-radius:16px;padding:24px 28px;margin-bottom:24px">
@@ -749,7 +753,7 @@ def tab_actions(rec: dict, row, prices: dict):
         <div class="trigger-section">
             <div class="trigger-item ti-sell">
                 <span class="ti-icon">⛔</span>
-                <span>{tb}</span>
+                <span>{_e(tb)}</span>
             </div>
             {"<div class='trigger-item ti-sell'><span class='ti-icon'>📊</span><span>Fair Value rewizja w dół powyżej -20% — czas na wyjście</span></div>" if fv else ""}
             {"<div class='trigger-item ti-sell'><span class='ti-icon'>🎯</span><span>Cena osiąga Fair Value " + str(fv) + " " + rec.get('fair_value_currency','') + " — realizuj zysk lub redukuj pozycję</span></div>" if fv else ""}
@@ -772,9 +776,9 @@ def tab_actions(rec: dict, row, prices: dict):
                         {line}
                     </div>
                     <div class="event-body">
-                        <div class="event-date">{ev.get('date','—')}</div>
-                        <div class="event-text">{ev.get('event','')}</div>
-                        <div class="event-fv">→ FV: {ev.get('fv_note','')}</div>
+                        <div class="event-date">{_e(ev.get('date','—'))}</div>
+                        <div class="event-text">{_e(ev.get('event',''))}</div>
+                        <div class="event-fv">→ FV: {_e(ev.get('fv_note',''))}</div>
                     </div>
                 </div>"""
             st.markdown(f'<div style="padding:4px 0">{html}</div>', unsafe_allow_html=True)
@@ -837,7 +841,7 @@ def page_overview(pos, demo):
                 <div class="action-dot {dot}"></div>
                 <span class="action-ticker">{t}</span>
                 <span style="color:#475569;font-size:12px">·</span>
-                <span>{r['priority_action']}</span>
+                <span>{_e(r['priority_action'])}</span>
             </div>"""
         html += '</div>'
         st.markdown(html, unsafe_allow_html=True)
@@ -970,7 +974,7 @@ def page_detail(ticker, pos, prices):
         else:
             exit_html = '<span style="color:#475569;font-size:13px">Brak ceny docelowej — patrz thesis breaker poniżej</span>'
 
-    tb_html = f'<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(239,68,68,0.15);font-size:13px;color:#fca5a5"><span style="color:#ef4444;font-weight:600;margin-right:8px">⛔ Thesis Breaker:</span>{tb}</div>' if tb else ""
+    tb_html = f'<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(239,68,68,0.15);font-size:13px;color:#fca5a5"><span style="color:#ef4444;font-weight:600;margin-right:8px">⛔ Thesis Breaker:</span>{_e(tb)}</div>' if tb else ""
 
     st.markdown(f"""
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
@@ -1036,12 +1040,12 @@ def page_detail(ticker, pos, prices):
         col_l, col_r = st.columns([3, 2])
         with col_l:
             st.markdown('<div class="sh">💡 Teza inwestycyjna</div>', unsafe_allow_html=True)
-            st.markdown(f'<div class="thesis-card">{rec.get("thesis_full","Brak danych.")}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="thesis-card">{_e(rec.get("thesis_full","Brak danych."))}</div>', unsafe_allow_html=True)
             tb = rec.get("thesis_breaker", "—")
             st.markdown(f"""
             <div class="breaker-card">
                 <div style="font-size:10px;font-weight:600;color:#f87171;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">⛔ Thesis Breaker — kiedy sprzedać</div>
-                <div style="color:#fca5a5;font-size:14px;line-height:1.65">{tb}</div>
+                <div style="color:#fca5a5;font-size:14px;line-height:1.65">{_e(tb)}</div>
             </div>""", unsafe_allow_html=True)
 
         with col_r:
