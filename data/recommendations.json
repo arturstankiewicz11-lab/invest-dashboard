@@ -253,7 +253,7 @@
     "recommendation": "HOLD",
     "fair_value": 587,
     "fair_value_currency": "HKD",
-    "entry_point": null,
+    "entry_point": 440,
     "upside_pct": 26,
     "thesis_short": "26% dyskonto do Morningstar FV HK$587. Geopolityka ogranicza pozycję.",
     "thesis_full": "Tencent handluje na HK$466 vs Morningstar fair value HK$587 (26% dyskonto). 43 analityków Buy. Jednak Pentagon blacklist, napięcia USA-Chiny i ryzyko Tajwanu tworzą geopolityczną premię ryzyka. W horyzoncie 1-3 lat te ryzyka są podwyższone. Trzymaj istniejącą pozycję, nie dokupuj.",
