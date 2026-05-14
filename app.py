@@ -1196,9 +1196,11 @@ WATCHLISTA — zasady:
 - Usuń spółkę: remove_from_watchlist gdy użytkownik prosi "usuń X z watchlisty"
 - Sektory: {', '.join(WATCHLIST_SECTORS)}
 
-AKTUALIZACJA REKOMENDACJI (update_recommendation):
-- Możesz aktualizować rekomendacje TYLKO gdy użytkownik WYRAŹNIE potwierdza zmianę
-- Przed użyciem narzędzia ZAWSZE podsumuj co zamierzasz zmienić i poczekaj na potwierdzenie
+REKOMENDACJE (update_recommendation):
+- Działa dla KAŻDEGO tickera — zarówno z portfela jak i z watchlisty (tworzy nowy wpis jeśli nie istnieje)
+- Gdy użytkownik prosi o "zapisz analizę", "dodaj rekomendację", "zapisz wyniki" → użyj tego narzędzia
+- Zapisuj wszystkie dostępne pola: name, fair_value, fair_value_currency, entry_point, thesis_short, thesis_full, thesis_breaker, buffett_moat, risks (oddzielone |), event_text
+- Przed zapisem ZAWSZE podsumuj kluczowe liczby (FV, entry, rec) i poczekaj na potwierdzenie
 - Po aktualizacji poinformuj użytkownika że dashboard odświeży się za ~1 minutę"""
 
 SEARCH_TOOL = {
@@ -1215,19 +1217,25 @@ SEARCH_TOOL = {
 
 UPDATE_REC_TOOL = {
     "name": "update_recommendation",
-    "description": "Aktualizuje rekomendację spółki na dashboardzie. UŻYWAJ TYLKO gdy użytkownik WYRAŹNIE potwierdza zmianę (np. 'tak, zmień', 'ok, zaktualizuj', 'zgadzam się'). Nigdy nie używaj bez jednoznacznego potwierdzenia użytkownika.",
+    "description": "Tworzy lub aktualizuje pełną rekomendację spółki na dashboardzie (działa też dla spółek z watchlisty, nie tylko portfela). UŻYWAJ gdy użytkownik prosi o zapisanie analizy lub WYRAŹNIE potwierdza zmianę.",
     "input_schema": {
         "type": "object",
         "properties": {
-            "ticker":          {"type": "string",  "description": "Ticker spółki np. MSFT, RHM.DE, ETL.PA, 0700.HK"},
-            "recommendation":  {"type": "string",  "enum": ["BUY","HOLD","SELL","REDUCE"]},
-            "fair_value":      {"type": "number",  "description": "Nowa wartość fair value (zostaw puste jeśli bez zmian)"},
-            "entry_point":     {"type": "number",  "description": "Nowy entry point (zostaw puste jeśli bez zmian)"},
-            "thesis_short":    {"type": "string",  "description": "Krótka teza 1 zdanie"},
-            "priority_action": {"type": "string",  "description": "Priorytetowe działanie widoczne na overview (zostaw puste żeby wyczyścić)"},
-            "event_text":      {"type": "string",  "description": "Opis powodu zmiany — pojawi się w timeline wydarzeń"}
+            "ticker":             {"type": "string", "description": "Ticker np. RKLB, MSFT, RHM.DE"},
+            "recommendation":     {"type": "string", "enum": ["BUY","HOLD","SELL","REDUCE"]},
+            "name":               {"type": "string", "description": "Pełna nazwa spółki"},
+            "fair_value":         {"type": "number", "description": "Fair value na akcję z DCF"},
+            "fair_value_currency":{"type": "string", "description": "Waluta fair value np. USD, EUR, PLN"},
+            "entry_point":        {"type": "number", "description": "Rekomendowana cena wejścia (z margin of safety)"},
+            "thesis_short":       {"type": "string", "description": "Teza inwestycyjna — 1 zdanie"},
+            "thesis_full":        {"type": "string", "description": "Pełna teza inwestycyjna — 3-5 zdań z kluczowymi argumentami"},
+            "thesis_breaker":     {"type": "string", "description": "Kiedy sprzedać — konkretny warunek łamania tezy"},
+            "buffett_moat":       {"type": "string", "description": "Ocena moat: wide/narrow/none + krótkie uzasadnienie"},
+            "risks":              {"type": "string", "description": "Top 3 ryzyka oddzielone znakiem | np. 'Ryzyko A | Ryzyko B | Ryzyko C'"},
+            "priority_action":    {"type": "string", "description": "Priorytetowe działanie widoczne na overview (puste = brak)"},
+            "event_text":         {"type": "string", "description": "Opis analizy/zmiany — pojawi się w timeline wydarzeń"}
         },
-        "required": ["ticker", "recommendation", "event_text"]
+        "required": ["ticker", "recommendation"]
     }
 }
 
@@ -1274,16 +1282,24 @@ def do_update_recommendation(inputs: dict, gh_token: str) -> str:
     current = json.loads(_b64.b64decode(r.json()["content"]).decode())
     ticker  = inputs["ticker"]
 
+    # Allow creating new entries (e.g. for watchlist stocks)
     if ticker not in current:
-        return f"Ticker {ticker} nie istnieje w rekomendacjach. Dostępne: {', '.join(current.keys())}"
+        current[ticker] = {"events": []}
 
     rec = current[ticker]
     rec["recommendation"] = inputs["recommendation"]
     rec["last_updated"]   = datetime.now().strftime("%Y-%m-%d")
-    if inputs.get("fair_value")      is not None: rec["fair_value"]      = inputs["fair_value"]
-    if inputs.get("entry_point")     is not None: rec["entry_point"]     = inputs["entry_point"]
-    if inputs.get("thesis_short"):                rec["thesis_short"]    = inputs["thesis_short"]
-    if "priority_action" in inputs:               rec["priority_action"] = inputs.get("priority_action") or None
+    if inputs.get("name"):                        rec["name"]               = inputs["name"]
+    if inputs.get("fair_value")      is not None: rec["fair_value"]         = inputs["fair_value"]
+    if inputs.get("fair_value_currency"):         rec["fair_value_currency"]= inputs["fair_value_currency"]
+    if inputs.get("entry_point")     is not None: rec["entry_point"]        = inputs["entry_point"]
+    if inputs.get("thesis_short"):                rec["thesis_short"]       = inputs["thesis_short"]
+    if inputs.get("thesis_full"):                 rec["thesis_full"]        = inputs["thesis_full"]
+    if inputs.get("thesis_breaker"):              rec["thesis_breaker"]     = inputs["thesis_breaker"]
+    if inputs.get("buffett_moat"):                rec["buffett_moat"]       = inputs["buffett_moat"]
+    if inputs.get("risks"):
+        rec["risks"] = [r.strip() for r in inputs["risks"].split("|") if r.strip()]
+    if "priority_action" in inputs:               rec["priority_action"]    = inputs.get("priority_action") or None
 
     if inputs.get("event_text"):
         rec.setdefault("events", []).insert(0, {
