@@ -764,24 +764,21 @@ def tab_actions(rec: dict, row, prices: dict):
         events = rec.get("events", [])
         st.markdown('<div class="sh">📅 Ostatnie wydarzenia</div>', unsafe_allow_html=True)
         if events:
-            html = ""
             for i, ev in enumerate(events):
-                impact = ev.get("impact", "neutral")
+                impact  = ev.get("impact", "neutral")
                 dot_cls = "ev-pos" if impact == "positive" else "ev-neg" if impact == "negative" else "ev-neu"
-                line = '<div class="event-line"></div>' if i < len(events) - 1 else ""
-                html += f"""
-                <div class="event-item">
-                    <div class="event-dot-wrap">
+                border  = "border-bottom:1px solid rgba(255,255,255,0.04);" if i < len(events) - 1 else ""
+                st.markdown(f"""
+                <div style="display:flex;gap:16px;padding:14px 0;{border}">
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:0;padding-top:3px">
                         <div class="event-dot {dot_cls}"></div>
-                        {line}
                     </div>
-                    <div class="event-body">
+                    <div style="flex:1">
                         <div class="event-date">{_e(ev.get('date','—'))}</div>
                         <div class="event-text">{_e(ev.get('event',''))}</div>
-                        <div class="event-fv">→ FV: {_e(ev.get('fv_note',''))}</div>
+                        <div class="event-fv">&#8594; FV: {_e(ev.get('fv_note',''))}</div>
                     </div>
-                </div>"""
-            st.markdown(f'<div style="padding:4px 0">{html}</div>', unsafe_allow_html=True)
+                </div>""", unsafe_allow_html=True)
         else:
             st.markdown('<div style="color:#475569;font-size:13px;padding:20px 0">Brak wydarzeń do wyświetlenia.</div>', unsafe_allow_html=True)
 
