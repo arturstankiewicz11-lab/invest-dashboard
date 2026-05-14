@@ -1320,8 +1320,13 @@ def do_update_recommendation(inputs: dict, gh_token: str) -> str:
     }, timeout=10)
 
     if put.status_code in (200, 201):
+        try:
+            with open("data/recommendations.json", "w", encoding="utf-8") as _f:
+                json.dump(current, _f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
         load_recs.clear()
-        return f"✅ Rekomendacja **{ticker}** zaktualizowana na **{inputs['recommendation']}**. Dashboard odświeży się automatycznie za ~1 minutę."
+        return f"✅ Rekomendacja **{ticker}** zaktualizowana na **{inputs['recommendation']}**."
     return f"Błąd zapisu do GitHub: {put.status_code} — {put.text[:300]}"
 
 def do_add_to_watchlist(inputs: dict, gh_token: str) -> str:
@@ -1351,6 +1356,11 @@ def do_add_to_watchlist(inputs: dict, gh_token: str) -> str:
         "content": new_content, "sha": sha
     }, timeout=10)
     if put.status_code in (200, 201):
+        try:
+            with open("data/watchlist.json", "w", encoding="utf-8") as _f:
+                json.dump(current, _f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
         load_watchlist.clear()
         st.session_state["_watchlist_dirty"] = True
         return f"✅ **{ticker}** ({inputs.get('name', ticker)}) dodany do watchlisty, sektor: **{sector}**."
@@ -1380,6 +1390,11 @@ def do_remove_from_watchlist(inputs: dict, gh_token: str) -> str:
         "content": new_content, "sha": sha
     }, timeout=10)
     if put.status_code in (200, 201):
+        try:
+            with open("data/watchlist.json", "w", encoding="utf-8") as _f:
+                json.dump(current, _f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
         load_watchlist.clear()
         st.session_state["_watchlist_dirty"] = True
         return f"✅ **{ticker}** usunięty z watchlisty."
