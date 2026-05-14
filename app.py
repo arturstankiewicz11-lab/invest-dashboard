@@ -1154,7 +1154,13 @@ ZASADY ODPOWIEDZI:
 - Zawsze podaj rekomendację: BUY/HOLD/SELL/REDUCE z konkretnym entry pointem i thesis breakerem
 - Porównaj z danymi portfela użytkownika gdy relevant (ma pozycję? jaki P&L?)
 - Odpowiadaj po polsku, w formacie markdown z nagłówkami
-- Dzisiejsza data: {datetime.now().strftime('%Y-%m-%d')}"""
+- Dzisiejsza data: {datetime.now().strftime('%Y-%m-%d')}
+
+AKTUALIZACJA REKOMENDACJI (update_recommendation):
+- Możesz aktualizować rekomendacje TYLKO gdy użytkownik WYRAŹNIE potwierdza zmianę
+- Przykłady potwierdzenia: "tak zmień", "ok zaktualizuj", "zgadzam się", "zrób to"
+- Przed użyciem narzędzia ZAWSZE podsumuj co zamierzasz zmienić i poczekaj na potwierdzenie
+- Po aktualizacji poinformuj użytkownika że dashboard odświeży się za ~1 minutę"""
 
 SEARCH_TOOL = {
     "name": "web_search",
@@ -1162,14 +1168,76 @@ SEARCH_TOOL = {
     "input_schema": {
         "type": "object",
         "properties": {
-            "query": {
-                "type": "string",
-                "description": "Zapytanie wyszukiwania po angielsku dla lepszych wyników finansowych"
-            }
+            "query": {"type": "string", "description": "Zapytanie wyszukiwania po angielsku dla lepszych wyników finansowych"}
         },
         "required": ["query"]
     }
 }
+
+UPDATE_REC_TOOL = {
+    "name": "update_recommendation",
+    "description": "Aktualizuje rekomendację spółki na dashboardzie. UŻYWAJ TYLKO gdy użytkownik WYRAŹNIE potwierdza zmianę (np. 'tak, zmień', 'ok, zaktualizuj', 'zgadzam się'). Nigdy nie używaj bez jednoznacznego potwierdzenia użytkownika.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "ticker":          {"type": "string",  "description": "Ticker spółki np. MSFT, RHM.DE, ETL.PA, 0700.HK"},
+            "recommendation":  {"type": "string",  "enum": ["BUY","HOLD","SELL","REDUCE"]},
+            "fair_value":      {"type": "number",  "description": "Nowa wartość fair value (zostaw puste jeśli bez zmian)"},
+            "entry_point":     {"type": "number",  "description": "Nowy entry point (zostaw puste jeśli bez zmian)"},
+            "thesis_short":    {"type": "string",  "description": "Krótka teza 1 zdanie"},
+            "priority_action": {"type": "string",  "description": "Priorytetowe działanie widoczne na overview (zostaw puste żeby wyczyścić)"},
+            "event_text":      {"type": "string",  "description": "Opis powodu zmiany — pojawi się w timeline wydarzeń"}
+        },
+        "required": ["ticker", "recommendation", "event_text"]
+    }
+}
+
+GH_REPO = "arturstankiewicz11-lab/invest-dashboard"
+GH_REC_PATH = "data/recommendations.json"
+
+def do_update_recommendation(inputs: dict, gh_token: str) -> str:
+    import requests as _req, base64 as _b64
+    api = f"https://api.github.com/repos/{GH_REPO}/contents/{GH_REC_PATH}"
+    hdrs = {"Authorization": f"Bearer {gh_token}", "Accept": "application/vnd.github+json"}
+
+    r = _req.get(api, headers=hdrs, timeout=10)
+    if r.status_code != 200:
+        return f"Błąd pobierania pliku z GitHub: {r.status_code}"
+
+    sha     = r.json()["sha"]
+    current = json.loads(_b64.b64decode(r.json()["content"]).decode())
+    ticker  = inputs["ticker"]
+
+    if ticker not in current:
+        return f"Ticker {ticker} nie istnieje w rekomendacjach. Dostępne: {', '.join(current.keys())}"
+
+    rec = current[ticker]
+    rec["recommendation"] = inputs["recommendation"]
+    rec["last_updated"]   = datetime.now().strftime("%Y-%m-%d")
+    if inputs.get("fair_value")      is not None: rec["fair_value"]      = inputs["fair_value"]
+    if inputs.get("entry_point")     is not None: rec["entry_point"]     = inputs["entry_point"]
+    if inputs.get("thesis_short"):                rec["thesis_short"]    = inputs["thesis_short"]
+    if "priority_action" in inputs:               rec["priority_action"] = inputs.get("priority_action") or None
+
+    if inputs.get("event_text"):
+        rec.setdefault("events", []).insert(0, {
+            "date":   datetime.now().strftime("%Y-%m-%d"),
+            "event":  inputs["event_text"],
+            "impact": "neutral",
+            "fv_note": f"Rekomendacja zmieniona na {inputs['recommendation']}."
+        })
+
+    new_content = _b64.b64encode(json.dumps(current, ensure_ascii=False, indent=2).encode()).decode()
+    put = _req.put(api, headers=hdrs, json={
+        "message": f"chore: update {ticker} → {inputs['recommendation']} via chat",
+        "content": new_content,
+        "sha": sha
+    }, timeout=10)
+
+    if put.status_code in (200, 201):
+        load_recs.clear()
+        return f"✅ Rekomendacja **{ticker}** zaktualizowana na **{inputs['recommendation']}**. Dashboard odświeży się automatycznie za ~1 minutę."
+    return f"Błąd zapisu do GitHub: {put.status_code} — {put.text[:300]}"
 
 def do_search(query: str, tavily_key: str) -> str:
     try:
@@ -1242,28 +1310,40 @@ def render_chat(pos, recs, prices, fx, current_ticker=None):
                     context  = all_msgs[-CHAT_CONTEXT_LIMIT:] if len(all_msgs) > CHAT_CONTEXT_LIMIT else all_msgs
                     messages = [{"role": m["role"], "content": m["content"]} for m in context]
 
-                    for _ in range(5):
+                    tools = [SEARCH_TOOL]
+                    if gh_token: tools.append(UPDATE_REC_TOOL)
+
+                    for _ in range(8):
                         placeholder.markdown("🔍 Analizuję...")
                         response = client.messages.create(
                             model="claude-opus-4-7",
                             max_tokens=4096,
                             system=system,
-                            tools=[SEARCH_TOOL],
+                            tools=tools,
                             messages=messages,
                         )
 
                         if response.stop_reason == "tool_use":
                             tool_results = []
                             for block in response.content:
-                                if block.type == "tool_use" and block.name == "web_search":
+                                if block.type != "tool_use":
+                                    continue
+                                if block.name == "web_search":
                                     query = block.input.get("query", "")
                                     placeholder.markdown(f"🔍 Szukam: *{query}*...")
                                     result = do_search(query, tavily_key) if tavily_key else "[Web search niedostępny]"
-                                    tool_results.append({
-                                        "type": "tool_result",
-                                        "tool_use_id": block.id,
-                                        "content": result,
-                                    })
+                                elif block.name == "update_recommendation":
+                                    ticker_u = block.input.get("ticker", "?")
+                                    rec_u    = block.input.get("recommendation", "?")
+                                    placeholder.markdown(f"💾 Aktualizuję rekomendację **{ticker_u}** → **{rec_u}**...")
+                                    result = do_update_recommendation(block.input, gh_token) if gh_token else "Brak tokenu GitHub."
+                                else:
+                                    result = "Nieznane narzędzie."
+                                tool_results.append({
+                                    "type": "tool_result",
+                                    "tool_use_id": block.id,
+                                    "content": result,
+                                })
                             messages.append({"role": "assistant", "content": response.content})
                             messages.append({"role": "user", "content": tool_results})
                         else:
