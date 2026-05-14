@@ -1333,7 +1333,8 @@ def do_add_to_watchlist(inputs: dict, gh_token: str) -> str:
     }, timeout=10)
     if put.status_code in (200, 201):
         load_watchlist.clear()
-        return f"✅ **{ticker}** ({inputs.get('name', ticker)}) dodany do watchlisty, sektor: **{sector}**. Dashboard odświeży się za ~1 minutę."
+        st.session_state["_watchlist_dirty"] = True
+        return f"✅ **{ticker}** ({inputs.get('name', ticker)}) dodany do watchlisty, sektor: **{sector}**."
     return f"Błąd zapisu do GitHub: {put.status_code}"
 
 def do_remove_from_watchlist(inputs: dict, gh_token: str) -> str:
@@ -1361,6 +1362,7 @@ def do_remove_from_watchlist(inputs: dict, gh_token: str) -> str:
     }, timeout=10)
     if put.status_code in (200, 201):
         load_watchlist.clear()
+        st.session_state["_watchlist_dirty"] = True
         return f"✅ **{ticker}** usunięty z watchlisty."
     return f"Błąd zapisu do GitHub: {put.status_code}"
 
@@ -1660,3 +1662,5 @@ def main():
 
 if __name__ == "__main__" or True:
     main()
+    if st.session_state.pop("_watchlist_dirty", False):
+        st.rerun()
