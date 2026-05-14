@@ -1556,13 +1556,6 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                             placeholder.markdown(answer + usage_line, unsafe_allow_html=True)
                             st.session_state[sess_key].append({"role": "assistant", "content": answer})
                             save_chat_history(st.session_state[sess_key], gh_token, gh_gist, context)
-                            import streamlit.components.v1 as _stc
-                            _stc.html("""<script>
-                            setTimeout(function(){
-                                var el=window.parent.document.querySelector('[data-testid="stMainBlockContainer"]');
-                                if(el) el.scrollTop=el.scrollHeight;
-                            },150);
-                            </script>""", height=0)
                             break
 
                 except Exception as e:
@@ -1721,10 +1714,6 @@ def main():
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
 
-    page_just_changed = st.session_state.get("_last_page") != page_key
-    if page_just_changed:
-        st.session_state["_last_page"] = page_key
-
     if page_key == "__overview__":
         page_overview(pos, demo)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
@@ -1734,16 +1723,6 @@ def main():
     else:
         page_detail(page_key, pos, prices)
         render_chat(pos, recs, prices, fx, current_ticker=page_key, watchlist=watchlist)
-
-    # Scroll to top AFTER all content (incl. chat) renders — overrides browser auto-scroll to new DOM nodes
-    if page_just_changed:
-        import streamlit.components.v1 as _stc
-        _stc.html("""<script>
-        setTimeout(function(){
-            var el=window.parent.document.querySelector('[data-testid="stMainBlockContainer"]');
-            if(el) el.scrollTop=0; else window.parent.scrollTo(0,0);
-        },300);
-        </script>""", height=0)
 
 if __name__ == "__main__" or True:
     main()
