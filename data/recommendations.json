@@ -440,25 +440,31 @@
     ]
   },
   "FRMI": {
-    "name": "Fermi Inc.",
-    "recommendation": "BUY",
-    "fair_value": null,
+    "name": "Fermi America",
+    "recommendation": "SELL",
+    "fair_value": 3.5,
     "fair_value_currency": "USD",
-    "entry_point": 6.0,
+    "entry_point": 0,
     "upside_pct": null,
-    "thesis_short": "AI power campus REIT. Grid-independent HPC infrastructure. Brak przychodów — zakład na AI buildout.",
-    "thesis_full": "Fermi Inc. to spółka z 2025 roku budująca autonomiczne kampusy energetyczne dla AI. Model: kupuje ziemię, uzyskuje pozwolenia, buduje grid-independent power generation + HPC infrastructure, oddaje w długoterminowy leasing klientom AI. Cap ~$4.5B bez przychodów = wycena oparta wyłącznie na potencjale. Amarillo, Texas — strategiczna lokalizacja (tania energia, dostęp do OZE, przestrzeń). Teza: hyperscalerzy (Microsoft, Google, Meta) desperacko potrzebują mocy obliczeniowej poza kongestowanymi sieciami energetycznymi. Fermi dostarcza infrastrukturę pod klucz. Ryzyko: przedwczesna wycena, brak przychodów, ryzyko wykonawcze. Potencjał: jeden kontrakt z hyperscalerem może 3-5x wycenę.",
-    "thesis_breaker": "Brak kontraktów z klientami AI przez kolejne 12 miesięcy. Hyperscalerzy wybierają własną infrastrukturę zamiast leasingu.",
+    "thesis_short": "Governance disaster + spekulacyjny short squeeze — wykorzystać rally do exit z zyskiem.",
+    "thesis_full": "Fermi America to spekulacja bez fundamentów: $0 revenue, brak klientów, brak NRC license, pierwsza nuclear MW dopiero 2032+. Governance collapse w kwietniu 2026: CEO Neugebauer zwolniony 'for cause' 30/04, CFO Everson rezygnacja 19/04, co-founder pozywa firmę żądając Special Meeting, board zmienia bylaws mid-fight (14/05). Wzrost +25% 14 maja to klasyczny short squeeze (14.8% SI) + M&A speculation na 'fired CEO pushing for sale'. Base case retrace do $5 w 30 dni, $3 w 90 dni (analogie WeWork/Lordstown/Nikola). Wycena $400M/GW pipeline vs OKLO $700M/GW na podpisanych klientach = mispricing w niewłaściwą stronę. Wyjść z zyskiem +9% póki squeeze trwa.",
+    "thesis_breaker": "Thesis już złamana — corporate governance collapse + brak revenue + brak klientów. Exit 100% na squeeze rally.",
     "risks": [
-      "Brak przychodów — pure pre-revenue bet",
-      "Ryzyko wykonawcze (budowa kampusów)",
-      "Konkurencja ze strony Digital Realty, Equinix, własnych kampusów hyperscalerów"
+      "Governance chaos blokuje signing hyperscalerów na 12-18 mies",
+      "Pozew Neugebauer może wymusić Special Meeting i forced sale at depressed valuation",
+      "'For cause' termination sygnalizuje nieujawnione problemy księgowe/regulacyjne"
     ],
-    "buffett_moat": "None (za wczesna faza)",
-    "last_updated": "2026-05-14",
+    "buffett_moat": "none — 5800 akrów ziemi w Texas to nie moat. Brak technologii, brak regulacyjnego barrieru, brak klientów. Każdy PE fund z $1B może zbudować to samo.",
+    "last_updated": "2026-05-15",
     "next_earnings": null,
-    "priority_action": "Pozycja zbudowana (400 szt., avg $6.74). Trzymaj. Kolejny zakup dopiero po ogłoszeniu pierwszego kontraktu z hyperscalerem.",
+    "priority_action": "SELL 400 szt @ limit $7.20+ na otwarciu 15 maja. Realokacja: $1500 → LEU (8 szt), $700 → OKLO (10 szt), $748 dry powder na LEU transza #2 @ $170.",
     "events": [
+      {
+        "date": "2026-05-15",
+        "event": "REKOMENDACJA ZMIENIONA: BUY → SELL. Governance disaster ujawniony (CEO Neugebauer fired for cause 30/04, CFO resigned 19/04, lawsuit + bylaws change). Wczorajszy +25% short squeeze (14.8% SI) na M&A speculation to exit opportunity, nie entry. Sprzedać 400 szt @ $7.20+ jutro, realokacja do LEU + OKLO. P&L na exit: +925 PLN.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na SELL."
+      },
       {
         "date": "2026-05-14",
         "event": "Dokupiono 200 szt. po $7.20 — pozycja powiększona do 400 szt. Avg cena zakupu: $6.74.",
