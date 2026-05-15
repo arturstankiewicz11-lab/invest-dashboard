@@ -480,25 +480,24 @@
     ]
   },
   "NVDA": {
-    "name": "NVIDIA",
+    "name": "NVIDIA Corporation",
     "recommendation": "HOLD",
-    "fair_value": 116.0,
+    "fair_value": 240,
     "fair_value_currency": "USD",
-    "entry_point": 100,
+    "entry_point": 200,
     "upside_pct": null,
-    "thesis_short": "Monopol GPU AI. FV DCF $116 — czekaj na korektę do $100.",
-    "thesis_full": "NVIDIA to jedyny dostawca GPU klasy datacenter (H100/H200/B200). ~80% udział w rynku AI chips. Data Center revenue +100%+ YoY. Moat: CUDA ecosystem (10+ lat przewagi software). Zakup przy $125 — blisko fair value. Nie dokupuj przy obecnej cenie. Czekaj na korektę do $100-110 żeby zwiększyć pozycję.",
-    "thesis_breaker": "AMD MI400 lub Google TPU przejmują >20% rynku datacenter GPU. US export controls rozszerzają się na kolejne kraje.",
+    "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $240 zgodny z Morningstar — cena $235 ≈ fair value, trzymać compounder.",
+    "thesis_full": "NVIDIA to pickaxe play na AI infrastructure z wide moat opartym na CUDA ecosystem lock-in i scale advantage. FY2026 revenue $215.9B (+65% YoY), Data Center $193.7B (+68%), Q1 FY2026 DC +73% YoY — Blackwell ramp w pełni, Vera Rubin platform zapowiedziana na 2027. Operating margin utrzymane na 62%. DCF (WACC 10%, terminal 4%, rev FY27E $290B) daje FV $240, zbieżne z Morningstar $240. Pozycja w portfelu (+88% P&L) — trzymać jako core AI holding, dokupować dopiero przy korekcie do $200 (17% margin of safety).",
+    "thesis_breaker": "Data Center revenue growth spada poniżej 20% YoY przez 2 kwartały z rzędu LUB utrata >2 hyperscalerów na rzecz custom silicon (TPU/Trainium/MTIA) LUB całkowity ban eksportu do Chin bez kompensacji sovereign AI.",
     "risks": [
-      "Wycena premium (P/E 40x+)",
-      "US export controls — utrata rynku China",
-      "Konkurencja AMD/Intel/custom chips",
-      "Cykl capex cloud hyperscalerów"
+      "Koncentracja klientów: top 4 hyperscalerów ~40% rev — capex cut 30% obniża FV o ~$60 do $180",
+      "China export controls: H20/B20 restrictions, utrata $15-20B/rok rynku, FV -$20",
+      "Custom silicon konkurencja (Google TPU, AWS Trainium, Meta MTIA) — wolniejszy wzrost market share, ale TAM rośnie szybciej niż erozja udziału"
     ],
-    "buffett_moat": "Wide",
-    "last_updated": "2026-05-13",
+    "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare), scale advantage w R&D ($12B+/rok), pricing power (Blackwell ASP +50% vs Hopper), switching costs ekstremalne dla enterprise AI workloads.",
+    "last_updated": "2026-05-15",
     "next_earnings": null,
-    "priority_action": null,
+    "priority_action": "Trzymać pozycję 108 szt. (+88% P&L). Dokupować przy korekcie do $200.",
     "dcf": {
       "wacc_pct": 11.0,
       "terminal_growth_pct": 3.0,
@@ -531,6 +530,12 @@
       "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC 11% ze względu na wycenę premium i export risk. FV DCF $116 vs cena ~$125 — premia sentymentu. Czekaj na $100-110."
     },
     "events": [
+      {
+        "date": "2026-05-15",
+        "event": "Rewizja FV z $116 → $240 (2026-05-15). Stara wycena była mocno nieaktualna — ignorowała FY2026 results ($215.9B rev, +65% YoY) i Blackwell ramp. Nowy DCF (WACC 10%, terminal 4%) i Morningstar FV $240 potwierdzają wycenę. Cena $235.74 ≈ fair value, nie -51% overvalued jak sugerowała stara analiza.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na HOLD."
+      },
       {
         "date": "2026-04-XX",
         "event": "Blackwell B200 ramp — produkcja przekracza oczekiwania. Data center backlog 12+ miesięcy.",
