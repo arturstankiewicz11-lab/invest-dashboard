@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
@@ -1656,6 +1657,14 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
+    # Scroll to top once per session — placed before any columns to avoid layout disruption
+    if "scroll_reset" not in st.session_state:
+        st.session_state["scroll_reset"] = True
+        components.html(
+            '<script>window.parent.scrollTo({top:0,behavior:"instant"});</script>',
+            height=1
+        )
+
     df, demo = load_portfolio()
     fx        = get_fx()
     recs      = load_recs()
