@@ -644,6 +644,12 @@
   "OKLO": {
     "events": [
       {
+        "date": "2026-05-15",
+        "event": "Rewizja FV z $134 → $115 pod kątem dilution (+132% share count od SPAC, $2.5B ATM aktywne). Altman exit z Chairman (kwi 2025) bullish — odblokowuje OpenAI PPA. Entry point $58 (MoS ~50%). Plan 3-transzowy: $58/$48/rezerwa.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      },
+      {
         "date": "2026-05-14",
         "event": "Dodano OKLO do watchlisty po deep-dive 14 maja 2026. Cena $72 post-earnings dip (-5.8%). FV base $110, prob-weighted $134, bull $220. Pipeline 14 GW (Meta 1.2GW, Equinix 500MW, F-35, NVIDIA partnership). Pierwsza criticality 4 lipca 2026 (Groves), commercial 2028 (INL Aurora). Utility-like recurring revenue model z 20-letnimi PPA = lepszy biznes niż reactor selling.",
         "impact": "neutral",
@@ -651,21 +657,21 @@
       }
     ],
     "recommendation": "BUY",
-    "last_updated": "2026-05-14",
+    "last_updated": "2026-05-15",
     "name": "Oklo Inc.",
-    "fair_value": 134,
+    "fair_value": 115,
     "fair_value_currency": "USD",
-    "entry_point": 75,
-    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) — utility-like recurring revenue model 20+ lat PPA, +86% upside prob-weighted.",
-    "thesis_full": "Oklo to nie reactor builder, lecz build-own-operate nuclear utility. Aurora powerhouse (15-75MW sodium fast reactor, HALEU fuel) ma 20-letni reload cycle = capacity factor >95%, LCOE $40-60/MWh (vs $65-90 dla NuScale LWR). Każdy reactor generuje ~$33M annual revenue przez 20 lat PPA ($660M lifetime). Pipeline 14 GW (~280 units) = $9.2B annual run-rate przy pełnym deployment 2030+. Trzy strumienie revenue: (1) Aurora PPAs z hyperscalers, (2) Atomic Alchemy medical isotopes (first revenue 2026), (3) Tennessee fuel recycling facility $1.68B. Pierwsza criticality Groves Isotope Test Reactor 4 lipca 2026, INL Aurora commercial operations 2028. NVIDIA Genesis Mission partnership + Meta Pike County 1.2GW + F-35 Eielson AFB = execution validation.",
-    "thesis_breaker": "INL first criticality slips >2029 (12+ miesięcy delay) | Meta cancels Pike County deal | NRC license application denied/delayed >2 lat | Forced capital raise z dilution >25% w jednym roku",
-    "buffett_moat": "Narrow → Wide w trakcie budowy. Pierwszy operacyjny commercial SMR będzie miał 5-letni NRC regulatory moat + execution moat. Vertically integrated model (reactor + fuel recycling + isotopes) buduje compound moat. Sam Altman backing + Jacob DeWitte (MIT PhD nuclear) = high-quality management. Risk: pre-revenue, dilution-heavy, execution-dependent.",
+    "entry_point": 58,
+    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta/DoD/Equinix) — utility-like recurring revenue 20+ lat PPA. FV adj. za dilution: $115.",
+    "thesis_full": "Oklo to vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) i modelem utility-like recurring revenue na 20+ lat PPA. Pierwszy reaktor Aurora-INL planowany na 2027-2028, NRC license approval oczekiwany H2 2026. Altman ustąpił z funkcji Chairman (kwiecień 2025) aby umożliwić OpenAI negocjowanie PPA z Oklo — interpretacja bullish, governance cleanup pod institutional investors. Główne ryzyko: brutalne rozwodnienie (+132% share count w 24 miesiące, $2.5B ATM programs aktywne) — FV obniżone z $134 do $115 pod kątem dilution. Entry $58 daje MoS ~50%.",
+    "thesis_breaker": "Kolejne $1B+ ATM offering bez podpisanego PPA LUB utrata któregokolwiek z top-3 klientów pipeline (Meta/DoD/Equinix) LUB NRC odrzuca licencję Aurora-INL.",
+    "buffett_moat": "Narrow — first-mover w fast-reactor SMR z NRC pipeline + vertical integration (build-own-operate) tworzy switching costs po podpisaniu 20-letnich PPA. Brak revenue do 2027-2028 ogranicza ocenę moat.",
     "risks": [
-      "Execution timeline slippage — nuclear builds notorycznie ślizgają się 2-3 lata, slip >2029 = -50% FV",
-      "Capital intensity — $25B capex required dla 280 units pipeline, multiple dilutive raises (10-20%/rok do 2030) = -25% FV cumulative",
-      "HALEU supply bottleneck — jeśli LEU/General Matter nie wyprodukują HALEU na czas, Oklo nie ma paliwa = -20% FV"
+      "Dilution: +132% share count w 24 mies., $2.5B ATM ceiling aktywny — obniża FV o ~15%",
+      "Execution: zero revenue do 2027-2028, NRC license approval niepewny",
+      "Klient concentration: utrata Meta/DoD/Equinix z pipeline rozwala tezę utility-recurring"
     ],
-    "priority_action": "BUY starter 20 szt @ $72 (50% target position). Dokupić 12-16 szt przy pullback do $55-60. Rezerwa 8 szt na mega-dip <$50."
+    "priority_action": "Limit order $58 na 40% pozycji (60 dni), $48 na 35% (90 dni), 25% rezerwa na news-driven dip"
   },
   "IONQ": {
     "name": "IonQ",
