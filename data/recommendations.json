@@ -440,25 +440,31 @@
     ]
   },
   "FRMI": {
-    "name": "Fermi Inc.",
-    "recommendation": "BUY",
-    "fair_value": null,
+    "name": "Fermi America",
+    "recommendation": "SELL",
+    "fair_value": 3.5,
     "fair_value_currency": "USD",
-    "entry_point": 6.0,
+    "entry_point": 0,
     "upside_pct": null,
-    "thesis_short": "AI power campus REIT. Grid-independent HPC infrastructure. Brak przychodów — zakład na AI buildout.",
-    "thesis_full": "Fermi Inc. to spółka z 2025 roku budująca autonomiczne kampusy energetyczne dla AI. Model: kupuje ziemię, uzyskuje pozwolenia, buduje grid-independent power generation + HPC infrastructure, oddaje w długoterminowy leasing klientom AI. Cap ~$4.5B bez przychodów = wycena oparta wyłącznie na potencjale. Amarillo, Texas — strategiczna lokalizacja (tania energia, dostęp do OZE, przestrzeń). Teza: hyperscalerzy (Microsoft, Google, Meta) desperacko potrzebują mocy obliczeniowej poza kongestowanymi sieciami energetycznymi. Fermi dostarcza infrastrukturę pod klucz. Ryzyko: przedwczesna wycena, brak przychodów, ryzyko wykonawcze. Potencjał: jeden kontrakt z hyperscalerem może 3-5x wycenę.",
-    "thesis_breaker": "Brak kontraktów z klientami AI przez kolejne 12 miesięcy. Hyperscalerzy wybierają własną infrastrukturę zamiast leasingu.",
+    "thesis_short": "Governance disaster + spekulacyjny short squeeze — wykorzystać rally do exit z zyskiem.",
+    "thesis_full": "Fermi America to spekulacja bez fundamentów: $0 revenue, brak klientów, brak NRC license, pierwsza nuclear MW dopiero 2032+. Governance collapse w kwietniu 2026: CEO Neugebauer zwolniony 'for cause' 30/04, CFO Everson rezygnacja 19/04, co-founder pozywa firmę żądając Special Meeting, board zmienia bylaws mid-fight (14/05). Wzrost +25% 14 maja to klasyczny short squeeze (14.8% SI) + M&A speculation na 'fired CEO pushing for sale'. Base case retrace do $5 w 30 dni, $3 w 90 dni (analogie WeWork/Lordstown/Nikola). Wycena $400M/GW pipeline vs OKLO $700M/GW na podpisanych klientach = mispricing w niewłaściwą stronę. Wyjść z zyskiem +9% póki squeeze trwa.",
+    "thesis_breaker": "Thesis już złamana — corporate governance collapse + brak revenue + brak klientów. Exit 100% na squeeze rally.",
     "risks": [
-      "Brak przychodów — pure pre-revenue bet",
-      "Ryzyko wykonawcze (budowa kampusów)",
-      "Konkurencja ze strony Digital Realty, Equinix, własnych kampusów hyperscalerów"
+      "Governance chaos blokuje signing hyperscalerów na 12-18 mies",
+      "Pozew Neugebauer może wymusić Special Meeting i forced sale at depressed valuation",
+      "'For cause' termination sygnalizuje nieujawnione problemy księgowe/regulacyjne"
     ],
-    "buffett_moat": "None (za wczesna faza)",
-    "last_updated": "2026-05-14",
+    "buffett_moat": "none — 5800 akrów ziemi w Texas to nie moat. Brak technologii, brak regulacyjnego barrieru, brak klientów. Każdy PE fund z $1B może zbudować to samo.",
+    "last_updated": "2026-05-15",
     "next_earnings": null,
-    "priority_action": "Pozycja zbudowana (400 szt., avg $6.74). Trzymaj. Kolejny zakup dopiero po ogłoszeniu pierwszego kontraktu z hyperscalerem.",
+    "priority_action": "SELL 400 szt @ limit $7.20+ na otwarciu 15 maja. Realokacja: $1500 → LEU (8 szt), $700 → OKLO (10 szt), $748 dry powder na LEU transza #2 @ $170.",
     "events": [
+      {
+        "date": "2026-05-15",
+        "event": "REKOMENDACJA ZMIENIONA: BUY → SELL. Governance disaster ujawniony (CEO Neugebauer fired for cause 30/04, CFO resigned 19/04, lawsuit + bylaws change). Wczorajszy +25% short squeeze (14.8% SI) na M&A speculation to exit opportunity, nie entry. Sprzedać 400 szt @ $7.20+ jutro, realokacja do LEU + OKLO. P&L na exit: +925 PLN.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na SELL."
+      },
       {
         "date": "2026-05-14",
         "event": "Dokupiono 200 szt. po $7.20 — pozycja powiększona do 400 szt. Avg cena zakupu: $6.74.",
@@ -474,25 +480,24 @@
     ]
   },
   "NVDA": {
-    "name": "NVIDIA",
+    "name": "NVIDIA Corporation",
     "recommendation": "HOLD",
-    "fair_value": 116.0,
+    "fair_value": 240,
     "fair_value_currency": "USD",
-    "entry_point": 100,
+    "entry_point": 200,
     "upside_pct": null,
-    "thesis_short": "Monopol GPU AI. FV DCF $116 — czekaj na korektę do $100.",
-    "thesis_full": "NVIDIA to jedyny dostawca GPU klasy datacenter (H100/H200/B200). ~80% udział w rynku AI chips. Data Center revenue +100%+ YoY. Moat: CUDA ecosystem (10+ lat przewagi software). Zakup przy $125 — blisko fair value. Nie dokupuj przy obecnej cenie. Czekaj na korektę do $100-110 żeby zwiększyć pozycję.",
-    "thesis_breaker": "AMD MI400 lub Google TPU przejmują >20% rynku datacenter GPU. US export controls rozszerzają się na kolejne kraje.",
+    "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $240 zgodny z Morningstar — cena $235 ≈ fair value, trzymać compounder.",
+    "thesis_full": "NVIDIA to pickaxe play na AI infrastructure z wide moat opartym na CUDA ecosystem lock-in i scale advantage. FY2026 revenue $215.9B (+65% YoY), Data Center $193.7B (+68%), Q1 FY2026 DC +73% YoY — Blackwell ramp w pełni, Vera Rubin platform zapowiedziana na 2027. Operating margin utrzymane na 62%. DCF (WACC 10%, terminal 4%, rev FY27E $290B) daje FV $240, zbieżne z Morningstar $240. Pozycja w portfelu (+88% P&L) — trzymać jako core AI holding, dokupować dopiero przy korekcie do $200 (17% margin of safety).",
+    "thesis_breaker": "Data Center revenue growth spada poniżej 20% YoY przez 2 kwartały z rzędu LUB utrata >2 hyperscalerów na rzecz custom silicon (TPU/Trainium/MTIA) LUB całkowity ban eksportu do Chin bez kompensacji sovereign AI.",
     "risks": [
-      "Wycena premium (P/E 40x+)",
-      "US export controls — utrata rynku China",
-      "Konkurencja AMD/Intel/custom chips",
-      "Cykl capex cloud hyperscalerów"
+      "Koncentracja klientów: top 4 hyperscalerów ~40% rev — capex cut 30% obniża FV o ~$60 do $180",
+      "China export controls: H20/B20 restrictions, utrata $15-20B/rok rynku, FV -$20",
+      "Custom silicon konkurencja (Google TPU, AWS Trainium, Meta MTIA) — wolniejszy wzrost market share, ale TAM rośnie szybciej niż erozja udziału"
     ],
-    "buffett_moat": "Wide",
-    "last_updated": "2026-05-13",
+    "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare), scale advantage w R&D ($12B+/rok), pricing power (Blackwell ASP +50% vs Hopper), switching costs ekstremalne dla enterprise AI workloads.",
+    "last_updated": "2026-05-15",
     "next_earnings": null,
-    "priority_action": null,
+    "priority_action": "Trzymać pozycję 108 szt. (+88% P&L). Dokupować przy korekcie do $200.",
     "dcf": {
       "wacc_pct": 11.0,
       "terminal_growth_pct": 3.0,
@@ -525,6 +530,12 @@
       "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC 11% ze względu na wycenę premium i export risk. FV DCF $116 vs cena ~$125 — premia sentymentu. Czekaj na $100-110."
     },
     "events": [
+      {
+        "date": "2026-05-15",
+        "event": "Rewizja FV z $116 → $240 (2026-05-15). Stara wycena była mocno nieaktualna — ignorowała FY2026 results ($215.9B rev, +65% YoY) i Blackwell ramp. Nowy DCF (WACC 10%, terminal 4%) i Morningstar FV $240 potwierdzają wycenę. Cena $235.74 ≈ fair value, nie -51% overvalued jak sugerowała stara analiza.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na HOLD."
+      },
       {
         "date": "2026-04-XX",
         "event": "Blackwell B200 ramp — produkcja przekracza oczekiwania. Data center backlog 12+ miesięcy.",
@@ -638,6 +649,12 @@
   "OKLO": {
     "events": [
       {
+        "date": "2026-05-15",
+        "event": "Rewizja FV z $134 → $115 pod kątem dilution (+132% share count od SPAC, $2.5B ATM aktywne). Altman exit z Chairman (kwi 2025) bullish — odblokowuje OpenAI PPA. Entry point $58 (MoS ~50%). Plan 3-transzowy: $58/$48/rezerwa.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      },
+      {
         "date": "2026-05-14",
         "event": "Dodano OKLO do watchlisty po deep-dive 14 maja 2026. Cena $72 post-earnings dip (-5.8%). FV base $110, prob-weighted $134, bull $220. Pipeline 14 GW (Meta 1.2GW, Equinix 500MW, F-35, NVIDIA partnership). Pierwsza criticality 4 lipca 2026 (Groves), commercial 2028 (INL Aurora). Utility-like recurring revenue model z 20-letnimi PPA = lepszy biznes niż reactor selling.",
         "impact": "neutral",
@@ -645,21 +662,21 @@
       }
     ],
     "recommendation": "BUY",
-    "last_updated": "2026-05-14",
+    "last_updated": "2026-05-15",
     "name": "Oklo Inc.",
-    "fair_value": 134,
+    "fair_value": 115,
     "fair_value_currency": "USD",
-    "entry_point": 75,
-    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) — utility-like recurring revenue model 20+ lat PPA, +86% upside prob-weighted.",
-    "thesis_full": "Oklo to nie reactor builder, lecz build-own-operate nuclear utility. Aurora powerhouse (15-75MW sodium fast reactor, HALEU fuel) ma 20-letni reload cycle = capacity factor >95%, LCOE $40-60/MWh (vs $65-90 dla NuScale LWR). Każdy reactor generuje ~$33M annual revenue przez 20 lat PPA ($660M lifetime). Pipeline 14 GW (~280 units) = $9.2B annual run-rate przy pełnym deployment 2030+. Trzy strumienie revenue: (1) Aurora PPAs z hyperscalers, (2) Atomic Alchemy medical isotopes (first revenue 2026), (3) Tennessee fuel recycling facility $1.68B. Pierwsza criticality Groves Isotope Test Reactor 4 lipca 2026, INL Aurora commercial operations 2028. NVIDIA Genesis Mission partnership + Meta Pike County 1.2GW + F-35 Eielson AFB = execution validation.",
-    "thesis_breaker": "INL first criticality slips >2029 (12+ miesięcy delay) | Meta cancels Pike County deal | NRC license application denied/delayed >2 lat | Forced capital raise z dilution >25% w jednym roku",
-    "buffett_moat": "Narrow → Wide w trakcie budowy. Pierwszy operacyjny commercial SMR będzie miał 5-letni NRC regulatory moat + execution moat. Vertically integrated model (reactor + fuel recycling + isotopes) buduje compound moat. Sam Altman backing + Jacob DeWitte (MIT PhD nuclear) = high-quality management. Risk: pre-revenue, dilution-heavy, execution-dependent.",
+    "entry_point": 58,
+    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta/DoD/Equinix) — utility-like recurring revenue 20+ lat PPA. FV adj. za dilution: $115.",
+    "thesis_full": "Oklo to vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) i modelem utility-like recurring revenue na 20+ lat PPA. Pierwszy reaktor Aurora-INL planowany na 2027-2028, NRC license approval oczekiwany H2 2026. Altman ustąpił z funkcji Chairman (kwiecień 2025) aby umożliwić OpenAI negocjowanie PPA z Oklo — interpretacja bullish, governance cleanup pod institutional investors. Główne ryzyko: brutalne rozwodnienie (+132% share count w 24 miesiące, $2.5B ATM programs aktywne) — FV obniżone z $134 do $115 pod kątem dilution. Entry $58 daje MoS ~50%.",
+    "thesis_breaker": "Kolejne $1B+ ATM offering bez podpisanego PPA LUB utrata któregokolwiek z top-3 klientów pipeline (Meta/DoD/Equinix) LUB NRC odrzuca licencję Aurora-INL.",
+    "buffett_moat": "Narrow — first-mover w fast-reactor SMR z NRC pipeline + vertical integration (build-own-operate) tworzy switching costs po podpisaniu 20-letnich PPA. Brak revenue do 2027-2028 ogranicza ocenę moat.",
     "risks": [
-      "Execution timeline slippage — nuclear builds notorycznie ślizgają się 2-3 lata, slip >2029 = -50% FV",
-      "Capital intensity — $25B capex required dla 280 units pipeline, multiple dilutive raises (10-20%/rok do 2030) = -25% FV cumulative",
-      "HALEU supply bottleneck — jeśli LEU/General Matter nie wyprodukują HALEU na czas, Oklo nie ma paliwa = -20% FV"
+      "Dilution: +132% share count w 24 mies., $2.5B ATM ceiling aktywny — obniża FV o ~15%",
+      "Execution: zero revenue do 2027-2028, NRC license approval niepewny",
+      "Klient concentration: utrata Meta/DoD/Equinix z pipeline rozwala tezę utility-recurring"
     ],
-    "priority_action": "BUY starter 20 szt @ $72 (50% target position). Dokupić 12-16 szt przy pullback do $55-60. Rezerwa 8 szt na mega-dip <$50."
+    "priority_action": "Limit order $58 na 40% pozycji (60 dni), $48 na 35% (90 dni), 25% rezerwa na news-driven dip"
   },
   "IONQ": {
     "name": "IonQ",
