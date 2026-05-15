@@ -1657,13 +1657,18 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
-    # Scroll to top once per session — before any columns, height=1 avoids layout issues
+    # One-time JS on session start: scroll to top + block Streamlit's 'C' cache shortcut
     if "scroll_reset" not in st.session_state:
         st.session_state["scroll_reset"] = True
-        components.html(
-            '<script>setTimeout(function(){window.parent.scrollTo({top:0,behavior:"instant"});},300);</script>',
-            height=1
-        )
+        components.html("""<script>
+var p = window.parent;
+setTimeout(function(){ p.scrollTo({top:0,behavior:"instant"}); }, 300);
+p.document.addEventListener('keydown', function(e){
+    if(e.key.toLowerCase()==='c' && (e.metaKey||e.ctrlKey)){
+        e.stopImmediatePropagation();
+    }
+}, true);
+</script>""", height=1)
 
     df, demo = load_portfolio()
     fx        = get_fx()
