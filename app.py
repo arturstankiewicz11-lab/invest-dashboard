@@ -1657,11 +1657,11 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 def main():
-    # Scroll to top once per session — placed before any columns to avoid layout disruption
+    # Scroll to top once per session — before any columns, height=1 avoids layout issues
     if "scroll_reset" not in st.session_state:
         st.session_state["scroll_reset"] = True
         components.html(
-            '<script>window.parent.scrollTo({top:0,behavior:"instant"});</script>',
+            '<script>setTimeout(function(){window.parent.scrollTo({top:0,behavior:"instant"});},300);</script>',
             height=1
         )
 
