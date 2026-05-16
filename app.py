@@ -375,35 +375,54 @@ def load_portfolio():
 
 @st.cache_data(ttl=300)
 def get_live_prices(tickers: tuple) -> dict:
-    result = {}
-    for ticker in tickers:
-        try:
-            hist = yf.Ticker(ticker).history(period="10d")
-            close = hist["Close"].dropna() if not hist.empty else pd.Series(dtype=float)
-            if len(close) >= 2:
-                prev, curr = float(close.iloc[-2]), float(close.iloc[-1])
-                result[ticker] = {"price": curr, "change_pct": (curr - prev) / prev * 100}
-            elif len(close) == 1:
-                result[ticker] = {"price": float(close.iloc[0]), "change_pct": 0.0}
-            else:
-                result[ticker] = {"price": None, "change_pct": None}
-        except Exception:
-            result[ticker] = {"price": None, "change_pct": None}
+    result = {t: {"price": None, "change_pct": None} for t in tickers}
+    if not tickers:
+        return result
+    try:
+        raw = yf.download(list(tickers), period="10d", auto_adjust=True,
+                          progress=False, threads=True)
+        # MultiIndex when >1 ticker; flat DataFrame for single ticker string
+        if isinstance(raw.columns, pd.MultiIndex):
+            close_df = raw["Close"]
+        else:
+            close_df = raw[["Close"]].rename(columns={"Close": tickers[0]})
+        for ticker in tickers:
+            try:
+                close = close_df[ticker].dropna() if ticker in close_df.columns else pd.Series(dtype=float)
+                if len(close) >= 2:
+                    prev, curr = float(close.iloc[-2]), float(close.iloc[-1])
+                    result[ticker] = {"price": curr, "change_pct": (curr - prev) / prev * 100}
+                elif len(close) == 1:
+                    result[ticker] = {"price": float(close.iloc[0]), "change_pct": 0.0}
+            except Exception:
+                pass
+    except Exception:
+        pass
+    # NaN guard
+    for t, p in result.items():
+        if isinstance(p["price"], float) and math.isnan(p["price"]):
+            result[t]["price"] = None
+        if isinstance(p.get("change_pct"), float) and math.isnan(p["change_pct"]):
+            result[t]["change_pct"] = None
     return result
 
 @st.cache_data(ttl=1800)
 def get_fx() -> dict:
-    rates = {"PLN": 1.0}
+    rates  = {"PLN": 1.0}
     fallback = {"USD": 3.63, "EUR": 4.25, "HKD": 0.46, "GBP": 4.90}
-    for ccy, sym in {"USD": "USDPLN=X", "EUR": "EURPLN=X", "HKD": "HKDPLN=X", "GBP": "GBPPLN=X"}.items():
-        try:
-            hist = yf.Ticker(sym).history(period="5d")
-            if not hist.empty:
-                rates[ccy] = float(hist["Close"].iloc[-1])
-            else:
+    symbols  = {"USD": "USDPLN=X", "EUR": "EURPLN=X", "HKD": "HKDPLN=X", "GBP": "GBPPLN=X"}
+    try:
+        raw = yf.download(list(symbols.values()), period="5d", auto_adjust=True,
+                          progress=False, threads=True)
+        close_df = raw["Close"] if isinstance(raw.columns, pd.MultiIndex) else raw[["Close"]]
+        for ccy, sym in symbols.items():
+            try:
+                col = close_df[sym].dropna()
+                rates[ccy] = float(col.iloc[-1]) if not col.empty else fallback[ccy]
+            except Exception:
                 rates[ccy] = fallback[ccy]
-        except Exception:
-            rates[ccy] = fallback[ccy]
+    except Exception:
+        rates.update(fallback)
     return rates
 
 @st.cache_data(ttl=3600)
