@@ -426,6 +426,17 @@ def get_fx() -> dict:
     return rates
 
 @st.cache_data(ttl=3600)
+def get_market_caps(tickers: tuple) -> dict:
+    result = {}
+    for t in tickers:
+        try:
+            mc = yf.Ticker(t).fast_info.market_cap
+            result[t] = mc if mc and not math.isnan(float(mc)) else None
+        except Exception:
+            result[t] = None
+    return result
+
+@st.cache_data(ttl=3600)
 def load_recs() -> dict:
     try:
         with open("data/recommendations.json", encoding="utf-8") as f:
@@ -468,6 +479,13 @@ def fmt_m(v):
     if abs(v) >= 1_000_000: return f"${v/1_000_000:.1f}T"
     if abs(v) >= 1_000:     return f"${v/1_000:.1f}B"
     return f"${v:.0f}M"
+
+def fmt_cap(v):
+    if v is None or (isinstance(v, float) and math.isnan(v)): return "—"
+    if v >= 1_000_000_000_000: return f"${v/1_000_000_000_000:.2f}T"
+    if v >= 1_000_000_000:     return f"${v/1_000_000_000:.1f}B"
+    if v >= 1_000_000:         return f"${v/1_000_000:.0f}M"
+    return f"${v:.0f}"
 
 def fmt_pct(v):
     if v is None or (isinstance(v, float) and math.isnan(v)): return "—"
@@ -821,7 +839,7 @@ def tab_actions(rec: dict, row, prices: dict):
             st.markdown('<div style="color:#475569;font-size:13px;padding:20px 0">Brak wydarzeń do wyświetlenia.</div>', unsafe_allow_html=True)
 
 # ─── PAGE: OVERVIEW ───────────────────────────────────────────────────────────
-def page_overview(pos, demo):
+def page_overview(pos, demo, mkt_cap=None):
     if demo:
         st.markdown("""<div class="demo-banner">
         ⚙️ <b>Tryb demo</b> — live ceny i rekomendacje są aktywne.
@@ -912,11 +930,13 @@ def page_overview(pos, demo):
         else:
             exit_s = '<span class="t-neu">—</span>'
 
+        mc_val = (mkt_cap or {}).get(r['Ticker'])
+        mc_s   = f'<span style="color:#64748b;font-size:10px">{fmt_cap(mc_val)}</span>' if mc_val else '<span class="t-neu">—</span>'
         rows_html += f"""<tr class="{row_cls}">
             <td><span class="t-ticker">{r['Ticker']}</span></td>
             <td><span class="t-name">{r['Nazwa']}</span></td>
             <td>{qty_s}</td><td>{avg_s}</td>
-            <td>{price_s}</td><td>{chg_s}</td>
+            <td>{price_s}</td><td>{chg_s}</td><td>{mc_s}</td>
             <td>{val_s}</td><td style="white-space:normal;line-height:1.4">{pnl_combined}</td>
             <td>{entry_s}</td><td>{fv_s}</td><td>{up_s}</td>
             <td style="max-width:140px;white-space:normal;line-height:1.4">{exit_s}</td>
@@ -928,7 +948,7 @@ def page_overview(pos, demo):
     <table class="pos-table">
         <thead><tr>
             <th>Ticker</th><th>Nazwa</th><th>Szt.</th><th>Śr. cena</th>
-            <th>Cena</th><th>Dzień%</th>
+            <th>Cena</th><th>Dzień%</th><th>Mkt Cap</th>
             <th>Wartość</th><th>P&amp;L</th>
             <th>Entry</th><th>FV</th><th>Upside</th>
             <th>Wyjście</th><th>Rec</th>
@@ -1580,7 +1600,7 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                 placeholder.error(f"Błąd: {e}")
 
 # ─── PAGE: WATCHLISTA ────────────────────────────────────────────────────────
-def page_watchlist(watchlist, prices, recs, pos, labels, keys):
+def page_watchlist(watchlist, prices, recs, pos, labels, keys, mkt_cap=None):
     total = sum(len(v) for v in watchlist.values())
     active_sectors = len([s for s in watchlist if watchlist[s]])
 
@@ -1631,8 +1651,10 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
             upside = (fv - price) / price * 100 if fv and price else rec_d.get("upside_pct")
             in_port = not pos[pos["Ticker"] == t].empty
 
+            mc_val  = (mkt_cap or {}).get(t)
             price_s = f'<span class="t-price">{price:.2f}</span> <span class="t-ccy">{fv_c}</span>' if price else '<span class="t-neu">—</span>'
             chg_s   = f'<span class="{pclass(chg)}">{fmt_pct(chg)}</span>' if chg is not None else '<span class="t-neu">—</span>'
+            mc_s    = f'<span style="color:#64748b;font-size:10px">{fmt_cap(mc_val)}</span>' if mc_val else '<span class="t-neu">—</span>'
             fv_s    = f'<span class="t-fv">{fv:.0f} <span class="t-ccy">{fv_c}</span></span>' if fv else '<span class="t-neu">—</span>'
             ep_s    = f'<span style="color:#10b981;font-weight:600">{ep:.0f}</span> <span class="t-ccy">{fv_c}</span>' if ep else '<span class="t-neu">—</span>'
             up_s    = f'<span class="{pclass(upside)}">{fmt_pct(upside)}</span>' if upside is not None else '<span class="t-neu">—</span>'
@@ -1641,7 +1663,7 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
             rows_html += f"""<tr>
                 <td><span class="t-ticker">{_e(t)}</span>{port_tag}</td>
                 <td><span class="t-name" style="max-width:130px">{_e(name)}</span></td>
-                <td>{price_s}</td><td>{chg_s}</td><td>{fv_s}</td>
+                <td>{price_s}</td><td>{chg_s}</td><td>{mc_s}</td><td>{fv_s}</td>
                 <td>{ep_s}</td><td>{up_s}</td><td>{badge}</td>
                 <td style="max-width:180px;white-space:normal;font-size:11px;color:#64748b">{_e(note)}</td>
                 <td style="color:#475569;font-size:10px">{_e(added)}</td>
@@ -1651,7 +1673,7 @@ def page_watchlist(watchlist, prices, recs, pos, labels, keys):
         <div class="pos-table-wrap">
         <table class="pos-table">
             <thead><tr>
-                <th>Ticker</th><th>Nazwa</th><th>Cena</th><th>Dzień%</th>
+                <th>Ticker</th><th>Nazwa</th><th>Cena</th><th>Dzień%</th><th>Mkt Cap</th>
                 <th>FV</th><th>Entry</th><th>Upside</th><th>Rec</th>
                 <th>Notatka</th><th>Dodano</th>
             </tr></thead>
@@ -1697,8 +1719,9 @@ p.document.addEventListener('keydown', function(e){
     # Collect all tickers: portfolio + recs + watchlist
     wl_tickers = {s["ticker"] for stocks in watchlist.values() for s in stocks}
     all_tickers = list(set(df["Ticker"].tolist()) | set(recs.keys()) | wl_tickers)
-    prices = get_live_prices(tuple(all_tickers))
-    pos    = build_positions(df, prices, fx, recs)
+    prices  = get_live_prices(tuple(all_tickers))
+    mkt_cap = get_market_caps(tuple(all_tickers))
+    pos     = build_positions(df, prices, fx, recs)
 
     # ── Top navigation bar
     nav_col, fx_col = st.columns([3, 1])
@@ -1745,6 +1768,7 @@ p.document.addEventListener('keydown', function(e){
             load_portfolio.clear()
             get_live_prices.clear()
             get_fx.clear()
+            get_market_caps.clear()
             load_recs.clear()
             load_watchlist.clear()
             st.rerun()
@@ -1753,10 +1777,10 @@ p.document.addEventListener('keydown', function(e){
                 unsafe_allow_html=True)
 
     if page_key == "__overview__":
-        page_overview(pos, demo)
+        page_overview(pos, demo, mkt_cap)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
     elif page_key == "__watchlist__":
-        page_watchlist(watchlist, prices, recs, pos, labels, keys)
+        page_watchlist(watchlist, prices, recs, pos, labels, keys, mkt_cap)
         render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=watchlist)
     else:
         page_detail(page_key, pos, prices)
