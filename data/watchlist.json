@@ -11,12 +11,6 @@
   "AI": [],
   "Energy": [
     {
-      "ticker": "LEU",
-      "name": "Centrus Energy",
-      "note": "Jedyny US enrichmer HALEU z aktywną NRC license. $1.87B cash, $3.8B backlog, $900M DOE contract. Wide moat — 4-5 lat przewagi nad General Matter. AI hyperscalers (Amazon/Google) = nowy popyt poza government.",
-      "added": "2026-05-14"
-    },
-    {
       "ticker": "CCJ",
       "name": "Cameco Corporation",
       "note": "Tier-1 uranium miner (Cigar Lake) + 49% Westinghouse stake = optionality na AP300 SMR. Świetna spółka, ale drogo: cena $122 vs FV $80 (-34%). Watch dla pullbacku do $90.",
@@ -27,6 +21,12 @@
       "name": "Oklo Inc.",
       "note": "Vertically integrated nuclear utility — Aurora SMR (sodium fast reactor, HALEU). 14 GW customer pipeline (Meta 1.2GW, F-35 Eielson, Equinix 500MW, NVIDIA partnership). Build-own-operate PPA model = utility-like recurring revenue. 20-letni reload cycle = wysokie capacity factor >95% i niższy LCOE $40-60/MWh. Pre-revenue do 2028, ale Atomic Alchemy isotopes może dać first revenue już 2026.",
       "added": "2026-05-14"
+    },
+    {
+      "ticker": "FRMI",
+      "name": "Fermi Energy",
+      "note": "Sprzedane. Re-entry jeśli spadnie do $5-6. AI power campus REIT, grid-independent HPC. Teza: czekaj na potwierdzenie kontraktów AI przed ponownym wejściem.",
+      "added": "2026-05-16"
     }
   ],
   "Quantum": [
