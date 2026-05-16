@@ -292,6 +292,7 @@ ETF_MAP = {
     "SXRV": "SXRV.DE", "SECO": "SEMI.L", "2B76": "2B76.DE",
     "2B78": "2B78.DE", "SXR8": "SXR8.DE", "IS3N": "IS3N.DE", "EUNA": "EUNA.DE",
     "ETL": "ETL.PA", "RHM": "RHM.DE", "PZU": "PZU.WA",
+    "ORA": "ORA.PA",
     "BTC": "BTC-USD", "ETH": "ETH-USD", "700": "0700.HK",
 }
 CCY_MAP = {
