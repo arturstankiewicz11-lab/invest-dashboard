@@ -1700,6 +1700,18 @@ p.document.addEventListener('keydown', function(e){
     prices = get_live_prices(tuple(all_tickers))
     pos    = build_positions(df, prices, fx, recs)
 
+    # ── Cat in the corner 🐱
+    st.markdown("""
+    <div style="position:fixed;top:14px;right:18px;z-index:9999;
+                border-radius:50%;overflow:hidden;width:56px;height:56px;
+                box-shadow:0 2px 16px rgba(0,0,0,0.5);
+                border:2px solid rgba(0,217,163,0.35);
+                cursor:default" title="🐱">
+        <img src="https://cataas.com/cat?width=56&height=56"
+             style="width:56px;height:56px;object-fit:cover;display:block"
+             onerror="this.style.display='none'">
+    </div>""", unsafe_allow_html=True)
+
     # ── Top navigation bar
     nav_col, fx_col = st.columns([3, 1])
 
