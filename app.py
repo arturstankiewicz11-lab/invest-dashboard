@@ -1752,18 +1752,6 @@ p.document.addEventListener('keydown', function(e){
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
 
-    # 🐶 Golden retriever
-    st.markdown("""
-    <div style="display:flex;justify-content:center;margin-bottom:28px">
-        <div style="border-radius:20px;overflow:hidden;width:320px;height:220px;
-                    box-shadow:0 8px 32px rgba(0,0,0,0.5);
-                    border:2px solid rgba(0,217,163,0.25)">
-            <img src="https://loremflickr.com/320/220/golden-retriever"
-                 style="width:320px;height:220px;object-fit:cover;display:block"
-                 onerror="this.parentElement.style.display='none'">
-        </div>
-    </div>""", unsafe_allow_html=True)
-
     if page_key == "__overview__":
         page_overview(pos, demo)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
