@@ -444,11 +444,11 @@
     "recommendation": "SELL",
     "fair_value": 3.5,
     "fair_value_currency": "USD",
-    "entry_point": 0,
+    "entry_point": 5.0,
     "upside_pct": null,
     "thesis_short": "Governance disaster + spekulacyjny short squeeze — wykorzystać rally do exit z zyskiem.",
     "thesis_full": "Fermi America to spekulacja bez fundamentów: $0 revenue, brak klientów, brak NRC license, pierwsza nuclear MW dopiero 2032+. Governance collapse w kwietniu 2026: CEO Neugebauer zwolniony 'for cause' 30/04, CFO Everson rezygnacja 19/04, co-founder pozywa firmę żądając Special Meeting, board zmienia bylaws mid-fight (14/05). Wzrost +25% 14 maja to klasyczny short squeeze (14.8% SI) + M&A speculation na 'fired CEO pushing for sale'. Base case retrace do $5 w 30 dni, $3 w 90 dni (analogie WeWork/Lordstown/Nikola). Wycena $400M/GW pipeline vs OKLO $700M/GW na podpisanych klientach = mispricing w niewłaściwą stronę. Wyjść z zyskiem +9% póki squeeze trwa.",
-    "thesis_breaker": "Thesis już złamana — corporate governance collapse + brak revenue + brak klientów. Exit 100% na squeeze rally.",
+    "thesis_breaker": "Brak kontraktów z klientami AI powyżej $10M do Q4 2026 — nie wchodź ponownie.",
     "risks": [
       "Governance chaos blokuje signing hyperscalerów na 12-18 mies",
       "Pozew Neugebauer może wymusić Special Meeting i forced sale at depressed valuation",
@@ -457,7 +457,7 @@
     "buffett_moat": "none — 5800 akrów ziemi w Texas to nie moat. Brak technologii, brak regulacyjnego barrieru, brak klientów. Każdy PE fund z $1B może zbudować to samo.",
     "last_updated": "2026-05-15",
     "next_earnings": null,
-    "priority_action": "SELL 400 szt @ limit $7.20+ na otwarciu 15 maja. Realokacja: $1500 → LEU (8 szt), $700 → OKLO (10 szt), $748 dry powder na LEU transza #2 @ $170.",
+    "priority_action": "SELL — realizuj zysk. Re-entry BUY przy $5.00 (governance/spekulacja się wyczyści, fundamenty power campus nadal aktualne).",
     "events": [
       {
         "date": "2026-05-15",
