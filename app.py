@@ -1741,6 +1741,13 @@ p.document.addEventListener('keydown', function(e){
             HKD/PLN <span style="color:#94a3b8;float:right">{fx.get('HKD',0):.3f}</span>
         </div>
         """, unsafe_allow_html=True)
+        if st.button("🔄 Odśwież dane", use_container_width=True, key="btn_refresh"):
+            load_portfolio.clear()
+            get_live_prices.clear()
+            get_fx.clear()
+            load_recs.clear()
+            load_watchlist.clear()
+            st.rerun()
 
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
