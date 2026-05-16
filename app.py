@@ -1700,18 +1700,6 @@ p.document.addEventListener('keydown', function(e){
     prices = get_live_prices(tuple(all_tickers))
     pos    = build_positions(df, prices, fx, recs)
 
-    # ── Cat in the corner 🐱
-    st.markdown("""
-    <div style="position:fixed;top:14px;right:18px;z-index:9999;
-                border-radius:50%;overflow:hidden;width:56px;height:56px;
-                box-shadow:0 2px 16px rgba(0,0,0,0.5);
-                border:2px solid rgba(0,217,163,0.35);
-                cursor:default" title="🐱">
-        <img src="https://cataas.com/cat?width=56&height=56"
-             style="width:56px;height:56px;object-fit:cover;display:block"
-             onerror="this.style.display='none'">
-    </div>""", unsafe_allow_html=True)
-
     # ── Top navigation bar
     nav_col, fx_col = st.columns([3, 1])
 
@@ -1756,6 +1744,18 @@ p.document.addEventListener('keydown', function(e){
 
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
+
+    # 🐶 Golden retriever
+    st.markdown("""
+    <div style="display:flex;justify-content:center;margin-bottom:28px">
+        <div style="border-radius:20px;overflow:hidden;width:320px;height:220px;
+                    box-shadow:0 8px 32px rgba(0,0,0,0.5);
+                    border:2px solid rgba(0,217,163,0.25)">
+            <img src="https://loremflickr.com/320/220/golden-retriever"
+                 style="width:320px;height:220px;object-fit:cover;display:block"
+                 onerror="this.parentElement.style.display='none'">
+        </div>
+    </div>""", unsafe_allow_html=True)
 
     if page_key == "__overview__":
         page_overview(pos, demo)
