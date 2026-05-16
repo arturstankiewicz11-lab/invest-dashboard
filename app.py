@@ -508,10 +508,10 @@ def build_positions(df, prices, fx, recs):
         if isinstance(price, float) and math.isnan(price): price = None
         if isinstance(chg,   float) and math.isnan(chg):   chg   = None
         rate = fx.get(ccy, 1.0); rec = recs.get(t, {}); fv = rec.get("fair_value")
-        cur_val = price * qty * rate if price and qty else None
-        cost    = avg * qty * rate   if avg and qty else None
+        cur_val = price * qty * rate if price is not None and qty else None
+        cost    = avg * qty * rate   if avg is not None and qty else None  # avg=0 valid (free shares)
         pnl     = (cur_val - cost)   if cur_val is not None and cost is not None else None
-        pnl_pct = pnl / cost * 100   if pnl is not None and cost and cost != 0 else None
+        pnl_pct = pnl / cost * 100   if pnl is not None and cost else None  # cost=0 → pnl_pct=None (∞)
         upside  = (fv - price) / price * 100 if fv and price else rec.get("upside_pct")
         rows.append({
             "Ticker": t, "Nazwa": r["Nazwa"], "Cena": price, "Waluta": ccy,
