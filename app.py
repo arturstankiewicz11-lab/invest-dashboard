@@ -847,11 +847,13 @@ def page_overview(pos, demo, mkt_cap=None):
         Skonfiguruj Google Sheets ze swoimi pozycjami żeby zobaczyć P&L.
         </div>""", unsafe_allow_html=True)
 
-    total_val  = pos["Val_PLN"].dropna().sum() or None
-    total_cost = pos["Cost_PLN"].dropna().sum() or None
-    total_pnl  = pos["PnL_PLN"].dropna().sum() or None
-    pnl_pct    = (total_pnl / total_cost * 100) if total_pnl and total_cost else None
-    n_pos      = len(pos)
+    # Only include positions where we have a live price (Val_PLN not None)
+    priced      = pos[pos["Val_PLN"].notna()]
+    total_val   = priced["Val_PLN"].sum()  or None
+    total_cost  = priced["Cost_PLN"].sum() or None
+    total_pnl   = priced["PnL_PLN"].sum()  or None
+    pnl_pct     = (total_pnl / total_cost * 100) if total_pnl is not None and total_cost else None
+    n_pos       = len(pos)
 
     st.markdown(f"""
     <div class="kpi-grid">
