@@ -1779,6 +1779,43 @@ p.document.addEventListener('keydown', function(e){
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
 
+    # ── Price alerts: BUY when price <= entry_point
+    alerts = []
+    for t, rec in recs.items():
+        ep  = rec.get("entry_point")
+        p   = prices.get(t, {}).get("price")
+        r   = rec.get("recommendation", "")
+        if ep and p and r == "BUY" and p <= ep:
+            fv  = rec.get("fair_value")
+            fv_c = rec.get("fair_value_currency", "USD")
+            upside = (fv - p) / p * 100 if fv and p else None
+            alerts.append((t, rec.get("name", t), p, ep, upside, fv, fv_c))
+
+    if alerts:
+        html = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">'
+        for t, name, p, ep, upside, fv, fv_c in alerts:
+            up_s = f"+{upside:.0f}%" if upside else ""
+            html += f"""
+            <div style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.5);
+                        border-radius:14px;padding:16px 20px;
+                        display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+                <div style="font-size:28px">🚨</div>
+                <div style="flex:1;min-width:200px">
+                    <div style="font-size:16px;font-weight:800;color:#10b981;letter-spacing:-0.3px">
+                        KUPUJ {t} — {name}
+                    </div>
+                    <div style="font-size:12px;color:#94a3b8;margin-top:3px">
+                        Cena <b style="color:#f1f5f9">{p:.2f} {fv_c}</b> ≤ Entry <b style="color:#10b981">{ep:.0f} {fv_c}</b>
+                        {"&nbsp;·&nbsp;FV <b style='color:#00d9a3'>" + str(fv) + " " + fv_c + "</b> &nbsp;<b style='color:#10b981'>" + up_s + "</b>" if fv else ""}
+                    </div>
+                </div>
+                <div style="font-size:11px;color:#475569;text-align:right">
+                    Strefa zakupu<br>z margin of safety
+                </div>
+            </div>"""
+        html += '</div>'
+        st.markdown(html, unsafe_allow_html=True)
+
     if page_key == "__overview__":
         page_overview(pos, demo, mkt_cap)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
