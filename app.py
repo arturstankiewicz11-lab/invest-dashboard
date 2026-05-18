@@ -1526,6 +1526,7 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                 PRICE_OUT = 75.0 / 1_000_000
                 total_in = total_out = 0
 
+                answered = False
                 for _ in range(8):
                     placeholder.markdown("🔍 Analizuję...")
                     response = None
@@ -1546,6 +1547,7 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                             else:
                                 raise
                     if response is None:
+                        placeholder.error("❌ Serwer nie odpowiedział po 3 próbach. Spróbuj ponownie.")
                         break
 
                     total_in  += getattr(response.usage, "input_tokens",  0)
@@ -1585,6 +1587,8 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                         messages.append({"role": "user", "content": tool_results})
                     else:
                         answer = next((b.text for b in response.content if hasattr(b, "text")), "")
+                        if not answer:
+                            answer = "✅ Gotowe."
                         cost = total_in * PRICE_IN + total_out * PRICE_OUT
                         usage_line = (
                             f'\n\n<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);'
@@ -1597,10 +1601,14 @@ def render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=None):
                         placeholder.markdown(answer + usage_line, unsafe_allow_html=True)
                         msgs.append({"role": "assistant", "content": answer})
                         save_chat_history(msgs, gh_token, gh_gist, context)
+                        answered = True
                         break
 
+                if not answered and response is not None:
+                    placeholder.error("❌ Asystent nie zwrócił odpowiedzi tekstowej. Spróbuj inaczej sformułować pytanie.")
+
             except Exception as e:
-                placeholder.error(f"Błąd: {e}")
+                placeholder.error(f"❌ Błąd: {e}")
 
 # ─── PAGE: WATCHLISTA ────────────────────────────────────────────────────────
 def page_watchlist(watchlist, prices, recs, pos, labels, keys, mkt_cap=None):
