@@ -8,7 +8,14 @@
     }
   ],
   "Defence": [],
-  "AI": [],
+  "AI": [
+    {
+      "ticker": "GOOG",
+      "name": "Alphabet Inc. Class C",
+      "note": "Class C bez głosów — ekonomicznie identyczne do GOOGL, ale lepsza liquidity i często niższa cena. Founder-controlled przez Class B (Page/Brin), więc głosy GOOGL bezwartościowe. Thesis AI: Gemini + TPU stack + Waymo + YouTube cash machine. Defensywny anchor w AI bucket, nie moonshot 10x.",
+      "added": "2026-05-18"
+    }
+  ],
   "Energy": [
     {
       "ticker": "CCJ",
