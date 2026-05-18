@@ -649,6 +649,12 @@
   "OKLO": {
     "events": [
       {
+        "date": "2026-05-18",
+        "event": "18 maj 2026: Rewizja FV $115→$90 po Goldman PT cut ($91→$65) i Q1 2026 miss (loss $33M vs cons $29M). Entry obniżony $58→$52. Rajd kwi-maj ($45→$80) napędzony space nuclear mandate + short squeeze 16.45% float + DeWitte federal appointment — 80% sentyment, 20% fundamentals. Sell-off post-Q1 to powrót do bazy. Strategia 3-transzowa: $52/$45/$38. Altman exit z Chairman (kwi 2025) odblokowuje OpenAI PPA (oczekiwany 6-12 mies) — główny near-term catalyst.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      },
+      {
         "date": "2026-05-15",
         "event": "Rewizja FV z $134 → $115 pod kątem dilution (+132% share count od SPAC, $2.5B ATM aktywne). Altman exit z Chairman (kwi 2025) bullish — odblokowuje OpenAI PPA. Entry point $58 (MoS ~50%). Plan 3-transzowy: $58/$48/rezerwa.",
         "impact": "neutral",
@@ -662,21 +668,21 @@
       }
     ],
     "recommendation": "BUY",
-    "last_updated": "2026-05-15",
+    "last_updated": "2026-05-18",
     "name": "Oklo Inc.",
-    "fair_value": 115,
+    "fair_value": 90,
     "fair_value_currency": "USD",
-    "entry_point": 58,
-    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta/DoD/Equinix) — utility-like recurring revenue 20+ lat PPA. FV adj. za dilution: $115.",
-    "thesis_full": "Oklo to vertically integrated nuclear utility z 14 GW pipeline (Meta, DoD, Equinix) i modelem utility-like recurring revenue na 20+ lat PPA. Pierwszy reaktor Aurora-INL planowany na 2027-2028, NRC license approval oczekiwany H2 2026. Altman ustąpił z funkcji Chairman (kwiecień 2025) aby umożliwić OpenAI negocjowanie PPA z Oklo — interpretacja bullish, governance cleanup pod institutional investors. Główne ryzyko: brutalne rozwodnienie (+132% share count w 24 miesiące, $2.5B ATM programs aktywne) — FV obniżone z $134 do $115 pod kątem dilution. Entry $58 daje MoS ~50%.",
-    "thesis_breaker": "Kolejne $1B+ ATM offering bez podpisanego PPA LUB utrata któregokolwiek z top-3 klientów pipeline (Meta/DoD/Equinix) LUB NRC odrzuca licencję Aurora-INL.",
-    "buffett_moat": "Narrow — first-mover w fast-reactor SMR z NRC pipeline + vertical integration (build-own-operate) tworzy switching costs po podpisaniu 20-letnich PPA. Brak revenue do 2027-2028 ogranicza ocenę moat.",
+    "entry_point": 52,
+    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta/DoD/Equinix) — po sell-offie post-Q1 entry $52 daje 42% MoS do blended FV $90.",
+    "thesis_full": "Oklo to vertically integrated nuclear utility (build-own-operate) z Aurora fast-fission reactor (1.5-15 MW) — jedyny komercyjnie zaawansowany US design pasujący do space nuclear mandate (White House, kwiecień 2026) oraz AI data center PPA. Pipeline 14 GW z Meta, DoD, Equinix daje utility-like recurring revenue 20+ lat. Altman ustąpił z Chairman w kwi 2025 by odblokować OpenAI-Oklo PPA (oczekiwany 6-12 mies). KRYTYCZNE RYZYKA: (1) dilution — share count wzrósł +132% w 24 mies (75M → 174M), $2.5B ATM uprawnień nadal aktywne, (2) zero revenue do 2027-2028, Q1 2026 strata $33M, (3) Goldman PT cut $91→$65 (18 maj 2026) sygnalizuje sell-side reversal. Blended FV $90 = średnia Goldman base ($65 NPV near-term) i bull case ($115 z pipeline option value). Strategia: 3 transze ($52/$45/$38) — kupować w panice po fundamentach, nie w euforii sentymentu.",
+    "thesis_breaker": "(1) Kolejny analyst PT cut <$50 z fundamentalnym uzasadnieniem (nie technicznym), (2) Trzeci ATM program ($1B+) przed signed PPA, (3) Utrata Meta/DoD/Equinix z 14 GW pipeline, (4) NRC rejection lub material delay Aurora-INL license.",
+    "buffett_moat": "Narrow-to-wide (forming): vertically integrated model (build-own-operate) + HALEU fuel recycling tworzą switching costs dla utility clients; NRC license + DOE pilot selection (sie 2025) to regulatory moat; ale brak revenue track record i high dilution obniżają jakość moat'u. CEO DeWitte w federalnym komitecie doradczym = regulatory insider access.",
     "risks": [
-      "Dilution: +132% share count w 24 mies., $2.5B ATM ceiling aktywny — obniża FV o ~15%",
-      "Execution: zero revenue do 2027-2028, NRC license approval niepewny",
-      "Klient concentration: utrata Meta/DoD/Equinix z pipeline rozwala tezę utility-recurring"
+      "Dilution risk — +132% share count w 24m, $2.5B ATM aktywne (obniża FV o ~20%)",
+      "Zero revenue do 2027-2028, burn rate $51M/Q rośnie — execution timeline slip",
+      "Sentiment-driven volatility ±50% w 4 tyg (rajd kwi $45→$80, sell-off maj $80→$58) — no fundamentals anchor"
     ],
-    "priority_action": "Limit order $58 na 40% pozycji (60 dni), $48 na 35% (90 dni), 25% rezerwa na news-driven dip"
+    "priority_action": "Limit order $52 na 40% pozycji (90 dni). Tranche 2 @ $45, Tranche 3 @ $38. NIE gonić rajdów >$70."
   },
   "IONQ": {
     "name": "IonQ",
