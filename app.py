@@ -1791,6 +1791,45 @@ p.document.addEventListener('keydown', function(e){
             upside = (fv - p) / p * 100 if fv and p else None
             alerts.append((t, rec.get("name", t), p, ep, upside, fv, fv_c))
 
+    # ── DCF stale (>90 days) and upcoming earnings alerts
+    today = datetime.now().date()
+    dcf_stale, earnings_due = [], []
+    for t, rec in recs.items():
+        lu = rec.get("last_updated")
+        ne = rec.get("next_earnings")
+        if lu:
+            try:
+                days_old = (today - datetime.strptime(lu, "%Y-%m-%d").date()).days
+                if days_old > 90:
+                    dcf_stale.append((t, rec.get("name", t), days_old))
+            except Exception:
+                pass
+        if ne:
+            try:
+                days_to = (datetime.strptime(ne, "%Y-%m-%d").date() - today).days
+                if 0 <= days_to <= 14:
+                    earnings_due.append((t, rec.get("name", t), ne, days_to))
+            except Exception:
+                pass
+
+    reminders_html = ""
+    for t, name, days in dcf_stale:
+        reminders_html += f"""<div style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.25);
+            border-radius:10px;padding:10px 16px;font-size:12px;color:#94a3b8;display:flex;gap:10px;align-items:center">
+            <span style="font-size:16px">📅</span>
+            <span>DCF <b style="color:#fbbf24">{t}</b> — analiza sprzed <b>{days} dni</b>. Rozważ rewizję.</span>
+        </div>"""
+    for t, name, ne, days in earnings_due:
+        label = "DZIŚ" if days == 0 else f"za {days} dni"
+        reminders_html += f"""<div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.25);
+            border-radius:10px;padding:10px 16px;font-size:12px;color:#94a3b8;display:flex;gap:10px;align-items:center">
+            <span style="font-size:16px">📢</span>
+            <span>Earnings <b style="color:#818cf8">{t}</b> — {ne} ({label}). Sprawdź czy teza aktualna.</span>
+        </div>"""
+    if reminders_html:
+        st.markdown(f'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">{reminders_html}</div>',
+                    unsafe_allow_html=True)
+
     if alerts:
         html = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">'
         for t, name, p, ep, upside, fv, fv_c in alerts:
