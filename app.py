@@ -903,7 +903,7 @@ def page_overview(pos, demo, mkt_cap=None):
         st.markdown(html, unsafe_allow_html=True)
 
     st.markdown('<div class="sh">📊 Pozycje</div>', unsafe_allow_html=True)
-    df = pos.sort_values(["Instr_sort", "Rec_sort"])
+    df = pos.sort_values("Val_PLN", ascending=False, na_position="last")
     rows_html = ""
     for _, r in df.iterrows():
         rec     = r["Rec"]
