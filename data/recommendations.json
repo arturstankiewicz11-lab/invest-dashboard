@@ -738,5 +738,31 @@
         "fv_note": "Potwierdzenie bull case — growth bez precedensu w quantum. FV bez zmian ($29 bull / $16 base)."
       }
     ]
+  },
+  "GOOG": {
+    "events": [
+      {
+        "date": "2026-05-18",
+        "event": "Inicjacja BUY @ FV $470 (SOTP: Search $230 + YouTube $80 + Cloud $120 + Other Bets/cash $40). DCF: WACC 8.5%, revenue CAGR 15% do $655B w 2029, FCF margin 24%. Teza: jedyny gracz z pełną kontrolą ekonomii tokenów (TPU+Gemini+Cloud+Android+YouTube). Q1 2026 dowody: 1.3 kwadryliona tokenów/m-c, Cloud +63% YoY, $240B backlog, Anthropic deal $40B+1M TPU. Compounder AI infra, nie moonshot — target +50-80% w 3 lata.",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na BUY."
+      }
+    ],
+    "recommendation": "BUY",
+    "last_updated": "2026-05-18",
+    "name": "Alphabet Inc. Class C",
+    "fair_value": 470,
+    "fair_value_currency": "USD",
+    "entry_point": 400,
+    "thesis_short": "Jedyna firma kontrolująca pełen stack ekonomii tokenów: TPU + Gemini + Cloud + 3B Androidów + YouTube data moat.",
+    "thesis_full": "Alphabet to jedyny gracz kontrolujący KAŻDĄ warstwę ekonomii tokenów AI: własny chip (TPU Ironwood v7), własny frontier LLM (Gemini 3.1), własny cloud (GCP +63% YoY), własną dystrybucję konsumencką (3B+ Androidów, Search, YouTube, Chrome) i niereplikowalne dane treningowe (YouTube + Search + Gmail + Maps). Q1 2026: $100B+ kwartalne revenue, $240B cloud backlog, 1.3 kwadryliona tokenów/miesiąc przetwarzanych. Deal z Anthropic ($40B + 1M TPU) potwierdza że TPU bije NVDA stack na koszcie inferencji. To compounder klasy 'AI infrastructure anchor', nie 10x moonshot — realistyczny scenariusz 3 lata: +50-80%, CAGR 14-22%. Lepszy niż MSFT: tańszy (P/E 28 vs 32), szybszy growth cloud (63% vs 32%), pełna kontrola stacku vs wynajmowanie OpenAI.",
+    "thesis_breaker": "Cloud growth spada poniżej 30% YoY przez 2 kwartały z rzędu LUB DOJ wymusza divestiture Chrome/zakaz default-search deals z Apple.",
+    "buffett_moat": "WIDE — Search 90% globalny udział z network effects, YouTube monopol video + niereplikowalna baza wideo do treningu Veo, Android 3B+ urządzeń = dystrybucja Gemini out-of-the-box, TPU 10 lat przewagi R&D pionowo zintegrowane z Gemini = najniższy koszt/token w branży. Management: Pichai + Porat — exekucja klasy światowej ostatnie 12 miesięcy.",
+    "risks": [
+      "Antitrust DOJ — wymuszone divestiture Chrome lub zakaz default-search z Apple (~$20B/rok), impact -15% FV",
+      "Search cannibalization przez AI — Gemini odpowiada bezpośrednio, mniej kliknięć w reklamy, ad growth już zwalnia z +18% do +9% YoY, impact -10% FV",
+      "Capex burnout — $180B/rok FY26, jeśli AI ROI nie dostarczy w 2027 FCF margin spada z 24% do 15%, impact -20% FV"
+    ],
+    "priority_action": "Cena $394 już w strefie kupna (MoS 15% przy entry $400). Sugerowana pozycja 5-8% portfela. Źródło finansowania: rotacja z EUNA.DE (bondy) + redukcja IS3N.DE (30% China overlap z Tencent)."
   }
 }
