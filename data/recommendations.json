@@ -71,26 +71,31 @@
     ]
   },
   "ETL.PA": {
-    "name": "Eutelsat",
-    "recommendation": "BUY",
-    "fair_value": 8.0,
+    "name": "Eutelsat Communications",
+    "recommendation": "HOLD",
+    "fair_value": 3.5,
     "fair_value_currency": "EUR",
     "entry_point": 2.5,
     "upside_pct": -35,
-    "thesis_short": "EU sovereignty LEO play — IRIS² €10.6B + 340 nowych satelitów OneWeb. Peer-relative gap vs ASTS ($29B mcap) ekstremalny.",
-    "thesis_full": "Eutelsat po fuzji z OneWeb miał być europejskim Starlinkiem. Nie jest. SpaceX ma 10 000+ satelitów vs 630 LEO Eutelsatu. Rekapitalizacja państwowa €1.5B = dilucja akcjonariuszy. Dług netto €1.3B mimo dofinansowania. Średni analyst target (€2.40) jest PONIŻEJ aktualnej ceny €2.79. Brak moat.",
-    "thesis_breaker": "N/A — rekomendujemy sprzedaż.",
+    "thesis_short": "EU sovereignty LEO play z wyhamowującym revenue — teza wymaga IRIS² revenue od 2027 żeby się obronić.",
+    "thesis_full": "Rewizja po porządnej analizie YoY Q3 FY26: Operating Verticals -5.6% YoY (nie +3% jak sugerował LFL). Government Services tylko +1% YoY (vs +8% w Q1 — wyhamowanie), Fixed Connectivity +1% YoY (Starlink wygryza), Video -15.6% YoY (sankcje na rosyjskie kanały). Jedynie Mobile/Aero +13% YoY trzyma momentum. Probability-weighted FV €3.20 (Bear 30%: €0.75, Base 50%: €3.50, Bull 20%: €7.00). Cena €3.02 ≈ fair value — brak margin of safety. Teza BUY wymaga: (1) IRIS² revenue ramping od 2027, (2) Government Services powrót do +8% growth, (3) Fixed stabilizacja vs Starlink. Do FY26 results (7 sierpnia 2026) — czekaj.",
+    "thesis_breaker": "Sprzedaj jeśli: (1) FY26 results pokażą Operating Verticals -8% lub gorzej YoY, (2) IRIS² revenue guidance opóźniony poza 2027, (3) Starlink wygrywa kontrakt defense w UE, (4) emisja akcji >20% dilucji ponad obecne shares outstanding.",
     "risks": [
-      "Dominacja Starlink",
-      "Dług €1.3B",
-      "Zależność od państwa",
-      "Dalsze dilucje"
+      "Starlink price competition eroduje Fixed/Enterprise (-30% prices) — obniża FV o ~25%",
+      "Capex €4B+ na OneWeb gen2 + IRIS² wymaga dalszej dilucji akcji — FV -20%",
+      "IRIS² execution risk i opóźnienia poza 2027 — niweczy bull case, FV -40%"
     ],
-    "buffett_moat": "None",
-    "last_updated": "2026-05-14",
+    "buffett_moat": "Narrow — jedyny EU LEO operator daje strukturalny moat regulacyjny (EU sovereignty), ale konkurencja Starlink eroduje moat ekonomiczny w Fixed/Enterprise. Brak pricing power widoczny w wyhamowaniu segmentów Q1→Q3.",
+    "last_updated": "2026-05-19",
     "next_earnings": null,
-    "priority_action": "Trzymaj pozycję, dokupuj do €3.50. Monitoruj IRIS² milestones i ewentualną emisję akcji.",
+    "priority_action": "Trzymaj 6 501 akcji, NIE dokupuj. Czekaj na FY26 results 7 sierpnia 2026 — verdict na IRIS² revenue trajectory.",
     "events": [
+      {
+        "date": "2026-05-19",
+        "event": "DOWNGRADE BUY→HOLD, FV €8→€3.50. Rewizja po porządnej analizie YoY Q3 FY26: Operating Verticals -5.6% YoY, Government +1% (vs +8% w Q1), Fixed +1% (vs +10% w Q1) — dramatyczne wyhamowanie. Tylko Mobile +13% trzyma momentum. Poprzedni FV €8 oparty na confabulated DCF — uczciwy blended FV €3.20. Cena ≈ FV, brak margin of safety. Czekaj na FY26 results (7 sierpnia 2026).",
+        "impact": "neutral",
+        "fv_note": "Rekomendacja zmieniona na HOLD."
+      },
       {
         "date": "2026-05-14",
         "event": "Re-ocena tezy z SELL na BUY. Kluczowe katalizatory: (1) IRIS² kontrakt €10.6B formalnie przyznany konsorcjum SpaceRISE, (2) zamówienie 340 nowych satelitów OneWeb gen2, (3) peer-relative gap vs ASTS @ $29B mcap absurdalny przy €1.2B przychodów Eutelsat. EU sovereignty premium niedoceniony. FV podniesiony z €1.8 do €8.0 (blended DCF + peer multiple).",
