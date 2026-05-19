@@ -1745,15 +1745,23 @@ p.document.addEventListener('keydown', function(e){
 
         labels = ["📊 Overview", "👁️ Watchlista"]
         keys   = ["__overview__", "__watchlist__"]
-        for t, r in recs.items():
+        # Tabs: portfolio positions first, then watchlist-only tickers
+        port_tickers = list(pos["Ticker"]) if not pos.empty else []
+        seen = set()
+        for t in port_tickers:
+            if t in seen: continue
+            seen.add(t)
+            r = recs.get(t, {})
             emoji = REC_EMOJI.get(r.get("recommendation"), "⚪")
             labels.append(f"{emoji} {t}")
             keys.append(t)
-        # Watchlist-only tickers (not in recs)
         for t in sorted(wl_tickers):
-            if t not in keys:
-                labels.append(f"👁 {t}")
-                keys.append(t)
+            if t in seen: continue
+            seen.add(t)
+            r = recs.get(t, {})
+            emoji = REC_EMOJI.get(r.get("recommendation"), "👁")
+            labels.append(f"{emoji} {t}")
+            keys.append(t)
 
         # Apply programmatic navigation BEFORE rendering the selectbox
         if "_nav_goto" in st.session_state:
