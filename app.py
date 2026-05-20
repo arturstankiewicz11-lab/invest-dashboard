@@ -428,13 +428,24 @@ def get_fx() -> dict:
 
 @st.cache_data(ttl=3600)
 def get_market_caps(tickers: tuple) -> dict:
-    result = {}
-    for t in tickers:
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    result = {t: None for t in tickers}
+    if not tickers:
+        return result
+    def _fetch(t):
         try:
             mc = yf.Ticker(t).fast_info.market_cap
-            result[t] = mc if mc and not math.isnan(float(mc)) else None
+            return t, (mc if mc and not math.isnan(float(mc)) else None)
         except Exception:
-            result[t] = None
+            return t, None
+    with ThreadPoolExecutor(max_workers=10) as ex:
+        futures = {ex.submit(_fetch, t): t for t in tickers}
+        for fut in as_completed(futures, timeout=25):
+            try:
+                t, mc = fut.result(timeout=5)
+                result[t] = mc
+            except Exception:
+                pass
     return result
 
 @st.cache_data(ttl=3600)
@@ -461,9 +472,9 @@ def load_watchlist() -> dict:
         return {s: [] for s in WATCHLIST_SECTORS}
 
 @st.cache_data(ttl=300)
-def get_history(ticker: str, period: str) -> pd.DataFrame:
+def get_history(ticker: str, period: str, interval: str = "1d") -> pd.DataFrame:
     try:
-        return yf.Ticker(ticker).history(period=period)
+        return yf.Ticker(ticker).history(period=period, interval=interval)
     except Exception:
         return pd.DataFrame()
 
@@ -527,20 +538,26 @@ def build_positions(df, prices, fx, recs):
     return pd.DataFrame(rows)
 
 # ─── CHART ────────────────────────────────────────────────────────────────────
-def price_chart(ticker, period, entry, fv):
-    hist = get_history(ticker, period)
+def price_chart(ticker, period, entry, fv, interval="1d"):
+    hist = get_history(ticker, period, interval)
     if hist.empty: return None
-    closes = hist["Close"].astype(float)
+    closes = hist["Close"].dropna().astype(float)
+    if closes.empty: return None
+
+    y_min = closes.min(); y_max = closes.max()
+    pad   = (y_max - y_min) * 0.08 or y_min * 0.02
+    y_lo  = y_min - pad;  y_hi = y_max + pad
+
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=hist.index, y=closes, mode="lines", name="Cena",
-        line=dict(color=ACCENT, width=2.5),
-        fill="tozeroy", fillcolor="rgba(0,217,163,0.05)",
+        line=dict(color=ACCENT, width=2),
+        fill="tozeroy", fillcolor="rgba(0,217,163,0.06)",
         hovertemplate="%{x|%d %b %Y}  <b>%{y:.2f}</b><extra></extra>"
     ))
     if fv:
         fig.add_hline(y=fv, line_dash="dash", line_color="rgba(245,158,11,0.7)", line_width=1.5,
-                      annotation_text=f"Fair Value  {fv:.0f}",
+                      annotation_text=f"FV  {fv:.0f}",
                       annotation_font=dict(color="#f59e0b", size=11),
                       annotation_position="top right")
     if entry:
@@ -554,47 +571,61 @@ def price_chart(ticker, period, entry, fv):
         showlegend=False, margin=dict(l=0, r=60, t=8, b=0), height=320,
         xaxis=dict(showgrid=False, color="#334155", tickfont=dict(size=11)),
         yaxis=dict(showgrid=True, gridcolor="rgba(255,255,255,0.04)",
-                   color="#334155", tickfont=dict(size=11)),
+                   color="#334155", tickfont=dict(size=11),
+                   range=[y_lo, y_hi]),
         hovermode="x unified"
     )
     return fig
 
 # ─── DCF CALCULATOR ───────────────────────────────────────────────────────────
 def compute_dcf_stages(dcf: dict):
-    """Returns list of dicts with computed yearly FCF per stage."""
+    """Returns list of dicts with computed yearly FCF per stage.
+    Supports two stage formats:
+      Standard: ebit_margin_pct + tax_pct + capex_pct + da_pct
+      Direct:   fcf_margin_pct  (pre-revenue / scenario models)
+    n_years is parsed from the period string ("2026–2030" → 5, "2026-2028" → 3).
+    """
+    import re as _re
     wacc   = dcf["wacc_pct"] / 100
-    rev    = dcf["revenue_ttm_m"]
+    rev    = dcf.get("revenue_ttm_m")
+    if rev is None:
+        return [], 0, 0
     stages = dcf["stages"]
     rows   = []
     year   = 0
     for stage in stages:
         years_range = stage["period"]
-        n_years     = 5
-        cagr        = stage["rev_cagr_pct"] / 100
-        ebit_m      = stage["ebit_margin_pct"] / 100
-        tax         = stage["tax_pct"] / 100
-        capex_pct   = stage["capex_pct"] / 100
-        da_pct      = stage["da_pct"] / 100
-        for i in range(1, n_years + 1):
+        m = _re.match(r'(\d{4})[–\-](\d{4})', years_range)
+        n_years = int(m.group(2)) - int(m.group(1)) + 1 if m else 5
+        cagr    = stage["rev_cagr_pct"] / 100
+        direct  = "fcf_margin_pct" in stage
+        if not direct:
+            ebit_m    = stage["ebit_margin_pct"] / 100
+            tax       = stage["tax_pct"] / 100
+            capex_pct = stage["capex_pct"] / 100
+            da_pct    = stage["da_pct"] / 100
+        else:
+            fcf_pct   = stage["fcf_margin_pct"] / 100
+        for _ in range(n_years):
             year += 1
             rev = rev * (1 + cagr)
-            ebit = rev * ebit_m
-            nopat = ebit * (1 - tax)
-            da = rev * da_pct
-            capex = rev * capex_pct
-            fcf = nopat + da - capex
-            pv = fcf / ((1 + wacc) ** year)
-            rows.append({
-                "Rok": year,
-                "Okres": years_range,
-                "Przychody": rev,
-                "EBIT": ebit,
-                "NOPAT": nopat,
-                "D&A": da,
-                "CapEx": capex,
-                "FCF": fcf,
-                "PV_FCF": pv,
-            })
+            if not direct:
+                ebit  = rev * ebit_m
+                nopat = ebit * (1 - tax)
+                da    = rev * da_pct
+                capex = rev * capex_pct
+                fcf   = nopat + da - capex
+                rows.append({"Rok": year, "Okres": years_range,
+                              "Przychody": rev, "EBIT": ebit, "NOPAT": nopat,
+                              "D&A": da, "CapEx": capex, "FCF": fcf,
+                              "PV_FCF": fcf / ((1 + wacc) ** year), "direct": False})
+            else:
+                fcf = rev * fcf_pct
+                rows.append({"Rok": year, "Okres": years_range,
+                              "Przychody": rev, "EBIT": None, "NOPAT": None,
+                              "D&A": None, "CapEx": None, "FCF": fcf,
+                              "PV_FCF": fcf / ((1 + wacc) ** year),
+                              "direct": True, "fcm": stage["fcf_margin_pct"]})
     return rows, rev, year
 
 def tab_dcf(rec: dict):
@@ -632,81 +663,125 @@ def tab_dcf(rec: dict):
     # ── Stage breakdown table
     st.markdown('<div class="sh">📊 Projekcja przepływów gotówkowych</div>', unsafe_allow_html=True)
     rows, final_rev, total_years = compute_dcf_stages(dcf)
+    if not rows:
+        st.warning("Brak `revenue_ttm_m` w modelu DCF — nie można obliczyć projekcji.")
+        return
 
-    header = "<tr><th>Rok</th><th>Okres</th><th>Przychody</th><th>EBIT</th><th>NOPAT</th><th>+D&A</th><th>–CapEx</th><th>FCF</th><th>PV(FCF)</th></tr>"
+    is_direct = any(r.get("direct") for r in rows)
+    if is_direct:
+        header = "<tr><th>Rok</th><th>Okres</th><th>Przychody</th><th>FCF Margin</th><th>FCF</th><th>PV(FCF)</th></tr>"
+    else:
+        header = "<tr><th>Rok</th><th>Okres</th><th>Przychody</th><th>EBIT</th><th>NOPAT</th><th>+D&A</th><th>–CapEx</th><th>FCF</th><th>PV(FCF)</th></tr>"
     body = ""
     pv_sum = 0
     for r in rows:
         pv_sum += r["PV_FCF"]
-        body += f"""<tr>
-            <td>{r['Rok']}</td><td>{r['Okres']}</td>
-            <td>{fmt_m(r['Przychody'])}</td><td>{fmt_m(r['EBIT'])}</td>
-            <td>{fmt_m(r['NOPAT'])}</td><td>{fmt_m(r['D&A'])}</td>
-            <td>{fmt_m(r['CapEx'])}</td><td>{fmt_m(r['FCF'])}</td>
-            <td style="color:#00d9a3">{fmt_m(r['PV_FCF'])}</td>
-        </tr>"""
+        fcf_color = "#ef4444" if r["FCF"] < 0 else "inherit"
+        pv_color  = "#ef4444" if r["PV_FCF"] < 0 else "#00d9a3"
+        if is_direct:
+            fcm = r.get("fcm", "?")
+            fcm_color = "#ef4444" if isinstance(fcm, (int, float)) and fcm < 0 else "#10b981"
+            body += f"""<tr>
+                <td>{r['Rok']}</td><td>{r['Okres']}</td>
+                <td>{fmt_m(r['Przychody'])}</td>
+                <td style="color:{fcm_color}">{fcm}%</td>
+                <td style="color:{fcf_color}">{fmt_m(r['FCF'])}</td>
+                <td style="color:{pv_color}">{fmt_m(r['PV_FCF'])}</td>
+            </tr>"""
+        else:
+            body += f"""<tr>
+                <td>{r['Rok']}</td><td>{r['Okres']}</td>
+                <td>{fmt_m(r['Przychody'])}</td><td>{fmt_m(r['EBIT'])}</td>
+                <td>{fmt_m(r['NOPAT'])}</td><td>{fmt_m(r['D&A'])}</td>
+                <td>{fmt_m(r['CapEx'])}</td>
+                <td style="color:{fcf_color}">{fmt_m(r['FCF'])}</td>
+                <td style="color:{pv_color}">{fmt_m(r['PV_FCF'])}</td>
+            </tr>"""
+
+    colspan = "5" if is_direct else "8"
+    body += f"""<tr class="total">
+        <td colspan="{colspan}" style="color:#64748b;font-size:11px">Suma PV przepływów (rok 1–{total_years})</td>
+        <td style="color:{'#ef4444' if pv_sum < 0 else '#00d9a3'}" colspan="{'1' if is_direct else '1'}">{fmt_m(pv_sum)}</td>
+    </tr>"""
 
     last_fcf = rows[-1]["FCF"]
     tv  = last_fcf * (1 + tg) / (wacc - tg)
     pv_tv = tv / ((1 + wacc) ** total_years)
-
-    body += f"""<tr class="total">
-        <td colspan="8" style="color:#64748b;font-size:11px">Suma PV przepływów (rok 1–{total_years})</td>
-        <td>{fmt_m(pv_sum)}</td>
-    </tr>"""
 
     st.markdown(f"""
     <div style="overflow-x:auto;border-radius:14px;border:1px solid {BORDER}">
     <table class="dcf-table"><thead>{header}</thead><tbody>{body}</tbody></table>
     </div>""", unsafe_allow_html=True)
 
-    # ── Bridge to fair value — all values from stored JSON for consistency
+    # ── Bridge — ALL values computed live from assumptions (never trust stored pre-computed fields)
     st.markdown('<div class="sh">🌉 Od wartości przedsiębiorstwa do ceny akcji</div>', unsafe_allow_html=True)
-    pv_fcf_display     = dcf.get("pv_fcf_m", pv_sum)
-    pv_terminal_display = dcf.get("pv_terminal_m", round(pv_tv))
-    ev     = dcf.get("enterprise_value_m", pv_fcf_display + pv_terminal_display)
-    eq_val = ev - dcf.get("net_debt_m", 0)
 
-    net_debt = dcf.get("net_debt_m", 0)
+    net_debt = dcf.get("net_debt_m", -dcf.get("net_cash_m", 0))
+    shares   = dcf.get("shares_m", 1)
+
+    ev_computed  = pv_sum + pv_tv
+    eq_computed  = ev_computed - net_debt
+    fv_computed  = eq_computed / shares
+
     nd_label = "– Dług netto" if net_debt > 0 else "+ Gotówka netto"
-    nd_val   = -net_debt if net_debt > 0 else abs(net_debt)
+    nd_color = "#ef4444" if net_debt > 0 else "#10b981"
+
+    stored_fv  = rec.get("fair_value")
+    fv_currency = rec.get("fair_value_currency", "")
+    divergence_pct = abs(fv_computed - stored_fv) / max(abs(stored_fv), 0.01) * 100 if stored_fv else 0
 
     col_a, col_b = st.columns([3, 2])
     with col_a:
         st.markdown(f"""
         <div class="dcf-bridge">
             <div class="dcf-row">
-                <span class="dcf-row-label">PV wolnych przepływów gotówkowych (10 lat)</span>
-                <span class="dcf-row-value">{fmt_m(pv_fcf_display)}</span>
+                <span class="dcf-row-label">PV wolnych przepływów gotówkowych (lata 1–{total_years})</span>
+                <span class="dcf-row-value">{fmt_m(pv_sum)}</span>
             </div>
-            <div class="dcf-row">
-                <span class="dcf-row-label">+ PV wartości terminalnej (wzrost {dcf['terminal_growth_pct']}% ∞)</span>
-                <span class="dcf-row-value">{fmt_m(pv_terminal_display)}</span>
+            <div class="dcf-row" style="flex-direction:column;align-items:flex-start;gap:4px">
+                <div style="display:flex;justify-content:space-between;width:100%">
+                    <span class="dcf-row-label">+ PV wartości terminalnej</span>
+                    <span class="dcf-row-value">{fmt_m(pv_tv)}</span>
+                </div>
+                <div style="font-size:11px;color:#475569;font-family:monospace;padding:6px 10px;background:rgba(0,0,0,0.2);border-radius:6px;width:100%;box-sizing:border-box">
+                  TV = FCF<sub>{total_years}</sub> × (1+g) / (WACC−g) = {fmt_m(last_fcf)} × {1+tg:.3f} / ({wacc:.3f}−{tg:.3f}) = <b style="color:#94a3b8">{fmt_m(tv)}</b><br>
+                  PV = TV / (1+WACC)<sup>{total_years}</sup> = {fmt_m(tv)} / {(1+wacc)**total_years:.4f} = <b style="color:#00d9a3">{fmt_m(pv_tv)}</b>
+                </div>
             </div>
             <div class="dcf-row" style="border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;margin-top:4px">
                 <span class="dcf-row-label" style="font-weight:600;color:#e2e8f0">= Wartość przedsiębiorstwa (EV)</span>
-                <span class="dcf-row-value" style="font-size:15px">{fmt_m(ev)}</span>
+                <span class="dcf-row-value" style="font-size:15px">{fmt_m(ev_computed)}</span>
             </div>
             <div class="dcf-row">
                 <span class="dcf-row-label">{nd_label}</span>
-                <span class="dcf-row-value" style="color:#10b981">{fmt_m(nd_val)}</span>
+                <span class="dcf-row-value" style="color:{nd_color}">{fmt_m(abs(net_debt))}</span>
             </div>
             <div class="dcf-row" style="border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;margin-top:4px">
                 <span class="dcf-row-label" style="font-weight:600;color:#e2e8f0">= Wartość kapitału własnego</span>
-                <span class="dcf-row-value" style="font-size:15px">{fmt_m(eq_val)}</span>
+                <span class="dcf-row-value" style="font-size:15px">{fmt_m(eq_computed)}</span>
             </div>
             <div class="dcf-row">
                 <span class="dcf-row-label">÷ Liczba akcji</span>
-                <span class="dcf-row-value">{dcf['shares_m']}M</span>
+                <span class="dcf-row-value">{shares}M</span>
             </div>
             <div class="dcf-row" style="border-top:1px solid rgba(0,217,163,0.25);padding-top:14px;margin-top:4px">
-                <span class="dcf-row-label" style="font-weight:700;color:#00d9a3;font-size:14px">= Fair Value na akcję</span>
-                <span class="dcf-row-total">{dcf.get('fair_value','—')} {rec.get('fair_value_currency','')}</span>
+                <span class="dcf-row-label" style="font-weight:700;color:#00d9a3;font-size:14px">= Fair Value DCF (z modelu)</span>
+                <span class="dcf-row-total">{fv_computed:.2f} {fv_currency}</span>
             </div>
         </div>""", unsafe_allow_html=True)
 
+        if stored_fv and divergence_pct > 10:
+            valuation_method = dcf.get("valuation_method", "inna metoda wyceny")
+            direction = "wyżej" if stored_fv > fv_computed else "niżej"
+            st.warning(
+                f"**Rozbieżność {divergence_pct:.0f}%** — model DCF daje **{fv_computed:.2f} {fv_currency}**, "
+                f"ale zapisana FV w nagłówku to **{stored_fv} {fv_currency}** ({direction}). "
+                f"Powód: _{valuation_method}_. Liczby powyżej to wynik czysto matematyczny z założeń — "
+                f"sprawdź czy założenia są aktualne przed użyciem."
+            )
+
     with col_b:
-        tv_share = pv_terminal_display / (pv_fcf_display + pv_terminal_display) * 100 if (pv_fcf_display + pv_terminal_display) > 0 else 0
+        tv_share = pv_tv / (pv_sum + pv_tv) * 100 if (pv_sum + pv_tv) > 0 else 0
         st.markdown(f"""
         <div style="background:{CARD};border:1px solid {BORDER};border-radius:14px;padding:20px">
             <div style="font-size:10px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px">Struktura wartości</div>
@@ -1055,9 +1130,15 @@ def page_detail(ticker, pos, prices):
 
     with t_wykres:
         periods = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "3Y": "3y"}
-        sel = st.radio("Okres", list(periods.keys()), horizontal=True, index=2,
-                       key=f"p_{ticker}", label_visibility="collapsed")
-        fig = price_chart(ticker, periods[sel], ep, fv)
+        intervals = {"Dzień": "1d", "Tydzień": "1wk", "Miesiąc": "1mo"}
+        c_per, c_int = st.columns([3, 2])
+        with c_per:
+            sel = st.radio("Okres", list(periods.keys()), horizontal=True, index=2,
+                           key=f"p_{ticker}", label_visibility="collapsed")
+        with c_int:
+            sel_int = st.radio("Granularność", list(intervals.keys()), horizontal=True, index=0,
+                               key=f"i_{ticker}", label_visibility="collapsed")
+        fig = price_chart(ticker, periods[sel], ep, fv, intervals[sel_int])
         if fig:
             st.plotly_chart(fig, width="stretch")
         else:

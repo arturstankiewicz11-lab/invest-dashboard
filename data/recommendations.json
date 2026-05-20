@@ -90,6 +90,33 @@
     "last_updated": "2026-05-14",
     "next_earnings": null,
     "priority_action": "Trzymaj pozycję, dokupuj do €3.50. Monitoruj IRIS² milestones i ewentualną emisję akcji.",
+    "dcf": {
+      "wacc_pct": 13.0,
+      "terminal_growth_pct": 2.0,
+      "revenue_ttm_m": 1200,
+      "net_debt_m": 1300,
+      "shares_m": 430,
+      "stages": [
+        {
+          "period": "2026–2030",
+          "rev_cagr_pct": 5,
+          "ebit_margin_pct": 15,
+          "tax_pct": 28,
+          "capex_pct": 22,
+          "da_pct": 18
+        },
+        {
+          "period": "2031–2035",
+          "rev_cagr_pct": 18,
+          "ebit_margin_pct": 20,
+          "tax_pct": 28,
+          "capex_pct": 12,
+          "da_pct": 10
+        }
+      ],
+      "valuation_method": "DCF (scenariusz bazowy) + premia za opcjonalność IRIS² €10.6B (scenariusz bull €8). DCF daje ~€1.87. FV €8 zakłada pełną realizację IRIS² + wzrost LEO do €3B+ przychodów do 2035 — to scenariusz opcjonalności, nie pewność.",
+      "notes": "WACC 13% = premia za ryzyko (dług netto €1.3B, brak moat, zależność od dotacji EU). Etap 1: GEO segment spada, LEO OneWeb rośnie ale baza niska. Etap 2: IRIS² kontrakt €10.6B wchodzi pełną parą (~2028-2033). Ważne: 430M akcji to szacunek po rekapitalizacji (stan: maj 2026) — kolejne emisje możliwe. Model nie uwzględnia ryzyka bankructwa przy braku refinansowania długu ~2027."
+    },
     "events": [
       {
         "date": "2026-05-14",
@@ -160,12 +187,8 @@
           "da_pct": 3
         }
       ],
-      "pv_fcf_m": 15321,
-      "terminal_value_m": 70720,
-      "pv_terminal_m": 147029,
-      "enterprise_value_m": 162350,
-      "fair_value": 1950,
-      "notes": "⚠️ Uwaga metodologiczna: DCF (model 10-letni) daje wartość konserwatywną €507 — typowe dla spółek obronnych, gdzie >90% wartości leży poza 10-letnim horyzontem. Analitycy (15 Buy, PT avg €2009) używają EV/EBITDA (backlog €135B = 10 lat przychodów). Fair Value €1950 pochodzi z metody porównawczej i analyst consensus, nie z czystego DCF. WACC 10% = premia za ryzyko cyklu obronnego."
+      "valuation_method": "Peer Multiple / Analyst Consensus (15 analityków Buy, PT avg €2009). DCF (WACC 10%, 10 lat) daje €507 — typowe dla spółek obronnych gdzie >90% wartości leży poza 10-letnim horyzontem. FV €1950 to metoda porównawcza: EV/backlog + EV/EBITDA vs peers (KNDS, Thales, BAE). Nie jest wynikiem DCF.",
+      "notes": "WACC 10% = premia za cykl obronny. DCF jest metodą pomocniczą — główna wycena to peer multiple na backlog €135B (= 10 lat przychodów). Dla spółek obronnych z długoterminowymi kontraktami rządowymi DCF 10-letni celowo zaniża wartość."
     },
     "events": [
       {
@@ -508,7 +531,8 @@
       "pv_terminal_m": 1686245,
       "enterprise_value_m": 2801725,
       "fair_value": 116.0,
-      "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC 11% ze względu na wycenę premium i export risk. FV DCF $116 vs cena ~$125 — premia sentymentu. Czekaj na $100-110."
+      "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC 11% ze względu na wycenę premium i export risk. FV DCF $116 vs cena ~$125 — premia sentymentu. Czekaj na $100-110.",
+      "valuation_method": "DCF (WACC 11%, 10 lat) daje $116. Stored FV $240 pochodzi z bull-case analizy uwzględniającej Blackwell ramp i sovereign AI demand — powyżej bazowego DCF. Sprawdź aktualne założenia przed użyciem."
     },
     "events": [
       {
@@ -709,7 +733,9 @@
       "enterprise_value_m": 2844,
       "fair_value_base": 15.9,
       "fair_value_bull": 29.0,
-      "fair_value": 29.0
+      "fair_value": 29.0,
+      "revenue_ttm_m": 144,
+      "valuation_method": "Scenariusz pre-revenue (FCF margin per stage). Base FV $15.9 (WACC 12%), Bull FV $29 (WACC 10%). Obliczona FV może się różnić od stored ze względu na uproszczenie marży FCF do jednolitej wartości per stage zamiast rok po roku."
     },
     "events": [
       {
