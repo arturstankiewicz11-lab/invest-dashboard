@@ -645,11 +645,13 @@ def tab_dcf(rec: dict):
     # ── Key Assumptions
     st.markdown('<div class="sh">⚙️ Założenia modelu</div>', unsafe_allow_html=True)
     col1, col2, col3, col4 = st.columns(4)
+    rev_ttm  = dcf.get("revenue_ttm_m")
+    shares_m = dcf.get("shares_m", 1)
     assumptions = [
         (col1, "WACC", f"{dcf['wacc_pct']}%", "Stopa dyskontowa"),
         (col2, "Terminal Growth", f"{dcf['terminal_growth_pct']}%", "Wzrost w nieskończoność"),
-        (col3, "Revenue TTM", fmt_m(dcf['revenue_ttm_m']), "Bazowe przychody"),
-        (col4, "Liczba akcji", f"{dcf['shares_m']/1000:.1f}B" if dcf['shares_m'] >= 1000 else f"{dcf['shares_m']}M", "Akcji w obrocie"),
+        (col3, "Revenue TTM", fmt_m(rev_ttm) if rev_ttm else "—", "Bazowe przychody"),
+        (col4, "Liczba akcji", f"{shares_m/1000:.1f}B" if shares_m >= 1000 else f"{shares_m}M", "Akcji w obrocie"),
     ]
     for col, label, val, sub in assumptions:
         with col:
