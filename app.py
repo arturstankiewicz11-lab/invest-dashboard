@@ -1149,6 +1149,33 @@ def page_overview(pos, demo, recs, mkt_cap=None):
     </div>
     """, unsafe_allow_html=True)
 
+    # ── BUY signals (all BUY-rated positions in portfolio)
+    port_tickers = set(pos["Ticker"].tolist()) if not pos.empty else set()
+    buys = [(t, r) for t, r in recs.items() if r.get("recommendation") == "BUY" and t in port_tickers]
+    if buys:
+        st.markdown('<div class="sh">🟢 Rekomendacje BUY</div>', unsafe_allow_html=True)
+        html = '<div class="actions">'
+        for t, r in sorted(buys, key=lambda x: -(x[1].get("fair_value") or 0)):
+            fv   = r.get("fair_value")
+            fv_c = r.get("fair_value_currency", "")
+            ep   = r.get("entry_point")
+            row  = pos[pos["Ticker"] == t]
+            price = row.iloc[0]["Cena"] if not row.empty and row.iloc[0]["Cena"] else None
+            upside = (fv - price) / price * 100 if fv and price else None
+            up_str = f'+{upside:.0f}%' if upside is not None else ''
+            ep_str = f'· Entry {ep:.0f} {fv_c}' if ep else ''
+            html += f"""<div class="action a-buy">
+                <div class="action-dot dot-buy"></div>
+                <span class="action-ticker">{t}</span>
+                <span style="color:#475569;font-size:12px">·</span>
+                <span style="color:#10b981;font-weight:600">FV {fv:.0f} {fv_c}</span>
+                {f'<span style="color:#10b981;font-size:11px">{up_str}</span>' if up_str else ''}
+                {f'<span style="color:#475569;font-size:11px">{ep_str}</span>' if ep_str else ''}
+            </div>"""
+        html += '</div>'
+        st.markdown(html, unsafe_allow_html=True)
+
+    # ── Priority actions (manual overrides)
     prio = [(t, r) for t, r in recs.items() if r.get("priority_action")]
     if prio:
         st.markdown('<div class="sh">⚡ Priorytetowe działania</div>', unsafe_allow_html=True)
