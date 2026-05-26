@@ -1,0 +1,89 @@
+{
+  "ticker": "GOOG",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/GOOG/goog-20260331.pdf",
+  "extracted": "2026-05-27",
+
+  "income_statement": {
+    "revenue_q_m": 109896,
+    "revenue_q_prior_m": 90234,
+    "revenue_yoy_pct": 21.8,
+    "revenue_annualized_m": 439584,
+    "cogs_q_m": 41271,
+    "gross_margin_q_m": 68625,
+    "gross_margin_pct": 62.4,
+    "ebit_q_m": 39696,
+    "ebit_annualized_m": 158784,
+    "ebit_margin_pct": 36.1,
+    "income_before_taxes_q_m": 77412,
+    "tax_provision_q_m": 14834,
+    "tax_rate_effective_pct": 19.2,
+    "net_income_q_m": 62578,
+    "net_income_note": "UWAGA: net income zawiera ~$37.7B nadzwyczajnego zysku z equity derivative (prywatna inwestycja ~$40B). EBIT ($39.7B) jest właściwą miarą zysku operacyjnego.",
+    "eps_diluted_q": 5.11
+  },
+
+  "segments_q": {
+    "google_search_revenue_m": null,
+    "google_cloud_revenue_m": 20028,
+    "google_cloud_revenue_prior_m": 12260,
+    "google_cloud_yoy_pct": 63.4,
+    "google_subscriptions_platforms_devices_m": 12384,
+    "other_bets_revenue_m": 411,
+    "total_google_services_revenue_note": "Search +$9.7B, YouTube ads +$956M, Cloud +$7.8B YoY"
+  },
+
+  "cash_flow_q": {
+    "cfo_m": 45790,
+    "cfo_annualized_m": 183160,
+    "capex_m": 35674,
+    "capex_annualized_m": 142696,
+    "capex_pct_revenue": 32.5,
+    "da_m": 6482,
+    "da_annualized_m": 25928,
+    "da_pct_revenue": 5.9,
+    "fcf_q_m": 10116,
+    "fcf_annualized_m": 40464,
+    "capex_note": "CapEx Q1 2026 +107% YoY ($17.2B → $35.7B). AI datacenter buildout. Uncommenced leases: $75.6B (2026-2031)."
+  },
+
+  "balance_sheet": {
+    "cash_and_equivalents_m": 38063,
+    "cash_and_st_securities_m": 126800,
+    "lt_debt_face_value_m": 80305,
+    "lt_debt_book_value_m": 77501,
+    "net_cash_m": 46495,
+    "net_debt_m": -46495,
+    "total_assets_m": 703919,
+    "stockholders_equity_m": 478746,
+    "shares_diluted_m": 12238,
+    "shares_outstanding_m": 12116,
+    "debt_note": "Q1 2026: wyemitowano ~$32B nowych obligacji (AI infrastructure funding). LT debt wzrósł z $46.5B do $77.5B w kwartale."
+  },
+
+  "dcf_inputs_derived": {
+    "revenue_ttm_estimate_m": 439584,
+    "ebit_margin_pct": 36.1,
+    "tax_rate_pct": 19.2,
+    "capex_pct_revenue": 32.5,
+    "da_pct_revenue": 5.9,
+    "net_cash_m": 46495,
+    "shares_diluted_m": 12238,
+    "note": "CapEx 32.5% jest szczytowy (AI buildout, +107% YoY). Uncommenced leases $75.6B. Normalny CapEx historycznie 5-8%. Revenue annualizowany z Q1x4 — może być niedoszacowany przez sezonowość."
+  },
+
+  "key_highlights": [
+    "Revenue Q1 2026: $109.9B (+21.8% YoY)",
+    "Google Cloud +63.4% YoY ($12.3B → $20.0B) — AI teza potwierdzona",
+    "EBIT margin 36.1% (vs 33.9% Q1 2025) — ekspansja mimo AI investmentu",
+    "CapEx Q1: $35.7B (+107% YoY) — największy w historii, AI datacenters",
+    "Uncommenced datacenter leases: $75.6B (pipeline 2026-2031)",
+    "Net income Q1: $62.6B — zawiera ~$37.7B nadzwyczajnego zysku inwest. (equity derivative)",
+    "Wyemitowano ~$32B obligacji w Q1 2026 (AI infrastructure)",
+    "Cash + ST securities: $126.8B | Net cash: $46.5B",
+    "Share buyback authorization: $70B (pozostało $69.5B)",
+    "No buybacks executed in Q1 2026"
+  ]
+}
