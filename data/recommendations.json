@@ -1,13 +1,13 @@
 {
   "MSFT": {
     "name": "Microsoft",
-    "recommendation": "HOLD",
-    "fair_value": 437.0,
+    "recommendation": "BUY",
+    "fair_value": 604.0,
     "fair_value_currency": "USD",
     "entry_point": 385,
     "upside_pct": null,
-    "thesis_short": "Azure +40% YoY, AI revenue $37B annualized (+123%). Fair Value DCF $437.",
-    "thesis_full": "Microsoft to wiodąca platforma AI enterprise. Azure rośnie 40% YoY. Annualized AI revenue to $37B (+123%). CapEx $190B w 2026 to zakład na AI. Moat: enterprise lock-in (Office, Azure, Teams), ogromne koszty migracji dla klientów. ROE ~40% konsekwentnie. Aktualna cena ~$430 = blisko Fair Value DCF $437 — bez margin of safety. HOLD do korekty do $385-390.",
+    "thesis_short": "Azure +40% YoY, Revenue $322B (+31% YoY). Fair Value DCF $604 (rewizja po Q3 FY2026).",
+    "thesis_full": "Microsoft to wiodąca platforma AI enterprise. Q3 FY2026: Revenue $322B annualized (+31% YoY), EBIT margin 47.4%, Azure +40% YoY, Commercial RPO $627B (+99% YoY). CapEx 33% revenue (szczyt AI buildout) — committed leases $196.6B na 2026–2031. Moat: enterprise lock-in (Office 365, Azure, Teams), ogromne switching costs. ROE ~40% konsekwentnie. Fair Value DCF $604 (rewizja 2026-05-26 po Q3 FY2026). Cena ~$430 = 29% dyskonto do FV — jest upside, ale entry point $385 daje lepszy margin of safety.",
     "thesis_breaker": "Azure growth poniżej 25% przez 2 kolejne kwartały. ROI na AI CapEx nie materializuje się.",
     "risks": [
       "AI CapEx bez zwrotu",
@@ -15,46 +15,61 @@
       "Kompresja wyceny przy spowolnieniu wzrostu"
     ],
     "buffett_moat": "Wide",
-    "last_updated": "2026-05-11",
+    "last_updated": "2026-05-26",
     "next_earnings": "2026-07-28",
     "priority_action": null,
     "dcf": {
       "wacc_pct": 9.0,
       "terminal_growth_pct": 3.0,
-      "revenue_ttm_m": 245000,
-      "net_debt_m": -80000,
-      "shares_m": 7450,
+      "revenue_ttm_m": 322443,
+      "net_debt_m": -38010,
+      "shares_m": 7445,
+      "wacc_inputs": {
+        "rf_pct": 4.4,
+        "beta": 0.90,
+        "erp_pct": 5.0,
+        "rd_pct": 4.0,
+        "market_cap_m": 3201350,
+        "debt_m": 40262,
+        "tax_pct": 19.0
+      },
+      "terminal_growth_rationale": "g ≤ nominalny PKB USA (~4% = inflacja 2.5% + realny PKB 1.5%). g=3% poniżej PKB — uzasadnione dominacją Azure/AI i Commercial RPO $627B. Każde -0.5pp g obniża FV o ~$45.",
+      "balance_sheet_inputs": {
+        "cash_m": 78272,
+        "debt_m": 40262
+      },
       "stages": [
         {
-          "period": "2026–2030",
-          "rev_cagr_pct": 16,
-          "ebit_margin_pct": 44,
-          "tax_pct": 18,
-          "capex_pct": 8,
-          "da_pct": 5
+          "period": "2026–2028",
+          "rev_cagr_pct": 18,
+          "ebit_margin_pct": 47,
+          "tax_pct": 19,
+          "capex_pct": 25,
+          "da_pct": 12
         },
         {
-          "period": "2031–2035",
-          "rev_cagr_pct": 10,
-          "ebit_margin_pct": 46,
-          "tax_pct": 18,
-          "capex_pct": 7,
-          "da_pct": 4
+          "period": "2029–2035",
+          "rev_cagr_pct": 12,
+          "ebit_margin_pct": 49,
+          "tax_pct": 19,
+          "capex_pct": 12,
+          "da_pct": 8
         }
       ],
-      "pv_fcf_m": 1087089,
-      "terminal_value_m": 4939525,
-      "pv_terminal_m": 2086509,
-      "enterprise_value_m": 3173597,
-      "fair_value": 437.0,
-      "notes": "Azure CAGR 18% przez 5 lat. AI monetyzacja (Copilot) poprawia marże od 2027. CapEx B krótkoterminowo obciąża FCF, długoterminowo wzmacnia moat cloudowy."
+      "notes": "Rewizja po Q3 FY2026 (10-Q, mar 2026). Revenue +31% vs stary model ($322B vs $245B). CapEx 25% Stage1 = szczyt AI buildout (aktualny 33.1%) → normalizacja do 12% od 2029. Committed leases $196.6B na lata 2026–2031. FCF margin Stage1=25%, Stage2=36%."
     },
     "events": [
       {
-        "date": "2026-04-29",
-        "event": "Q3 FY2026: EPS .27 vs .06 est. Azure +40% YoY. AI revenue B (+123%).",
+        "date": "2026-05-26",
+        "event": "Rewizja DCF po Q3 FY2026 (10-Q). Revenue $322B (+31% YoY), EBIT 47.4%, CapEx 33% (AI buildout). Net cash $38B. Commercial RPO $627B (+99% YoY).",
         "impact": "positive",
-        "fv_note": "Potwierdza tezę. Fair Value bez zmian."
+        "fv_note": "Fair Value zrewidowany: $437 → $604. Wzrost z wyższej bazy revenue (+31%) i marż (+3.4pp), częściowo offset przez wyższy CapEx w Stage1 (25% vs 8%)."
+      },
+      {
+        "date": "2026-04-29",
+        "event": "Q3 FY2026: EPS $4.27 vs $3.22 est. Azure +40% YoY. AI revenue $37B annualized (+123%). Commercial RPO $627B (+99%).",
+        "impact": "positive",
+        "fv_note": "Beat na wszystkich liniach. Podstawa do rewizji DCF."
       },
       {
         "date": "2026-03-20",

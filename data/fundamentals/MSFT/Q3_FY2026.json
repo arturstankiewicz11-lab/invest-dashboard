@@ -1,0 +1,88 @@
+{
+  "ticker": "MSFT",
+  "period": "Q3_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/MSFT/10-Q.pdf",
+  "extracted": "2026-05-26",
+
+  "income_statement": {
+    "revenue_q_m": 82886,
+    "revenue_9m_m": 241832,
+    "revenue_annualized_m": 322443,
+    "cogs_q_m": 26828,
+    "gross_margin_q_m": 56058,
+    "gross_margin_pct": 67.6,
+    "ebit_q_m": 38398,
+    "ebit_9m_m": 114634,
+    "ebit_annualized_m": 152845,
+    "ebit_margin_pct": 47.4,
+    "net_income_q_m": 31778,
+    "net_income_9m_m": 97983,
+    "eps_diluted_q": 4.27,
+    "tax_rate_effective_pct": 19.0
+  },
+
+  "segments_q": {
+    "productivity_revenue_m": 35013,
+    "productivity_op_income_m": 20973,
+    "intelligent_cloud_revenue_m": 34681,
+    "intelligent_cloud_op_income_m": 13753,
+    "more_personal_computing_revenue_m": 13192,
+    "azure_growth_yoy_pct": 40,
+    "microsoft_cloud_revenue_q_m": 54500
+  },
+
+  "cash_flow_9m": {
+    "cfo_m": 127494,
+    "capex_m": 80146,
+    "capex_annualized_m": 106861,
+    "capex_pct_revenue": 33.1,
+    "fcf_m": 47348,
+    "fcf_annualized_m": 63131,
+    "da_and_other_m": 27512,
+    "da_annualized_m": 36683,
+    "da_pct_revenue": 11.4
+  },
+
+  "balance_sheet": {
+    "cash_and_st_investments_m": 78272,
+    "total_debt_book_m": 40262,
+    "net_cash_m": 38010,
+    "net_debt_m": -38010,
+    "shares_diluted_m": 7445,
+    "shares_outstanding_m": 7428,
+    "total_assets_m": 694228,
+    "stockholders_equity_m": 414367
+  },
+
+  "dcf_inputs_derived": {
+    "revenue_ttm_estimate_m": 322443,
+    "ebit_margin_pct": 47.4,
+    "tax_rate_pct": 19.0,
+    "capex_pct_revenue": 33.1,
+    "da_pct_revenue": 11.4,
+    "net_debt_m": -38010,
+    "shares_diluted_m": 7445,
+    "note": "CapEx 33% jest szczytowy przez AI buildout (datacenter, GPU). Committed leases niezaczęte: $196.6B. Znormalizowany CapEx długoterminowy prawdopodobnie wróci do 10-15%."
+  },
+
+  "vs_prior_model": {
+    "revenue_change": "245B → 322B (+31%)",
+    "ebit_margin_change": "44% → 47.4% (+3.4pp)",
+    "capex_change": "8% → 33% MASYWNY wzrost przez AI buildout",
+    "net_cash_change": "$80B → $38B (wypłaty dywidend + buybacki + CapEx)",
+    "shares_change": "7450M → 7445M (minimalna zmiana)"
+  },
+
+  "key_highlights": [
+    "Azure +40% YoY — teza AI potwierdzona",
+    "Microsoft Cloud revenue $54.5B (+29% YoY)",
+    "Commercial RPO $627B (+99% YoY) — backlog na 2.5 roku",
+    "CapEx Q3: $30.9B (annualized $124B) — największy w historii, AI datacenters",
+    "Leases uncommenced: $196.6B — pipeline CapEx na lata 2026-2031",
+    "FCF 9M: $47.3B mimo rekordowego CapEx (CFO $127.5B)",
+    "IRS dispute $28.9B (transfer pricing 2004-2013) — ryzyko podatkowe",
+    "Satya Nadella: plan sprzedaży akcji od 31 sierpnia 2026"
+  ]
+}

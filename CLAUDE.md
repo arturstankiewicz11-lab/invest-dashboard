@@ -87,13 +87,116 @@ Jeśli istnieje poprzedni plik w `data/fundamentals/[TICKER]/`, porównaj:
 Jeśli dane różnią się od założeń w `recommendations.json` o więcej niż 10%:
 - Napisz co się zmieniło i o ile
 - Zaproponuj nowe założenia do DCF
-- Pokaż jaki byłby nowy Fair Value
+- **Policz Fair Value krok po kroku** (patrz: Protokół DCF poniżej) — NIGDY nie podawaj widełek przed wyliczeniem
 - Czekaj na akceptację użytkownika zanim cokolwiek zmienisz
 
 **Czego NIGDY nie robić:**
 - Nie zmieniaj recommendation / entry_point / thesis_breaker bez akceptacji
 - Nie wpisuj liczb których nie ma w raporcie
 - Nie "uśredniaj" ani nie szacujesz brakujących danych
+- **NIGDY nie podawaj Fair Value ani widełek cenowych bez przeprowadzenia pełnego wyliczenia DCF** — "intuicja" i "szacunek" są zakazane
+
+## Protokół alternatywnych metod wyceny
+
+### Kiedy DCF nie jest możliwy
+- FCF ujemny przez 3+ lat (pre-profitable growth companies)
+- Spółka pre-revenue lub revenue < $50M (zbyt wiele niepewnych założeń)
+- Business model w głębokiej transformacji (nowe przychody dopiero zastępują stare)
+- Aktywa bez przepływów gotówkowych (krypto, ETF)
+
+### Które metody stosować
+
+| Sytuacja | Metoda | Przykład |
+|---|---|---|
+| Pre-profitable, rosnące revenue | EV/Revenue Multiple | IONQ, RKLB, OKLO |
+| Profitable, CapEx distorts FCF | EV/EBITDA Multiple | ETL.PA |
+| Mature, stabilne zyski | P/E Multiple | — |
+| Wysoka niepewność wyników | Analiza scenariuszy (Bear/Base/Bull) | ETL.PA + IRIS² |
+
+### Obowiązkowe kroki dla każdej metody
+
+**Zasada taka sama jak DCF: wszystkie dane wsadowe z podaniem źródła. Żadnych szacunków bez wyliczenia.**
+
+#### EV/Revenue (dla pre-profitable)
+1. Forward revenue — podaj wartość i **źródło** (guidance, raport, estymata)
+2. Peers — lista porównywalnych spółek z ich aktualnym EV/Revenue
+3. Peer median/mean multiple — oblicz wprost ze listy
+4. Discount/premium — uzasadnij każdy punkt procentowy
+5. EV = Revenue × multiple — pokaż działanie
+6. Net Cash / Net Debt — jak Krok 3 DCF (gotówka − dług = wynik)
+7. Equity = EV ± Net Cash
+8. FV/share = Equity / Shares
+
+#### EV/EBITDA (dla profitable z wysokim CapEx)
+1. EBITDA = EBIT + D&A — podaj każdą składową z raportu
+2. Peers — lista z ich EV/EBITDA
+3. Peer median multiple
+4. Discount/premium — uzasadniony
+5. EV = EBITDA × multiple
+6. Net Cash / Net Debt
+7. Equity, FV/share
+
+#### Analiza scenariuszy
+1. Bear / Base / Bull — zdefiniuj konkretne warunki każdego
+2. FV per scenariusz — oblicz każdy (DCF lub multiple)
+3. Prawdopodobieństwa — uzasadnij (suma = 100%)
+4. FV_ważone = Σ(P_i × FV_i) — pokaż działanie
+
+### Format zapisu alternatywnej wyceny w JSON
+
+```json
+"alt_valuation": {
+  "method": "EV/Revenue Multiple",
+  "method_reason": "FCF ujemny — DCF wymaga zbyt wielu niepewnych założeń",
+  "inputs": [
+    {"name": "Revenue forward", "value": "$265M", "source": "IONQ guidance Q1 2026"},
+    {"name": "Peer median EV/Revenue", "value": "26x", "source": "ASTS 35x, RKLB 18x → mediana"},
+    {"name": "Discount na ryzyko", "value": "40%", "source": "Pre-profitable, dilution risk"},
+    {"name": "Zastosowany multiple", "value": "15x", "source": "26x × 60%"},
+    {"name": "Net cash", "value": "$350M", "source": "Balance sheet Q1 2026"},
+    {"name": "Shares diluted", "value": "730M", "source": "Q1 2026 10-Q"}
+  ],
+  "steps": [
+    "EV = Revenue × multiple = $265M × 15 = $3,975M",
+    "Equity = EV + Net cash = $3,975M + $350M = $4,325M",
+    "FV/share = $4,325M / 730M = $5.93"
+  ],
+  "fair_value_computed": 5.93
+}
+```
+
+## Protokół DCF — obowiązkowe wyliczenie krok po kroku
+
+**Zasada twarda:** Każde podanie Fair Value wymaga przejścia przez wszystkie 5 kroków poniżej. Nie ma wyjątków — nie ma "szacunkowo", "około", "widełek" bez liczenia.
+
+**Krok A — FCF margin ze wzoru**
+```
+FCF_margin = EBIT% × (1 − tax%) + D&A% − CapEx%
+```
+Wylicz osobno dla każdego stage'u. Pokaż działanie.
+
+**Krok B — Tabela Revenue i FCF rok po roku**
+Dla każdego roku: Revenue(n) = Revenue(n−1) × (1 + CAGR). FCF(n) = Revenue(n) × FCF_margin.
+Pokaż każdy rok osobno w tabeli.
+
+**Krok C — Dyskontowanie FCF**
+PV(n) = FCF(n) / (1 + WACC)^n. Suma = PV_FCF.
+
+**Krok D — Terminal Value**
+```
+TV = FCF_ostatni × (1 + g) / (WACC − g)
+PV_TV = TV / (1 + WACC)^n_lat
+```
+Pokaż liczby w każdym kroku wzoru.
+
+**Krok E — Bridge do ceny akcji**
+```
+EV = PV_FCF + PV_TV
+Equity = EV − net_debt_m   (ujemny net_debt = gotówka netto, więc dodajemy)
+FV/share = Equity / shares_m
+```
+
+Dopiero po kroku E można napisać "Fair Value = X". Nigdy wcześniej.
 
 ## Struktura danych fundamentals
 

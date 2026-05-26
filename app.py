@@ -448,13 +448,19 @@ def get_market_caps(tickers: tuple) -> dict:
                 pass
     return result
 
-@st.cache_data(ttl=3600)
-def load_recs() -> dict:
+@st.cache_data
+def load_recs(_mtime: float = 0) -> dict:
     try:
         with open("data/recommendations.json", encoding="utf-8") as f:
             return json.load(f)
     except Exception:
         return {}
+
+def _recs_mtime() -> float:
+    try:
+        return os.path.getmtime("data/recommendations.json")
+    except Exception:
+        return 0.0
 
 WATCHLIST_SECTORS = ["Space", "Defence", "AI", "Energy", "Quantum", "Robots", "Health"]
 SECTOR_EMOJI = {"Space": "🚀", "Defence": "🛡️", "AI": "🤖", "Energy": "⚡", "Quantum": "⚛️", "Robots": "🦾", "Health": "🏥"}
@@ -628,8 +634,75 @@ def compute_dcf_stages(dcf: dict):
                               "direct": True, "fcm": stage["fcf_margin_pct"]})
     return rows, rev, year
 
+def _render_alt_valuation(alt: dict, fv_currency: str):
+    """Renders step-by-step alternative valuation (EV/Revenue, EV/EBITDA, Scenario etc.)"""
+    MONO = "font-family:'Courier New',monospace;font-size:12px;background:rgba(0,0,0,0.25);border-radius:8px;padding:14px 18px;line-height:1.9;color:#94a3b8;border:1px solid rgba(255,255,255,0.06)"
+    HL   = "color:#00d9a3;font-weight:700"
+    HLW  = "color:#e2e8f0;font-weight:600"
+
+    method = alt.get("method", "Metoda alternatywna")
+    reason = alt.get("method_reason", "")
+    inputs = alt.get("inputs", [])
+    steps  = alt.get("steps", [])
+    fv_alt = alt.get("fair_value_computed")
+
+    st.markdown(f'<div class="sh">📐 Metoda wyceny: {method}</div>', unsafe_allow_html=True)
+
+    if reason:
+        st.markdown(f"""
+        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:10px 14px;font-size:12px;color:#94a3b8;margin-bottom:8px">
+        <b style="color:#f59e0b">Dlaczego nie DCF:</b> {reason}
+        </div>""", unsafe_allow_html=True)
+
+    # Inputs table
+    if inputs:
+        st.markdown('<div class="sh">📋 Dane wsadowe (źródło każdej liczby)</div>', unsafe_allow_html=True)
+        rows_html = ""
+        for inp in inputs:
+            name   = inp.get("name", "")
+            value  = inp.get("value", "")
+            source = inp.get("source", "—")
+            rows_html += f"""<tr>
+                <td>{name}</td>
+                <td style="color:#e2e8f0;font-weight:600">{value}</td>
+                <td style="color:#475569;font-size:11px">{source}</td>
+            </tr>"""
+        st.markdown(f"""
+        <div style="overflow-x:auto;border-radius:10px;border:1px solid rgba(255,255,255,0.06)">
+        <table class="dcf-table">
+          <thead><tr><th style="text-align:left">Parametr</th><th>Wartość</th><th style="text-align:left">Źródło</th></tr></thead>
+          <tbody>{rows_html}</tbody>
+        </table>
+        </div>""", unsafe_allow_html=True)
+
+    # Steps
+    if steps:
+        st.markdown('<div class="sh">🧮 Wyliczenie krok po kroku</div>', unsafe_allow_html=True)
+        steps_html = "<br>".join(
+            f'<b style="color:#64748b">Krok {i+1}:</b>&nbsp; {s}' for i, s in enumerate(steps)
+        )
+        result_html = ""
+        if fv_alt is not None:
+            result_html = f'<br><br><b style="{HL}">= Fair Value: {fv_alt:.2f} {fv_currency}</b>'
+        st.markdown(f'<div style="{MONO}">{steps_html}{result_html}</div>', unsafe_allow_html=True)
+
+    # Bridge card
+    if fv_alt is not None:
+        stored_fv = None  # passed from caller via alt block itself
+        col_res, _ = st.columns([1, 2])
+        with col_res:
+            st.markdown(f"""
+            <div style="background:rgba(0,217,163,0.06);border:1px solid rgba(0,217,163,0.2);border-radius:10px;padding:16px 20px;margin-top:8px">
+                <div style="font-size:10px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Fair Value ({method})</div>
+                <div style="font-size:28px;font-weight:700;color:#00d9a3">{fv_alt:.2f} {fv_currency}</div>
+            </div>""", unsafe_allow_html=True)
+
+
 def tab_dcf(rec: dict):
     dcf = rec.get("dcf")
+    alt = dcf.get("alt_valuation") if dcf else None
+    fv_currency = rec.get("fair_value_currency", "")
+
     if not dcf:
         st.markdown("""
         <div style="padding:40px;text-align:center;color:#475569">
@@ -639,21 +712,39 @@ def tab_dcf(rec: dict):
         </div>""", unsafe_allow_html=True)
         return
 
-    wacc = dcf["wacc_pct"] / 100
-    tg   = dcf["terminal_growth_pct"] / 100
+    # If no DCF stages but alt_valuation exists — show only alternative method
+    has_stages = bool(dcf.get("stages"))
+    if not has_stages:
+        if alt:
+            _render_alt_valuation(alt, fv_currency)
+        else:
+            st.markdown("""
+            <div style="padding:40px;text-align:center;color:#475569">
+                <div style="font-size:32px;margin-bottom:12px">📐</div>
+                <div style="font-size:15px">Brak modelu DCF dla tego aktywa.</div>
+                <div style="font-size:13px;margin-top:6px;color:#334155">Krypto i ETF-y nie mają przepływów gotówkowych do dyskontowania.</div>
+            </div>""", unsafe_allow_html=True)
+        return
 
-    # ── Key Assumptions
+    wacc       = dcf["wacc_pct"] / 100
+    tg         = dcf["terminal_growth_pct"] / 100
+    fv_currency = rec.get("fair_value_currency", "")
+    rev_ttm    = dcf.get("revenue_ttm_m")
+    shares_m   = dcf.get("shares_m", 1)
+
+    MONO = "font-family:'Courier New',monospace;font-size:12px;background:rgba(0,0,0,0.25);border-radius:8px;padding:14px 18px;line-height:1.9;color:#94a3b8;border:1px solid rgba(255,255,255,0.06)"
+    HL   = "color:#00d9a3;font-weight:700"
+    HLW  = "color:#e2e8f0;font-weight:600"
+
+    # ── Summary metrics
     st.markdown('<div class="sh">⚙️ Założenia modelu</div>', unsafe_allow_html=True)
     col1, col2, col3, col4 = st.columns(4)
-    rev_ttm  = dcf.get("revenue_ttm_m")
-    shares_m = dcf.get("shares_m", 1)
-    assumptions = [
-        (col1, "WACC", f"{dcf['wacc_pct']}%", "Stopa dyskontowa"),
-        (col2, "Terminal Growth", f"{dcf['terminal_growth_pct']}%", "Wzrost w nieskończoność"),
-        (col3, "Revenue TTM", fmt_m(rev_ttm) if rev_ttm else "—", "Bazowe przychody"),
-        (col4, "Liczba akcji", f"{shares_m/1000:.1f}B" if shares_m >= 1000 else f"{shares_m}M", "Akcji w obrocie"),
-    ]
-    for col, label, val, sub in assumptions:
+    for col, label, val, sub in [
+        (col1, "WACC",           f"{dcf['wacc_pct']}%",  "Stopa dyskontowa"),
+        (col2, "Terminal Growth",f"{dcf['terminal_growth_pct']}%", "Wzrost w nieskończoność"),
+        (col3, "Revenue TTM",    fmt_m(rev_ttm) if rev_ttm else "—", "Bazowe przychody"),
+        (col4, "Liczba akcji",   f"{shares_m/1000:.1f}B" if shares_m >= 1000 else f"{shares_m}M", "Akcji w obrocie"),
+    ]:
         with col:
             st.markdown(f"""
             <div class="metric-card">
@@ -662,8 +753,104 @@ def tab_dcf(rec: dict):
                 <div class="metric-sub">{sub}</div>
             </div>""", unsafe_allow_html=True)
 
-    # ── Stage breakdown table
-    st.markdown('<div class="sh">📊 Projekcja przepływów gotówkowych</div>', unsafe_allow_html=True)
+    # ── KROK 1: WACC
+    st.markdown('<div class="sh">📐 Krok 1 — Stopa dyskontowa (WACC)</div>', unsafe_allow_html=True)
+    wi = dcf.get("wacc_inputs")
+    if wi:
+        rf     = wi.get("rf_pct", 0)
+        beta   = wi.get("beta", 1.0)
+        erp    = wi.get("erp_pct", 5.0)
+        rd     = wi.get("rd_pct", 4.0)
+        mcap   = wi.get("market_cap_m", 0)
+        d_wi   = wi.get("debt_m", 0)
+        tax_wi = wi.get("tax_pct", 19.0)
+        V      = mcap + d_wi
+        E_w    = mcap / V * 100 if V > 0 else 100.0
+        D_w    = d_wi  / V * 100 if V > 0 else 0.0
+        Re     = rf + beta * erp
+        Rd_at  = rd * (1 - tax_wi / 100)
+        wacc_r = E_w / 100 * Re / 100 + D_w / 100 * Rd_at / 100
+        st.markdown(f"""<div style="{MONO}">
+<b style="{HLW}">WACC = E/V &times; Re + D/V &times; Rd &times; (1&minus;tax)</b><br><br>
+<b style="color:#64748b">Koszt kapitału własnego (CAPM):</b><br>
+&nbsp;&nbsp;Re = Rf + &beta; &times; ERP<br>
+&nbsp;&nbsp;Re = {rf}% + {beta} &times; {erp}%<br>
+&nbsp;&nbsp;Re = {rf}% + {beta*erp:.1f}%<br>
+&nbsp;&nbsp;<b style="{HLW}">Re = {Re:.1f}%</b><br><br>
+<b style="color:#64748b">Koszt długu po podatku:</b><br>
+&nbsp;&nbsp;Rd &times; (1&minus;tax) = {rd}% &times; (1&minus;{tax_wi}%) = <b style="{HLW}">{Rd_at:.2f}%</b><br><br>
+<b style="color:#64748b">Wagi kapitału (E = market cap, D = dług księgowy):</b><br>
+&nbsp;&nbsp;E/V = {fmt_m(mcap)} / {fmt_m(V)} = {E_w:.1f}%<br>
+&nbsp;&nbsp;D/V = {fmt_m(d_wi)} / {fmt_m(V)} = {D_w:.1f}% &nbsp;<span style="color:#475569;font-size:11px">(dług pomijalny)</span><br><br>
+<b style="color:#64748b">WACC:</b><br>
+&nbsp;&nbsp;= {E_w:.1f}% &times; {Re:.1f}% + {D_w:.1f}% &times; {Rd_at:.2f}%<br>
+&nbsp;&nbsp;= {E_w/100*Re/100*100:.2f}% + {D_w/100*Rd_at/100*100:.3f}%<br>
+&nbsp;&nbsp;<b style="{HL}">= {wacc_r*100:.2f}% &asymp; {dcf['wacc_pct']}%</b>
+</div>""", unsafe_allow_html=True)
+    else:
+        st.markdown(f'<div style="{MONO}">WACC = <b style="{HL}">{dcf["wacc_pct"]}%</b> (założenie — brak danych CAPM w modelu)</div>', unsafe_allow_html=True)
+
+    # ── KROK 2 + KROK 3 (side by side)
+    col_tg, col_nd = st.columns(2)
+    with col_tg:
+        st.markdown('<div class="sh">📈 Krok 2 — Terminal Growth (g)</div>', unsafe_allow_html=True)
+        tg_note = dcf.get("terminal_growth_rationale", "")
+        note_html = f'<br><span style="color:#475569;font-size:11px">{tg_note}</span>' if tg_note else ""
+        st.markdown(f"""<div style="{MONO}">
+<b style="color:#64748b">Ograniczenie górne:</b><br>
+&nbsp;&nbsp;g &le; nominalny PKB = inflacja + realny PKB<br>
+&nbsp;&nbsp;g &le; ~2.5% + 1.5% = ~4.0%<br><br>
+<b style="color:#64748b">Przyjęte:</b><br>
+&nbsp;&nbsp;<b style="{HL}">g = {dcf['terminal_growth_pct']}%</b> (poniżej nominalnego PKB){note_html}
+</div>""", unsafe_allow_html=True)
+
+    with col_nd:
+        st.markdown('<div class="sh">💰 Krok 3 — Net Cash / Net Debt</div>', unsafe_allow_html=True)
+        bs = dcf.get("balance_sheet_inputs")
+        net_debt_val = dcf.get("net_debt_m", -dcf.get("net_cash_m", 0))
+        if bs:
+            cash_bs = bs.get("cash_m", 0)
+            debt_bs = bs.get("debt_m", 0)
+            net_bs  = cash_bs - debt_bs
+            col_net = "#10b981" if net_bs > 0 else "#ef4444"
+            bridge_hint = "net cash &rarr; DODAJEMY do EV" if net_bs > 0 else "net debt &rarr; ODEJMUJEMY od EV"
+            st.markdown(f"""<div style="{MONO}">
+Net Cash = Gotówka &minus; Dług<br>
+&nbsp;&nbsp;= {fmt_m(cash_bs)} &minus; {fmt_m(debt_bs)}<br>
+&nbsp;&nbsp;<b style="color:{col_net}">= {fmt_m(net_bs)}</b><br><br>
+<span style="color:#475569;font-size:11px">{bridge_hint}</span>
+</div>""", unsafe_allow_html=True)
+        else:
+            sign = "net cash" if net_debt_val < 0 else "net debt"
+            st.markdown(f'<div style="{MONO}">Net debt = <b style="{HL}">{fmt_m(net_debt_val)}</b> ({sign})</div>', unsafe_allow_html=True)
+
+    # ── KROK 4: FCF Margin derivation
+    st.markdown('<div class="sh">🧮 Krok 4 — Marże FCF (wyprowadzenie ze wzoru)</div>', unsafe_allow_html=True)
+    fcm_parts = []
+    for i, stage in enumerate(dcf.get("stages", [])):
+        if "fcf_margin_pct" in stage:
+            fcm_parts.append(f'<b style="{HLW}">Stage {i+1} ({stage["period"]}) — FCF Margin bezpośrednia:</b><br>'
+                             f'FCF_margin = <b style="{HL}">{stage["fcf_margin_pct"]}%</b>')
+        else:
+            ebit_s  = stage.get("ebit_margin_pct", 0)
+            tax_s   = stage.get("tax_pct", 0)
+            capex_s = stage.get("capex_pct", 0)
+            da_s    = stage.get("da_pct", 0)
+            nopat_s = ebit_s * (1 - tax_s / 100)
+            fcm_s   = nopat_s + da_s - capex_s
+            fcm_parts.append(
+                f'<b style="{HLW}">Stage {i+1} ({stage["period"]}):</b><br>'
+                f'FCF_margin = EBIT% &times; (1&minus;tax%) + D&amp;A% &minus; CapEx%<br>'
+                f'&nbsp;&nbsp;= {ebit_s}% &times; (1&minus;{tax_s}%) + {da_s}% &minus; {capex_s}%<br>'
+                f'&nbsp;&nbsp;= {ebit_s}% &times; {100-tax_s}% + {da_s}% &minus; {capex_s}%<br>'
+                f'&nbsp;&nbsp;= {nopat_s:.2f}% + {da_s}% &minus; {capex_s}%<br>'
+                f'&nbsp;&nbsp;<b style="{HL}">= {fcm_s:.2f}%</b>'
+            )
+    st.markdown(f'<div style="{MONO}">{"<br><br>".join(fcm_parts)}</div>', unsafe_allow_html=True)
+
+    # ── KROKI 5-6: Projection table
+    wacc_label = dcf['wacc_pct']
+    st.markdown(f'<div class="sh">📊 Kroki 5–6 — Przychody, FCF i dyskontowanie (WACC={wacc_label}%)</div>', unsafe_allow_html=True)
     rows, final_rev, total_years = compute_dcf_stages(dcf)
     if not rows:
         st.warning("Brak `revenue_ttm_m` w modelu DCF — nie można obliczyć projekcji.")
@@ -703,11 +890,11 @@ def tab_dcf(rec: dict):
     colspan = "5" if is_direct else "8"
     body += f"""<tr class="total">
         <td colspan="{colspan}" style="color:#64748b;font-size:11px">Suma PV przepływów (rok 1–{total_years})</td>
-        <td style="color:{'#ef4444' if pv_sum < 0 else '#00d9a3'}" colspan="{'1' if is_direct else '1'}">{fmt_m(pv_sum)}</td>
+        <td style="color:{'#ef4444' if pv_sum < 0 else '#00d9a3'}">{fmt_m(pv_sum)}</td>
     </tr>"""
 
     last_fcf = rows[-1]["FCF"]
-    tv  = last_fcf * (1 + tg) / (wacc - tg)
+    tv    = last_fcf * (1 + tg) / (wacc - tg)
     pv_tv = tv / ((1 + wacc) ** total_years)
 
     st.markdown(f"""
@@ -715,21 +902,17 @@ def tab_dcf(rec: dict):
     <table class="dcf-table"><thead>{header}</thead><tbody>{body}</tbody></table>
     </div>""", unsafe_allow_html=True)
 
-    # ── Bridge — ALL values computed live from assumptions (never trust stored pre-computed fields)
-    st.markdown('<div class="sh">🌉 Od wartości przedsiębiorstwa do ceny akcji</div>', unsafe_allow_html=True)
+    # ── KROKI 7-8: Terminal Value + Bridge
+    st.markdown('<div class="sh">🌉 Kroki 7–8 — Terminal Value i bridge do ceny akcji</div>', unsafe_allow_html=True)
 
-    net_debt = dcf.get("net_debt_m", -dcf.get("net_cash_m", 0))
-    shares   = dcf.get("shares_m", 1)
-
+    net_debt     = dcf.get("net_debt_m", -dcf.get("net_cash_m", 0))
+    shares       = dcf.get("shares_m", 1)
     ev_computed  = pv_sum + pv_tv
     eq_computed  = ev_computed - net_debt
     fv_computed  = eq_computed / shares
-
-    nd_label = "– Dług netto" if net_debt > 0 else "+ Gotówka netto"
-    nd_color = "#ef4444" if net_debt > 0 else "#10b981"
-
-    stored_fv  = rec.get("fair_value")
-    fv_currency = rec.get("fair_value_currency", "")
+    nd_label     = "– Dług netto" if net_debt > 0 else "+ Gotówka netto"
+    nd_color     = "#ef4444" if net_debt > 0 else "#10b981"
+    stored_fv    = rec.get("fair_value")
     divergence_pct = abs(fv_computed - stored_fv) / max(abs(stored_fv), 0.01) * 100 if stored_fv else 0
 
     col_a, col_b = st.columns([3, 2])
@@ -746,7 +929,7 @@ def tab_dcf(rec: dict):
                     <span class="dcf-row-value">{fmt_m(pv_tv)}</span>
                 </div>
                 <div style="font-size:11px;color:#475569;font-family:monospace;padding:6px 10px;background:rgba(0,0,0,0.2);border-radius:6px;width:100%;box-sizing:border-box">
-                  TV = FCF<sub>{total_years}</sub> × (1+g) / (WACC−g) = {fmt_m(last_fcf)} × {1+tg:.3f} / ({wacc:.3f}−{tg:.3f}) = <b style="color:#94a3b8">{fmt_m(tv)}</b><br>
+                  TV = FCF<sub>{total_years}</sub> &times; (1+g) / (WACC&minus;g) = {fmt_m(last_fcf)} &times; {1+tg:.3f} / ({wacc:.3f}&minus;{tg:.3f}) = <b style="color:#94a3b8">{fmt_m(tv)}</b><br>
                   PV = TV / (1+WACC)<sup>{total_years}</sup> = {fmt_m(tv)} / {(1+wacc)**total_years:.4f} = <b style="color:#00d9a3">{fmt_m(pv_tv)}</b>
                 </div>
             </div>
@@ -810,6 +993,11 @@ def tab_dcf(rec: dict):
                 <div style="font-size:12px;color:#64748b;line-height:1.6">{dcf.get('notes','—')}</div>
             </div>
         </div>""", unsafe_allow_html=True)
+
+    # If alt_valuation exists alongside DCF — show it as a secondary section
+    if alt:
+        st.markdown('<div style="margin-top:24px;border-top:1px solid rgba(255,255,255,0.06);padding-top:8px"></div>', unsafe_allow_html=True)
+        _render_alt_valuation(alt, fv_currency)
 
 # ─── TAB: DZIAŁANIA ───────────────────────────────────────────────────────────
 def tab_actions(rec: dict, row, prices: dict):
@@ -961,7 +1149,7 @@ def page_overview(pos, demo, mkt_cap=None):
     </div>
     """, unsafe_allow_html=True)
 
-    recs = load_recs()
+    recs = load_recs(_mtime=_recs_mtime())
     prio = [(t, r) for t, r in recs.items() if r.get("priority_action")]
     if prio:
         st.markdown('<div class="sh">⚡ Priorytetowe działania</div>', unsafe_allow_html=True)
@@ -1039,7 +1227,7 @@ def page_overview(pos, demo, mkt_cap=None):
 
 # ─── PAGE: DETAIL ─────────────────────────────────────────────────────────────
 def page_detail(ticker, pos, prices):
-    recs = load_recs()
+    recs = load_recs(_mtime=_recs_mtime())
     rec  = recs.get(ticker, {})
     rec["_ticker"] = ticker
     row  = pos[pos["Ticker"] == ticker]
@@ -1807,7 +1995,7 @@ p.document.addEventListener('keydown', function(e){
 
     df, demo = load_portfolio()
     fx        = get_fx()
-    recs      = load_recs()
+    recs      = load_recs(_mtime=_recs_mtime())
     watchlist = load_watchlist()
 
     # Collect all tickers: portfolio + recs + watchlist
