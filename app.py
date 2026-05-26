@@ -1105,7 +1105,7 @@ def tab_actions(rec: dict, row, prices: dict):
             st.markdown('<div style="color:#475569;font-size:13px;padding:20px 0">Brak wydarzeń do wyświetlenia.</div>', unsafe_allow_html=True)
 
 # ─── PAGE: OVERVIEW ───────────────────────────────────────────────────────────
-def page_overview(pos, demo, mkt_cap=None):
+def page_overview(pos, demo, recs, mkt_cap=None):
     if demo:
         st.markdown("""<div class="demo-banner">
         ⚙️ <b>Tryb demo</b> — live ceny i rekomendacje są aktywne.
@@ -1149,7 +1149,6 @@ def page_overview(pos, demo, mkt_cap=None):
     </div>
     """, unsafe_allow_html=True)
 
-    recs = load_recs(_mtime=_recs_mtime())
     prio = [(t, r) for t, r in recs.items() if r.get("priority_action")]
     if prio:
         st.markdown('<div class="sh">⚡ Priorytetowe działania</div>', unsafe_allow_html=True)
@@ -1226,8 +1225,7 @@ def page_overview(pos, demo, mkt_cap=None):
     </div>""", unsafe_allow_html=True)
 
 # ─── PAGE: DETAIL ─────────────────────────────────────────────────────────────
-def page_detail(ticker, pos, prices):
-    recs = load_recs(_mtime=_recs_mtime())
+def page_detail(ticker, pos, prices, recs):
     rec  = recs.get(ticker, {})
     rec["_ticker"] = ticker
     row  = pos[pos["Ticker"] == ticker]
@@ -2143,13 +2141,13 @@ p.document.addEventListener('keydown', function(e){
         st.markdown(html, unsafe_allow_html=True)
 
     if page_key == "__overview__":
-        page_overview(pos, demo, mkt_cap)
+        page_overview(pos, demo, recs, mkt_cap)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
     elif page_key == "__watchlist__":
         page_watchlist(watchlist, prices, recs, pos, labels, keys, mkt_cap)
         render_chat(pos, recs, prices, fx, current_ticker=None, watchlist=watchlist)
     else:
-        page_detail(page_key, pos, prices)
+        page_detail(page_key, pos, prices, recs)
         render_chat(pos, recs, prices, fx, current_ticker=page_key, watchlist=watchlist)
 
 if __name__ == "__main__" or True:
