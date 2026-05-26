@@ -1149,32 +1149,6 @@ def page_overview(pos, demo, recs, mkt_cap=None):
     </div>
     """, unsafe_allow_html=True)
 
-    # ── BUY signals (all BUY-rated positions in portfolio)
-    port_tickers = set(pos["Ticker"].tolist()) if not pos.empty else set()
-    buys = [(t, r) for t, r in recs.items() if r.get("recommendation") == "BUY" and t in port_tickers]
-    if buys:
-        st.markdown('<div class="sh">🟢 Rekomendacje BUY</div>', unsafe_allow_html=True)
-        html = '<div class="actions">'
-        for t, r in sorted(buys, key=lambda x: -(x[1].get("fair_value") or 0)):
-            fv   = r.get("fair_value")
-            fv_c = r.get("fair_value_currency", "")
-            ep   = r.get("entry_point")
-            row  = pos[pos["Ticker"] == t]
-            price = row.iloc[0]["Cena"] if not row.empty and row.iloc[0]["Cena"] else None
-            upside = (fv - price) / price * 100 if fv and price else None
-            up_str = f'+{upside:.0f}%' if upside is not None else ''
-            ep_str = f'· Entry {ep:.0f} {fv_c}' if ep else ''
-            html += f"""<div class="action a-buy">
-                <div class="action-dot dot-buy"></div>
-                <span class="action-ticker">{t}</span>
-                <span style="color:#475569;font-size:12px">·</span>
-                <span style="color:#10b981;font-weight:600">FV {fv:.0f} {fv_c}</span>
-                {f'<span style="color:#10b981;font-size:11px">{up_str}</span>' if up_str else ''}
-                {f'<span style="color:#475569;font-size:11px">{ep_str}</span>' if ep_str else ''}
-            </div>"""
-        html += '</div>'
-        st.markdown(html, unsafe_allow_html=True)
-
     # ── Priority actions (manual overrides)
     prio = [(t, r) for t, r in recs.items() if r.get("priority_action")]
     if prio:
@@ -2091,17 +2065,22 @@ p.document.addEventListener('keydown', function(e){
     st.markdown("<hr style='border:none;border-top:1px solid rgba(255,255,255,0.06);margin:0 0 20px'>",
                 unsafe_allow_html=True)
 
-    # ── Price alerts: BUY when price <= entry_point
-    alerts = []
+    # ── Price alerts: BUY zone (price <= entry) and BUY above entry but below FV
+    alerts      = []   # price <= entry_point  → urgent
+    buy_above   = []   # price > entry but < FV → informational
     for t, rec in recs.items():
-        ep  = rec.get("entry_point")
-        p   = prices.get(t, {}).get("price")
-        r   = rec.get("recommendation", "")
-        if ep and p and r == "BUY" and p <= ep:
-            fv  = rec.get("fair_value")
-            fv_c = rec.get("fair_value_currency", "USD")
-            upside = (fv - p) / p * 100 if fv and p else None
+        ep   = rec.get("entry_point")
+        p    = prices.get(t, {}).get("price")
+        r    = rec.get("recommendation", "")
+        fv   = rec.get("fair_value")
+        fv_c = rec.get("fair_value_currency", "USD")
+        if r != "BUY" or not p:
+            continue
+        upside = (fv - p) / p * 100 if fv and p else None
+        if ep and p <= ep:
             alerts.append((t, rec.get("name", t), p, ep, upside, fv, fv_c))
+        elif fv and p < fv:
+            buy_above.append((t, rec.get("name", t), p, ep, upside, fv, fv_c))
 
     # ── DCF stale (>90 days) and upcoming earnings alerts
     today = datetime.now().date()
@@ -2162,6 +2141,34 @@ p.document.addEventListener('keydown', function(e){
                 </div>
                 <div style="font-size:11px;color:#475569;text-align:right">
                     Strefa zakupu<br>z margin of safety
+                </div>
+            </div>"""
+        html += '</div>'
+        st.markdown(html, unsafe_allow_html=True)
+
+    if buy_above:
+        html = '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">'
+        for t, name, p, ep, upside, fv, fv_c in sorted(buy_above, key=lambda x: -(x[4] or 0)):
+            up_s = f"+{upside:.0f}%" if upside else ""
+            ep_s = f"Entry {ep:.0f}" if ep else "brak entry"
+            html += f"""
+            <div style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.25);
+                        border-radius:14px;padding:14px 20px;
+                        display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+                <div style="font-size:22px">📈</div>
+                <div style="flex:1;min-width:200px">
+                    <div style="font-size:15px;font-weight:700;color:#10b981">
+                        BUY {t} — {name}
+                    </div>
+                    <div style="font-size:12px;color:#94a3b8;margin-top:3px">
+                        Cena <b style="color:#f1f5f9">{p:.2f} {fv_c}</b>
+                        &nbsp;·&nbsp; FV <b style="color:#00d9a3">{fv:.0f} {fv_c}</b>
+                        &nbsp;<b style="color:#10b981">{up_s}</b>
+                        &nbsp;·&nbsp; <span style="color:#475569">{ep_s} {fv_c}</span>
+                    </div>
+                </div>
+                <div style="font-size:11px;color:#475569;text-align:right">
+                    Powyżej entry<br>nadal upside
                 </div>
             </div>"""
         html += '</div>'
