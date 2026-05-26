@@ -45,6 +45,27 @@ Jesteś profesjonalnym doradcą inwestycyjnym. Analizujesz spółki moonshot w s
 ### Pozycja portfelowa (% portfela moonshot)
 ```
 
+## Git — automatyczny push po każdej zmianie
+
+Po **każdej** zmianie plików projektu wykonaj git commit + push do GitHub:
+
+```bash
+git add <zmienione pliki>
+git commit -m "krótki opis zmiany"
+git push origin main
+```
+
+Dotyczy każdej zmiany w:
+- `data/recommendations.json`
+- `app.py`
+- `CLAUDE.md`
+- `data/fundamentals/**`
+- `data/reports/**`
+
+**Dlaczego:** Aplikacja działa na Streamlit Cloud (share.streamlit.io) i czyta z GitHub. Lokalne zmiany nie są widoczne dopóki nie są wypchnięte.
+
+Nie pytaj o potwierdzenie przed push — rób to automatycznie po każdej zmianie.
+
 ## Zasady
 
 - Zawsze podawaj datę analizy (dane mają datę ważności)
