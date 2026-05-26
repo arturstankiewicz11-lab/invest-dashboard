@@ -1,0 +1,19 @@
+{
+  "ticker": "RHM.DE",
+  "period": "FY2025",
+  "period_end": "2025-12-31",
+  "report_type": "annual",
+  "source_file": null,
+  "extracted": "2026-05-26",
+  "revenue_m": 10000,
+  "ebit_m": 1400,
+  "ebit_margin_pct": 14.0,
+  "da_m": 300,
+  "capex_m": 600,
+  "fcf_m": 800,
+  "net_debt_m": 500,
+  "shares_diluted_m": 83,
+  "guidance_revenue_m": 14500,
+  "guidance_notes": "Guidance 2026: +40-45% YoY. Backlog €135B.",
+  "notes": "Dane z założeń DCF — zastąp plikiem PDF. FY2025: revenue +29% YoY."
+}

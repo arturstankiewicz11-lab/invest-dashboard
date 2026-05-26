@@ -1,0 +1,19 @@
+{
+  "ticker": "ETL.PA",
+  "period": "H1_FY2026",
+  "period_end": "2025-12-31",
+  "report_type": "semi-annual",
+  "source_file": null,
+  "extracted": "2026-05-26",
+  "revenue_m": 592,
+  "ebit_m": 89,
+  "ebit_margin_pct": 15.0,
+  "da_m": 107,
+  "capex_m": 130,
+  "fcf_m": null,
+  "net_debt_m": 1300,
+  "shares_diluted_m": 430,
+  "guidance_revenue_m": null,
+  "guidance_notes": "LEO revenues +60%. IRIS2 kontrakt EUR 10.6B przyznany.",
+  "notes": "H1 FY2026 revenue EUR 592M (-2.4% reported). EBITDA margin 52.1%. Annualized ~EUR 1200M. Zastąp plikiem PDF."
+}

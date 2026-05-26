@@ -1,0 +1,19 @@
+{
+  "ticker": "MSFT",
+  "period": "FY2025",
+  "period_end": "2025-06-30",
+  "report_type": "annual",
+  "source_file": null,
+  "extracted": "2026-05-26",
+  "revenue_m": 245000,
+  "ebit_m": 107800,
+  "ebit_margin_pct": 44.0,
+  "da_m": 12250,
+  "capex_m": 19600,
+  "fcf_m": 74000,
+  "net_debt_m": -80000,
+  "shares_diluted_m": 7450,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Azure +40% YoY. AI revenue $37B annualized (+123%).",
+  "notes": "Dane z założeń DCF — zastąp plikiem PDF po kolejnym raporcie. Q3 FY2026 (kwiecień 2026): EPS beat, Azure +40% YoY."
+}

@@ -1,0 +1,19 @@
+{
+  "ticker": "NVDA",
+  "period": "FY2026",
+  "period_end": "2026-01-31",
+  "report_type": "annual",
+  "source_file": null,
+  "extracted": "2026-05-26",
+  "revenue_m": 130000,
+  "ebit_m": 74100,
+  "ebit_margin_pct": 57.0,
+  "da_m": 2600,
+  "capex_m": 3900,
+  "fcf_m": 60000,
+  "net_debt_m": -35000,
+  "shares_diluted_m": 24400,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Blackwell (B200) ramp od Q1 2026.",
+  "notes": "Dane z założeń DCF — zastąp plikiem PDF. CUDA ecosystem moat."
+}

@@ -1,0 +1,19 @@
+{
+  "ticker": "IONQ",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": null,
+  "extracted": "2026-05-26",
+  "revenue_m": 49.5,
+  "ebit_m": -65,
+  "ebit_margin_pct": -131.0,
+  "da_m": null,
+  "capex_m": null,
+  "fcf_m": null,
+  "net_debt_m": -3070,
+  "shares_diluted_m": 373,
+  "guidance_revenue_m": 265,
+  "guidance_notes": "FY2026 guidance M. RPO M. Cash .1B.",
+  "notes": "Q1 2026: revenue +755% YoY. Pre-revenue path to profitability. Zastąp plikiem PDF z aktualnym raportem."
+}
