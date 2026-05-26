@@ -379,26 +379,39 @@ def get_live_prices(tickers: tuple) -> dict:
     result = {t: {"price": None, "change_pct": None} for t in tickers}
     if not tickers:
         return result
-    try:
-        raw = yf.download(list(tickers), period="10d", auto_adjust=True,
-                          progress=False, threads=True)
-        # MultiIndex when >1 ticker; flat DataFrame for single ticker string
-        if isinstance(raw.columns, pd.MultiIndex):
-            close_df = raw["Close"]
-        else:
-            close_df = raw[["Close"]].rename(columns={"Close": tickers[0]})
-        for ticker in tickers:
-            try:
-                close = close_df[ticker].dropna() if ticker in close_df.columns else pd.Series(dtype=float)
-                if len(close) >= 2:
-                    prev, curr = float(close.iloc[-2]), float(close.iloc[-1])
-                    result[ticker] = {"price": curr, "change_pct": (curr - prev) / prev * 100}
-                elif len(close) == 1:
-                    result[ticker] = {"price": float(close.iloc[0]), "change_pct": 0.0}
-            except Exception:
-                pass
-    except Exception:
-        pass
+    # fast_info gives the latest traded price (intraday), not just yesterday's close
+    for ticker in tickers:
+        try:
+            fi = yf.Ticker(ticker).fast_info
+            curr = float(fi.last_price)
+            prev = float(fi.previous_close)
+            if not math.isnan(curr):
+                chg = (curr - prev) / prev * 100 if prev and not math.isnan(prev) else 0.0
+                result[ticker] = {"price": curr, "change_pct": chg}
+        except Exception:
+            pass
+    # fallback to daily download for any ticker that fast_info couldn't resolve
+    missing = [t for t in tickers if result[t]["price"] is None]
+    if missing:
+        try:
+            raw = yf.download(missing, period="10d", auto_adjust=True,
+                              progress=False, threads=True)
+            if isinstance(raw.columns, pd.MultiIndex):
+                close_df = raw["Close"]
+            else:
+                close_df = raw[["Close"]].rename(columns={"Close": missing[0]})
+            for ticker in missing:
+                try:
+                    close = close_df[ticker].dropna() if ticker in close_df.columns else pd.Series(dtype=float)
+                    if len(close) >= 2:
+                        prev, curr = float(close.iloc[-2]), float(close.iloc[-1])
+                        result[ticker] = {"price": curr, "change_pct": (curr - prev) / prev * 100}
+                    elif len(close) == 1:
+                        result[ticker] = {"price": float(close.iloc[0]), "change_pct": 0.0}
+                except Exception:
+                    pass
+        except Exception:
+            pass
     # NaN guard
     for t, p in result.items():
         if isinstance(p["price"], float) and math.isnan(p["price"]):
