@@ -2121,54 +2121,33 @@ p.document.addEventListener('keydown', function(e){
         st.markdown(f'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">{reminders_html}</div>',
                     unsafe_allow_html=True)
 
-    if alerts:
+    all_buys = sorted(alerts, key=lambda x: -(x[4] or 0)) + sorted(buy_above, key=lambda x: -(x[4] or 0))
+    if all_buys:
         html = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">'
-        for t, name, p, ep, upside, fv, fv_c in alerts:
-            up_s = f"+{upside:.0f}%" if upside else ""
+        for t, name, p, ep, upside, fv, fv_c in all_buys:
+            up_s     = f"+{upside:.0f}%" if upside else ""
+            in_zone  = ep and p <= ep
+            bg       = "rgba(16,185,129,0.08)" if in_zone else "rgba(16,185,129,0.03)"
+            border   = "1.5px solid rgba(16,185,129,0.5)" if in_zone else "1px solid rgba(16,185,129,0.2)"
+            icon     = "🚨" if in_zone else "🟢"
+            zone_lbl = "W strefie zakupu" if in_zone else "Powyżej entry"
+            zone_sub = "cena ≤ entry — margin of safety" if in_zone else f"cena powyżej entry {ep:.0f} {fv_c}" if ep else "nadal upside do FV"
+            price_detail = f"Cena <b style='color:#f1f5f9'>{p:.2f} {fv_c}</b> · Entry <b style='color:#10b981'>{ep:.0f} {fv_c}</b>" if ep else f"Cena <b style='color:#f1f5f9'>{p:.2f} {fv_c}</b>"
             html += f"""
-            <div style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.5);
-                        border-radius:14px;padding:16px 20px;
+            <div style="background:{bg};border:{border};border-radius:14px;padding:16px 20px;
                         display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-                <div style="font-size:28px">🚨</div>
+                <div style="font-size:26px">{icon}</div>
                 <div style="flex:1;min-width:200px">
                     <div style="font-size:16px;font-weight:800;color:#10b981;letter-spacing:-0.3px">
                         KUPUJ {t} — {name}
                     </div>
                     <div style="font-size:12px;color:#94a3b8;margin-top:3px">
-                        Cena <b style="color:#f1f5f9">{p:.2f} {fv_c}</b> ≤ Entry <b style="color:#10b981">{ep:.0f} {fv_c}</b>
-                        {"&nbsp;·&nbsp;FV <b style='color:#00d9a3'>" + str(fv) + " " + fv_c + "</b> &nbsp;<b style='color:#10b981'>" + up_s + "</b>" if fv else ""}
+                        {price_detail}
+                        {"&nbsp;·&nbsp;FV <b style='color:#00d9a3'>" + str(fv) + " " + fv_c + "</b> <b style='color:#10b981'>" + up_s + "</b>" if fv else ""}
                     </div>
                 </div>
                 <div style="font-size:11px;color:#475569;text-align:right">
-                    Strefa zakupu<br>z margin of safety
-                </div>
-            </div>"""
-        html += '</div>'
-        st.markdown(html, unsafe_allow_html=True)
-
-    if buy_above:
-        html = '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">'
-        for t, name, p, ep, upside, fv, fv_c in sorted(buy_above, key=lambda x: -(x[4] or 0)):
-            up_s = f"+{upside:.0f}%" if upside else ""
-            ep_s = f"Entry {ep:.0f}" if ep else "brak entry"
-            html += f"""
-            <div style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.25);
-                        border-radius:14px;padding:14px 20px;
-                        display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-                <div style="font-size:22px">📈</div>
-                <div style="flex:1;min-width:200px">
-                    <div style="font-size:15px;font-weight:700;color:#10b981">
-                        BUY {t} — {name}
-                    </div>
-                    <div style="font-size:12px;color:#94a3b8;margin-top:3px">
-                        Cena <b style="color:#f1f5f9">{p:.2f} {fv_c}</b>
-                        &nbsp;·&nbsp; FV <b style="color:#00d9a3">{fv:.0f} {fv_c}</b>
-                        &nbsp;<b style="color:#10b981">{up_s}</b>
-                        &nbsp;·&nbsp; <span style="color:#475569">{ep_s} {fv_c}</span>
-                    </div>
-                </div>
-                <div style="font-size:11px;color:#475569;text-align:right">
-                    Powyżej entry<br>nadal upside
+                    {zone_lbl}<br><span style="color:#334155">{zone_sub}</span>
                 </div>
             </div>"""
         html += '</div>'
