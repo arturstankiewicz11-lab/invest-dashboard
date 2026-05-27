@@ -606,7 +606,7 @@ def compute_dcf_stages(dcf: dict):
     """
     import re as _re
     wacc   = dcf["wacc_pct"] / 100
-    rev    = dcf.get("revenue_ttm_m")
+    rev    = dcf.get("revenue_ttm_m") or dcf.get("revenue_base_fy2026e_m")
     if rev is None:
         return [], 0, 0
     stages = dcf["stages"]
@@ -743,6 +743,9 @@ def tab_dcf(rec: dict):
     tg         = dcf["terminal_growth_pct"] / 100
     fv_currency = rec.get("fair_value_currency", "")
     rev_ttm    = dcf.get("revenue_ttm_m")
+    rev_fy26e  = dcf.get("revenue_base_fy2026e_m")
+    rev_base   = rev_ttm or rev_fy26e
+    rev_label  = "Revenue TTM" if rev_ttm else "Revenue FY2026E"
     shares_m   = dcf.get("shares_m", 1)
 
     MONO = "font-family:'Courier New',monospace;font-size:12px;background:rgba(0,0,0,0.25);border-radius:8px;padding:14px 18px;line-height:1.9;color:#94a3b8;border:1px solid rgba(255,255,255,0.06)"
@@ -755,7 +758,7 @@ def tab_dcf(rec: dict):
     for col, label, val, sub in [
         (col1, "WACC",           f"{dcf['wacc_pct']}%",  "Stopa dyskontowa"),
         (col2, "Terminal Growth",f"{dcf['terminal_growth_pct']}%", "Wzrost w nieskończoność"),
-        (col3, "Revenue TTM",    fmt_m(rev_ttm) if rev_ttm else "—", "Bazowe przychody"),
+        (col3, rev_label,        fmt_m(rev_base) if rev_base else "—", "Bazowe przychody"),
         (col4, "Liczba akcji",   f"{shares_m/1000:.1f}B" if shares_m >= 1000 else f"{shares_m}M", "Akcji w obrocie"),
     ]:
         with col:
@@ -765,6 +768,42 @@ def tab_dcf(rec: dict):
                 <div class="metric-value">{val}</div>
                 <div class="metric-sub">{sub}</div>
             </div>""", unsafe_allow_html=True)
+
+    # ── KROK 0: Base Revenue Breakdown (optional — present for forward-estimate bases)
+    base_bd = dcf.get("base_breakdown")
+    if base_bd:
+        ttm_note = base_bd.get("ttm_note", "")
+        items    = base_bd.get("items", [])
+        st.markdown('<div class="sh">🏗️ Krok 0 — Baza przychodów (skąd pochodzi liczba bazowa)</div>', unsafe_allow_html=True)
+        if ttm_note:
+            st.markdown(f"""
+            <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:10px 14px;font-size:12px;color:#94a3b8;margin-bottom:8px">
+            <b style="color:#f59e0b">Dlaczego nie TTM:</b> {ttm_note}
+            </div>""", unsafe_allow_html=True)
+        if items:
+            rows_html = "".join(
+                f"""<tr>
+                    <td style="color:#e2e8f0;font-weight:{'700' if 'RAZEM' in item.get('segment','') else '400'}">{item.get('segment','')}</td>
+                    <td style="color:#00d9a3;text-align:right">{fmt_m(item['revenue_m']) if item.get('revenue_m') else '—'}</td>
+                    <td style="color:#{'10b981' if item.get('yoy_pct') and item['yoy_pct']>0 else '94a3b8'};text-align:right">
+                        {'+'+str(round(item['yoy_pct'],1))+'%' if item.get('yoy_pct') is not None else '—'}
+                    </td>
+                    <td style="color:#64748b;font-size:11px">{item.get('note','')}</td>
+                </tr>"""
+                for item in items
+            )
+            st.markdown(f"""
+            <div style="overflow-x:auto;border-radius:12px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px">
+            <table style="width:100%;border-collapse:collapse;font-family:'Courier New',monospace;font-size:12px">
+            <thead><tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+                <th style="color:#475569;text-align:left;padding:8px 12px">Segment</th>
+                <th style="color:#475569;text-align:right;padding:8px 12px">Revenue FY2026E</th>
+                <th style="color:#475569;text-align:right;padding:8px 12px">YoY</th>
+                <th style="color:#475569;text-align:left;padding:8px 12px">Uzasadnienie</th>
+            </tr></thead>
+            <tbody style="color:#94a3b8">
+            {rows_html}
+            </tbody></table></div>""", unsafe_allow_html=True)
 
     # ── KROK 1: WACC
     st.markdown('<div class="sh">📐 Krok 1 — Stopa dyskontowa (WACC)</div>', unsafe_allow_html=True)
@@ -861,12 +900,28 @@ Net Cash = Gotówka &minus; Dług<br>
             )
     st.markdown(f'<div style="{MONO}">{"<br><br>".join(fcm_parts)}</div>', unsafe_allow_html=True)
 
+    # ── KROK 4b: CAGR Context (optional — backlog / growth driver justification)
+    cagr_ctx = dcf.get("cagr_context")
+    if cagr_ctx:
+        st.markdown('<div class="sh">📡 Krok 4b — Uzasadnienie CAGR (dlaczego te stawki wzrostu)</div>', unsafe_allow_html=True)
+        for stage_key in sorted(cagr_ctx.keys()):
+            stg = cagr_ctx[stage_key]
+            headline  = stg.get("headline", "")
+            cagr_val  = stg.get("cagr_pct", "?")
+            period    = stg.get("period", "")
+            bullet_items = stg.get("items", [])
+            bullets_html = "".join(f'<br>&nbsp;&nbsp;• {item}' for item in bullet_items)
+            st.markdown(f"""<div style="{MONO}">
+<b style="{HLW}">{stage_key.upper()} — {period} — CAGR <span style="color:#00d9a3">{cagr_val}%</span></b><br>
+<b style="color:#f59e0b">{headline}</b>{bullets_html}
+</div>""", unsafe_allow_html=True)
+
     # ── KROKI 5-6: Projection table
     wacc_label = dcf['wacc_pct']
     st.markdown(f'<div class="sh">📊 Kroki 5–6 — Przychody, FCF i dyskontowanie (WACC={wacc_label}%)</div>', unsafe_allow_html=True)
     rows, final_rev, total_years = compute_dcf_stages(dcf)
     if not rows:
-        st.warning("Brak `revenue_ttm_m` w modelu DCF — nie można obliczyć projekcji.")
+        st.warning("Brak `revenue_ttm_m` lub `revenue_base_fy2026e_m` w modelu DCF — nie można obliczyć projekcji.")
         return
 
     is_direct = any(r.get("direct") for r in rows)
