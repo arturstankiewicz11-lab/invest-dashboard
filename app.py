@@ -615,7 +615,7 @@ def compute_dcf_stages(dcf: dict):
     for stage in stages:
         years_range = stage["period"]
         m = _re.search(r'(\d{4})[–\-](\d{4})', years_range)
-        n_years = int(m.group(2)) - int(m.group(1)) + 1 if m else 5
+        n_years = stage.get("n_years") or (int(m.group(2)) - int(m.group(1)) + 1 if m else 5)
         cagr    = stage["rev_cagr_pct"] / 100
         direct  = "fcf_margin_pct" in stage
         if not direct:

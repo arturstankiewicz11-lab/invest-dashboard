@@ -41,6 +41,7 @@
       "stages": [
         {
           "period": "2026–2028",
+          "n_years": 3,
           "rev_cagr_pct": 18,
           "ebit_margin_pct": 47,
           "tax_pct": 19,
@@ -49,6 +50,7 @@
         },
         {
           "period": "2029–2035",
+          "n_years": 7,
           "rev_cagr_pct": 12,
           "ebit_margin_pct": 49,
           "tax_pct": 19,
@@ -145,6 +147,7 @@
       "stages": [
         {
           "period": "2026–2030",
+          "n_years": 5,
           "rev_cagr_pct": 5,
           "ebit_margin_pct": 15,
           "tax_pct": 28,
@@ -153,6 +156,7 @@
         },
         {
           "period": "2031–2035",
+          "n_years": 5,
           "rev_cagr_pct": 18,
           "ebit_margin_pct": 20,
           "tax_pct": 28,
@@ -192,6 +196,7 @@
       "stages": [
         {
           "period": "2026–2030",
+          "n_years": 5,
           "rev_cagr_pct": 28,
           "ebit_margin_pct": 14,
           "tax_pct": 28,
@@ -200,6 +205,7 @@
         },
         {
           "period": "2031–2035",
+          "n_years": 5,
           "rev_cagr_pct": 8,
           "ebit_margin_pct": 16,
           "tax_pct": 28,
@@ -536,6 +542,7 @@
       "stages": [
         {
           "period": "2026–2030",
+          "n_years": 5,
           "rev_cagr_pct": 28,
           "ebit_margin_pct": 57,
           "tax_pct": 13,
@@ -544,6 +551,7 @@
         },
         {
           "period": "2031–2035",
+          "n_years": 5,
           "rev_cagr_pct": 14,
           "ebit_margin_pct": 52,
           "tax_pct": 13,
@@ -741,12 +749,14 @@
       "stages": [
         {
           "period": "2026-2028",
+          "n_years": 3,
           "rev_cagr_pct": 84,
           "fcf_margin_pct": -55,
           "note": "Scaling phase — heavy R&D + SG&A, FCF deeply negative"
         },
         {
           "period": "2029-2030",
+          "n_years": 2,
           "rev_cagr_pct": 37,
           "fcf_margin_pct": 15,
           "note": "Path to profitability — fixed costs amortize over growing revenue base"
@@ -791,7 +801,7 @@
     "name": "Alphabet Inc. Class C",
     "fair_value": 537.0,
     "fair_value_currency": "USD",
-    "entry_point": 400,
+    "entry_point": 385,
     "thesis_short": "Cloud +63% YoY, backlog $462B (+90% QoQ). Full-stack AI moat: TPU+Gemini+GCP+Android+YouTube. DCF FV $537 (FY2026E $495B, Stage1 CAGR 21%, Stage2 14%, WACC 9.5%).",
     "thesis_full": "Alphabet to jedyny gracz kontrolujący KAŻDĄ warstwę ekonomii tokenów AI: własny chip (TPU Ironwood v7), własny frontier LLM (Gemini), własny cloud (GCP +63% YoY), własną dystrybucję konsumencką (3B+ Androidów, Search, YouTube, Chrome) i niereplikowalne dane treningowe. Q1 2026: revenue $109.9B (+22% YoY), Cloud $20B/kw (+63%), backlog Cloud $462B (skok z $243B w jednym kwartale — ~$240B nowych kontraktów w Q1). Cloud margin 17.8% → 32.9% w 5 kwartałów. Purchase commitments $332B zakontraktowane. Uncommenced DC leases $75.6B (2026-2031). DCF: baza FY2026E $495B (Cloud ~$100B + Services ~$395B), Stage1 CAGR 21%/FCF 14.2%, Stage2 CAGR 14%/FCF 32%, WACC 9.5%, g=3%. Demand strukturalnie przewyższa capacity — energia wąskim gardłem (Intersect $5.9B, PPA $9.9B 2027-2047). Google Cloud 11% market share vs AWS 31% — ogromna przestrzeń wzrostu.",
     "thesis_breaker": "Cloud growth spada poniżej 30% YoY przez 2 kwartały z rzędu LUB DOJ wymusza divestiture Chrome/zakaz default-search deals z Apple.",
@@ -824,6 +834,7 @@
       "stages": [
         {
           "period": "FY2027-2029",
+          "n_years": 3,
           "rev_cagr_pct": 21,
           "ebit_margin_pct": 36,
           "tax_pct": 19,
@@ -834,6 +845,7 @@
         },
         {
           "period": "FY2030-2036",
+          "n_years": 7,
           "rev_cagr_pct": 14,
           "ebit_margin_pct": 42,
           "tax_pct": 19,
@@ -850,7 +862,66 @@
       "enterprise_value_m": 6525026,
       "equity_value_m": 6571521,
       "fair_value_computed": 537.0,
-      "notes": "Baza FY2026E $495B (Cloud ~$100B, Services ~$395B). Backlog $462B z >50% w 24 mies = strukturalne zobowiazanie popytu. Demand > supply przez 3-4 lata — energia wąskim gardłem. Purchase commitments $332B zakontraktowane. TPU hardware supply multiple GW do enterprise = nowy strumien przychodow w backlogu 2027."
+      "notes": "Baza FY2026E $495B (Cloud ~$100B, Services ~$395B). Backlog $462B z >50% w 24 mies = strukturalne zobowiazanie popytu. Demand > supply przez 3-4 lata — energia wąskim gardłem. Purchase commitments $332B zakontraktowane. TPU hardware supply multiple GW do enterprise = nowy strumien przychodow w backlogu 2027.",
+      "base_breakdown": {
+        "label": "FY2026E — Cloud akceleruje powyżej TTM",
+        "ttm_note": "TTM ($422.5B) uśrednia Q2-Q4 2025, gdy Cloud rósł tylko 28-48%. Dziś Cloud rośnie +63% YoY — TTM zaniża punkt startowy. FY2026E $495B = Cloud ~$100B (+70% YoY) + Services ~$395B (+15% YoY).",
+        "items": [
+          {
+            "segment": "Google Cloud",
+            "revenue_m": 100000,
+            "yoy_pct": 70.0,
+            "note": "Q1 2026 +63% YoY ($20B/kw). Backlog $462B — ~$240B kontraktów w Q1. Kierunek: $100B FY2026."
+          },
+          {
+            "segment": "Google Services",
+            "revenue_m": 395000,
+            "yoy_pct": 15.3,
+            "note": "Search +19% (AI przyspiesza, nie kanibalizuje). Subscriptions +19%. Network -4% (pomijalne 6% rev)."
+          },
+          {
+            "segment": "Other Bets",
+            "revenue_m": 1500,
+            "yoy_pct": null,
+            "note": "Waymo + inne — istotne długoterm. (Waymo $16B funding), pomijalne w DCF."
+          },
+          {
+            "segment": "RAZEM FY2026E",
+            "revenue_m": 495000,
+            "yoy_pct": 22.9,
+            "note": "+22.9% vs FY2025 $402.8B. Użyte jako baza Stage1 zamiast TTM $422.5B."
+          }
+        ]
+      },
+      "cagr_context": {
+        "stage1": {
+          "cagr_pct": 21,
+          "period": "FY2027-2029",
+          "headline": "Backlog $462B — ~$240B nowych kontraktów w jednym kwartale",
+          "items": [
+            "Backlog Cloud kwartalnie: $108B (Q2'25) → $157B (Q3'25) → $243B (Q4'25) → $462B (Q1'26)",
+            ">50% backlogu rozpoznane w 24 mies = >$231B Cloud revenue w 2026+2027 (vs $160B przy obecnym tempie)",
+            "~$240B nowych kontraktów podpisanych w jednym kwartale — sign/deliver ratio 12:1",
+            "Cloud margin 5 kwartałów: 17.8% → 20.7% → 23.7% → 30.1% → 32.9% (+15.1pp) — AI premium",
+            "Search +9.8% → +11.7% → +14.5% → +16.7% → +19.1% YoY — AI Overviews przyśpieszają, nie kanibalizują",
+            "Subscriptions stabilne +17-21% — Google One (Gemini consumer) + YouTube TV ukryte w tej linii",
+            "Purchase commitments: $149B (FY2025) → $332B (Q1 2026) — +$183B zakontraktowane w 1 kwartale"
+          ]
+        },
+        "stage2": {
+          "cagr_pct": 14,
+          "period": "FY2030-2036",
+          "headline": "Enterprise AI adoption wciąż we wczesnej fazie — Google Cloud 11% market share",
+          "items": [
+            "Google Cloud 11% market share vs AWS 31%, Azure 22% — ogromna przestrzeń wzrostu bez utraty marż",
+            "Demand strukturalnie > supply: energia wąskim gardłem (Intersect $5.9B, PPA $9.9B 2027-2047)",
+            "TPU hardware supply (multiple GW) do enterprise — nowy strumień przychodów poza tradycyjnym Cloud",
+            "Uncommenced DC leases $75.6B (2026-2031) — pipeline pojemności na 5 lat, popyt już zakontraktowany",
+            "APAC/EM enterprise AI adoption dopiero zaczyna — globalny TAM rośnie przez dekadę",
+            "Cloud margin kierunek: 32.9% (Q1'26) → 40%+ (AWS benchmark 37%) → EBIT blended 42% w Stage2"
+          ]
+        }
+      }
     }
   }
 }
