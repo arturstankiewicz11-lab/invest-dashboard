@@ -617,7 +617,8 @@ def compute_dcf_stages(dcf: dict):
         m = _re.search(r'(\d{4})[–\-](\d{4})', years_range)
         n_years = stage.get("n_years") or (int(m.group(2)) - int(m.group(1)) + 1 if m else 5)
         cagr    = stage["rev_cagr_pct"] / 100
-        direct  = "fcf_margin_pct" in stage
+        has_components = all(k in stage for k in ["ebit_margin_pct", "tax_pct", "capex_pct", "da_pct"])
+        direct  = "fcf_margin_pct" in stage and not has_components
         if not direct:
             ebit_m    = stage["ebit_margin_pct"] / 100
             tax       = stage["tax_pct"] / 100
@@ -880,23 +881,29 @@ Net Cash = Gotówka &minus; Dług<br>
     st.markdown('<div class="sh">🧮 Krok 4 — Marże FCF (wyprowadzenie ze wzoru)</div>', unsafe_allow_html=True)
     fcm_parts = []
     for i, stage in enumerate(dcf.get("stages", [])):
-        if "fcf_margin_pct" in stage:
-            fcm_parts.append(f'<b style="{HLW}">Stage {i+1} ({stage["period"]}) — FCF Margin bezpośrednia:</b><br>'
-                             f'FCF_margin = <b style="{HL}">{stage["fcf_margin_pct"]}%</b>')
-        else:
-            ebit_s  = stage.get("ebit_margin_pct", 0)
-            tax_s   = stage.get("tax_pct", 0)
-            capex_s = stage.get("capex_pct", 0)
-            da_s    = stage.get("da_pct", 0)
+        has_comp = all(k in stage for k in ["ebit_margin_pct", "tax_pct", "capex_pct", "da_pct"])
+        if has_comp:
+            ebit_s  = stage["ebit_margin_pct"]
+            tax_s   = stage["tax_pct"]
+            capex_s = stage["capex_pct"]
+            da_s    = stage["da_pct"]
             nopat_s = ebit_s * (1 - tax_s / 100)
             fcm_s   = nopat_s + da_s - capex_s
+            stored  = stage.get("fcf_margin_pct")
+            check   = f' &nbsp;<span style="color:#475569;font-size:11px">(zapisane: {stored}%)</span>' if stored else ""
             fcm_parts.append(
-                f'<b style="{HLW}">Stage {i+1} ({stage["period"]}):</b><br>'
+                f'<b style="{HLW}">Stage {i+1} ({stage["period"]}, CAGR {stage["rev_cagr_pct"]}%):</b><br>'
                 f'FCF_margin = EBIT% &times; (1&minus;tax%) + D&amp;A% &minus; CapEx%<br>'
                 f'&nbsp;&nbsp;= {ebit_s}% &times; (1&minus;{tax_s}%) + {da_s}% &minus; {capex_s}%<br>'
-                f'&nbsp;&nbsp;= {ebit_s}% &times; {100-tax_s}% + {da_s}% &minus; {capex_s}%<br>'
-                f'&nbsp;&nbsp;= {nopat_s:.2f}% + {da_s}% &minus; {capex_s}%<br>'
-                f'&nbsp;&nbsp;<b style="{HL}">= {fcm_s:.2f}%</b>'
+                f'&nbsp;&nbsp;= {ebit_s}% &times; {100-tax_s:.0f}% + {da_s}% &minus; {capex_s}%<br>'
+                f'&nbsp;&nbsp;= NOPAT {nopat_s:.2f}% + D&amp;A {da_s}% &minus; CapEx {capex_s}%<br>'
+                f'&nbsp;&nbsp;<b style="{HL}">= {fcm_s:.2f}%</b>{check}'
+            )
+        elif "fcf_margin_pct" in stage:
+            fcm_parts.append(
+                f'<b style="{HLW}">Stage {i+1} ({stage["period"]}, CAGR {stage["rev_cagr_pct"]}%) — FCF Margin bezpośrednia:</b><br>'
+                f'FCF_margin = <b style="{HL}">{stage["fcf_margin_pct"]}%</b> &nbsp;'
+                f'<span style="color:#475569;font-size:11px">(brak składowych — użyto wprost)</span>'
             )
     st.markdown(f'<div style="{MONO}">{"<br><br>".join(fcm_parts)}</div>', unsafe_allow_html=True)
 
