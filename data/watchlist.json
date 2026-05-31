@@ -10,6 +10,12 @@
   "Defence": [],
   "AI": [
     {
+      "ticker": "AMZN",
+      "name": "Amazon.com Inc.",
+      "note": "AWS +28.4% YoY, marża 37.7%, backlog $364B (+$120B QoQ). Advertising $68.6B FY2025 (+22.1%). DCF FV $378, entry $284 (25% MoS). CapEx szczyt FY2026 → FCF recovery od FY2027.",
+      "added": "2026-05-31"
+    },
+    {
       "ticker": "GOOG",
       "name": "Alphabet Inc. Class C",
       "note": "Class C bez głosów — ekonomicznie identyczne do GOOGL, ale lepsza liquidity i często niższa cena. Founder-controlled przez Class B (Page/Brin), więc głosy GOOGL bezwartościowe. Thesis AI: Gemini + TPU stack + Waymo + YouTube cash machine. Defensywny anchor w AI bucket, nie moonshot 10x.",
