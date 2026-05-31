@@ -1,0 +1,118 @@
+{
+  "ticker": "QNT",
+  "period": "S1A_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "s1a_ipo_filing",
+  "source_file": "data/reports/QNT/Document.pdf",
+  "extracted": "2026-05-31",
+
+  "ipo": {
+    "filing_type": "S-1/A Amendment No. 1",
+    "filed_date": "2026-05-26",
+    "exchange": "Nasdaq",
+    "symbol": "QNT",
+    "ipo_price_low": 45.00,
+    "ipo_price_high": 50.00,
+    "ipo_price_midpoint": 47.50,
+    "shares_offered": 21052632,
+    "gross_proceeds_m": 1000,
+    "underwriting_m": 40,
+    "net_proceeds_m": 947,
+    "note": "Offering 21,052,632 Class A shares at $45-$50 range. Gross proceeds $1B."
+  },
+
+  "capitalization": {
+    "shares_class_a_post_ipo_fully_diluted_m": 253.937,
+    "market_cap_at_midpoint_m": 12062,
+    "public_economic_interest_pct": 10.2,
+    "continuing_unitholders_pct": 89.8,
+    "cash_pro_forma_post_ipo_m": 1622.6,
+    "net_ev_ex_cash_m": 10439,
+    "note": "Class A (253.9M) = 10.2% economic interest in Quantinuum Holdings. Remaining 89.8% held by Continuing Common Unitholders (Honeywell et al.) via Class B. Market cap at $47.50 = $12.06B fully diluted (as-converted basis)."
+  },
+
+  "income_statement": {
+    "revenue_fy2024_m": 22.979,
+    "revenue_fy2025_m": 30.931,
+    "revenue_yoy_2025_pct": 34.6,
+    "revenue_q1_2025_m": 19.085,
+    "revenue_q1_2026_m": 5.237,
+    "revenue_q1_yoy_pct": -72.6,
+    "revenue_q1_note": "Q1 2025 anomalous: RIKEN = 90% of Q1 2025 revenue ($17.2M). Q1 2026: RIKEN = 7% ($0.37M). Gov-affiliated institution = 47% ($2.46M). Baza Q1 2025 nieporównywalna.",
+    "net_loss_fy2024_m": 144.071,
+    "net_loss_fy2025_m": 192.561,
+    "net_loss_q1_2026_m": 136.593,
+    "net_loss_q1_note": "Q1 2026 net loss $136.6M zawiera $64.2M non-cash: zmiana wartości godziwej zobowiązań warrantowych. Operacyjna strata = $77.2M.",
+    "rd_expenses_net_fy2025_m": 165.421,
+    "rd_expenses_pro_forma_fy2025_m": 355.032,
+    "rd_note": "Pro forma R&D $355M uwzględnia pełne koszty holdingu po reorganizacji. Historyczna $165M = tylko spółka operacyjna."
+  },
+
+  "cash_flow": {
+    "operating_cash_flow_fy2025_m": -160.273,
+    "operating_cash_flow_fy2024_m": -120.910,
+    "operating_cash_flow_q1_2026_m": -62.899,
+    "annual_burn_rate_m": -200,
+    "cash_runway_years": 8.1,
+    "note": "Cash runway = $1,622.6M / ~$200M annual burn = ~8 lat. Bardzo silna pozycja gotówkowa po IPO."
+  },
+
+  "balance_sheet": {
+    "cash_pre_ipo_m": 677.011,
+    "cash_pro_forma_post_ipo_m": 1622.551,
+    "total_assets_pro_forma_m": 2724.821,
+    "working_capital_pro_forma_m": 1596.317,
+    "lt_debt_m": 0,
+    "note": "Brak długu długoterminowego. Post-IPO cash $1.6B = 8+ lat runway przy obecnym burn rate."
+  },
+
+  "bookings_and_backlog": {
+    "bookings_fy2025_m": 79.3,
+    "bookings_q1_2025_m": 1.9,
+    "bookings_q1_2026_m": 1.3,
+    "rpo_m": 80.7,
+    "rpo_12m_pct": 31,
+    "rpo_24m_pct": 58,
+    "rpo_36m_pct": 78,
+    "rpo_12m_implied_m": 25.0,
+    "note": "RPO $80.7M as of Q1 2026. ~$25M do rozpoznania w 12 miesiącach. Bookings FY2025 $79.3M >> revenue $30.9M — duży deferred backlog."
+  },
+
+  "key_customers": {
+    "riken_q1_2025_pct": 90,
+    "riken_fy2025_pct": 60,
+    "riken_fy2024_pct": 63,
+    "riken_q1_2026_pct": 7,
+    "gov_institution_q1_2026_pct": 47,
+    "note": "RIKEN (Japan gov research) dominował przychody, teraz marginalna rola (7% Q1 2026). Nowy lider: nieznana instytucja rządowa 47% Q1 2026. BARDZO wysokie koncentracja klientów — ryzyko."
+  },
+
+  "technology": {
+    "approach": "Trapped-ion quantum computing",
+    "current_system": "Helios — 98 physical qubits (2025 Ransford et al.)",
+    "roadmap_next": "Apollo — first commercial-scale, fully fault-tolerant QC, before end of decade (2029-2030)",
+    "darpa": "Stage B selection — DARPA Quantum Benchmarking Initiative, utility-scale FTQC roadmap to 2033",
+    "chips_act": "LOI with US Dept of Commerce, up to $100M award (announced May 21, 2026); $56M first tranche on Award Date",
+    "partners": "NVIDIA, Infineon, JPMorgan Chase",
+    "competitive_position": "#1 trapped-ion fidelity and quantum volume vs IonQ (also trapped-ion) and IBM/Google (superconducting)"
+  },
+
+  "corporate_structure": {
+    "parent_pre_ipo": "Quantinuum (Cayman) — Honeywell majority owner",
+    "public_entity": "Quantinuum Inc. (Delaware holding company)",
+    "operating_entity": "Quantinuum Holdings LLC",
+    "honeywell_stake": "Majority economic interest via Continuing Common Units (89.8% combined with other pre-IPO investors)",
+    "note": "Uprm.gov structure: publiczni akcjonariusze (Class A) = 10.2% ekonomicznego udziału. Honeywell i pre-IPO inwestorzy (Class B) = 89.8%. Kontrola operacyjna przez Quantinuum Inc. jako sole managing member."
+  },
+
+  "valuation_context": {
+    "implied_market_cap_at_midpoint_m": 12062,
+    "pro_forma_cash_m": 1623,
+    "implied_ev_ex_cash_m": 10439,
+    "ev_revenue_fy2025x": 338,
+    "ev_revenue_fy2026e_x_conservative": 261,
+    "fy2026e_revenue_estimate_m": 40,
+    "fy2026e_note": "FY2026E $40M = RPO $25M w 12M + ~$15M nowych bookingów. Konserwatywna estymacja. Bull case $55-60M jeśli US Gov + enterprise ramps.",
+    "ionq_comparable": "IONQ: ~$40B mcap / $265M FY2026E rev = 150x EV/Rev (bardziej dojrzały, 7x więcej revenue)"
+  }
+}
