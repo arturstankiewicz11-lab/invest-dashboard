@@ -923,5 +923,149 @@
         }
       }
     }
+  },
+  "AMZN": {
+    "name": "Amazon.com Inc.",
+    "recommendation": "BUY",
+    "fair_value": 378.0,
+    "fair_value_currency": "USD",
+    "entry_point": 284,
+    "upside_pct": null,
+    "thesis_short": "AWS +28.4% YoY, marża 37.7%, backlog $364B (+49% QoQ). Reklama $68.6B FY2025 (+22.1%). DCF FV $378 (FY2026E $840B, Stage1 CAGR 18%, WACC 10.5%).",
+    "thesis_full": "Amazon to platforma AI+commerce z trzema motorami wartości: (1) AWS — cloud+AI z backlogiem $364B (+$120B w jednym kwartale, analogia Google Cloud $462B), marża 37.7% zmierzająca ku 40%+; (2) Advertising Services — $68.6B FY2025 (+22.1% YoY przez 4 kwartały konsekwentnie), ~50% marży operacyjna, unikalny moat danych zakupowych niereplikowalny przez Google/Meta, Prime Video Ads (100M US subscribers) dodaje premium inventory; (3) Subscription/Prime — $49.6B (+11.8%), ekosystem wiążący 230M+ subskrybentów i napędzający flywheel zakupowy. Q1 2026: revenue $181.5B (+16.6% YoY, +3.1% ponad guidance midpoint $176B), op income $23.9B (+26% ponad guidance $19B). FCF TTM $1.2B skompresowany przez CapEx $44.2B (+116% YoY, AWS $41.5B net) — szczyt buildoutu AI infrastructure. Amazon wyemitował $53B obligacji w Q1 2026 — management conviction. Normalizacja CapEx do 17% od FY2027 = FCF recovery. Trainium2/Inferentia3 własne chipy = niższy COGS AWS. DCF: baza $840B FY2026E, Stage1 CAGR 18%/FCF 5.75%, Stage2 CAGR 12%/FCF 17.04%, WACC 10.5%, g=3%.",
+    "thesis_breaker": "AWS growth < 20% YoY przez 2 kwartały z rzędu LUB EBIT margin < 12% przy dalszym wzroście revenue.",
+    "risks": [
+      "AI CapEx bez zwrotu — FCF TTM $1.2B przy CapEx $44.2B/kw; jeśli AI ROI nie materializuje się w 2027-2028, FCF skompresowane przez 4+ lat. Impact: -25% FV",
+      "AWS market share erosja — Azure +40% vs AWS +28.4%; ryzyko utraty AI workloads na rzecz OpenAI/Azure integration. Impact: -15% FV jeśli AWS < 20% YoY w 2027",
+      "Dług $119B — emisja $53B Q1 2026 (LT debt 2x wzrost); przy wzroście stóp lub credit event ogranicza elastyczność. Net cash tylko $24B buforem"
+    ],
+    "buffett_moat": "Wide — AWS #1 cloud (31% share) z enterprise switching costs; Advertising unikalne dane zakupowe niereplikowalne przez Google/Meta; Prime lock-in 230M+ subskrybentów; FBA logistics flywheel obniża koszt wejścia dla sprzedawców 3P",
+    "last_updated": "2026-05-31",
+    "next_earnings": "2026-08-01",
+    "priority_action": null,
+    "dcf": {
+      "wacc_pct": 10.5,
+      "terminal_growth_pct": 3.0,
+      "revenue_base_fy2026e_m": 840000,
+      "net_debt_m": -24015,
+      "shares_m": 10874,
+      "wacc_inputs": {
+        "rf_pct": 4.4,
+        "beta": 1.15,
+        "erp_pct": 5.0,
+        "note": "Re = 4.4 + 1.15 × 5.0 = 10.15% → WACC 10.5% (premia +0.35pp za ryzyko szczytowego CapEx cycle i dźwigni $119B LT debt)"
+      },
+      "terminal_growth_rationale": "g=3% < nominalny PKB USA (~4%). AWS cloud TAM strukturalnie rośnie przez dekadę — g=3% konserwatywne. Każde -0.5pp g obniża FV o ~$25.",
+      "balance_sheet_inputs": {
+        "cash_and_st_securities_m": 143089,
+        "lt_debt_book_value_m": 119074,
+        "net_cash_m": 24015,
+        "note": "Cash+ST securities $143.1B minus LT debt $119.1B = net cash $24.0B (Q1 2026). Emisja ~$53B obligacji w Q1 2026 na AI infrastructure."
+      },
+      "stages": [
+        {
+          "period": "FY2027-2029",
+          "n_years": 3,
+          "rev_cagr_pct": 18,
+          "ebit_margin_pct": 15,
+          "tax_pct": 15,
+          "capex_pct": 17,
+          "da_pct": 10,
+          "fcf_margin_pct": 5.75,
+          "note": "CAGR 18% = AWS 26% + Advertising 22% + E-comm 15% blended. CapEx 17% (vs 24.4% Q1 2026) — normalizacja po szczycie AI buildout. EBIT 15%: powyżej Q1 2026 13.1% dzięki AWS margin zmierzającej ku 40%+. Tax 15% = historyczna AMZN efektywna stawka."
+        },
+        {
+          "period": "FY2030-2036",
+          "n_years": 7,
+          "rev_cagr_pct": 12,
+          "ebit_margin_pct": 22,
+          "tax_pct": 18,
+          "capex_pct": 8,
+          "da_pct": 7,
+          "fcf_margin_pct": 17.04,
+          "note": "CapEx 8% = post-AI buildout, maintenance+growth. EBIT 22%: mix shift AWS (~25% rev, 45% margin) + Advertising (~12% rev, 55% margin) podnosi blended. Tax 18% = normalizacja. CAGR 12%: AWS 18% + Ads 16% + E-comm 9% blended."
+        }
+      ],
+      "pv_fcf_stage1_m": 165475,
+      "pv_fcf_stage2_m": 1288211,
+      "pv_fcf_total_m": 1453686,
+      "pv_terminal_m": 2630718,
+      "enterprise_value_m": 4084403,
+      "equity_value_m": 4108418,
+      "fair_value_computed": 378.0,
+      "notes": "Baza FY2026E $840B = FY2025 $716.9B × 1.172. Szczytowy CapEx 24.4% Q1 2026 kompresuje FCF — model wycenia powrót do 17% Stage1 i 8% Stage2. AWS Trainium2/Inferentia3 = własne chipy AI od 2026 → niższy COGS = wyższe EBIT. Q2 guidance midpoint $196.5B (+17.2% YoY) potwierdza bazę FY2026E.",
+      "base_breakdown": {
+        "label": "FY2026E — AWS akceleruje, Advertising stabilnie +22%+",
+        "ttm_note": "TTM (~$726B) = Q1 2026 annualized, zaniża bazę bo nie uwzględnia sezonowości Q4 (holiday $213B). FY2026E $840B = FY2025 $716.9B × 1.172 — zgodne z Q1 +16.6% i Q2 guidance midpoint +17.2%.",
+        "items": [
+          {
+            "segment": "AWS",
+            "revenue_m": 163000,
+            "yoy_pct": 26.6,
+            "note": "FY2025 $128.7B (confirmed 10-K). Q1 2026 +28.4% YoY ($37.6B). Backlog $364B (+$120B QoQ, avg life 5.5 lat). FY2026E zakłada umiarkowanie vs peak Q1 — konserwatywne."
+          },
+          {
+            "segment": "Advertising Services",
+            "revenue_m": 84000,
+            "yoy_pct": 22.4,
+            "note": "FY2025 $68.6B (confirmed 10-K). +22-24% YoY przez 4 kolejne kwartały (Q2 2025 → Q1 2026). Prime Video Ads (~100M US subscribers) dodaje premium inventory od 2024."
+          },
+          {
+            "segment": "Subscription Services",
+            "revenue_m": 57000,
+            "yoy_pct": 14.9,
+            "note": "FY2025 $49.6B (confirmed 10-K). Akceleracja: +11.5% Q3 → +14.0% Q4 → +14.6% Q1 2026. Global Prime expansion India/EM."
+          },
+          {
+            "segment": "E-commerce (Online + Physical + 3P + Other)",
+            "revenue_m": 536000,
+            "yoy_pct": 14.0,
+            "note": "FY2025: Online $269.3B + Third-party $172.2B + Physical $22.6B + Other $5.9B = $469.9B. 3P (+13.9% Q1 2026) rośnie szybciej niż Online (+11.9%) — mix shift w kierunku wyżej-marżowych usług FBA."
+          },
+          {
+            "segment": "RAZEM FY2026E",
+            "revenue_m": 840000,
+            "yoy_pct": 17.2,
+            "note": "+17.2% vs FY2025 $716.9B. Użyte jako baza Stage1 zamiast TTM ~$726B. Q2 2026 guidance midpoint $196.5B (+17.2% YoY) potwierdza trajektorię."
+          }
+        ]
+      },
+      "cagr_context": {
+        "stage1": {
+          "cagr_pct": 18,
+          "period": "FY2027-2029",
+          "headline": "Backlog $364B — +$120B nowych kontraktów w jednym kwartale, identyczny pattern jak Google Cloud ($462B)",
+          "items": [
+            "AWS backlog kwartalnie: $195B (Q2'25) → $200B (Q3'25) → $244B (Q4'25) → $364B (Q1'26) — +49% QoQ",
+            "Weighted avg life 5.5 lat → ~$66B/rok bazy zakontraktowanej vs $150B annualized run rate — strukturalny wzrost gwarantowany kontraktami",
+            "AWS YoY akceleracja: +17.5% (Q2'25) → +20.2% (Q3'25) → +23.6% (Q4'25) → +28.4% (Q1'26) — 4 kolejne kwartały przyspieszenia",
+            "Advertising +22-24% przez 4 kwartały (Q2 2025 → Q1 2026) — stabilna trajektoria; Prime Video Ads ~100M US subscribers = nowy premium inventory",
+            "Subscription akceleruje do 14-15% (Q4 2025, Q1 2026) vs ~12% mid-2025 — Global Prime expansion India/EM",
+            "Q2 2026 guidance midpoint $196.5B (+17.2% YoY) + CapEx $44.2B (+116%) — management potwierdza kontynuację wzrostu"
+          ]
+        },
+        "stage2": {
+          "cagr_pct": 12,
+          "period": "FY2030-2036",
+          "headline": "AWS 31% cloud market share — ogromna przestrzeń wzrostu; Advertising triopol dopiero się kształtuje globalnie",
+          "items": [
+            "Cloud TAM $720B (2025) → $2T+ (2032) wg IDC — AWS przy 31% share ma strukturalny tailwind bez utraty marż",
+            "Amazon = 3. gracz digital ads globalnie (Google 39%, Meta 18%, Amazon ~8%) — APAC/EM retail media underpenetrated",
+            "Trainium2/Inferentia3 własne chipy AI: niższy COGS AWS od 2026-2027 → marża kierunek 45%+ w Stage2 (benchmark: AWS Q1 2026 = 37.7%)",
+            "Robotics fulfillment (Proteus, Cardinal) skaluje w 2026-2030 → e-commerce margin +3-5pp bez dodatkowego CapEx",
+            "International $161.9B FY2025 (+13.6% YoY) przy marży 2.9% → dojrzewanie do 8-10% NA-level — potencjalny catalyst FV rewizji",
+            "CapEx normalizacja: 24.4% (dziś) → 17% (Stage1) → 8% (Stage2) to główny driver FCF recovery — każde -1pp CapEx/rev = +$8.4B FCF"
+          ]
+        }
+      }
+    },
+    "events": [
+      {
+        "date": "2026-05-31",
+        "event": "Inicjacja BUY @ FV $378. DCF: WACC 10.5%, FY2026E $840B, Stage1 CAGR 18%/FCF 5.75%, Stage2 CAGR 12%/FCF 17.04%, g=3%. Q1 2026: Revenue $181.5B (+16.6%), AWS +28.4% (marża 37.7%), backlog $364B (+$120B QoQ). Advertising $17.2B (+23.9%). CapEx $44.2B (+116% YoY) — szczyt buildoutu. Net cash $24B po emisji $53B obligacji.",
+        "impact": "positive",
+        "fv_note": "Inicjacja. Entry $284 = 25% MoS od FV $378."
+      }
+    ]
   }
 }

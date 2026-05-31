@@ -1,0 +1,108 @@
+{
+  "ticker": "AMZN",
+  "period": "FY2025",
+  "period_end": "2025-12-31",
+  "report_type": "annual",
+  "source_file": "data/reports/AMZN/amzn-20251231.pdf",
+  "extracted": "2026-05-31",
+
+  "income_statement": {
+    "revenue_fy_m": 716924,
+    "ebit_fy_m": 79975,
+    "ebit_margin_pct": 11.2,
+    "net_income_fy_m": 77670,
+    "q4_implied_revenue_m": 213386,
+    "q4_implied_note": "Q4 2025 = FY2025 $716,924 - Q1 $155,667 - Q2 $167,702 - Q3 $180,169"
+  },
+
+  "segments_fy": {
+    "aws_revenue_m": 128725,
+    "aws_yoy_pct": 20.0,
+    "aws_operating_income_m": 45606,
+    "aws_operating_margin_pct": 35.4,
+    "aws_da_m": 21450,
+    "aws_net_capex_additions_m": 96496,
+    "north_america_revenue_m": 426305,
+    "north_america_operating_income_m": 29619,
+    "international_revenue_m": 161894,
+    "international_operating_income_m": 4750,
+    "q4_implied_aws_revenue_m": 35579,
+    "q4_implied_aws_oi_m": 12465,
+    "q4_implied_aws_margin_pct": 35.0
+  },
+
+  "cash_flow_fy": {
+    "cfo_fy_m": 139514,
+    "capex_fy_m": 131819,
+    "net_additions_ppe_m": 142352,
+    "da_fy_m": 65756,
+    "fcf_fy_m": 11194,
+    "capex_pct_revenue": 18.4,
+    "da_pct_revenue": 9.2,
+    "capex_note": "CapEx FY2025 +65% YoY. AWS segment: $96.5B net additions. Depreciation accelerated — server/networking zmieniono z 6 na 5 lat od 2025-01-01 (wpływ +$1.4B/rok)."
+  },
+
+  "balance_sheet": {
+    "cash_and_equivalents_m": 86810,
+    "cash_and_st_securities_m": 123029,
+    "lt_debt_face_value_m": 68836,
+    "lt_debt_book_value_m": 65648,
+    "net_cash_m": 54193,
+    "shares_diluted_m": 10827
+  },
+
+  "aws_backlog": {
+    "remaining_performance_obligations_m": 244000,
+    "weighted_avg_life_years": 4.1,
+    "note": "$244B as of December 31, 2025. Wzrost z $200B w Q3 (+22% QoQ)."
+  },
+
+  "guidance_q1_2026": {
+    "revenue_low_m": 173500,
+    "revenue_high_m": 178500,
+    "operating_income_low_m": 16500,
+    "operating_income_high_m": 21500,
+    "guidance_note": "Q1 2026 guidance: rev $173.5-178.5B (+11-15% YoY), op income $16.5-21.5B. ~$1B wyższe koszty Amazon Leo."
+  },
+
+  "capex_outlook_2026": "Management: 'we expect capital spending to increase in 2026' — primarily AWS growth + fulfillment.",
+
+  "product_lines_fy": {
+    "online_stores_m": 269287,
+    "online_stores_yoy_pct": 9.0,
+    "physical_stores_m": 22561,
+    "physical_stores_yoy_pct": 6.3,
+    "third_party_services_m": 172162,
+    "third_party_services_yoy_pct": 10.3,
+    "advertising_services_m": 68635,
+    "advertising_services_yoy_pct": 22.1,
+    "subscription_services_m": 49619,
+    "subscription_services_yoy_pct": 11.8,
+    "aws_m": 128725,
+    "aws_yoy_pct": 19.7,
+    "other_m": 5935,
+    "other_yoy_pct": 9.4,
+    "q4_implied_online_stores_m": 82988,
+    "q4_implied_physical_stores_m": 5855,
+    "q4_implied_third_party_m": 52816,
+    "q4_implied_advertising_m": 21317,
+    "q4_implied_subscription_m": 13122,
+    "q4_implied_aws_m": 35579,
+    "q4_implied_other_m": 1709,
+    "source": "10-K FY2025 (amzn-20251231.pdf) — Note: Net sales by groups of similar products. Q4 implied = FY2025 minus 9M (from Q3 10-Q).",
+    "note_q4_advertising_yoy": "Q4 2025 Advertising $21.3B vs Q4 2024 est. $17.3B = +23.3% YoY — utrzymanie tempa 22-24% przez 4 kolejne kwartały"
+  },
+
+  "segments_fy_detail": {
+    "north_america_operating_margin_pct": 6.9,
+    "international_operating_margin_pct": 2.9,
+    "aws_operating_margin_pct": 35.4,
+    "q4_implied_na_revenue_m": 127083,
+    "q4_implied_na_oi_m": 11472,
+    "q4_implied_na_margin_pct": 9.0,
+    "q4_implied_intl_revenue_m": 50724,
+    "q4_implied_intl_oi_m": 1040,
+    "q4_implied_intl_margin_pct": 2.1,
+    "source_q4": "Q4 = FY2025 segment totals minus 9M 2025 from Q3 10-Q"
+  }
+}

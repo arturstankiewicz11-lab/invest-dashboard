@@ -1,0 +1,124 @@
+{
+  "ticker": "AMZN",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/AMZN/amzn-20260331.pdf",
+  "extracted": "2026-05-31",
+
+  "income_statement": {
+    "revenue_q_m": 181519,
+    "revenue_q_prior_m": 155667,
+    "revenue_yoy_pct": 16.6,
+    "revenue_annualized_m": 726076,
+    "ebit_q_m": 23852,
+    "ebit_margin_pct": 13.1,
+    "net_income_q_m": 30255,
+    "beat_vs_guidance_note": "Revenue $181.5B vs guidance midpoint $176B (+3.1% beat). Op income $23.9B vs guidance midpoint $19B (+26% beat)."
+  },
+
+  "segments_q": {
+    "north_america_revenue_m": 104143,
+    "north_america_revenue_prior_m": 92887,
+    "north_america_yoy_pct": 12.1,
+    "north_america_operating_income_m": 8267,
+    "north_america_operating_margin_pct": 7.9,
+    "international_revenue_m": 39789,
+    "international_revenue_prior_m": 33513,
+    "international_yoy_pct": 18.7,
+    "international_operating_income_m": 1424,
+    "international_operating_margin_pct": 3.6,
+    "aws_revenue_m": 37587,
+    "aws_revenue_prior_m": 29267,
+    "aws_yoy_pct": 28.4,
+    "aws_operating_income_m": 14161,
+    "aws_operating_margin_pct": 37.7,
+    "aws_net_additions_ppe_m": 41516,
+    "aws_net_additions_prior_m": 20464,
+    "aws_capex_yoy_pct": 103.0
+  },
+
+  "product_lines_q": {
+    "online_stores_m": 64254,
+    "online_stores_prior_m": 57407,
+    "online_stores_yoy_pct": 11.9,
+    "physical_stores_m": 5785,
+    "physical_stores_prior_m": 5533,
+    "physical_stores_yoy_pct": 4.6,
+    "third_party_services_m": 41578,
+    "third_party_services_prior_m": 36512,
+    "third_party_services_yoy_pct": 13.9,
+    "advertising_services_m": 17243,
+    "advertising_services_prior_m": 13921,
+    "advertising_services_yoy_pct": 23.9,
+    "subscription_services_m": 13427,
+    "subscription_services_prior_m": 11715,
+    "subscription_services_yoy_pct": 14.6,
+    "aws_m": 37587,
+    "other_m": 1645,
+    "other_prior_m": 1312,
+    "other_yoy_pct": 25.4,
+    "source": "10-Q Q1 2026 (amzn-20260331.pdf) — Note: Net sales by groups of similar products"
+  },
+
+  "cash_flow_q": {
+    "cfo_q_m": 26032,
+    "cfo_ttm_m": 148531,
+    "capex_q_m": 44203,
+    "capex_note": "Q1 2026 CapEx $44.2B (+116% YoY vs ~$20B Q1 2025 estimate). AWS net additions $41.5B (+103% YoY). FCF TTM = $1.2B — CapEx pochłania niemal cały CFO.",
+    "da_q_m": 18945,
+    "da_pct_revenue": 10.4,
+    "capex_pct_revenue": 24.4,
+    "fcf_ttm_m": 1232,
+    "infrastructure_costs_yoy_pct": 29.0
+  },
+
+  "balance_sheet": {
+    "cash_and_equivalents_m": 101816,
+    "cash_and_st_securities_m": 143089,
+    "lt_debt_book_value_m": 119074,
+    "net_cash_m": 24015,
+    "net_debt_m": -24015,
+    "shares_diluted_m": 10874,
+    "debt_note": "LT debt wzrósł z $65.6B (Dec 2025) do $119.1B (Mar 2026) — emisja ~$53B obligacji w Q1 2026 (AI infrastructure funding, podobnie jak Google $32B)."
+  },
+
+  "aws_backlog": {
+    "remaining_performance_obligations_m": 364000,
+    "weighted_avg_life_years": 5.5,
+    "qoq_growth_pct": 49.2,
+    "note": "$364B as of March 31, 2026. Skok z $244B (Dec 2025) = +$120B w jednym kwartale (+49% QoQ). Analogiczny do Google Cloud ($243B → $462B). AI enterprise wave potwierdzona."
+  },
+
+  "guidance_q2_2026": {
+    "revenue_low_m": 194000,
+    "revenue_high_m": 199000,
+    "revenue_midpoint_m": 196500,
+    "operating_income_low_m": 20000,
+    "operating_income_high_m": 24000
+  },
+
+  "dcf_inputs_derived": {
+    "revenue_base_fy2026e_m": 840000,
+    "ebit_margin_pct": 13.1,
+    "tax_rate_pct": 15.0,
+    "capex_pct_revenue": 24.4,
+    "da_pct_revenue": 10.4,
+    "net_cash_m": 24015,
+    "shares_diluted_m": 10874,
+    "note": "FY2026E $840B = FY2025 $716.9B × 1.17 (+17% YoY, zgodnie z Q1 +16.6% i Q2 guidance +17.2%). CapEx 24.4% jest szczytowy — AWS buduje capacity na skalę rekordową."
+  },
+
+  "key_highlights": [
+    "Revenue Q1 2026: $181.5B (+16.6% YoY) — przyspiesza vs 13-14% w 2025",
+    "AWS +28.4% YoY ($29.3B → $37.6B) — wyraźna akceleracja vs +17.5% Q2 2025",
+    "AWS margin Q1 2026: 37.7% (trend: 32.9% → 34.6% → 35.0% → 37.7%) — +4.8pp w 4 kwartałach",
+    "AWS backlog $364B (+49% QoQ) — +$120B nowych kontraktów w jednym kwartale",
+    "CapEx Q1 2026: $44.2B (AWS $41.5B net, +103% YoY) — największy w historii",
+    "Op income $23.9B vs guidance $19B midpoint — +26% beat",
+    "Net income $30.3B — zawiera korzystne rozliczenia podatkowe",
+    "Emisja ~$53B obligacji w Q1 2026 (AI infrastructure, analogicznie Google $32B)",
+    "Cash + ST securities: $143.1B | Net cash: +$24.0B",
+    "Q2 2026 guidance: rev $194-199B (+16-19% YoY), op income $20-24B"
+  ]
+}

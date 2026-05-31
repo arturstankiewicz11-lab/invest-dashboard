@@ -1,0 +1,89 @@
+{
+  "ticker": "AMZN",
+  "period": "Q3_FY2025",
+  "period_end": "2025-09-30",
+  "report_type": "quarterly",
+  "source_file": "data/reports/AMZN/amzn-20250930.pdf",
+  "extracted": "2026-05-31",
+
+  "income_statement": {
+    "revenue_q_m": 180169,
+    "revenue_q_prior_m": 158877,
+    "revenue_yoy_pct": 13.4,
+    "ebit_q_m": 17422,
+    "ebit_margin_pct": 9.7,
+    "net_income_q_m": 21187
+  },
+
+  "segments_q": {
+    "north_america_revenue_m": 106267,
+    "north_america_revenue_prior_m": 95537,
+    "north_america_yoy_pct": 11.2,
+    "north_america_operating_income_m": 4789,
+    "north_america_operating_margin_pct": 4.5,
+    "na_oi_note": "Q3 2025 NA OI niższy YoY (vs $5,663M Q3 2024) — FTC settlement + severance costs w Q3 2025. Jednorazowe, nie strukturalne.",
+    "international_revenue_m": 40896,
+    "international_revenue_prior_m": 35888,
+    "international_yoy_pct": 14.0,
+    "international_operating_income_m": 1199,
+    "international_operating_margin_pct": 2.9,
+    "aws_revenue_m": 33006,
+    "aws_revenue_prior_m": 27452,
+    "aws_yoy_pct": 20.2,
+    "aws_operating_income_m": 11434,
+    "aws_operating_margin_pct": 34.6
+  },
+
+  "product_lines_q": {
+    "online_stores_m": 67407,
+    "online_stores_prior_m": 61411,
+    "online_stores_yoy_pct": 9.8,
+    "physical_stores_m": 5578,
+    "physical_stores_prior_m": 5228,
+    "physical_stores_yoy_pct": 6.7,
+    "third_party_services_m": 42486,
+    "third_party_services_prior_m": 37864,
+    "third_party_services_yoy_pct": 12.2,
+    "advertising_services_m": 17703,
+    "advertising_services_prior_m": 14331,
+    "advertising_services_yoy_pct": 23.5,
+    "subscription_services_m": 12574,
+    "subscription_services_prior_m": 11278,
+    "subscription_services_yoy_pct": 11.5,
+    "aws_m": 33006,
+    "other_m": 1415,
+    "other_prior_m": 1313,
+    "source": "10-Q Q3 2025 (amzn-20250930.pdf) — Note: Net sales by groups of similar products"
+  },
+
+  "cash_flow_q": {
+    "cfo_q_m": null,
+    "cfo_ttm_m": 130691,
+    "capex_q_m": 35095,
+    "capex_note": "Q3 2024: $22,620M — CapEx +55.2% YoY.",
+    "da_q_m": 16796,
+    "fcf_ttm_m": 14788,
+    "fcf_ttm_note": "TTM FCF dalej spada — CapEx pochłania niemal cały operating CF."
+  },
+
+  "balance_sheet": {
+    "cash_and_equivalents_m": 66922,
+    "cash_and_st_securities_m": 94197,
+    "lt_debt_book_value_m": 50742,
+    "net_cash_m": 43455,
+    "shares_diluted_m": 10845
+  },
+
+  "aws_backlog": {
+    "remaining_performance_obligations_m": 200000,
+    "weighted_avg_life_years": 3.8,
+    "note": "~$200B as of September 30, 2025."
+  },
+
+  "guidance_q4_2025": {
+    "revenue_low_m": 206000,
+    "revenue_high_m": 213000,
+    "operating_income_low_m": 21000,
+    "operating_income_high_m": 26000
+  }
+}

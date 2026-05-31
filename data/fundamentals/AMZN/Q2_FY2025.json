@@ -1,0 +1,88 @@
+{
+  "ticker": "AMZN",
+  "period": "Q2_FY2025",
+  "period_end": "2025-06-30",
+  "report_type": "quarterly",
+  "source_file": "data/reports/AMZN/amzn-20250630.pdf",
+  "extracted": "2026-05-31",
+
+  "income_statement": {
+    "revenue_q_m": 167702,
+    "revenue_q_prior_m": 147977,
+    "revenue_yoy_pct": 13.3,
+    "ebit_q_m": 19171,
+    "ebit_margin_pct": 11.4,
+    "net_income_q_m": 18164
+  },
+
+  "segments_q": {
+    "north_america_revenue_m": 100068,
+    "north_america_revenue_prior_m": 90033,
+    "north_america_yoy_pct": 11.1,
+    "north_america_operating_income_m": 7517,
+    "north_america_operating_margin_pct": 7.5,
+    "international_revenue_m": 36761,
+    "international_revenue_prior_m": 31663,
+    "international_yoy_pct": 16.1,
+    "international_operating_income_m": 1494,
+    "international_operating_margin_pct": 4.1,
+    "aws_revenue_m": 30873,
+    "aws_revenue_prior_m": 26281,
+    "aws_yoy_pct": 17.5,
+    "aws_operating_income_m": 10160,
+    "aws_operating_margin_pct": 32.9
+  },
+
+  "product_lines_q": {
+    "online_stores_m": 61485,
+    "online_stores_prior_m": 55392,
+    "online_stores_yoy_pct": 11.0,
+    "physical_stores_m": 5595,
+    "physical_stores_prior_m": 5206,
+    "physical_stores_yoy_pct": 7.5,
+    "third_party_services_m": 40348,
+    "third_party_services_prior_m": 36201,
+    "third_party_services_yoy_pct": 11.5,
+    "advertising_services_m": 15694,
+    "advertising_services_prior_m": 12771,
+    "advertising_services_yoy_pct": 22.9,
+    "subscription_services_m": 12208,
+    "subscription_services_prior_m": 10866,
+    "subscription_services_yoy_pct": 12.4,
+    "aws_m": 30873,
+    "other_m": 1499,
+    "other_prior_m": 1260,
+    "source": "10-Q Q2 2025 (amzn-20250630.pdf) — Note: Net sales by groups of similar products"
+  },
+
+  "cash_flow_q": {
+    "cfo_q_m": 32515,
+    "cfo_ttm_m": 121137,
+    "capex_q_m": 32183,
+    "capex_note": "gross; net CapEx $31,368M. Q2 2024: $17,620M — CapEx +82.6% YoY.",
+    "da_q_m": 15227,
+    "fcf_ttm_m": 18184,
+    "fcf_ttm_note": "TTM FCF spadł z $52,973M rok temu — efekt masywnego wzrostu CapEx."
+  },
+
+  "balance_sheet": {
+    "cash_and_equivalents_m": 57741,
+    "cash_and_st_securities_m": 93180,
+    "lt_debt_book_value_m": 50718,
+    "net_cash_m": 42462,
+    "shares_diluted_m": 10806
+  },
+
+  "aws_backlog": {
+    "remaining_performance_obligations_m": 195000,
+    "weighted_avg_life_years": 4.0,
+    "note": "~$195B as of June 30, 2025."
+  },
+
+  "guidance_q3_2025": {
+    "revenue_low_m": 174000,
+    "revenue_high_m": 179500,
+    "operating_income_low_m": 15500,
+    "operating_income_high_m": 20500
+  }
+}
