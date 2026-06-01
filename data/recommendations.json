@@ -1058,6 +1058,28 @@
       "equity_value_m": 4534518,
       "fair_value_computed": 417.0,
       "notes": "Baza FY2026E $840B = FY2025 $716.9B × 1.172. Rewizja 2026-06-01: Stage1 EBIT 15%→17%, Stage2 EBIT 22%→24% na podstawie SemiAnalysis Tokenomics Model (Bedrock EBIT ~55%, mix 37%→53% AWS AI revenue, Microsoft datacenter pause). Szczytowy CapEx 24.4% Q1 2026 kompresuje FCF — model wycenia powrót do 17% Stage1 i 8% Stage2. AWS Trainium2/Inferentia3 = własne chipy AI od 2026 → niższy COGS = wyższe EBIT.",
+      "bedrock_deal_mechanics": {
+        "source": "SemiAnalysis Tokenomics Model + Token Factory (AI_Token_Factory.pdf)",
+        "structure": "Anthropic jest seller of record — księguje pełne przychody z tokenów. AWS nie jest merchant of record (inaczej niż Microsoft w Azure Foundry).",
+        "aws_revenue_components": [
+          "IaaS fee: ~$7.5M/MW/rok — stały, niezależny od wolumenu tokenów",
+          "Revenue share: ~25% od Anthropic Gross Revenue — zmienny, rośnie z ARR Anthropic"
+        ],
+        "aws_net_revenue_formula": "AMZN Net Revenue/MW = $7.5M (IaaS) + 25% × Anthropic Gross Revenue/MW",
+        "aws_opex_per_mw": "$6.5M/MW/rok (amortyzacja GPU, prąd, DC, networking — w dużej mierze stały)",
+        "ebit_formula": "AMZN EBIT/MW = Net Revenue/MW − $6.5M OpEx",
+        "sensitivity": [
+          {"anthropic_gross_m": 10, "amzn_net_m": 10.0, "amzn_ebit_m": 3.5, "margin_pct": 35},
+          {"anthropic_gross_m": 20, "amzn_net_m": 12.5, "amzn_ebit_m": 6.0, "margin_pct": 48},
+          {"anthropic_gross_m": 26, "amzn_net_m": 14.0, "amzn_ebit_m": 7.5, "margin_pct": 54, "note": "Q1 2026 est. (SemiAnalysis)"},
+          {"anthropic_gross_m": 30, "amzn_net_m": 15.0, "amzn_ebit_m": 8.5, "margin_pct": 57},
+          {"anthropic_gross_m": 42, "amzn_net_m": 18.0, "amzn_ebit_m": 11.5, "margin_pct": 64, "note": "2Q 2026 est. (SemiAnalysis)"}
+        ],
+        "operating_leverage": "OpEx $6.5M/MW jest stały. Każde +$10M Anthropic Gross Revenue daje AWS +$2.5M Net Revenue (25% share) = prawie czysty EBIT bo koszty już pokryte. Stąd marża rośnie od 35% do 63%+ wraz ze wzrostem ARR Anthropic.",
+        "vs_azure_foundry": "Microsoft Azure Foundry: MSFT jest merchant of record, pobiera 35% od $486/hr = $170 brutto, netto $167 po TCO (34.4% marża). AWS Bedrock: AWS nie jest merchant of record, rozpoznaje mniej revenue nominalnie (~$14M/MW vs $170/hr MSFT), ale przy marży ~55% dzięki operating leverage. Na poziomie bezwzględnych dolarów per transakcja MSFT capturuje więcej; na poziomie marżowości AWS wygrywa.",
+        "trainium_advantage": "TCO: H100 = $2.90/hr, Trainium2 est. ~$1.50-2.00/hr. Trainium powers 50%+ Bedrock tokenów (AWS CEO, Nov 2025). Każdy -$1/hr TCO × 50k GPU-eq × 8760h × 70% util = ~$300M+ dodatkowego rocznego EBIT przy stałym revenue.",
+        "why_55pct_ebit_makes_sense": "Bedrock = 4% AWS revenue ale 30% przyrostu Gross Profit YoY (SemiAnalysis Q1 2026). Fee income struktura z wysokim operating leverage + Trainium cost reduction = strukturalnie wyższe marże niż IaaS."
+      },
       "base_breakdown": {
         "label": "FY2026E — AWS akceleruje, Advertising stabilnie +22%+",
         "ttm_note": "TTM (~$726B) = Q1 2026 annualized, zaniża bazę bo nie uwzględnia sezonowości Q4 (holiday $213B). FY2026E $840B = FY2025 $716.9B × 1.172 — zgodne z Q1 +16.6% i Q2 guidance midpoint +17.2%.",
