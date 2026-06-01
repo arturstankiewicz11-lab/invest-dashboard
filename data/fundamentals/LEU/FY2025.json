@@ -1,0 +1,120 @@
+{
+  "ticker": "LEU",
+  "period": "FY2025",
+  "period_end": "2025-12-31",
+  "report_type": "annual",
+  "source_file": "data/reports/LEU/leu-20251231.pdf",
+  "extracted": "2026-06-01",
+
+  "income_statement": {
+    "revenue_m": 448.7,
+    "revenue_prior_m": 442.0,
+    "revenue_yoy_pct": 1.5,
+    "revenue_by_segment": {
+      "leu_swu_m": 298.7,
+      "leu_uranium_m": 47.5,
+      "leu_total_m": 346.2,
+      "leu_pct_of_total": 77.2,
+      "tech_solutions_m": 102.5,
+      "tech_pct_of_total": 22.8
+    },
+    "cost_of_sales_m": 331.2,
+    "cost_by_segment": {
+      "leu_cos_m": 234.7,
+      "tech_cos_m": 96.5
+    },
+    "gross_profit_m": 117.5,
+    "gross_profit_by_segment": {
+      "leu_gross_m": 111.5,
+      "leu_gross_margin_pct": 32.2,
+      "tech_gross_m": 6.0,
+      "tech_gross_margin_pct": 5.9
+    },
+    "operating_expenses": {
+      "advanced_technology_costs_m": 16.9,
+      "sga_m": 36.2,
+      "equity_comp_m": 5.8,
+      "amortization_intangibles_m": 8.4,
+      "total_opex_m": 67.3
+    },
+    "ebit_m": 50.2,
+    "ebit_margin_pct": 11.2,
+    "interest_expense_m": 14.0,
+    "investment_income_m": 44.7,
+    "gain_debt_extinguishment_m": 11.8,
+    "income_before_tax_m": 85.9,
+    "tax_m": 8.1,
+    "net_income_m": 77.8,
+    "eps_basic": 4.33,
+    "eps_diluted": 3.90,
+    "note": "Investment income $44.7M = interest on ~$1.2B avg cash at ~3.7%. Debt extinguishment gain = redemption 8.25% Notes."
+  },
+
+  "cash_flow": {
+    "operating_cf_m": 51.0,
+    "capex_m": 19.7,
+    "fcf_m": 31.3,
+    "da_m": 9.9,
+    "note": "CapEx accelerating: Q1 2026 alone = $23.2M. FY2026E CapEx ~$80-120M for Piketon expansion."
+  },
+
+  "balance_sheet": {
+    "cash_m": 1957.2,
+    "lt_debt_m": 1174.8,
+    "net_cash_m": 782.4,
+    "total_assets_m": 2445.9,
+    "total_equity_m": 765.1,
+    "shares_class_a_m": 18.945,
+    "shares_class_b_m": 0.719,
+    "shares_total_basic_m": 19.664,
+    "shares_diluted_m": 19.925,
+    "note": "Convertible Notes: 0% Senior Notes $~800M (conv price $229.62, matures Aug 2032) + 2.25% Senior Notes $~400M (conv price $97.50, matures Nov 2030). Both raised Aug/Nov 2025."
+  },
+
+  "debt_detail": {
+    "notes_0pct_principal_approx_m": 800,
+    "notes_0pct_conv_price_usd": 229.62,
+    "notes_0pct_conv_rate_per_1000": 4.3551,
+    "notes_0pct_maturity": "2032-08",
+    "notes_225pct_principal_approx_m": 400,
+    "notes_225pct_conv_price_usd": 97.50,
+    "notes_225pct_maturity": "2030-11",
+    "note": "0% Notes: raised $782.4M net (Aug 2025). 2.25% Notes: raised $388.7M net (Nov 2024). 8.25% Notes ($74.3M) redeemed March 2025."
+  },
+
+  "backlog": {
+    "total_backlog_m": 3800,
+    "leu_segment_backlog_m": 2900,
+    "leu_contingent_m": 2300,
+    "leu_contingent_definitive_m": 2100,
+    "leu_contingent_pending_definitive_m": 200,
+    "tech_solutions_backlog_m": 900,
+    "backlog_extends_to": "2040",
+    "note": "FY2025 backlog. Q1 2026: total $3.9B (LEU $3.1B incl $2.4B contingent, Tech $0.8B). Contingent LEU depends on Piketon expansion funding."
+  },
+
+  "key_contracts": {
+    "haleu_operation_contract_option1a": "Exercised June 2025. $108.2M funded. Period through June 30, 2026 (Phase 3). Option 1b: $178.7M target, 2 years, not yet exercised.",
+    "haleu_production_contract_task_order": "Jan 5, 2026: $900M task order + $170M option. Commercial-scale HALEU at Piketon. Under negotiation of definitive agreement.",
+    "leu_production_contract": "NOT selected for task order in December 2024 round. Eligible for future task orders.",
+    "tenex_supply_contract": "Through 2028. Russian Decree (Nov 2024, extended Oct 2025) limits exports through Dec 2027. RSA quota needed."
+  },
+
+  "expansion_plans": {
+    "oak_ridge_tn": "Centrifuge manufacturing plant. $560M+ investment over several years. Manufacturing started Dec 2025. Supports thousands of centrifuges.",
+    "piketon_oh": "American Centrifuge Plant. Commercial LEU + HALEU production. Fluor (EPC) + Geiger Brothers (construction) contracts signed early 2026. First centrifuges from Ohio 2029.",
+    "oklo_jv": "Contemplated JV with Oklo for HALEU deconversion at Piketon, co-located with enrichment.",
+    "total_private_capex_est_m": "~1000+",
+    "sec_48c_credit": "$62.4M tax credit allocation granted Jan 10, 2025 for Oak Ridge facility."
+  },
+
+  "market_context": {
+    "swu_spot_price_dec2025": 200,
+    "swu_spot_price_march2026": 200,
+    "swu_historic_high_pre": 163,
+    "swu_historic_low_2018": 34,
+    "pct_change_from_2018_low": 488,
+    "russia_market_share_global_enrichment_pct": 43,
+    "note": "Without Russian supply, global market would be undersupplied. Import Ban Act (May 2024) + Russian Decree (Nov 2024-2027) = structural tightening."
+  }
+}

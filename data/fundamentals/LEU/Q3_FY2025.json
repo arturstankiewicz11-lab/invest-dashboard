@@ -1,0 +1,41 @@
+{
+  "ticker": "LEU",
+  "period": "Q3_FY2025",
+  "period_end": "2025-09-30",
+  "report_type": "quarterly",
+  "source_file": "data/reports/LEU/leu-20250930.pdf",
+  "extracted": "2026-06-01",
+
+  "income_statement_q": {
+    "revenue_q_m": 74.9,
+    "revenue_q_prior_m": 57.7,
+    "revenue_yoy_pct": 29.8,
+    "revenue_by_segment": {
+      "leu_swu_m": 10.7,
+      "leu_uranium_m": 34.1,
+      "leu_total_m": 44.8,
+      "tech_solutions_m": 30.1
+    },
+    "gross_profit_q_m": -4.3,
+    "ebit_q_m": -16.6,
+    "note": "Q3 2025 gross profit negative: LEU CoS $52.6M on $44.8M revenue → cost of uranium deliveries exceeded revenue. Seasonal delivery pattern."
+  },
+
+  "income_statement_9m": {
+    "revenue_9m_m": 302.5,
+    "revenue_9m_prior_m": 290.4,
+    "revenue_yoy_pct": 4.2,
+    "revenue_by_segment": {
+      "leu_swu_9m_m": 187.7,
+      "leu_uranium_9m_m": 34.1,
+      "tech_solutions_9m_m": 80.7
+    },
+    "ebit_9m_m": 37.4,
+    "net_income_9m_m": 60.0,
+    "eps_diluted_9m": 3.16,
+    "operating_cf_9m_m": null,
+    "da_9m_m": 6.9
+  },
+
+  "note": "Q4 2025 implied: Rev $448.7M - $302.5M = $146.2M; EBIT $50.2M - $37.4M = $12.8M. Strong Q4 LEU delivery."
+}

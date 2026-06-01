@@ -1,0 +1,83 @@
+{
+  "ticker": "LEU",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/LEU/leu-20260331.pdf",
+  "extracted": "2026-06-01",
+
+  "income_statement_q": {
+    "revenue_q_m": 76.7,
+    "revenue_q_prior_m": 73.1,
+    "revenue_yoy_pct": 4.9,
+    "revenue_by_segment": {
+      "leu_swu_m": 41.6,
+      "leu_uranium_m": 3.0,
+      "leu_total_m": 44.6,
+      "leu_yoy_pct": -13.1,
+      "tech_solutions_m": 32.1,
+      "tech_yoy_pct": 47.2
+    },
+    "gross_profit_q_m": 31.5,
+    "gross_profit_by_segment": {
+      "leu_gross_m": 27.9,
+      "leu_gross_margin_pct": 62.6,
+      "tech_gross_m": 3.6,
+      "tech_gross_margin_pct": 11.2
+    },
+    "ebit_q_m": 0.8,
+    "ebit_margin_pct": 1.0,
+    "advanced_tech_costs_q_m": 18.9,
+    "advanced_tech_costs_q_prior_m": 3.0,
+    "advanced_tech_note": "Q1 2026 advanced tech costs jumped $15.9M YoY — Piketon/Oak Ridge R&D and engineering for expansion",
+    "investment_income_q_m": 17.0,
+    "net_income_q_m": 10.0,
+    "eps_diluted": 0.45,
+    "shares_diluted_m": 22.446
+  },
+
+  "cash_flow_q": {
+    "operating_cf_q_m": -35.1,
+    "capex_q_m": 23.2,
+    "fcf_q_m": -58.3,
+    "da_q_m": 2.2,
+    "note": "Negative OCF driven by inventory build. CapEx accelerating — Q1 2026 $23.2M vs FY2025 full year $19.7M."
+  },
+
+  "balance_sheet": {
+    "cash_m": 1868.2,
+    "lt_debt_m": 1176.1,
+    "net_cash_m": 692.1,
+    "shares_class_a_m": 18.952,
+    "shares_class_b_m": 0.719,
+    "shares_total_basic_m": 19.671,
+    "shares_diluted_m": 22.446,
+    "deferred_revenue_advances_m": 112.8,
+    "inventories_m": 336.0
+  },
+
+  "backlog_q1": {
+    "total_backlog_m": 3900,
+    "leu_segment_backlog_m": 3100,
+    "leu_contingent_m": 2400,
+    "tech_solutions_backlog_m": 800,
+    "remaining_performance_obligations_m": 800,
+    "leu_rpo_m": 700,
+    "tech_rpo_m": 48.1,
+    "note": "RPO = contracted + funded obligations. Backlog includes unfunded/contingent. $2.4B contingent LEU depends on Piketon expansion."
+  },
+
+  "segment_yoy": {
+    "leu_swu_price_change_yoy_pct": 52,
+    "leu_swu_volume_change_yoy_pct": -47,
+    "tech_solutions_haleu_revenue_increase_m": 9.8,
+    "note": "Q1 typically low for LEU deliveries (seasonal). SWU volume -47% offset by price +52%. Tech revenue up on HALEU Option 1a (funded $108.2M through June 2026)."
+  },
+
+  "key_events_q1": {
+    "900m_haleu_task_order": "Jan 5, 2026: $900M DOE task order under HALEU Production Contract. Definitive agreement under negotiation.",
+    "fluor_epc_contract": "Feb 2026: EPC contract with Fluor for Piketon expansion. Geiger Brothers construction contract April 2026.",
+    "oklo_jv_announcement": "March 2026: Exploring JV with Oklo for HALEU deconversion at Piketon.",
+    "swu_spot_price": "$200/SWU as of March 31, 2026 (unchanged from Dec 2025, historic high)"
+  }
+}
