@@ -991,11 +991,11 @@
   "AMZN": {
     "name": "Amazon.com Inc.",
     "recommendation": "BUY",
-    "fair_value": 378.0,
+    "fair_value": 417.0,
     "fair_value_currency": "USD",
-    "entry_point": 284,
+    "entry_point": 313,
     "upside_pct": null,
-    "thesis_short": "AWS +28.4% YoY, marża 37.7%, backlog $364B (+49% QoQ). Reklama $68.6B FY2025 (+22.1%). DCF FV $378 (FY2026E $840B, Stage1 CAGR 18%, WACC 10.5%).",
+    "thesis_short": "AWS +28.4% YoY, marża 37.7%, backlog $364B (+49% QoQ). Reklama $68.6B FY2025 (+22.1%). DCF FV $417 (FY2026E $840B, Stage1 CAGR 18%, WACC 10.5%). Bedrock $5.5B run rate, EBIT ~55% → Stage1 EBIT 17%.",
     "thesis_full": "Amazon to platforma AI+commerce z trzema motorami wartości: (1) AWS — cloud+AI z backlogiem $364B (+$120B w jednym kwartale, analogia Google Cloud $462B), marża 37.7% zmierzająca ku 40%+; (2) Advertising Services — $68.6B FY2025 (+22.1% YoY przez 4 kwartały konsekwentnie), ~50% marży operacyjna, unikalny moat danych zakupowych niereplikowalny przez Google/Meta, Prime Video Ads (100M US subscribers) dodaje premium inventory; (3) Subscription/Prime — $49.6B (+11.8%), ekosystem wiążący 230M+ subskrybentów i napędzający flywheel zakupowy. Q1 2026: revenue $181.5B (+16.6% YoY, +3.1% ponad guidance midpoint $176B), op income $23.9B (+26% ponad guidance $19B). FCF TTM $1.2B skompresowany przez CapEx $44.2B (+116% YoY, AWS $41.5B net) — szczyt buildoutu AI infrastructure. Amazon wyemitował $53B obligacji w Q1 2026 — management conviction. Normalizacja CapEx do 17% od FY2027 = FCF recovery. Trainium2/Inferentia3 własne chipy = niższy COGS AWS. DCF: baza $840B FY2026E, Stage1 CAGR 18%/FCF 5.75%, Stage2 CAGR 12%/FCF 17.04%, WACC 10.5%, g=3%.",
     "thesis_breaker": "AWS growth < 20% YoY przez 2 kwartały z rzędu LUB EBIT margin < 12% przy dalszym wzroście revenue.",
     "risks": [
@@ -1004,7 +1004,7 @@
       "Dług $119B — emisja $53B Q1 2026 (LT debt 2x wzrost); przy wzroście stóp lub credit event ogranicza elastyczność. Net cash tylko $24B buforem"
     ],
     "buffett_moat": "Wide — AWS #1 cloud (31% share) z enterprise switching costs; Advertising unikalne dane zakupowe niereplikowalne przez Google/Meta; Prime lock-in 230M+ subskrybentów; FBA logistics flywheel obniża koszt wejścia dla sprzedawców 3P",
-    "last_updated": "2026-05-31",
+    "last_updated": "2026-06-01",
     "next_earnings": "2026-08-01",
     "priority_action": null,
     "dcf": {
@@ -1031,33 +1031,33 @@
           "period": "FY2027-2029",
           "n_years": 3,
           "rev_cagr_pct": 18,
-          "ebit_margin_pct": 15,
+          "ebit_margin_pct": 17,
           "tax_pct": 15,
           "capex_pct": 17,
           "da_pct": 10,
-          "fcf_margin_pct": 5.75,
-          "note": "CAGR 18% = AWS 26% + Advertising 22% + E-comm 15% blended. CapEx 17% (vs 24.4% Q1 2026) — normalizacja po szczycie AI buildout. EBIT 15%: powyżej Q1 2026 13.1% dzięki AWS margin zmierzającej ku 40%+. Tax 15% = historyczna AMZN efektywna stawka."
+          "fcf_margin_pct": 7.45,
+          "note": "CAGR 18% = AWS 26% + Advertising 22% + E-comm 15% blended. CapEx 17% (vs 24.4% Q1 2026) — normalizacja po szczycie AI buildout. EBIT 17% (rewizja z 15%): Bedrock TaaS EBIT ~55%, mix 37→53% AWS AI revenue → AWS marża ku 40%+ szybciej niż zakładano (SemiAnalysis 27.05.2026). Tax 15% = historyczna AMZN efektywna stawka w fazie wysokiego CapEx."
         },
         {
           "period": "FY2030-2036",
           "n_years": 7,
           "rev_cagr_pct": 12,
-          "ebit_margin_pct": 22,
+          "ebit_margin_pct": 24,
           "tax_pct": 18,
           "capex_pct": 8,
           "da_pct": 7,
-          "fcf_margin_pct": 17.04,
-          "note": "CapEx 8% = post-AI buildout, maintenance+growth. EBIT 22%: mix shift AWS (~25% rev, 45% margin) + Advertising (~12% rev, 55% margin) podnosi blended. Tax 18% = normalizacja. CAGR 12%: AWS 18% + Ads 16% + E-comm 9% blended."
+          "fcf_margin_pct": 18.68,
+          "note": "CapEx 8% = post-AI buildout, maintenance+growth. EBIT 24% (rewizja z 22%): Bedrock mix shift trwały + Trainium cost advantage + Microsoft/Google structural weaknesses (datacenter pause / EBTIT margin illusion). Tax 18% = normalizacja po redukcji CapEx shields. CAGR 12%: AWS 18% + Ads 16% + E-comm 9% blended."
         }
       ],
-      "pv_fcf_stage1_m": 165475,
-      "pv_fcf_stage2_m": 1288211,
-      "pv_fcf_total_m": 1453686,
-      "pv_terminal_m": 2630718,
-      "enterprise_value_m": 4084403,
-      "equity_value_m": 4108418,
-      "fair_value_computed": 378.0,
-      "notes": "Baza FY2026E $840B = FY2025 $716.9B × 1.172. Szczytowy CapEx 24.4% Q1 2026 kompresuje FCF — model wycenia powrót do 17% Stage1 i 8% Stage2. AWS Trainium2/Inferentia3 = własne chipy AI od 2026 → niższy COGS = wyższe EBIT. Q2 guidance midpoint $196.5B (+17.2% YoY) potwierdza bazę FY2026E.",
+      "pv_fcf_stage1_m": 214404,
+      "pv_fcf_stage2_m": 1412193,
+      "pv_fcf_total_m": 1626597,
+      "pv_terminal_m": 2883906,
+      "enterprise_value_m": 4510503,
+      "equity_value_m": 4534518,
+      "fair_value_computed": 417.0,
+      "notes": "Baza FY2026E $840B = FY2025 $716.9B × 1.172. Rewizja 2026-06-01: Stage1 EBIT 15%→17%, Stage2 EBIT 22%→24% na podstawie SemiAnalysis Tokenomics Model (Bedrock EBIT ~55%, mix 37%→53% AWS AI revenue, Microsoft datacenter pause). Szczytowy CapEx 24.4% Q1 2026 kompresuje FCF — model wycenia powrót do 17% Stage1 i 8% Stage2. AWS Trainium2/Inferentia3 = własne chipy AI od 2026 → niższy COGS = wyższe EBIT.",
       "base_breakdown": {
         "label": "FY2026E — AWS akceleruje, Advertising stabilnie +22%+",
         "ttm_note": "TTM (~$726B) = Q1 2026 annualized, zaniża bazę bo nie uwzględnia sezonowości Q4 (holiday $213B). FY2026E $840B = FY2025 $716.9B × 1.172 — zgodne z Q1 +16.6% i Q2 guidance midpoint +17.2%.",
@@ -1129,6 +1129,12 @@
         "event": "Inicjacja BUY @ FV $378. DCF: WACC 10.5%, FY2026E $840B, Stage1 CAGR 18%/FCF 5.75%, Stage2 CAGR 12%/FCF 17.04%, g=3%. Q1 2026: Revenue $181.5B (+16.6%), AWS +28.4% (marża 37.7%), backlog $364B (+$120B QoQ). Advertising $17.2B (+23.9%). CapEx $44.2B (+116% YoY) — szczyt buildoutu. Net cash $24B po emisji $53B obligacji.",
         "impact": "positive",
         "fv_note": "Inicjacja. Entry $284 = 25% MoS od FV $378."
+      },
+      {
+        "date": "2026-06-01",
+        "event": "Rewizja FV $378→$417 (+10.3%). Źródło: SemiAnalysis Tokenomics Model (27.05.2026). Stage1 EBIT 15%→17% (Bedrock TaaS EBIT ~55%, mix 37%→53% AWS AI revenue w 1Q26, Bedrock $5.5B run rate rosnące 170% Q/Q). Stage2 EBIT 22%→24% (Trainium cost advantage + Microsoft datacenter pause + Google EBTIT margin illusion). Wszystkie pozostałe założenia bez zmian.",
+        "impact": "positive",
+        "fv_note": "FV $378→$417. Entry $284→$313 (25% MoS)."
       }
     ]
   }
