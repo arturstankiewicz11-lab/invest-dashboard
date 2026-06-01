@@ -40,6 +40,12 @@
       "name": "Fermi Energy",
       "note": "Sprzedane. Re-entry jeśli spadnie do $5-6. AI power campus REIT, grid-independent HPC. Teza: czekaj na potwierdzenie kontraktów AI przed ponownym wejściem.",
       "added": "2026-05-16"
+    },
+    {
+      "ticker": "LEU",
+      "name": "Centrus Energy Corp.",
+      "note": "Jedyny US enricher HALEU z NRC license. Piketon expansion (Fluor EPC, 2029). Net cash $692M = $30.8/akcję (floor). Backlog $3.9B ($2.4B contingent). DCF FV $95 (conservative) / $270 (HALEU premium). Entry $71 (25% MoS). $900M DOE HALEU task order w trakcie definitizacji.",
+      "added": "2026-06-01"
     }
   ],
   "Quantum": [
