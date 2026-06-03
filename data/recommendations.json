@@ -516,10 +516,10 @@
   },
   "NVDA": {
     "name": "NVIDIA Corporation",
-    "recommendation": "HOLD",
+    "recommendation": "BUY",
     "fair_value": 346.0,
     "fair_value_currency": "USD",
-    "entry_point": 200,
+    "entry_point": 260,
     "upside_pct": null,
     "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $346 (dwa drivery: hyperscaler CAGR 26% x 5 lat + sovereign AI CAGR 35% x 5 lat). Q1 FY2027: rev $81.6B (+85% YoY), EBIT 65.6%. Rubin H2 FY2027: ASP ~$100-130K, GM ~75%. $1T revenue trajectory FY2033 base / FY2031 bull.",
     "thesis_full": "NVIDIA to dominujaca platforma AI z wide moat (CUDA ecosystem lock-in 15+ lat, switching costs ekstremalne). DCF opiera sie na dwoch niezaleznych driverach: (1) Hyperscaler/Enterprise: $260B FY2027E rosnace 26% CAGR — AWS/Azure/Google/Meta/Microsoft buildout AI infrastructure z backlogami wieloletnich kontraktow; (2) Sovereign AI: $60B FY2027E rosnace 35% CAGR — 50+ krajow budujacych narodowa infrastrukture AI: Saudi Arabia HUMAIN (600K GPU, $100B+ PIF, 2200MW), Francja (500K GPU, EUR109B total), UK (120K Blackwell, GBP11B), Korea Pd (260K GPU), Japonia (jeden z 2 najwiekszych globalnie), Indie (20K+ BU, cel 100K do konca 2026), UAE, Katar. Revenue NVIDIA z sovereign AI: juz $30B FY2026 (wzrost 3x). Q1 FY2027 actual: revenue $81.6B (+85.2% YoY), Data Center $75.2B (+92% YoY), EBIT margin 65.6% (rekord). Blackwell 300 dominuje Q1, Vera Rubin startuje H2 FY2027: 10x nizszy cost-per-token, ASP ~$100-130K (vs Blackwell ~$35-40K) -> gross margin NVDA ~75% (vs 71% dziś). Buyback FY2026: $40.4B; Q1 FY2027: $20.2B (avg $187, ponizej FV $293 -> kreuje wartosc). Program $80B (May 2026). Model zakupow token-factory: Anthropic placi cloud ~$0.22/1M output tokenow, sprzedaje po $15-25 — compute jest trywialnym kosztem dla AI Labs, co potwierdza ze wzrost popytu na GPU jest funkcja wartosci AI, nie kosztu infrastruktury. Dwa drivery lacznie: FY2031 revenue ~$855B, bliskos $1T Jensen trajectory.",
@@ -532,7 +532,7 @@
     "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare, miliony certyfikowanych inzynierow), scale advantage R&D $18.5B/rok, pricing power (Rubin ASP 3x Blackwell), switching costs ekstremalne dla enterprise AI + sovereign AI (rzady nie moga zmienic platformy mid-build).",
     "last_updated": "2026-06-03",
     "next_earnings": "2026-08-XX",
-    "priority_action": "HOLD pozycje 108 szt. Proponowany entry BUY: $260 (25% MoS od FV $346). Czeka na akceptacje zmiany entry_point z $200 na $260.",
+    "priority_action": "BUY — cena ~$235 ponizej entry $260 (25% MoS od FV $346). Trzymac 108 szt. Dokupowac do $260. Stop: thesis breaker.",
     "dcf": {
       "wacc_pct": 11.0,
       "terminal_growth_pct": 3.5,
@@ -837,6 +837,12 @@
       "fair_value_weighted_formula": "0.15×$113 + 0.40×$346 + 0.30×$562 + 0.15×$720 = $431"
     },
     "events": [
+      {
+        "date": "2026-06-04",
+        "event": "Rekomendacja HOLD->BUY. Cena ~$235 < entry $260 (25% MoS od FV $346). entry_point $200->$260.",
+        "impact": "positive",
+        "fv_note": "FV $346 (base DCF), entry $260. Weighted scenariuszowo $431."
+      },
       {
         "date": "2026-06-03",
         "event": "Pelny DCF krok-po-kroku z sovereign AI jako osobnym driverem (5+5 lat). FY2026 actual (10-K): rev $215.9B, EBIT 60.4%, FCF $96.7B. Q1 FY2027 actual (10-Q): rev $81.6B (+85% YoY), EBIT 65.6% (rekord). Sovereign AI: $30B FY2026 (3x wzrost), 50+ krajow w pipeline, HUMAIN 600K GPU/$100B+, Francja 500K GPU, UK 120K, Korea 260K. Rubin: ASP ~$100-130K -> GM ~75%, 10x efektywnosc tokenow. Korekta bledu: 5 lat Stage1 (nie 4) — FV $293->$346.",
