@@ -517,11 +517,11 @@
   "NVDA": {
     "name": "NVIDIA Corporation",
     "recommendation": "HOLD",
-    "fair_value": 293.0,
+    "fair_value": 346.0,
     "fair_value_currency": "USD",
     "entry_point": 200,
     "upside_pct": null,
-    "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $293 (dwa drivery: hyperscaler CAGR 26% + sovereign AI CAGR 35%). Q1 FY2027: rev $81.6B (+85% YoY), EBIT 65.6%. Rubin H2 FY2027 -> ASP ~$100-130K, GM ~75%. $1T revenue trajectory FY2031-2032.",
+    "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $346 (dwa drivery: hyperscaler CAGR 26% x 5 lat + sovereign AI CAGR 35% x 5 lat). Q1 FY2027: rev $81.6B (+85% YoY), EBIT 65.6%. Rubin H2 FY2027: ASP ~$100-130K, GM ~75%. $1T revenue trajectory FY2033 base / FY2031 bull.",
     "thesis_full": "NVIDIA to dominujaca platforma AI z wide moat (CUDA ecosystem lock-in 15+ lat, switching costs ekstremalne). DCF opiera sie na dwoch niezaleznych driverach: (1) Hyperscaler/Enterprise: $260B FY2027E rosnace 26% CAGR — AWS/Azure/Google/Meta/Microsoft buildout AI infrastructure z backlogami wieloletnich kontraktow; (2) Sovereign AI: $60B FY2027E rosnace 35% CAGR — 50+ krajow budujacych narodowa infrastrukture AI: Saudi Arabia HUMAIN (600K GPU, $100B+ PIF, 2200MW), Francja (500K GPU, EUR109B total), UK (120K Blackwell, GBP11B), Korea Pd (260K GPU), Japonia (jeden z 2 najwiekszych globalnie), Indie (20K+ BU, cel 100K do konca 2026), UAE, Katar. Revenue NVIDIA z sovereign AI: juz $30B FY2026 (wzrost 3x). Q1 FY2027 actual: revenue $81.6B (+85.2% YoY), Data Center $75.2B (+92% YoY), EBIT margin 65.6% (rekord). Blackwell 300 dominuje Q1, Vera Rubin startuje H2 FY2027: 10x nizszy cost-per-token, ASP ~$100-130K (vs Blackwell ~$35-40K) -> gross margin NVDA ~75% (vs 71% dziś). Buyback FY2026: $40.4B; Q1 FY2027: $20.2B (avg $187, ponizej FV $293 -> kreuje wartosc). Program $80B (May 2026). Model zakupow token-factory: Anthropic placi cloud ~$0.22/1M output tokenow, sprzedaje po $15-25 — compute jest trywialnym kosztem dla AI Labs, co potwierdza ze wzrost popytu na GPU jest funkcja wartosci AI, nie kosztu infrastruktury. Dwa drivery lacznie: FY2031 revenue ~$855B, bliskos $1T Jensen trajectory.",
     "thesis_breaker": "Data Center revenue growth spada ponizej 20% YoY przez 2 kwartaly z rzedu LUB utrata >2 hyperscalerow na rzecz custom silicon (TPU/Trainium/MTIA) LUB calkowity ban eksportu do krajow Zatoki bez kompensacji sovereign AI.",
     "risks": [
@@ -532,7 +532,7 @@
     "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare, miliony certyfikowanych inzynierow), scale advantage R&D $18.5B/rok, pricing power (Rubin ASP 3x Blackwell), switching costs ekstremalne dla enterprise AI + sovereign AI (rzady nie moga zmienic platformy mid-build).",
     "last_updated": "2026-06-03",
     "next_earnings": "2026-08-XX",
-    "priority_action": "HOLD pozycje 108 szt. Proponowany entry BUY: $220 (25% MoS od FV $293) — czeka na akceptacje zmiany entry_point z $200 na $220.",
+    "priority_action": "HOLD pozycje 108 szt. Proponowany entry BUY: $260 (25% MoS od FV $346). Czeka na akceptacje zmiany entry_point z $200 na $260.",
     "dcf": {
       "wacc_pct": 11.0,
       "terminal_growth_pct": 3.5,
@@ -637,8 +637,8 @@
       },
       "stages": [
         {
-          "period": "FY2028-FY2031",
-          "n_years": 4,
+          "period": "FY2028-FY2032",
+          "n_years": 5,
           "description": "Vera Rubin full ramp + sovereign AI acceleration + agentic AI inference boom",
           "hyperscaler_cagr_pct": 26,
           "sovereign_cagr_pct": 35,
@@ -650,9 +650,9 @@
           "fcf_margin_pct": 53.25
         },
         {
-          "period": "FY2032-FY2036",
+          "period": "FY2033-FY2037",
           "n_years": 5,
-          "description": "Post-Rubin normalizacja, upgrade cycles, physical AI / robotics ramp",
+          "description": "Post-Rubin normalizacja, upgrade cycles sovereign, physical AI / robotics ramp",
           "blended_cagr_pct": 14,
           "ebit_margin_pct": 63,
           "tax_pct": 17,
@@ -670,7 +670,7 @@
           "total_m": 408600,
           "fcf_m": 217579,
           "pv_factor": 0.9009,
-          "pv_m": 196040
+          "pv_m": 196038
         },
         {
           "year": "FY2029",
@@ -705,61 +705,71 @@
         {
           "year": "FY2032",
           "n": 5,
-          "total_m": 974260,
-          "fcf_m": 499828,
+          "hyperscaler_m": 825707,
+          "sovereign_m": 269043,
+          "total_m": 1094750,
+          "fcf_m": 582934,
           "pv_factor": 0.5935,
-          "pv_m": 296633
+          "pv_m": 345971
         },
         {
           "year": "FY2033",
           "n": 6,
-          "total_m": 1110656,
-          "fcf_m": 569605,
+          "total_m": 1248015,
+          "fcf_m": 640360,
           "pv_factor": 0.5346,
-          "pv_m": 304491
+          "pv_m": 342337
         },
         {
           "year": "FY2034",
           "n": 7,
-          "total_m": 1266148,
-          "fcf_m": 649420,
+          "total_m": 1422737,
+          "fcf_m": 730037,
           "pv_factor": 0.4817,
-          "pv_m": 312818
+          "pv_m": 351679
         },
         {
           "year": "FY2035",
           "n": 8,
-          "total_m": 1443409,
-          "fcf_m": 740381,
+          "total_m": 1621920,
+          "fcf_m": 832459,
           "pv_factor": 0.4339,
-          "pv_m": 321251
+          "pv_m": 361184
         },
         {
           "year": "FY2036",
           "n": 9,
-          "total_m": 1645486,
-          "fcf_m": 843882,
+          "total_m": 1848989,
+          "fcf_m": 948949,
           "pv_factor": 0.3909,
-          "pv_m": 329873
+          "pv_m": 370952
+        },
+        {
+          "year": "FY2037",
+          "n": 10,
+          "total_m": 2107847,
+          "fcf_m": 1081929,
+          "pv_factor": 0.3522,
+          "pv_m": 381055
         }
       ],
-      "pv_fcf_stage1_m": 981488,
-      "pv_fcf_stage2_m": 1565066,
-      "pv_fcf_total_m": 2546554,
-      "terminal_value_m": 11648309,
-      "pv_terminal_m": 4553700,
-      "enterprise_value_m": 7100254,
-      "equity_value_m": 7142121,
-      "fair_value_computed": 293.0,
+      "pv_fcf_stage1_m": 1327457,
+      "pv_fcf_stage2_m": 1807207,
+      "pv_fcf_total_m": 3134664,
+      "terminal_value_m": 14930614,
+      "pv_terminal_m": 5257134,
+      "enterprise_value_m": 8391798,
+      "equity_value_m": 8433665,
+      "fair_value_computed": 345.6,
       "one_trillion_revenue_year": "FY2033 (Jan 2033) w base case; FY2031 mozliwe jesli sovereign AI blizej Jensen bull",
       "notes": "Model dwoch driverow: hyperscaler ($260B FY2027E, CAGR 26%) + sovereign AI ($60B FY2027E, CAGR 35%). Sovereign AI driver oparty na udokumentowanych kontraktach: HUMAIN 600K GPU, Francja 500K, UK 120K, Korea 260K, Indie 100K target, UAE/Katar/Japonia w pipeline. Rubin (H2 FY2027) poprawia gross margin NVDA ~71%->~75% dzieki wyzszemu ASP ($100-130K) rosnacemu szybciej niz COGS. FCF Stage1 53.25% (vs FY2026 actual 44.8% — roznica: WC build przy +65% YoY growth; normalizuje sie). Stara FV $116 (oparta na FY2025 rev $130B) i FV $240 (bull-case bez pelnego DCF) zastapione pelnymi wyliczeniami krok A-E."
     },
     "events": [
       {
         "date": "2026-06-03",
-        "event": "Pelny DCF krok-po-kroku z sovereign AI jako osobnym driverem. FY2026 actual (10-K): rev $215.9B, EBIT 60.4%, FCF $96.7B. Q1 FY2027 actual (10-Q): rev $81.6B (+85% YoY), EBIT 65.6% (rekord), buyback $20.2B. Sovereign AI: $30B FY2026 (3x wzrost), 50+ krajow w pipeline, HUMAIN 600K GPU / $100B+, Francja 500K GPU, UK 120K, Korea 260K. Rubin: ASP ~$100-130K -> GM ~75%, 10x efektywnosc tokenow.",
+        "event": "Pelny DCF krok-po-kroku z sovereign AI jako osobnym driverem (5+5 lat). FY2026 actual (10-K): rev $215.9B, EBIT 60.4%, FCF $96.7B. Q1 FY2027 actual (10-Q): rev $81.6B (+85% YoY), EBIT 65.6% (rekord). Sovereign AI: $30B FY2026 (3x wzrost), 50+ krajow w pipeline, HUMAIN 600K GPU/$100B+, Francja 500K GPU, UK 120K, Korea 260K. Rubin: ASP ~$100-130K -> GM ~75%, 10x efektywnosc tokenow. Korekta bledu: 5 lat Stage1 (nie 4) — FV $293->$346.",
         "impact": "positive",
-        "fv_note": "FV $240->$293. Model: hyperscaler 26% CAGR + sovereign AI 35% CAGR. HOLD przy ~$235. BUY trigger $220 (25% MoS) — propozycja entry_point zmiany czeka na akceptacje."
+        "fv_note": "FV $240->$346. Model: hyperscaler 26% CAGR + sovereign AI 35% CAGR, 5+5 lat, WACC 11%, g=3.5%. HOLD przy ~$235 (32% upside). BUY trigger $260 (25% MoS od $346) — propozycja entry_point czeka na akceptacje."
       },
       {
         "date": "2026-05-15",
