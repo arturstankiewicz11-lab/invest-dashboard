@@ -1,0 +1,61 @@
+{
+  "ticker": "NVDA",
+  "period": "Q1_FY2027",
+  "period_end": "2026-04-26",
+  "report_type": "quarterly",
+  "source_file": "data/reports/NVDA/nvda-20260426.pdf",
+  "extracted": "2026-06-03",
+  "revenue_m": 81615,
+  "ebit_m": 53536,
+  "ebit_margin_pct": 65.6,
+  "da_m": 997,
+  "capex_m": null,
+  "fcf_m": null,
+  "net_debt_m": -41867,
+  "shares_diluted_m": 24391,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Vera Rubin: produkcja H2 FY2027 (Aug-Jan 2027), 10x nizszy cost-per-token vs Blackwell. CapEx FY2027 > FY2026 ($6.1B). Leasingi DC $32.4B zaplanowane FY2027-FY2033. Supply constraints Gaming Q1 FY2027+.",
+  "notes": "DANE Z 10-Q nvda-20260426.pdf. Revenue +85.2% YoY (Q1 FY2026: $44,062M). Data Center $75,246M (+92% YoY): Hyperscale $37,869M + AI Clouds/Industrial/Enterprise $37,377M. Edge Computing $6,369M (+29% YoY). EBIT margin 65.6% — najwyzszy w historii spolki. Net income $58,321M zawiera $15,929M zyski na equity securities (ARM, CoreWeave etc) — niecykliczne. OCF $50,344M. Buyback Q1 FY2027: 108M akcji / $20.2B (avg ~$187/szt). Nowy program buyback $80B zatwierdzony 18 May 2026. Dywidenda podniesiona $0.01 -> $0.25/akcje kwartalnie (18 May 2026). Inwestycje equity Q1: $18.6B w private companies + infrastructure funds. CapEx nie wyodrebniony wprost (wbudowany w net investing -$26.4B zdominowane przez equity investments). Net cash konserwatywnie: cash $13,237M + mkt debt $37,098M - dlug ~$8,468M = $41,867M. Equity securities (ARM, CoreWeave etc): +$30,237M — nie liczone w net cash.",
+  "segments": {
+    "data_center_rev_m": 75246,
+    "data_center_hyperscale_m": 37869,
+    "data_center_ai_cloud_industrial_m": 37377,
+    "edge_computing_rev_m": 6369
+  },
+  "balance_sheet": {
+    "cash_m": 13237,
+    "marketable_debt_securities_m": 37098,
+    "marketable_equity_securities_m": 30237,
+    "total_debt_m": 8468,
+    "net_cash_conservative_m": 41867,
+    "net_cash_incl_equity_m": 72104
+  },
+  "cash_flow": {
+    "ocf_m": 50344,
+    "capex_m": null,
+    "fcf_m": null,
+    "sbc_m": 1928,
+    "equity_investments_m": 18600
+  },
+  "income_statement": {
+    "revenue_m": 81615,
+    "cost_of_revenue_m": 20458,
+    "gross_profit_m": 61157,
+    "gross_margin_pct": 74.9,
+    "rd_m": 6321,
+    "sga_m": 1300,
+    "total_opex_m": 7621,
+    "ebit_m": 53536,
+    "other_income_m": 16367,
+    "income_before_tax_m": 69903,
+    "tax_m": 11582,
+    "tax_rate_effective_pct": 16.6,
+    "net_income_m": 58321,
+    "eps_diluted": 2.39
+  },
+  "yoy_growth": {
+    "revenue_pct": 85.2,
+    "data_center_pct": 92.0,
+    "ebit_pct": null
+  }
+}

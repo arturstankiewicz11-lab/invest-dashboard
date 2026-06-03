@@ -517,78 +517,271 @@
   "NVDA": {
     "name": "NVIDIA Corporation",
     "recommendation": "HOLD",
-    "fair_value": 240,
+    "fair_value": 293.0,
     "fair_value_currency": "USD",
     "entry_point": 200,
     "upside_pct": null,
-    "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $240 zgodny z Morningstar — cena $235 ≈ fair value, trzymać compounder.",
-    "thesis_full": "NVIDIA to pickaxe play na AI infrastructure z wide moat opartym na CUDA ecosystem lock-in i scale advantage. FY2026 revenue $215.9B (+65% YoY), Data Center $193.7B (+68%), Q1 FY2026 DC +73% YoY — Blackwell ramp w pełni, Vera Rubin platform zapowiedziana na 2027. Operating margin utrzymane na 62%. DCF (WACC 10%, terminal 4%, rev FY27E $290B) daje FV $240, zbieżne z Morningstar $240. Pozycja w portfelu (+88% P&L) — trzymać jako core AI holding, dokupować dopiero przy korekcie do $200 (17% margin of safety).",
-    "thesis_breaker": "Data Center revenue growth spada poniżej 20% YoY przez 2 kwartały z rzędu LUB utrata >2 hyperscalerów na rzecz custom silicon (TPU/Trainium/MTIA) LUB całkowity ban eksportu do Chin bez kompensacji sovereign AI.",
+    "thesis_short": "Monopol GPU AI z wide moat (CUDA). FV DCF $293 (dwa drivery: hyperscaler CAGR 26% + sovereign AI CAGR 35%). Q1 FY2027: rev $81.6B (+85% YoY), EBIT 65.6%. Rubin H2 FY2027 -> ASP ~$100-130K, GM ~75%. $1T revenue trajectory FY2031-2032.",
+    "thesis_full": "NVIDIA to dominujaca platforma AI z wide moat (CUDA ecosystem lock-in 15+ lat, switching costs ekstremalne). DCF opiera sie na dwoch niezaleznych driverach: (1) Hyperscaler/Enterprise: $260B FY2027E rosnace 26% CAGR — AWS/Azure/Google/Meta/Microsoft buildout AI infrastructure z backlogami wieloletnich kontraktow; (2) Sovereign AI: $60B FY2027E rosnace 35% CAGR — 50+ krajow budujacych narodowa infrastrukture AI: Saudi Arabia HUMAIN (600K GPU, $100B+ PIF, 2200MW), Francja (500K GPU, EUR109B total), UK (120K Blackwell, GBP11B), Korea Pd (260K GPU), Japonia (jeden z 2 najwiekszych globalnie), Indie (20K+ BU, cel 100K do konca 2026), UAE, Katar. Revenue NVIDIA z sovereign AI: juz $30B FY2026 (wzrost 3x). Q1 FY2027 actual: revenue $81.6B (+85.2% YoY), Data Center $75.2B (+92% YoY), EBIT margin 65.6% (rekord). Blackwell 300 dominuje Q1, Vera Rubin startuje H2 FY2027: 10x nizszy cost-per-token, ASP ~$100-130K (vs Blackwell ~$35-40K) -> gross margin NVDA ~75% (vs 71% dziś). Buyback FY2026: $40.4B; Q1 FY2027: $20.2B (avg $187, ponizej FV $293 -> kreuje wartosc). Program $80B (May 2026). Model zakupow token-factory: Anthropic placi cloud ~$0.22/1M output tokenow, sprzedaje po $15-25 — compute jest trywialnym kosztem dla AI Labs, co potwierdza ze wzrost popytu na GPU jest funkcja wartosci AI, nie kosztu infrastruktury. Dwa drivery lacznie: FY2031 revenue ~$855B, bliskos $1T Jensen trajectory.",
+    "thesis_breaker": "Data Center revenue growth spada ponizej 20% YoY przez 2 kwartaly z rzedu LUB utrata >2 hyperscalerow na rzecz custom silicon (TPU/Trainium/MTIA) LUB calkowity ban eksportu do krajow Zatoki bez kompensacji sovereign AI.",
     "risks": [
-      "Koncentracja klientów: top 4 hyperscalerów ~40% rev — capex cut 30% obniża FV o ~$60 do $180",
-      "China export controls: H20/B20 restrictions, utrata $15-20B/rok rynku, FV -$20",
-      "Custom silicon konkurencja (Google TPU, AWS Trainium, Meta MTIA) — wolniejszy wzrost market share, ale TAM rośnie szybciej niż erozja udziału"
+      "Koncentracja klientow: top 3 klientow = 21%+17%+16% = 54% Q1 FY2027 rev — capex cut 30% obniza FV o ~$80",
+      "Export controls: eskalacja ograniczen na Bliski Wschód (Trump deals odwracalne) — utrata $15-30B/rok, FV -$25",
+      "Rubin execution risk: opoznienie produkcji lub yields problem -> revenue gap H2 FY2027, FV -$20"
     ],
-    "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare), scale advantage w R&D ($12B+/rok), pricing power (Blackwell ASP +50% vs Hopper), switching costs ekstremalne dla enterprise AI workloads.",
-    "last_updated": "2026-05-15",
-    "next_earnings": null,
-    "priority_action": "Trzymać pozycję 108 szt. (+88% P&L). Dokupować przy korekcie do $200.",
+    "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare, miliony certyfikowanych inzynierow), scale advantage R&D $18.5B/rok, pricing power (Rubin ASP 3x Blackwell), switching costs ekstremalne dla enterprise AI + sovereign AI (rzady nie moga zmienic platformy mid-build).",
+    "last_updated": "2026-06-03",
+    "next_earnings": "2026-08-XX",
+    "priority_action": "HOLD pozycje 108 szt. Proponowany entry BUY: $220 (25% MoS od FV $293) — czeka na akceptacje zmiany entry_point z $200 na $220.",
     "dcf": {
       "wacc_pct": 11.0,
-      "terminal_growth_pct": 3.0,
-      "revenue_ttm_m": 130000,
-      "net_debt_m": -35000,
-      "shares_m": 24400,
+      "terminal_growth_pct": 3.5,
+      "base_year": "FY2027E",
+      "base_revenue_m": 320000,
+      "net_debt_m": -41867,
+      "shares_m": 24391,
+      "wacc_inputs": {
+        "rf_pct": 4.3,
+        "beta": 1.35,
+        "erp_pct": 5.0,
+        "note": "Re = 4.3 + 1.35 x 5.0 = 11.05% -> WACC 11.0%. Dlug $8.5B / market cap ~$5,700B = 0.15% -> WACC ~ koszt equity. Beta 1.35: nizszy niz historyczny (rosnaca revenue visibility z backlogami sovereign + hyperscaler) ale export risk i customer concentration podtrz."
+      },
+      "terminal_growth_rationale": "g=3.5% > AMZN (3%) bo NVDA ma dywersyfikacje geograficzna (sovereign AI = wielodekadowy mandat polityczny) i platforma fizyczna AI (robotyka, automotive) jako kolejna fala. Kazde -0.5pp g obniza FV o ~$18.",
+      "balance_sheet_inputs": {
+        "cash_m": 13237,
+        "marketable_debt_m": 37098,
+        "marketable_equity_m": 30237,
+        "debt_m": 8468,
+        "net_cash_conservative_m": 41867,
+        "note": "Net cash = cash $13.2B + mkt debt $37.1B - dlug $8.5B = $41.9B (konserwatywnie, bez equity securities $30.2B w ARM/CoreWeave/inne). Q1 FY2027 balance sheet."
+      },
+      "drivers": {
+        "hyperscaler_enterprise_edge": {
+          "fy2027e_m": 260000,
+          "description": "AWS/Azure/GCP/Meta/Microsoft + enterprise + edge computing. Q1 FY2027: hyperscale $37.9B, AI Cloud/Ind/Ent $37.4B, Edge $6.4B. Backlog hyperscalerow wieloletni.",
+          "stage1_cagr_pct": 26,
+          "stage2_cagr_pct": 15
+        },
+        "sovereign_ai": {
+          "fy2027e_m": 60000,
+          "description": "Rzady i narodowe programy AI. Baseline FY2026: $30B (wzrost 3x). FY2027E: $60B (ramp HUMAIN, Francja, UK). Kluczowe kontrakty: SA HUMAIN 600K GPU/5yr ($60B), Francja 500K GPU ($45B), UK 120K GPU ($11B), Korea 260K GPU ($22B), Indie 100K GPU (cel), UAE/Katar/Japonia/inne. Lacznie 50+ krajow w pipeline.",
+          "stage1_cagr_pct": 35,
+          "stage2_cagr_pct": 12,
+          "structural_rationale": "Sovereign AI jest non-cykliczny (polityczny mandat), odporny na custom silicon (rzady nie maja R&D do wlasnego chipu), dywersyfikuje baze klientow (vs. koncentracja hyperscaler), premium ASP (prestige > cena). Export controls tworza FOMO — kazde zaostrzenie przyspiesza zamowienia.",
+          "countries_pipeline": [
+            {
+              "country": "Saudi Arabia",
+              "vehicle": "HUMAIN",
+              "gpu_target": "600K+",
+              "investment": "$100B+",
+              "timeline": "5yr"
+            },
+            {
+              "country": "France",
+              "vehicle": "Fluidstack + rzad",
+              "gpu_target": "500K",
+              "investment": "EUR 109B total",
+              "timeline": "2026+"
+            },
+            {
+              "country": "UK",
+              "vehicle": "Nscale/CoreWeave/inne",
+              "gpu_target": "120K Blackwell",
+              "investment": "GBP 11B"
+            },
+            {
+              "country": "South Korea",
+              "vehicle": "sovereign clouds + AI factories",
+              "gpu_target": "260K+",
+              "investment": "TBD"
+            },
+            {
+              "country": "Japan",
+              "vehicle": "SoftBank-led",
+              "gpu_target": "ogromny",
+              "investment": "top 2 globalnie"
+            },
+            {
+              "country": "India",
+              "vehicle": "IndiaAI Mission + Yotta/Shakti",
+              "gpu_target": "100K (cel 2026)",
+              "investment": "$1.25B rzadowy"
+            },
+            {
+              "country": "UAE",
+              "vehicle": "G42 + Stargate UAE",
+              "gpu_target": "setki tysiecy",
+              "investment": "$1.4T (dekada, nie tylko AI)"
+            },
+            {
+              "country": "Qatar",
+              "vehicle": "AI infrastruktura",
+              "gpu_target": "TBD",
+              "investment": "$200B"
+            },
+            {
+              "country": "Germany",
+              "vehicle": "Deutsche Telekom + AI factories",
+              "gpu_target": "dziesiatki tysiecy",
+              "investment": "TBD"
+            }
+          ]
+        }
+      },
+      "fcf_margins": {
+        "stage1_formula": "EBIT 65% x (1-15%) + 1.5% - 3.5% = 55.25% + 1.5% - 3.5% = 53.25%",
+        "stage1_pct": 53.25,
+        "stage2_formula": "EBIT 63% x (1-17%) + 2.0% - 3.0% = 52.29% + 2.0% - 3.0% = 51.29%",
+        "stage2_pct": 51.29,
+        "rubin_margin_note": "Rubin ASP ~$100-130K vs Blackwell ~$35-40K (+3x). COGS ~$27K (2x Blackwell $11K). Gross margin Rubin ~75% vs H100 71% — ASP rosnie szybciej niz COGS. Q1 FY2027 actual EBIT 65.6% potwierdza Stage1 65% jako konserwatywne."
+      },
       "stages": [
         {
-          "period": "2026–2030",
-          "n_years": 5,
-          "rev_cagr_pct": 28,
-          "ebit_margin_pct": 57,
-          "tax_pct": 13,
-          "capex_pct": 3,
-          "da_pct": 2
+          "period": "FY2028-FY2031",
+          "n_years": 4,
+          "description": "Vera Rubin full ramp + sovereign AI acceleration + agentic AI inference boom",
+          "hyperscaler_cagr_pct": 26,
+          "sovereign_cagr_pct": 35,
+          "blended_cagr_pct": 27.7,
+          "ebit_margin_pct": 65,
+          "tax_pct": 15,
+          "da_pct": 1.5,
+          "capex_pct": 3.5,
+          "fcf_margin_pct": 53.25
         },
         {
-          "period": "2031–2035",
+          "period": "FY2032-FY2036",
           "n_years": 5,
-          "rev_cagr_pct": 14,
-          "ebit_margin_pct": 52,
-          "tax_pct": 13,
-          "capex_pct": 4,
-          "da_pct": 2
+          "description": "Post-Rubin normalizacja, upgrade cycles, physical AI / robotics ramp",
+          "blended_cagr_pct": 14,
+          "ebit_margin_pct": 63,
+          "tax_pct": 17,
+          "da_pct": 2.0,
+          "capex_pct": 3.0,
+          "fcf_margin_pct": 51.29
         }
       ],
-      "pv_fcf_m": 1115480,
-      "terminal_value_m": 4787959,
-      "pv_terminal_m": 1686245,
-      "enterprise_value_m": 2801725,
-      "fair_value": 116.0,
-      "notes": "Zakłada utrzymanie ~75% udziału w rynku GPU datacenter. Blackwell (B200) generuje przychody od Q1 2026. CUDA ecosystem = switching costs. Wyższy WACC 11% ze względu na wycenę premium i export risk. FV DCF $116 vs cena ~$125 — premia sentymentu. Czekaj na $100-110.",
-      "valuation_method": "DCF (WACC 11%, 10 lat) daje $116. Stored FV $240 pochodzi z bull-case analizy uwzględniającej Blackwell ramp i sovereign AI demand — powyżej bazowego DCF. Sprawdź aktualne założenia przed użyciem."
+      "revenue_table_m": [
+        {
+          "year": "FY2028",
+          "n": 1,
+          "hyperscaler_m": 327600,
+          "sovereign_m": 81000,
+          "total_m": 408600,
+          "fcf_m": 217579,
+          "pv_factor": 0.9009,
+          "pv_m": 196040
+        },
+        {
+          "year": "FY2029",
+          "n": 2,
+          "hyperscaler_m": 412776,
+          "sovereign_m": 109350,
+          "total_m": 522126,
+          "fcf_m": 278042,
+          "pv_factor": 0.8116,
+          "pv_m": 225637
+        },
+        {
+          "year": "FY2030",
+          "n": 3,
+          "hyperscaler_m": 520098,
+          "sovereign_m": 147623,
+          "total_m": 667721,
+          "fcf_m": 355571,
+          "pv_factor": 0.7312,
+          "pv_m": 259993
+        },
+        {
+          "year": "FY2031",
+          "n": 4,
+          "hyperscaler_m": 655323,
+          "sovereign_m": 199291,
+          "total_m": 854614,
+          "fcf_m": 455082,
+          "pv_factor": 0.6587,
+          "pv_m": 299818
+        },
+        {
+          "year": "FY2032",
+          "n": 5,
+          "total_m": 974260,
+          "fcf_m": 499828,
+          "pv_factor": 0.5935,
+          "pv_m": 296633
+        },
+        {
+          "year": "FY2033",
+          "n": 6,
+          "total_m": 1110656,
+          "fcf_m": 569605,
+          "pv_factor": 0.5346,
+          "pv_m": 304491
+        },
+        {
+          "year": "FY2034",
+          "n": 7,
+          "total_m": 1266148,
+          "fcf_m": 649420,
+          "pv_factor": 0.4817,
+          "pv_m": 312818
+        },
+        {
+          "year": "FY2035",
+          "n": 8,
+          "total_m": 1443409,
+          "fcf_m": 740381,
+          "pv_factor": 0.4339,
+          "pv_m": 321251
+        },
+        {
+          "year": "FY2036",
+          "n": 9,
+          "total_m": 1645486,
+          "fcf_m": 843882,
+          "pv_factor": 0.3909,
+          "pv_m": 329873
+        }
+      ],
+      "pv_fcf_stage1_m": 981488,
+      "pv_fcf_stage2_m": 1565066,
+      "pv_fcf_total_m": 2546554,
+      "terminal_value_m": 11648309,
+      "pv_terminal_m": 4553700,
+      "enterprise_value_m": 7100254,
+      "equity_value_m": 7142121,
+      "fair_value_computed": 293.0,
+      "one_trillion_revenue_year": "FY2033 (Jan 2033) w base case; FY2031 mozliwe jesli sovereign AI blizej Jensen bull",
+      "notes": "Model dwoch driverow: hyperscaler ($260B FY2027E, CAGR 26%) + sovereign AI ($60B FY2027E, CAGR 35%). Sovereign AI driver oparty na udokumentowanych kontraktach: HUMAIN 600K GPU, Francja 500K, UK 120K, Korea 260K, Indie 100K target, UAE/Katar/Japonia w pipeline. Rubin (H2 FY2027) poprawia gross margin NVDA ~71%->~75% dzieki wyzszemu ASP ($100-130K) rosnacemu szybciej niz COGS. FCF Stage1 53.25% (vs FY2026 actual 44.8% — roznica: WC build przy +65% YoY growth; normalizuje sie). Stara FV $116 (oparta na FY2025 rev $130B) i FV $240 (bull-case bez pelnego DCF) zastapione pelnymi wyliczeniami krok A-E."
     },
     "events": [
       {
+        "date": "2026-06-03",
+        "event": "Pelny DCF krok-po-kroku z sovereign AI jako osobnym driverem. FY2026 actual (10-K): rev $215.9B, EBIT 60.4%, FCF $96.7B. Q1 FY2027 actual (10-Q): rev $81.6B (+85% YoY), EBIT 65.6% (rekord), buyback $20.2B. Sovereign AI: $30B FY2026 (3x wzrost), 50+ krajow w pipeline, HUMAIN 600K GPU / $100B+, Francja 500K GPU, UK 120K, Korea 260K. Rubin: ASP ~$100-130K -> GM ~75%, 10x efektywnosc tokenow.",
+        "impact": "positive",
+        "fv_note": "FV $240->$293. Model: hyperscaler 26% CAGR + sovereign AI 35% CAGR. HOLD przy ~$235. BUY trigger $220 (25% MoS) — propozycja entry_point zmiany czeka na akceptacje."
+      },
+      {
         "date": "2026-05-15",
-        "event": "Rewizja FV z $116 → $240 (2026-05-15). Stara wycena była mocno nieaktualna — ignorowała FY2026 results ($215.9B rev, +65% YoY) i Blackwell ramp. Nowy DCF (WACC 10%, terminal 4%) i Morningstar FV $240 potwierdzają wycenę. Cena $235.74 ≈ fair value, nie -51% overvalued jak sugerowała stara analiza.",
+        "event": "Rewizja FV z $116 -> $240 (2026-05-15). Stara wycena byla mocno nieaktualna — ignorowala FY2026 results ($215.9B rev, +65% YoY) i Blackwell ramp. Nowy DCF (WACC 10%, terminal 4%) i Morningstar FV $240 potwierdzaja wycene. Cena $235.74 ~ fair value, nie -51% overvalued jak sugerowala stara analiza.",
         "impact": "neutral",
         "fv_note": "Rekomendacja zmieniona na HOLD."
       },
       {
         "date": "2026-04-XX",
-        "event": "Blackwell B200 ramp — produkcja przekracza oczekiwania. Data center backlog 12+ miesięcy.",
+        "event": "Blackwell B200 ramp — produkcja przekracza oczekiwania. Data center backlog 12+ miesiecy.",
         "impact": "positive",
-        "fv_note": "Potwierdza dominację. Lekko podnosi FV do -140."
+        "fv_note": "Potwierdza dominacje. Lekko podnosi FV."
       },
       {
         "date": "2026-02-XX",
-        "event": "US rozszerza export controls — nowe restrykcje na sprzedaż chipów do Chin i krajów Zatoki.",
+        "event": "US rozszerza export controls — nowe restrykcje na sprzedaz chipow do Chin i krajow Zatoki.",
         "impact": "negative",
-        "fv_note": "Chiny to ~15% revenue. Ryzyko ~ na FV. Inne rynki rekompensują popyt."
+        "fv_note": "Chiny to ~15% revenue. Ryzyko na FV. Inne rynki rekompensuja popyt."
       },
       {
         "date": "2025-11-XX",
-        "event": "Q3 FY2026: Revenue B (+94% YoY). Data Center .8B. Beat consensus o 8%.",
+        "event": "Q3 FY2026: Revenue $35.1B (+94% YoY). Data Center $30.8B. Beat consensus o 8%.",
         "impact": "positive",
         "fv_note": "Momentum potwierdzone. Thesis breaker nie aktywowany."
       }
@@ -667,9 +860,21 @@
         "bear": {
           "probability_pct": 15,
           "description": "Piketon fails/cancelled 2029, company reverts to LEU trading only",
-          "stage1": {"n_years": 3, "rev_cagr_pct": 5, "fcf_margin_pct": 5.0},
-          "stage2": {"n_years": 4, "rev_cagr_pct": 3, "fcf_margin_pct": 11.0},
-          "stage3": {"n_years": 3, "rev_cagr_pct": 2, "fcf_margin_pct": 12.0},
+          "stage1": {
+            "n_years": 3,
+            "rev_cagr_pct": 5,
+            "fcf_margin_pct": 5.0
+          },
+          "stage2": {
+            "n_years": 4,
+            "rev_cagr_pct": 3,
+            "fcf_margin_pct": 11.0
+          },
+          "stage3": {
+            "n_years": 3,
+            "rev_cagr_pct": 2,
+            "fcf_margin_pct": 12.0
+          },
           "terminal_growth_pct": 1.5,
           "net_cash_terminal_m": 150,
           "pv_fcf_m": 273.1,
@@ -681,9 +886,24 @@
         "base": {
           "probability_pct": 65,
           "description": "Piketon succeeds, commercial enrichment from 2032",
-          "stage1": {"n_years": 5, "rev_cagr_pct": 18, "fcf_margin_pct": -12.1, "note": "FCF% = 10% × (1-21%) + 4% - 24% = -12.1%"},
-          "stage2": {"n_years": 3, "rev_cagr_pct": 15, "fcf_margin_pct": 15.38, "note": "FCF% = 22% × (1-21%) + 6% - 8% = 15.38%"},
-          "stage3": {"n_years": 2, "rev_cagr_pct": 8, "fcf_margin_pct": 18.75, "note": "FCF% = 25% × (1-21%) + 5% - 6% = 18.75%"},
+          "stage1": {
+            "n_years": 5,
+            "rev_cagr_pct": 18,
+            "fcf_margin_pct": -12.1,
+            "note": "FCF% = 10% × (1-21%) + 4% - 24% = -12.1%"
+          },
+          "stage2": {
+            "n_years": 3,
+            "rev_cagr_pct": 15,
+            "fcf_margin_pct": 15.38,
+            "note": "FCF% = 22% × (1-21%) + 6% - 8% = 15.38%"
+          },
+          "stage3": {
+            "n_years": 2,
+            "rev_cagr_pct": 8,
+            "fcf_margin_pct": 18.75,
+            "note": "FCF% = 25% × (1-21%) + 5% - 6% = 18.75%"
+          },
           "terminal_growth_pct": 2.5,
           "net_cash_terminal_m": 692.1,
           "pv_fcf_m": 192.4,
@@ -695,9 +915,21 @@
         "bull": {
           "probability_pct": 20,
           "description": "Piketon ahead of schedule, quasi-monopoly post Russian ban",
-          "stage1": {"n_years": 5, "rev_cagr_pct": 22, "fcf_margin_pct": -10.0},
-          "stage2": {"n_years": 3, "rev_cagr_pct": 20, "fcf_margin_pct": 18.0},
-          "stage3": {"n_years": 2, "rev_cagr_pct": 12, "fcf_margin_pct": 22.0},
+          "stage1": {
+            "n_years": 5,
+            "rev_cagr_pct": 22,
+            "fcf_margin_pct": -10.0
+          },
+          "stage2": {
+            "n_years": 3,
+            "rev_cagr_pct": 20,
+            "fcf_margin_pct": 18.0
+          },
+          "stage3": {
+            "n_years": 2,
+            "rev_cagr_pct": 12,
+            "fcf_margin_pct": 22.0
+          },
           "terminal_growth_pct": 3.0,
           "net_cash_terminal_m": 692.1,
           "pv_fcf_m": 514.1,
@@ -712,9 +944,21 @@
       "haleu_premium_scenario": {
         "description": "HALEU premium (50+ advanced reactors deployed, $35k/kg pricing, quasi-monopol)",
         "wacc_pct": 10.5,
-        "stage1": {"n_years": 5, "rev_cagr_pct": 22, "fcf_margin_pct": -10.0},
-        "stage2": {"n_years": 3, "rev_cagr_pct": 28, "fcf_margin_pct": 20.0},
-        "stage3": {"n_years": 2, "rev_cagr_pct": 15, "fcf_margin_pct": 26.0},
+        "stage1": {
+          "n_years": 5,
+          "rev_cagr_pct": 22,
+          "fcf_margin_pct": -10.0
+        },
+        "stage2": {
+          "n_years": 3,
+          "rev_cagr_pct": 28,
+          "fcf_margin_pct": 20.0
+        },
+        "stage3": {
+          "n_years": 2,
+          "rev_cagr_pct": 15,
+          "fcf_margin_pct": 26.0
+        },
         "terminal_growth_pct": 3.0,
         "fv_per_share": 270,
         "note": "Wymaga: X-energy/Kairos/TerraPower fleet w produkcji + HALEU pricing premium + 22%+ CAGR przez dekadę. Nawet przy ekstremalnych założeniach DCF nie dochodzi do $340 starego FV."
@@ -1069,11 +1313,38 @@
         "aws_opex_per_mw": "$6.5M/MW/rok (amortyzacja GPU, prąd, DC, networking — w dużej mierze stały)",
         "ebit_formula": "AMZN EBIT/MW = Net Revenue/MW − $6.5M OpEx",
         "sensitivity": [
-          {"anthropic_gross_m": 10, "amzn_net_m": 10.0, "amzn_ebit_m": 3.5, "margin_pct": 35},
-          {"anthropic_gross_m": 20, "amzn_net_m": 12.5, "amzn_ebit_m": 6.0, "margin_pct": 48},
-          {"anthropic_gross_m": 26, "amzn_net_m": 14.0, "amzn_ebit_m": 7.5, "margin_pct": 54, "note": "Q1 2026 est. (SemiAnalysis)"},
-          {"anthropic_gross_m": 30, "amzn_net_m": 15.0, "amzn_ebit_m": 8.5, "margin_pct": 57},
-          {"anthropic_gross_m": 42, "amzn_net_m": 18.0, "amzn_ebit_m": 11.5, "margin_pct": 64, "note": "2Q 2026 est. (SemiAnalysis)"}
+          {
+            "anthropic_gross_m": 10,
+            "amzn_net_m": 10.0,
+            "amzn_ebit_m": 3.5,
+            "margin_pct": 35
+          },
+          {
+            "anthropic_gross_m": 20,
+            "amzn_net_m": 12.5,
+            "amzn_ebit_m": 6.0,
+            "margin_pct": 48
+          },
+          {
+            "anthropic_gross_m": 26,
+            "amzn_net_m": 14.0,
+            "amzn_ebit_m": 7.5,
+            "margin_pct": 54,
+            "note": "Q1 2026 est. (SemiAnalysis)"
+          },
+          {
+            "anthropic_gross_m": 30,
+            "amzn_net_m": 15.0,
+            "amzn_ebit_m": 8.5,
+            "margin_pct": 57
+          },
+          {
+            "anthropic_gross_m": 42,
+            "amzn_net_m": 18.0,
+            "amzn_ebit_m": 11.5,
+            "margin_pct": 64,
+            "note": "2Q 2026 est. (SemiAnalysis)"
+          }
         ],
         "operating_leverage": "OpEx $6.5M/MW jest stały. Każde +$10M Anthropic Gross Revenue daje AWS +$2.5M Net Revenue (25% share) = prawie czysty EBIT bo koszty już pokryte. Stąd marża rośnie od 35% do 63%+ wraz ze wzrostem ARR Anthropic.",
         "vs_azure_foundry": "Microsoft Azure Foundry: MSFT jest merchant of record, pobiera 35% od $486/hr = $170 brutto, netto $167 po TCO (34.4% marża). AWS Bedrock: AWS nie jest merchant of record, rozpoznaje mniej revenue nominalnie (~$14M/MW vs $170/hr MSFT), ale przy marży ~55% dzięki operating leverage. Na poziomie bezwzględnych dolarów per transakcja MSFT capturuje więcej; na poziomie marżowości AWS wygrywa.",

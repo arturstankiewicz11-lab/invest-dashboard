@@ -1,19 +1,55 @@
 {
   "ticker": "NVDA",
   "period": "FY2026",
-  "period_end": "2026-01-31",
+  "period_end": "2026-01-25",
   "report_type": "annual",
-  "source_file": null,
-  "extracted": "2026-05-26",
-  "revenue_m": 130000,
-  "ebit_m": 74100,
-  "ebit_margin_pct": 57.0,
-  "da_m": 2600,
-  "capex_m": 3900,
-  "fcf_m": 60000,
-  "net_debt_m": -35000,
-  "shares_diluted_m": 24400,
+  "source_file": "data/reports/NVDA/nvda-20260125.pdf",
+  "extracted": "2026-06-03",
+  "revenue_m": 215938,
+  "ebit_m": 130387,
+  "ebit_margin_pct": 60.4,
+  "da_m": 2843,
+  "capex_m": 6042,
+  "fcf_m": 96676,
+  "net_debt_m": -54088,
+  "shares_diluted_m": 24514,
   "guidance_revenue_m": null,
-  "guidance_notes": "Blackwell (B200) ramp od Q1 2026.",
-  "notes": "Dane z założeń DCF — zastąp plikiem PDF. CUDA ecosystem moat."
+  "guidance_notes": "CapEx FY2027 > $6.1B (management: 'expect to increase'). Vera Rubin: produkcja H2 FY2027. Leasingi DC $32.4B zaplanowane FY2027-FY2033.",
+  "notes": "DANE Z 10-K nvda-20260125.pdf. Revenue +65.5% YoY (FY2025: $130,497M). EBIT 60.4% obciazony $4.5B H20 charge Q1 FY2026 — underlying ~63%. D&A $2,843M + CapEx $6,042M z Cash Flow Statement. FCF = OCF $102,718M - CapEx $6,042M = $96,676M. Net cash = cash $10,605M + mkt sec $51,951M - dlug $8,468M = $54,088M. Dlug: senior notes $8,468M ($1B due 1yr, $2.75B 1-5yr, $1.25B 5-10yr, $3.5B >10yr). Buyback FY2026: 282M akcji / $40.4B. Shares outstanding Feb 20, 2026: 24,300M. Data Center rev $193,479M (+67% YoY), Edge Computing $22,459M (+57% YoY). Top 2 klienci: 22% + 14% = 36% rev.",
+  "segments": {
+    "compute_networking_rev_m": 193479,
+    "compute_networking_ebit_m": 130141,
+    "graphics_rev_m": 22459,
+    "graphics_ebit_m": 9156
+  },
+  "balance_sheet": {
+    "cash_m": 10605,
+    "marketable_securities_m": 51951,
+    "total_debt_m": 8468,
+    "net_cash_m": 54088
+  },
+  "cash_flow": {
+    "ocf_m": 102718,
+    "capex_m": 6042,
+    "fcf_m": 96676,
+    "sbc_m": 6386
+  },
+  "income_statement": {
+    "revenue_m": 215938,
+    "cost_of_revenue_m": 62475,
+    "gross_profit_m": 153463,
+    "gross_margin_pct": 71.1,
+    "rd_m": 18497,
+    "sga_m": 4579,
+    "total_opex_m": 23076,
+    "ebit_m": 130387,
+    "interest_income_m": 2300,
+    "interest_expense_m": 259,
+    "other_income_m": 9022,
+    "income_before_tax_m": 141450,
+    "tax_m": 21383,
+    "tax_rate_pct": 15.1,
+    "net_income_m": 120067,
+    "eps_diluted": 4.90
+  }
 }
