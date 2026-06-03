@@ -762,7 +762,79 @@
       "equity_value_m": 8433665,
       "fair_value_computed": 345.6,
       "one_trillion_revenue_year": "FY2033 (Jan 2033) w base case; FY2031 mozliwe jesli sovereign AI blizej Jensen bull",
-      "notes": "Model dwoch driverow: hyperscaler ($260B FY2027E, CAGR 26%) + sovereign AI ($60B FY2027E, CAGR 35%). Sovereign AI driver oparty na udokumentowanych kontraktach: HUMAIN 600K GPU, Francja 500K, UK 120K, Korea 260K, Indie 100K target, UAE/Katar/Japonia w pipeline. Rubin (H2 FY2027) poprawia gross margin NVDA ~71%->~75% dzieki wyzszemu ASP ($100-130K) rosnacemu szybciej niz COGS. FCF Stage1 53.25% (vs FY2026 actual 44.8% — roznica: WC build przy +65% YoY growth; normalizuje sie). Stara FV $116 (oparta na FY2025 rev $130B) i FV $240 (bull-case bez pelnego DCF) zastapione pelnymi wyliczeniami krok A-E."
+      "notes": "Model dwoch driverow: hyperscaler ($260B FY2027E, CAGR 26%) + sovereign AI ($60B FY2027E, CAGR 35%). Sovereign AI driver oparty na udokumentowanych kontraktach: HUMAIN 600K GPU, Francja 500K, UK 120K, Korea 260K, Indie 100K target, UAE/Katar/Japonia w pipeline. Rubin (H2 FY2027) poprawia gross margin NVDA ~71%->~75% dzieki wyzszemu ASP ($100-130K) rosnacemu szybciej niz COGS. FCF Stage1 53.25% (vs FY2026 actual 44.8% — roznica: WC build przy +65% YoY growth; normalizuje sie). Stara FV $116 (oparta na FY2025 rev $130B) i FV $240 (bull-case bez pelnego DCF) zastapione pelnymi wyliczeniami krok A-E.",
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 15,
+          "color": "ef4444",
+          "fair_value": 113,
+          "description": "Export controls eskalacja (zakaz Bliski Wschód), custom silicon bierze 20%+ share, sovereign AI zamrozony politycznie.",
+          "assumptions": {
+            "stage1_cagr_pct": 15,
+            "stage2_cagr_pct": 8,
+            "ebit_margin_pct": 58,
+            "fcf_margin_s1_pct": 45.3,
+            "fcf_margin_s2_pct": 40.7,
+            "wacc_pct": 12.5,
+            "terminal_g_pct": 2.5
+          },
+          "key_risk": "Bliski Wschód ban + Google TPU/Amazon Trainium w hyperscaler inference"
+        },
+        {
+          "name": "Base",
+          "probability_pct": 40,
+          "color": "00d9a3",
+          "fair_value": 346,
+          "description": "Ten model DCF. Hyperscaler CAGR 26% + sovereign AI CAGR 35%. Vera Rubin H2 FY2027 bez opoźnień.",
+          "assumptions": {
+            "stage1_cagr_pct": 27.7,
+            "stage2_cagr_pct": 14,
+            "ebit_margin_pct": 65,
+            "fcf_margin_s1_pct": 53.25,
+            "fcf_margin_s2_pct": 51.29,
+            "wacc_pct": 11.0,
+            "terminal_g_pct": 3.5
+          },
+          "key_risk": "Opoźnienie Rubina lub zwolnienie sovereign AI zakupów"
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 30,
+          "color": "f59e0b",
+          "fair_value": 562,
+          "description": "Rubin ASP 3x Blackwell, sovereign AI pełny ramp (HUMAIN + Francja + Korea terminowo), physical AI/robotics startuje 2027.",
+          "assumptions": {
+            "stage1_cagr_pct": 35,
+            "stage2_cagr_pct": 17,
+            "ebit_margin_pct": 67,
+            "fcf_margin_s1_pct": 56.1,
+            "fcf_margin_s2_pct": 53.6,
+            "wacc_pct": 10.5,
+            "terminal_g_pct": 3.5
+          },
+          "key_risk": "Wycena już częściowo odzwierciedla ten scenariusz (P/E 48x)"
+        },
+        {
+          "name": "Jensen Bull",
+          "probability_pct": 15,
+          "color": "a855f7",
+          "fair_value": 720,
+          "description": "$1T revenue FY2031 (Jensen trajectory). Rubin + next platform, każdy kraj buduje AI factory, physical AI mainstream.",
+          "assumptions": {
+            "stage1_cagr_pct": 33,
+            "stage2_cagr_pct": 20,
+            "ebit_margin_pct": 70,
+            "fcf_margin_s1_pct": 58.7,
+            "fcf_margin_s2_pct": 57.3,
+            "wacc_pct": 10.0,
+            "terminal_g_pct": 4.0
+          },
+          "key_risk": "Wymaga utrzymania ~70% udziału w rynku GPU przy 3x wzroście TAM"
+        }
+      ],
+      "fair_value_weighted": 431,
+      "fair_value_weighted_formula": "0.15×$113 + 0.40×$346 + 0.30×$562 + 0.15×$720 = $431"
     },
     "events": [
       {

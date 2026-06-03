@@ -712,6 +712,117 @@ def _render_alt_valuation(alt: dict, fv_currency: str):
             </div>""", unsafe_allow_html=True)
 
 
+def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
+    """Renders scenario analysis section inside an expander in the DCF tab."""
+    weighted   = dcf.get("fair_value_weighted")
+    formula    = dcf.get("fair_value_weighted_formula", "")
+    currency   = rec.get("fair_value_currency", "USD")
+    max_fv     = max(s["fair_value"] for s in scenarios)
+
+    with st.expander("📊 Analiza scenariuszowa", expanded=False):
+        st.markdown(
+            '<div style="font-size:11px;color:#64748b;margin-bottom:16px">'
+            'Bazowy DCF (powyżej) to <b style="color:#e2e8f0">Base case</b>. '
+            'Tabela poniżej pokazuje pełne spektrum wyników przy różnych założeniach makro i operacyjnych.'
+            '</div>', unsafe_allow_html=True)
+
+        # ── Scenario cards
+        cols = st.columns(len(scenarios))
+        for col, sc in zip(cols, scenarios):
+            c     = sc["color"]
+            prob  = sc["probability_pct"]
+            fv    = sc["fair_value"]
+            bar_w = int(fv / max_fv * 100)
+            a     = sc["assumptions"]
+            with col:
+                st.markdown(f"""
+                <div style="background:rgba(255,255,255,0.04);border:1px solid #{c}44;border-radius:12px;padding:14px 12px">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                        <span style="font-size:11px;font-weight:700;color:#{c};text-transform:uppercase;letter-spacing:1px">{sc['name']}</span>
+                        <span style="font-size:10px;color:#475569;background:rgba(255,255,255,0.06);border-radius:4px;padding:2px 6px">{prob}%</span>
+                    </div>
+                    <div style="font-size:22px;font-weight:700;color:#{c};margin-bottom:2px">${fv}</div>
+                    <div style="font-size:10px;color:#475569;margin-bottom:10px">{currency}</div>
+                    <div style="background:rgba(255,255,255,0.06);border-radius:3px;height:4px;margin-bottom:12px">
+                        <div style="background:#{c};width:{bar_w}%;height:100%;border-radius:3px"></div>
+                    </div>
+                    <div style="font-size:10px;color:#64748b;line-height:1.7">
+                        <div>CAGR S1 &nbsp;<b style="color:#94a3b8">{a['stage1_cagr_pct']}%</b></div>
+                        <div>CAGR S2 &nbsp;<b style="color:#94a3b8">{a['stage2_cagr_pct']}%</b></div>
+                        <div>EBIT &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['ebit_margin_pct']}%</b></div>
+                        <div>WACC &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['wacc_pct']}%</b></div>
+                        <div>g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['terminal_g_pct']}%</b></div>
+                    </div>
+                    <div style="margin-top:10px;font-size:10px;color:#475569;line-height:1.5;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px">{sc['description']}</div>
+                </div>""", unsafe_allow_html=True)
+
+        # ── Weighted FV
+        if weighted:
+            st.markdown(f"""
+            <div style="margin-top:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+                        border-radius:10px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <div style="font-size:10px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px">
+                        Fair Value Ważone Scenariuszowo
+                    </div>
+                    <div style="font-size:11px;color:#64748b;font-family:'Courier New',monospace">{formula}</div>
+                </div>
+                <div style="text-align:right">
+                    <div style="font-size:28px;font-weight:700;color:#e2e8f0">${weighted}</div>
+                    <div style="font-size:10px;color:#475569">{currency} · prob-weighted</div>
+                </div>
+            </div>""", unsafe_allow_html=True)
+
+        # ── Assumptions table
+        st.markdown("""
+        <div style="margin-top:20px">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'Inter',sans-serif">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08)">
+              <th style="text-align:left;padding:8px 6px;color:#475569;font-weight:600">Scenariusz</th>
+              <th style="text-align:center;padding:8px 6px;color:#475569">Prob.</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569">CAGR S1</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569">CAGR S2</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569">EBIT</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569">FCF S1</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569">WACC</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569">g</th>
+              <th style="text-align:right;padding:8px 6px;color:#475569;font-weight:600">FV</th>
+            </tr>
+          </thead>
+          <tbody>""", unsafe_allow_html=True)
+
+        for sc in scenarios:
+            a   = sc["assumptions"]
+            c   = sc["color"]
+            row = f"""
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+              <td style="padding:7px 6px;color:#{c};font-weight:600">{sc['name']}</td>
+              <td style="padding:7px 6px;color:#64748b;text-align:center">{sc['probability_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage1_cagr_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage2_cagr_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['ebit_margin_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['fcf_margin_s1_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['wacc_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['terminal_g_pct']}%</td>
+              <td style="padding:7px 6px;color:#{c};font-weight:700;text-align:right">${sc['fair_value']}</td>
+            </tr>"""
+            st.markdown(row, unsafe_allow_html=True)
+
+        st.markdown("</tbody></table></div>", unsafe_allow_html=True)
+
+        # ── Risk per scenario
+        st.markdown('<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">', unsafe_allow_html=True)
+        for sc in scenarios:
+            c = sc["color"]
+            st.markdown(f"""
+            <div style="background:rgba(255,255,255,0.03);border-left:2px solid #{c};
+                        border-radius:0 6px 6px 0;padding:6px 10px;font-size:10px;color:#64748b;flex:1;min-width:180px">
+                <b style="color:#{c}">{sc['name']} risk:</b> {sc.get('key_risk','—')}
+            </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+
 def tab_dcf(rec: dict):
     dcf = rec.get("dcf")
     alt = dcf.get("alt_valuation") if dcf else None
@@ -1073,6 +1184,11 @@ Net Cash = Gotówka &minus; Dług<br>
     if alt:
         st.markdown('<div style="margin-top:24px;border-top:1px solid rgba(255,255,255,0.06);padding-top:8px"></div>', unsafe_allow_html=True)
         _render_alt_valuation(alt, fv_currency)
+
+    # Scenario analysis (optional)
+    scenarios = dcf.get("scenarios")
+    if scenarios:
+        _render_dcf_scenarios(scenarios, dcf, rec)
 
 # ─── TAB: DZIAŁANIA ───────────────────────────────────────────────────────────
 def tab_actions(rec: dict, row, prices: dict):
