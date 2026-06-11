@@ -328,6 +328,7 @@ def normalize_portfolio(df: pd.DataFrame) -> pd.DataFrame:
         elif cl == "volume":   rename[col] = "Ilosc"
         elif cl == "price":    rename[col] = "Srednia_cena"
         elif cl == "instrument": rename[col] = "Instrument"
+        elif cl == "status":   rename[col] = "Status"
     df = df.rename(columns=rename)
 
     def resolve_ticker(row):
@@ -345,12 +346,24 @@ def normalize_portfolio(df: pd.DataFrame) -> pd.DataFrame:
         lambda x: CCY_MAP.get(str(x).strip().lower(), str(x).strip().upper()))
     df["Ilosc"]        = df["Ilosc"].apply(to_float)
     df["Srednia_cena"] = df["Srednia_cena"].apply(to_float)
+    # Status: Bought = pozycja kupiona, Sold = sprzedana (odejmowana od wolumenu).
+    # Brak kolumny lub pusta wartość traktowane jak Bought (kompatybilność wstecz).
+    if "Status" in df.columns:
+        df["Status"] = df["Status"].apply(
+            lambda x: "Sold" if str(x).strip().lower() == "sold" else "Bought")
+    else:
+        df["Status"] = "Bought"
     df = df[df["Ticker"].notna() & (df["Ticker"] != "") & (df["Ilosc"] > 0)].copy()
     INSTR_SORT = {"Shares": 0, "ETF": 1, "Crypto": 2}
     rows = []
     for (ticker, ccy), g in df.groupby(["Ticker", "Waluta"]):
-        vol   = g["Ilosc"].sum()
-        wavg  = (g["Ilosc"] * g["Srednia_cena"]).sum() / vol if vol > 0 else 0
+        bought = g[g["Status"] == "Bought"]
+        sold   = g[g["Status"] == "Sold"]
+        vol    = bought["Ilosc"].sum() - sold["Ilosc"].sum()
+        if vol <= 0:
+            continue  # pozycja w całości sprzedana — nie pokazuj w aplikacji
+        bvol  = bought["Ilosc"].sum()
+        wavg  = (bought["Ilosc"] * bought["Srednia_cena"]).sum() / bvol if bvol > 0 else 0
         instr = g["Instrument"].iloc[0] if "Instrument" in g.columns else "Shares"
         rows.append({"Ticker": ticker, "Nazwa": g["Nazwa"].iloc[0],
                      "Ilosc": vol, "Srednia_cena": wavg, "Waluta": ccy,
