@@ -17,7 +17,7 @@
     "buffett_moat": "Wide",
     "last_updated": "2026-06-11",
     "next_earnings": "2026-07-28",
-    "priority_action": "BUY — cena $390 (2026-06-11) ponizej entry $400 (25% MoS od FV $535). Upside do FV: +37%. Korekta -6% w tydzien ($416->$390) daje okno wejscia.",
+    "priority_action": "Dokupuj poniżej entry — korekta po dealu OpenAI (Apr 2026) daje okno wejścia.",
     "dcf": {
       "wacc_pct": 9.5,
       "terminal_growth_pct": 3.0,
@@ -626,7 +626,7 @@
     "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare, miliony certyfikowanych inzynierow), scale advantage R&D $18.5B/rok, pricing power (Rubin ASP 3x Blackwell), switching costs ekstremalne dla enterprise AI + sovereign AI (rzady nie moga zmienic platformy mid-build).",
     "last_updated": "2026-06-03",
     "next_earnings": "2026-08-XX",
-    "priority_action": "BUY — cena ~$235 ponizej entry $260 (25% MoS od FV $346). Trzymac 108 szt. Dokupowac do $260. Stop: thesis breaker.",
+    "priority_action": "Dokupuj poniżej entry. Stop: thesis breaker.",
     "dcf": {
       "wacc_pct": 11.0,
       "terminal_growth_pct": 3.5,
@@ -1025,7 +1025,7 @@
       "DOE funding continuity — FY2027 budget nie zawiera finansowania kaskady demonstracyjnej; HALEU Production Contract $900M w trakcie definitizacji; zmiana administracji = ryzyko polityczne",
       "Rosyjskie SWU / chiński import — 43% globalnego wzbogacania to Rosja; jeśli rynek znajdzie obejście, SWU spot spada; lagged contracts chronią krótkoterm, nowe kontrakty musiałyby być po niższych cenach"
     ],
-    "priority_action": "BUY przy cenie ≤ $71 (25% MoS do FV $95). Trigger do wejścia: definitizacja $900M HALEU task order. Stop przy naruszeniu thesis_breaker.",
+    "priority_action": "Dokupuj poniżej entry. Trigger: definitizacja $900M HALEU task order. Stop: thesis breaker.",
     "dcf": {
       "method": "Scenario DCF — 3 scenariusze z wagami probabilistycznymi",
       "wacc_pct": 11.9,
@@ -1301,7 +1301,7 @@
       "Search cannibalization przez AI — Gemini odpowiada bezpośrednio, mniej kliknięć w reklamy, ad growth już zwalnia z +18% do +9% YoY, impact -10% FV",
       "Capex burnout — $180B/rok FY26, jeśli AI ROI nie dostarczy w 2027 FCF margin spada z 24% do 15%, impact -20% FV"
     ],
-    "priority_action": "Cena $394 już w strefie kupna (MoS 15% przy entry $400). Sugerowana pozycja 5-8% portfela. Źródło finansowania: rotacja z EUNA.DE (bondy) + redukcja IS3N.DE (30% China overlap z Tencent).",
+    "priority_action": "Strefa kupna — sugerowana pozycja 5-8% portfela. Finansowanie: rotacja z ETF.",
     "dcf": {
       "wacc_pct": 9.5,
       "terminal_growth_pct": 3.0,

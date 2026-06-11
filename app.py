@@ -1309,7 +1309,7 @@ def tab_actions(rec: dict, row, prices: dict):
             st.markdown('<div style="color:#475569;font-size:13px;padding:20px 0">Brak wydarzeń do wyświetlenia.</div>', unsafe_allow_html=True)
 
 # ─── PAGE: OVERVIEW ───────────────────────────────────────────────────────────
-def page_overview(pos, demo, recs, mkt_cap=None):
+def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
     if demo:
         st.markdown("""<div class="demo-banner">
         ⚙️ <b>Tryb demo</b> — live ceny i rekomendacje są aktywne.
@@ -1353,20 +1353,54 @@ def page_overview(pos, demo, recs, mkt_cap=None):
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Priority actions (manual overrides)
-    prio = [(t, r) for t, r in recs.items() if r.get("priority_action")]
+    # ── Priority actions (manual text + live context z cen Yahoo)
+    # Reguła widoczności: ticker w portfelu LUB rekomendacja BUY.
+    # Pozycje zamknięte / czysto obserwacyjne (HOLD bez pozycji) nie zaśmiecają overview.
+    pos_by_ticker = {row["Ticker"]: row for _, row in pos.iterrows()}
+    prio = []
+    for t, r in recs.items():
+        if not r.get("priority_action"):
+            continue
+        in_pf = t in pos_by_ticker
+        if not in_pf and r.get("recommendation") != "BUY":
+            continue
+        prio.append((t, r, in_pf))
     if prio:
         st.markdown('<div class="sh">⚡ Priorytetowe działania</div>', unsafe_allow_html=True)
         html = '<div class="actions">'
-        for t, r in sorted(prio, key=lambda x: REC_ORDER.get(x[1].get("recommendation","HOLD"), 3)):
+        for t, r, in_pf in sorted(prio, key=lambda x: REC_ORDER.get(x[1].get("recommendation","HOLD"), 3)):
             rec = r.get("recommendation", "HOLD")
             ac  = REC_ACTION.get(rec, "a-neu")
             dot = REC_DOT.get(rec, "dot-neu")
-            html += f"""<div class="action {ac}">
+            # chipy liczone na żywo przy każdym renderze — teksty piszemy bez cen
+            price = (prices or {}).get(t, {}).get("price")
+            if price is None and in_pf:
+                price = pos_by_ticker[t]["Cena"]
+            entry = r.get("entry_point")
+            fv    = r.get("fair_value")
+            chips = []
+            if in_pf:
+                chips.append((f"{pos_by_ticker[t]['Ilość']:g} szt.", "#64748b"))
+            if price is not None:
+                chips.append((f"cena {price:,.2f}", "#94a3b8"))
+                if entry:
+                    if price <= entry:
+                        chips.append((f"&#10003; poniżej entry {entry:,.0f}", "#10b981"))
+                    else:
+                        chips.append((f"entry {entry:,.0f} ({(price-entry)/entry*100:+.0f}% powyżej)", "#f59e0b"))
+                if fv:
+                    up = (fv - price) / price * 100
+                    chips.append((f"FV {fv:,.0f} ({up:+.0f}%)", "#00d9a3" if up >= 0 else "#ef4444"))
+            chips_html = "".join(
+                f'<span style="background:rgba(255,255,255,0.05);border-radius:5px;'
+                f'padding:2px 8px;font-size:11px;color:{c};white-space:nowrap">{txt}</span>'
+                for txt, c in chips)
+            html += f"""<div class="action {ac}" style="flex-wrap:wrap;row-gap:6px">
                 <div class="action-dot {dot}"></div>
                 <span class="action-ticker">{t}</span>
                 <span style="color:#475569;font-size:12px">·</span>
                 <span>{_e(r['priority_action'])}</span>
+                <span style="display:inline-flex;gap:6px;flex-wrap:wrap;margin-left:auto">{chips_html}</span>
             </div>"""
         html += '</div>'
         st.markdown(html, unsafe_allow_html=True)
@@ -2358,7 +2392,7 @@ p.document.addEventListener('keydown', function(e){
         st.markdown(html, unsafe_allow_html=True)
 
     if page_key == "__overview__":
-        page_overview(pos, demo, recs, mkt_cap)
+        page_overview(pos, demo, recs, mkt_cap, prices)
         render_chat(pos, recs, prices, fx, watchlist=watchlist)
     elif page_key == "__watchlist__":
         page_watchlist(watchlist, prices, recs, pos, labels, keys, mkt_cap)
