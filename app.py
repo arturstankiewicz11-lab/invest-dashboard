@@ -1405,6 +1405,50 @@ def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
         html += '</div>'
         st.markdown(html, unsafe_allow_html=True)
 
+    # ── Kalendarz wydarzeń (next_earnings + upcoming_events z recommendations.json)
+    PL_M = {1:"sty",2:"lut",3:"mar",4:"kwi",5:"maj",6:"cze",7:"lip",8:"sie",9:"wrz",10:"paź",11:"lis",12:"gru"}
+    today = datetime.now().date()
+    cal = []
+    for t, r in recs.items():
+        in_pf = t in pos_by_ticker
+        if not in_pf and r.get("recommendation") != "BUY":
+            continue  # ta sama reguła co priorytety: portfel lub aktywne BUY
+        ne = r.get("next_earnings")
+        if ne and "X" not in str(ne):
+            try:
+                d = datetime.strptime(str(ne), "%Y-%m-%d").date()
+                if d >= today:
+                    cal.append((d, t, "Earnings", "earnings"))
+            except Exception:
+                pass
+        for ev in r.get("upcoming_events") or []:
+            try:
+                d = datetime.strptime(str(ev.get("date", "")), "%Y-%m-%d").date()
+            except Exception:
+                continue
+            if d >= today:
+                cal.append((d, t, ev.get("event", ""), ev.get("type", "catalyst")))
+    if cal:
+        cal.sort(key=lambda x: x[0])
+        st.markdown('<div class="sh">📅 Kalendarz wydarzeń</div>', unsafe_allow_html=True)
+        html = '<div style="display:flex;flex-direction:column;gap:8px">'
+        for d, t, txt, typ in cal[:12]:
+            days = (d - today).days
+            when = "DZIŚ" if days == 0 else "jutro" if days == 1 else f"za {days} dni"
+            urg  = "#ef4444" if days <= 3 else "#f59e0b" if days <= 14 else "#64748b"
+            icon = "📊" if typ == "earnings" else "⚡"
+            html += f"""<div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);
+                        border:1px solid rgba(255,255,255,0.06);border-left:2px solid {urg};
+                        border-radius:10px;padding:10px 16px;flex-wrap:wrap">
+                <div style="font-family:'Courier New',monospace;font-size:12px;color:#94a3b8;min-width:90px">{d.day} {PL_M[d.month]} {d.year}</div>
+                <span style="background:rgba(255,255,255,0.06);border-radius:5px;padding:2px 8px;font-size:11px;color:{urg};white-space:nowrap;min-width:60px;text-align:center">{when}</span>
+                <span style="font-size:13px">{icon}</span>
+                <span style="font-weight:700;font-size:13px;color:#e2e8f0;min-width:56px">{t}</span>
+                <span style="font-size:12px;color:#94a3b8;flex:1">{_e(txt)}</span>
+            </div>"""
+        html += '</div>'
+        st.markdown(html, unsafe_allow_html=True)
+
     st.markdown('<div class="sh">📊 Pozycje</div>', unsafe_allow_html=True)
     df = pos.sort_values("Val_PLN", ascending=False, na_position="last")
     rows_html = ""

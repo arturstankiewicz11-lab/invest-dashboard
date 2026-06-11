@@ -260,7 +260,14 @@
       ],
       "valuation_method": "DCF (scenariusz bazowy) + premia za opcjonalność IRIS² €10.6B (scenariusz bull €8). DCF daje ~€1.87. FV €8 zakłada pełną realizację IRIS² + wzrost LEO do €3B+ przychodów do 2035 — to scenariusz opcjonalności, nie pewność.",
       "notes": "WACC 13% = premia za ryzyko (dług netto €1.3B, brak moat, zależność od dotacji EU). Etap 1: GEO segment spada, LEO OneWeb rośnie ale baza niska. Etap 2: IRIS² kontrakt €10.6B wchodzi pełną parą (~2028-2033). Ważne: 430M akcji to szacunek po rekapitalizacji (stan: maj 2026) — kolejne emisje możliwe. Model nie uwzględnia ryzyka bankructwa przy braku refinansowania długu ~2027."
-    }
+    },
+    "upcoming_events": [
+      {
+        "date": "2026-08-07",
+        "event": "FY2026 results — verdict na IRIS² revenue trajectory (data z guidance spółki)",
+        "type": "earnings"
+      }
+    ]
   },
   "RHM.DE": {
     "name": "Rheinmetall",
@@ -333,6 +340,13 @@
         "event": "JPMorgan downgrade do Neutral. PT obniżony z €2130 do €1500 — obawy o wycenę.",
         "impact": "negative",
         "fv_note": "Jeden analityk vs 15 Buy. Nie zmienia tezy. Tworzy okazję cenową."
+      }
+    ],
+    "upcoming_events": [
+      {
+        "date": "2026-08-06",
+        "event": "Raport H1 2026 (szac.) — backlog i marże defence",
+        "type": "earnings"
       }
     ]
   },
@@ -967,6 +981,13 @@
         "impact": "positive",
         "fv_note": "Momentum potwierdzone. Thesis breaker nie aktywowany."
       }
+    ],
+    "upcoming_events": [
+      {
+        "date": "2026-08-26",
+        "event": "Earnings Q2 FY2027 (szac.) — ostatni kwartał przed Rubin ramp H2",
+        "type": "earnings"
+      }
     ]
   },
   "RKLB": {
@@ -1160,7 +1181,19 @@
       "notes": "FY2025 dane: revenue $448.7M, EBIT $50.2M, EBITDA $60.1M, FCF $31.3M, D&A $9.9M, CapEx $19.7M. Q1 2026: net cash $692.1M, shares diluted 22.45M. Backlog $3.9B (LEU $3.1B incl. $2.4B contingent + Tech $0.8B). $900M HALEU Production task order (Jan 2026, w trakcie definitizacji). Piketon: Fluor EPC + Geiger Brothers, pierwsze centrifugi 2029.",
       "weights_rationale": "Rewizja wag 2026-06-12: Bear 15->10% (Fluor EPC podpisany Feb, Geiger construction Apr, $108.2M Option 1a funded, $900M task order w negocjacji — execution de-risked). Bull 20->25% (SWU $200 historyczne max utrzymane, DOE $2.7B sektorowy commitment, Oklo JV deconversion) ALE opis bull bez quasi-monopolu: General Matter + Orano po $900M (Jan 2026) — DOE celowo finansuje 3 enricherow. Scenariusze wewnetrznie bez zmian (brak nowych danych finansowych od 10-Q Q1 2026).",
       "market_implied": "Cena $158.68 (2026-06-11) > bull FV $151 — rynek wycenia >100% prawdopodobienstwa bull lub czesciowo HALEU premium scenario ($270: 50+ advanced reactors + $35k/kg premium). Szczyt $231 (2026-05-06), drawdown -31%."
-    }
+    },
+    "upcoming_events": [
+      {
+        "date": "2026-06-30",
+        "event": "HALEU Operations Contract wygasa — decyzja DOE o przedłużeniu (twarda data)",
+        "type": "catalyst"
+      },
+      {
+        "date": "2026-08-06",
+        "event": "Earnings Q2 2026 (szac.) + status definitizacji $900M task order",
+        "type": "earnings"
+      }
+    ]
   },
   "CCJ": {
     "events": [
@@ -1224,7 +1257,14 @@
       "Zero revenue do 2027-2028, burn rate $51M/Q rośnie — execution timeline slip",
       "Sentiment-driven volatility ±50% w 4 tyg (rajd kwi $45→$80, sell-off maj $80→$58) — no fundamentals anchor"
     ],
-    "priority_action": "Limit order $52 na 40% pozycji (90 dni). Tranche 2 @ $45, Tranche 3 @ $38. NIE gonić rajdów >$70."
+    "priority_action": "Limit order $52 na 40% pozycji (90 dni). Tranche 2 @ $45, Tranche 3 @ $38. NIE gonić rajdów >$70.",
+    "upcoming_events": [
+      {
+        "date": "2026-08-11",
+        "event": "Earnings Q2 2026 (szac.) — status Aurora INL i Atomic Alchemy first revenue",
+        "type": "earnings"
+      }
+    ]
   },
   "IONQ": {
     "name": "IonQ",
@@ -1426,7 +1466,14 @@
           ]
         }
       }
-    }
+    },
+    "upcoming_events": [
+      {
+        "date": "2026-07-28",
+        "event": "Earnings Q2 2026 (szac. — Alphabet raportuje koniec lipca)",
+        "type": "earnings"
+      }
+    ]
   },
   "AMZN": {
     "name": "Amazon.com Inc.",
