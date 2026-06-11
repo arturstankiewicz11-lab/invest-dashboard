@@ -999,6 +999,12 @@
     "events": [
       {
         "date": "2026-06-12",
+        "event": "Rekomendacja BUY->HOLD, entry $71->$76 (zaakceptowane). Cena $158.68 = 57% nad FV $101 i nad bull case $151 — brak uzasadnienia dla dokupowania. Pozycja 120 szt. @ $170.89 trzymana: net cash floor $30.8/akcje + opcjonalnosc HALEU premium ($270).",
+        "impact": "neutral",
+        "fv_note": "HOLD @ FV $101. Re-entry/dokupowanie ponizej $76 (25% MoS)."
+      },
+      {
+        "date": "2026-06-12",
         "event": "Rewizja FV $95->$101 (wagi 10/65/25, scenariusze bez zmian — brak nowych danych finansowych). Nowe fakty: (1) DOE award Jan 2026 to $2.7B na 3 firmy — General Matter i Orano dostali po $900M jak Centrus -> quasi-monopol z bull case martwy, ale konkurenci 4-6 lat za Centrus; (2) Fluor EPC + Geiger construction podpisane -> bear 15->10%; (3) HALEU Operations Contract wygasa 30.06.2026 — decyzja o przedluzeniu w ~3 tygodnie; (4) cena $158.68 > bull FV $151 — rynek wycenia >100% bull. Thesis breaker watch: General Matter MA pelny DOE funding (1 z 2 warunkow breakera), brak NRC license (2. warunek) — nie aktywowany.",
         "impact": "neutral",
         "fv_note": "FV $95->$101. Propozycja (czeka na akceptacje): BUY->HOLD (cena 57% nad FV, nad bull case), entry $71->$76 (25% MoS od $101)."
@@ -1016,12 +1022,12 @@
         "fv_note": "Inicjacja. FV $340 oparte na pełnym HALEU renaissance scenario — następnie zrewidowane 01.06.2026."
       }
     ],
-    "recommendation": "BUY",
+    "recommendation": "HOLD",
     "last_updated": "2026-06-12",
     "name": "Centrus Energy",
     "fair_value": 101,
     "fair_value_currency": "USD",
-    "entry_point": 71,
+    "entry_point": 76,
     "thesis_short": "Jedyny operacyjny US enricher HALEU z NRC license. Net cash $692M ($30.8/akcje). Backlog $3.9B. FV $101 (scenariusze 10/65/25) / $270 HALEU premium jako opcjonalnosc. Cena $159 > bull $151 — rynek wycenia wiecej niz kontrakty. Catalyst: przedluzenie HALEU Operations Contract do 30.06.2026.",
     "thesis_full": "Centrus Energy to jedyny operacyjny producent HALEU w USA z NRC license — Piketon Ohio. FY2025: revenue $448.7M, EBIT $50.2M, EBITDA $60.1M. Q1 2026: net cash $692.1M ($30.8/akcję), backlog $3.9B (LEU $3.1B + Tech Solutions $0.8B). Dwa segmenty: (1) LEU Trading — kupuje SWU od dostawców (TENEX + dywersyfikacja) i sprzedaje utilities na long-term contracts; SWU spot $200 = historyczne max, lagged contracts → spreading marże; gross margin 32.2% FY2025; (2) Technical Solutions — HALEU dla DOE (cost-plus contracts), $900M task order January 2026 (w trakcie definitizacji), centrifuge manufacturing + Piketon expansion. Ekspansja Piketon: Fluor (EPC) + Geiger Brothers (construction), pierwsze centrifugi w Ohio 2029. DCF FV $95 zakłada realizację kontraktów ($900M HALEU + $0.7B LEU committed). HALEU premium FV $270 zakłada 50+ advanced reactors deployed + $35k/kg premium pricing — opcjonalność, nie baza. Conservative FV $95 przy cenie < $31 = kupujesz poniżej net cash.",
     "thesis_breaker": "$900M HALEU task order anulowany lub radykalnie zredukowany przez DOE | Piketon expansion budget przekracza $2B bez analogicznego wzrostu kontraktów | Chiny wypełniają lukę po Rosji → SWU spot trwale < $120 | General Matter uzyskuje NRC license przed 2029 z pełnym DOE funding",
