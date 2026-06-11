@@ -4,7 +4,7 @@
     "recommendation": "BUY",
     "fair_value": 535.0,
     "fair_value_currency": "USD",
-    "entry_point": 385,
+    "entry_point": 400,
     "upside_pct": null,
     "thesis_short": "Azure +40% YoY, AI ARR $37B (+123%). FV DCF $535 = $510 operacyjny + $25 stake OpenAI (26.79% x $852B, po tax haircut). Rewizja po dealu OpenAI Apr 2026: rev share 20% cap $38B, koniec wylacznosci Azure, IP do 2032.",
     "thesis_full": "Microsoft to wiodaca platforma AI enterprise z trzema motorami: (1) Azure — +40% YoY Q3 FY2026, Commercial RPO $627B (+99%, 45% OpenAI commitments); (2) AI ARR $37B (+123% YoY); (3) M365 Copilot 100M+ MAU z unikalnym moat danych Office. NOWY DEAL OpenAI (27 Apr 2026) zmienia profil: rev share 20% przez 2030 z hard cap $38B (trafiony ~2028 przy ARR OpenAI $130B+), wylacznosc Azure SKONCZONA (OpenAI moze AWS/GCP — $50B deal z Amazon aktywny), licencja IP niewylaczna do 2032. Po 2032 MAI (dzis #38 LMArena, $16B/rok compute na trening) musi zastapic OpenAI IP — kluczowe ryzyko Stage 2. GitHub Copilot kupuje tokeny Anthropic (50-60% GM Anthropic) = trwala kompresja marzy z ~85% do ~40-45% na tej linii. Token stack: Azure Foundry TaaS rosnie, ale AI-native startupy wybieraja CoreWeave/AWS (ClusterMAX: Azure grozi spadek do Silver). CapEx $190B commitment 2026 (33% rev annualized) = szczyt buildoutu, normalizacja do 13% w Stage 2. UKRYTY ASSET: 26.79% OpenAI = $228B przy wycenie $852B (Mar 2026); IPO OpenAI late 2026/2027 przy $1T+ moze ujawnic wartosc — w FV liczone konserwatywnie $25/akcje po 20% tax haircut. DCF: WACC 9.5%, Stage1 FY2027-29 CAGR 20%/EBIT 45%, Stage2 FY2030-36 CAGR 12%/EBIT 44%, g=3%.",
@@ -17,7 +17,7 @@
     "buffett_moat": "Wide",
     "last_updated": "2026-06-11",
     "next_earnings": "2026-07-28",
-    "priority_action": null,
+    "priority_action": "BUY — cena $390 (2026-06-11) ponizej entry $400 (25% MoS od FV $535). Upside do FV: +37%. Korekta -6% w tydzien ($416->$390) daje okno wejscia.",
     "dcf": {
       "wacc_pct": 9.5,
       "terminal_growth_pct": 3.0,
@@ -143,6 +143,12 @@
       "fair_value_weighted_formula": "0.20x$279 + 0.50x$535 + 0.30x$827 = $571"
     },
     "events": [
+      {
+        "date": "2026-06-11",
+        "event": "Entry point $385->$400 (25% MoS od nowego FV $535). Cena $390.34 ponizej entry — BUY aktywny. Stock spadl $416->$390 w tydzien (-6%).",
+        "impact": "neutral",
+        "fv_note": "BUY potwierdzony przy $390: upside +37% do FV $535, +46% do weighted $571."
+      },
       {
         "date": "2026-06-11",
         "event": "Pelna rewizja DCF po dealu OpenAI (27 Apr 2026: rev share 20% cap $38B, koniec wylacznosci Azure, IP niewylaczne do 2032) + SemiAnalysis token economics (Copilot margin drag z zakupu tokenow Anthropic, Maia dead last, neocloud premium po Big Pause, Big Pause = utrata $150B gross profit do Oracle). WACC 9.0->9.5%, Stage1 EBIT 47->45% / CapEx 25->28% / CAGR 18->20%, Stage2 EBIT 49->44%. Dodano stake OpenAI 26.79% x $852B = $228B jako non-operating asset (+$25/akcje po haircut). Scenariusze: Bear $279 / Base $535 / Bull $827, weighted $571.",
