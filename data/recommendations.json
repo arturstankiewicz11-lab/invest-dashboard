@@ -998,6 +998,12 @@
   "LEU": {
     "events": [
       {
+        "date": "2026-06-12",
+        "event": "Rewizja FV $95->$101 (wagi 10/65/25, scenariusze bez zmian — brak nowych danych finansowych). Nowe fakty: (1) DOE award Jan 2026 to $2.7B na 3 firmy — General Matter i Orano dostali po $900M jak Centrus -> quasi-monopol z bull case martwy, ale konkurenci 4-6 lat za Centrus; (2) Fluor EPC + Geiger construction podpisane -> bear 15->10%; (3) HALEU Operations Contract wygasa 30.06.2026 — decyzja o przedluzeniu w ~3 tygodnie; (4) cena $158.68 > bull FV $151 — rynek wycenia >100% bull. Thesis breaker watch: General Matter MA pelny DOE funding (1 z 2 warunkow breakera), brak NRC license (2. warunek) — nie aktywowany.",
+        "impact": "neutral",
+        "fv_note": "FV $95->$101. Propozycja (czeka na akceptacje): BUY->HOLD (cena 57% nad FV, nad bull case), entry $71->$76 (25% MoS od $101)."
+      },
+      {
         "date": "2026-06-01",
         "event": "Rewizja FV $340→$95 po rigorous DCF z raportów (10-K FY2025 + Q1 2026 10-Q). Poprzednia wycena $340 oparta na HALEU TAM optionality (pebble-bed reload cycle, space nuclear, $35k/kg premium) — nie wychodzi z DCF na podstawie kontraktów. Reverse engineering: żeby $340 było realistyczne, FY2036 revenue musiałoby wynieść $6-9B (vs $1.8B base). Nawet przy ekstremalnie agresywnych założeniach (22% CAGR, 26% FCF margin, WACC 10.5%) DCF daje $270. Nowy FV $95 = weighted average Bear $29 (15%) + Base $93 (65%) + Bull $151 (20%). WACC 11.9% (Rf 4.4% + beta 1.5 × ERP 5.0%). Net cash $692M = $30.8/akcję — floor value. FV $270 możliwy tylko przy potwierdzeniu: 50+ advanced reactors deployed + premium HALEU pricing + quasi-monopol.",
         "impact": "neutral",
@@ -1011,12 +1017,12 @@
       }
     ],
     "recommendation": "BUY",
-    "last_updated": "2026-06-01",
+    "last_updated": "2026-06-12",
     "name": "Centrus Energy",
-    "fair_value": 95,
+    "fair_value": 101,
     "fair_value_currency": "USD",
     "entry_point": 71,
-    "thesis_short": "Jedyny US enricher HALEU z NRC license. Net cash $692M ($30.8/akcję). Backlog $3.9B. DCF FV $95 (conservative, kontrakty) / $270 (HALEU premium scenario). Entry $71 = 25% MoS.",
+    "thesis_short": "Jedyny operacyjny US enricher HALEU z NRC license. Net cash $692M ($30.8/akcje). Backlog $3.9B. FV $101 (scenariusze 10/65/25) / $270 HALEU premium jako opcjonalnosc. Cena $159 > bull $151 — rynek wycenia wiecej niz kontrakty. Catalyst: przedluzenie HALEU Operations Contract do 30.06.2026.",
     "thesis_full": "Centrus Energy to jedyny operacyjny producent HALEU w USA z NRC license — Piketon Ohio. FY2025: revenue $448.7M, EBIT $50.2M, EBITDA $60.1M. Q1 2026: net cash $692.1M ($30.8/akcję), backlog $3.9B (LEU $3.1B + Tech Solutions $0.8B). Dwa segmenty: (1) LEU Trading — kupuje SWU od dostawców (TENEX + dywersyfikacja) i sprzedaje utilities na long-term contracts; SWU spot $200 = historyczne max, lagged contracts → spreading marże; gross margin 32.2% FY2025; (2) Technical Solutions — HALEU dla DOE (cost-plus contracts), $900M task order January 2026 (w trakcie definitizacji), centrifuge manufacturing + Piketon expansion. Ekspansja Piketon: Fluor (EPC) + Geiger Brothers (construction), pierwsze centrifugi w Ohio 2029. DCF FV $95 zakłada realizację kontraktów ($900M HALEU + $0.7B LEU committed). HALEU premium FV $270 zakłada 50+ advanced reactors deployed + $35k/kg premium pricing — opcjonalność, nie baza. Conservative FV $95 przy cenie < $31 = kupujesz poniżej net cash.",
     "thesis_breaker": "$900M HALEU task order anulowany lub radykalnie zredukowany przez DOE | Piketon expansion budget przekracza $2B bez analogicznego wzrostu kontraktów | Chiny wypełniają lukę po Rosji → SWU spot trwale < $120 | General Matter uzyskuje NRC license przed 2029 z pełnym DOE funding",
     "buffett_moat": "NARROW→WIDE w budowie. (1) Jedyna NRC-licensed HALEU plant USA — 5+ letni regulatory moat dla competitors. (2) DOE relationship 70 lat + sole-source contracts. (3) Capital moat — $1.87B cash na expansion, konkurenci muszą zebrać porównywalny kapitał. (4) Execution moat — already producing HALEU; General Matter w design phase. Moat staje się WIDE jeśli Piketon commercial scale wychodzi przed 2030.",
@@ -1025,7 +1031,7 @@
       "DOE funding continuity — FY2027 budget nie zawiera finansowania kaskady demonstracyjnej; HALEU Production Contract $900M w trakcie definitizacji; zmiana administracji = ryzyko polityczne",
       "Rosyjskie SWU / chiński import — 43% globalnego wzbogacania to Rosja; jeśli rynek znajdzie obejście, SWU spot spada; lagged contracts chronią krótkoterm, nowe kontrakty musiałyby być po niższych cenach"
     ],
-    "priority_action": "Dokupuj poniżej entry. Trigger: definitizacja $900M HALEU task order. Stop: thesis breaker.",
+    "priority_action": "NIE dokupuj powyzej FV. Najblizsze decyzje: (1) przedluzenie HALEU Operations Contract — wygasa 30.06.2026; (2) definitizacja $900M task order. Po obu — rewizja scenariuszy.",
     "dcf": {
       "method": "Scenario DCF — 3 scenariusze z wagami probabilistycznymi",
       "wacc_pct": 11.9,
@@ -1040,7 +1046,7 @@
       "shares_diluted_m": 22.45,
       "scenarios": {
         "bear": {
-          "probability_pct": 15,
+          "probability_pct": 10,
           "description": "Piketon fails/cancelled 2029, company reverts to LEU trading only",
           "stage1": {
             "n_years": 3,
@@ -1095,8 +1101,8 @@
           "fv_per_share": 93.4
         },
         "bull": {
-          "probability_pct": 20,
-          "description": "Piketon ahead of schedule, quasi-monopoly post Russian ban",
+          "probability_pct": 25,
+          "description": "Piketon przed harmonogramem, first-mover w 3-graczowym rynku (General Matter i Orano dostali po $900M, ale sa 4-6 lat za Centrus: General Matter w design phase bez NRC license). SWU $200 utrzymane, premium HALEU pricing.",
           "stage1": {
             "n_years": 5,
             "rev_cagr_pct": 22,
@@ -1121,8 +1127,8 @@
           "fv_per_share": 150.9
         }
       },
-      "weighted_fv": 95.3,
-      "fair_value_computed": 95,
+      "weighted_fv": 101.4,
+      "fair_value_computed": 101,
       "haleu_premium_scenario": {
         "description": "HALEU premium (50+ advanced reactors deployed, $35k/kg pricing, quasi-monopol)",
         "wacc_pct": 10.5,
@@ -1145,7 +1151,9 @@
         "fv_per_share": 270,
         "note": "Wymaga: X-energy/Kairos/TerraPower fleet w produkcji + HALEU pricing premium + 22%+ CAGR przez dekadę. Nawet przy ekstremalnych założeniach DCF nie dochodzi do $340 starego FV."
       },
-      "notes": "FY2025 dane: revenue $448.7M, EBIT $50.2M, EBITDA $60.1M, FCF $31.3M, D&A $9.9M, CapEx $19.7M. Q1 2026: net cash $692.1M, shares diluted 22.45M. Backlog $3.9B (LEU $3.1B incl. $2.4B contingent + Tech $0.8B). $900M HALEU Production task order (Jan 2026, w trakcie definitizacji). Piketon: Fluor EPC + Geiger Brothers, pierwsze centrifugi 2029."
+      "notes": "FY2025 dane: revenue $448.7M, EBIT $50.2M, EBITDA $60.1M, FCF $31.3M, D&A $9.9M, CapEx $19.7M. Q1 2026: net cash $692.1M, shares diluted 22.45M. Backlog $3.9B (LEU $3.1B incl. $2.4B contingent + Tech $0.8B). $900M HALEU Production task order (Jan 2026, w trakcie definitizacji). Piketon: Fluor EPC + Geiger Brothers, pierwsze centrifugi 2029.",
+      "weights_rationale": "Rewizja wag 2026-06-12: Bear 15->10% (Fluor EPC podpisany Feb, Geiger construction Apr, $108.2M Option 1a funded, $900M task order w negocjacji — execution de-risked). Bull 20->25% (SWU $200 historyczne max utrzymane, DOE $2.7B sektorowy commitment, Oklo JV deconversion) ALE opis bull bez quasi-monopolu: General Matter + Orano po $900M (Jan 2026) — DOE celowo finansuje 3 enricherow. Scenariusze wewnetrznie bez zmian (brak nowych danych finansowych od 10-Q Q1 2026).",
+      "market_implied": "Cena $158.68 (2026-06-11) > bull FV $151 — rynek wycenia >100% prawdopodobienstwa bull lub czesciowo HALEU premium scenario ($270: 50+ advanced reactors + $35k/kg premium). Szczyt $231 (2026-05-06), drawdown -31%."
     }
   },
   "CCJ": {
