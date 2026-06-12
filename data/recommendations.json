@@ -2017,11 +2017,11 @@
   "CBRS": {
     "name": "Cerebras Systems Inc.",
     "recommendation": "HOLD",
-    "fair_value": 152.0,
+    "fair_value": 125.0,
     "fair_value_currency": "USD",
     "entry_point": 114,
     "upside_pct": null,
-    "thesis_short": "Wafer-scale inference + OpenAI MRA 750MW (RPO $24.6B). Revenue $510M FY2025 (+76%), GM 39%. FV $152 (EV/Rev scenariusze 25/55/20). Cena $227 = +49% nad FV — IPO premium. Entry $114 (25% MoS). Lock-up expiry ~10.11.2026.",
+    "thesis_short": "Wafer-scale inference + OpenAI MRA 750MW (RPO $24.6B). FV $125 (po korekcie dylucji: warrant OpenAI 33.4M vestuje przy dostawach MRA — akcje 306M, nie 245M). Cena $214 PRZEKRACZA bull $203 — drabinka: redukcja do rdzenia. Pierwsze earnings 23.06. Entry propozycja $87 (MoS 30%).",
     "thesis_full": "Cerebras to jedyny dostawca wafer-scale AI compute (WSE) z przewaga latency w inference. Transformacyjny deal: OpenAI MRA (Dec 2025) — 750MW committed capacity w tranches 2026-2028 (term 3-4 lata, max 5), opcja +1.25GW do 2030 (total 2.0GW), $1.0B Working Capital Loan od OpenAI. RPO $24.6B: 15% rozpoznane do konca 2027 ($3.69B), 43% w 2028-29 ($10.6B). Revenue: $24.6M (2022) -> $510M (2025, +76% YoY), GM 39%. Non-GAAP net loss $75.7M (GAAP NI $237.8M zawiera one-off $363M). RYZYKO KONCENTRACJI EKSTREMALNE: 2025 = MBZUAI 62% + G42 24% (86% z UAE); od 2026 OpenAI stanie sie dominujacym klientem — koncentracja sie przenosi, nie znika. OpenAI rozwija wlasny ASIC (najlepszy custom chip program wg SemiAnalysis) — po 2029 moze zastapic Cerebras. IPO 13.05.2026 @ $185 ($6.4B gross, najwieksze tech IPO od Ubera), debiut $350 -> $227 dzis. Wycena EV/Revenue (DCF niemozliwy: OCF -$10M, hyper-ramp): 2027E $2.8B x 12x = FV base $145; weighted $152. Net cash post-IPO ~$5.5B = $22.4/akcje floor.",
     "thesis_breaker": "OpenAI anuluje/redukuje MRA poza initial 250MW LUB OpenAI ASIC w produkcji przed 2028 z deklaracja zastapienia Cerebras LUB GM spada ponizej 30% przy skali LUB G42/MBZUAI revenue -50% bez kompensacji nowymi klientami",
     "risks": [
@@ -2032,7 +2032,7 @@
     "buffett_moat": "NARROW i kruchy. Wafer-scale to realna przewaga technologiczna w latency-critical inference (brak inter-chip communication overhead), ale: (1) brak ekosystemu software jak CUDA, (2) NVDA Rubin 10x cost-per-token zmniejsza przewage, (3) klienci (OpenAI, G42) maja zasoby na wlasne chipy. Moat zalezy od utrzymania 2-3 lat przewagi technologicznej — wyscig, nie fosa.",
     "last_updated": "2026-06-13",
     "next_earnings": "2026-06-23",
-    "priority_action": "NIE dokupuj — cena 49% nad FV (IPO premium). Pozycja 70 szt. @ $236.98 powyzej nawet FV. Obserwuj: pierwsze earnings publiczne (~13.08, szac.) i lock-up expiry 10.11.2026.",
+    "priority_action": "DRABINKA: cena $214 > bull $203 — propozycja redukcji do rdzenia ~25% (z 70 -> ~18 szt.). Decyzja przed earnings 23.06 (moga byc pierwsze liczby OpenAI) albo swiadomie po nich. NIE dokupuj.",
     "upcoming_events": [
       {
         "date": "2026-06-23",
@@ -2046,6 +2046,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Weryfikator: NIEZGODNA — finding KRYTYCZNY: shares 245M ignorowalo warrant OpenAI 33.4M (23.4M vestuje przy dostawach MRA = sprzecznosc: model bral przychody z dostaw bez akcji), RSU 15.7M, PRSU 9M, warrant AWS 2.7M, Class N 3.7M -> akcje 306M (base). Net cash +$2.0B styczen 2026 (Series H + pozyczka) pominiete -> $6.0B. FV $152->$125 (78/118/203). Skin in the game Feldmana ZWERYFIKOWANY: 5.4% (~$2.2B) — mocniejszy niz zakladano. mgmt_rational OK->UWAGA (deale = rozwodnienie ~15%+). Cena $214 > bull $203.",
+        "impact": "negative",
+        "fv_note": "FV $152->$125. PROPOZYCJE (czekaja na akceptacje): entry $114->$87 (MoS 30%), drabinka: redukcja do rdzenia ~25% pozycji. Pozycja 70 szt. @ $236.98 jest -11% i 71% nad FV."
+      },
       {
         "date": "2026-06-13",
         "event": "Pelna rewizja wg nowych zasad (tenets + CEO + konkurencja). Feldman: GLODNY EKSPERT — seryjny founder (SeaMicro->AMD, Force10->Dell), NIE sprzedal w Tender Offer 2025 (CFO/COO sprzedali po $1M), komp RSU-heavy; % akcji do potwierdzenia z proxy. Konkurencja z S-1: NVDA 'dominant leader', custom ASICs klientow (OpenAI chip!), AMD/Intel, CSP, CoreWeave. Tenets: 3xOK/3xUWAGA/3xBRAK -> MoS 30%+. NOWE: 9 inicjacji analitykow (PT $250-340, avg $294) — UWAGA: banki z konsorcjum IPO, konflikt interesow; nie zmienia modelu opartego na RPO. Pierwsze earnings POTWIERDZONE 23.06 (nie sierpien). Cena $214: drabinka wyjscia — trim do ~50% AKTYWNY (>= weighted $152).",
@@ -2077,44 +2083,39 @@
           {
             "name": "Revenue 2027E (base)",
             "value": "$2.8B",
-            "source": "RPO: 15% x $24.6B = $3.69B na 2026-27, split 38/62 -> 2027E $2.29B z RPO + ~$0.5B non-RPO (cloud, pass-through, nowi klienci). ESTYMATA"
+            "source": "RPO 15% x $24.6B = $3.69B na 2026-27, split 38/62 (ESTYMATA) + ~$0.5B non-RPO. Forward multiple na +2 lata z dyskontem 1 roku — uzasadnione kontraktowym RPO; trailing peers (NVDA 19.4x, CRWV 13.7x yfinance) potwierdzaja ze 12x nieagresywne"
           },
           {
-            "name": "Peer forward EV/Revenue",
-            "value": "mediana ~12.5x",
-            "source": "NVDA 15.5x (nasz model), AMD ~9x, ARM ~28x, CoreWeave ~10x (szac. czerwiec 2026)"
-          },
-          {
-            "name": "Zastosowany multiple (base)",
-            "value": "12x",
-            "source": "Mediana 12.5x + premia za wzrost (CAGR 134% vs peers ~35%, +40%) - dyskonto za koncentracje >85%, GM 39%, OpenAI ASIC risk (-40%)"
+            "name": "Peer EV/Revenue",
+            "value": "mediana 12.75x -> przyjete 12x",
+            "source": "Forward: NVDA 15.5x (nasz model), AMD ~9x, ARM ~28x, CRWV ~10x (szac. — NIE ZWERYFIKOWANE lokalnie); korekta netto -0.75x za koncentracje vs wzrost"
           },
           {
             "name": "Net cash post-IPO",
-            "value": "~$5.5B",
-            "source": "Cash ~$6.5B (S-1 pro forma $5,534M @ $155 + repricing do $185) - $1.0B OpenAI loan. ESTYMATA"
+            "value": "~$6.0B",
+            "source": "KOREKTA po weryfikatorze: pro forma $5,534M (@$155 z greenshoe, 31.12.2025) + repricing do $185 ~$1.0B + STYCZEN 2026 +$2.0B (Series H $1.0B + Working Capital Loan $1.0B — S-1 wprost) - burn ~$0.4B - dlug $1.0B = ~$6.0B (dolna granica). Poprzednio $5.5B pomijalo styczniowe wplywy przy liczeniu akcji z Series H — asymetria"
           },
           {
-            "name": "Shares diluted",
-            "value": "~245M",
-            "source": "219.6M outstanding (Yahoo) + ~25M opcje. ESTYMATA"
+            "name": "Shares diluted (spojne ze scenariuszem)",
+            "value": "bear 277M / base+bull 306M",
+            "source": "KOREKTA (finding KRYTYCZNY): S-1 'excludes' przy 219.6M: opcje 28.36M (WAEP $4.97 -> TSM net ~27.7M), RSU ~15.7M, Class N 3.7M, warrant OpenAI 33.4M @ $0.00001 (4.5M vested + 5.6M mcap>$40B pewne + 23.4M vestuje przy dostawach MRA = baza scenariusza base!), warrant AWS ~2.6M net, Founder PRSU transza $40B ~3M. Model NIE MOZE brac przychodow z MRA ignorujac akcje vestujace przy tych dostawach"
           }
         ],
         "steps": [
-          "EV_2027 = Revenue 2027E x multiple = $2,800M x 12 = $33,600M",
-          "PV(EV) = $33,600M / 1.12 (dyskonto 1 rok) = $30,000M",
-          "Equity = PV(EV) + net cash = $30,000M + $5,500M = $35,500M",
-          "FV/share (base) = $35,500M / 245M = $145"
+          "Bear: EV = $2.2B x 8 / 1.12 = $15.7B; Equity = +$6.0B = $21.7B; / 277M = $78",
+          "Base: EV = $2.8B x 12 / 1.12 = $30.0B; Equity = $36.0B; / 306M = $118",
+          "Bull: EV = $3.5B x 18 / 1.12 = $56.3B; Equity = $62.3B; / 306M = $203",
+          "Weighted = 0.25x$78 + 0.55x$118 + 0.20x$203 = $19.5 + $64.9 + $40.7 = $125"
         ],
-        "fair_value_computed": 152.0
+        "fair_value_computed": 125.0
       },
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 25,
           "color": "ef4444",
-          "fair_value": 87,
-          "description": "Ramp OpenAI opozniony, brak Additional Capacity, OpenAI ASIC zastepuje Cerebras od 2029. 2027E $2.2B x 8x.",
+          "fair_value": 78,
+          "description": "Ramp OpenAI opozniony, brak Additional Capacity, OpenAI ASIC zastepuje Cerebras od 2029. 2027E $2.2B x 8x. Akcje 277M (bez transzy MRA warrantu).",
           "assumptions": {
             "stage1_cagr_pct": 108,
             "stage2_cagr_pct": 0,
@@ -2130,8 +2131,8 @@
           "name": "Base",
           "probability_pct": 55,
           "color": "00d9a3",
-          "fair_value": 145,
-          "description": "750MW dostarczone zgodnie z harmonogramem 2026-2028. 2027E $2.8B x 12x. Bez Additional Capacity.",
+          "fair_value": 118,
+          "description": "750MW dostarczone zgodnie z harmonogramem 2026-2028. 2027E $2.8B x 12x. Bez Additional Capacity. Akcje 306M (pelny warrant OpenAI — dostawy MRA go vestuja).",
           "assumptions": {
             "stage1_cagr_pct": 134,
             "stage2_cagr_pct": 0,
@@ -2147,8 +2148,8 @@
           "name": "Bull",
           "probability_pct": 20,
           "color": "f59e0b",
-          "fair_value": 252,
-          "description": "Additional Capacity 1.25GW zakontraktowana 2027 (RPO ~2x), GM -> 45%, nowi hyperscalerzy. 2027E $3.5B x 18x.",
+          "fair_value": 203,
+          "description": "Additional Capacity 1.25GW zakontraktowana 2027 (RPO ~2x), GM -> 45%, nowi hyperscalerzy. 2027E $3.5B x 18x. Akcje 306M.",
           "assumptions": {
             "stage1_cagr_pct": 162,
             "stage2_cagr_pct": 0,
@@ -2161,8 +2162,9 @@
           "key_risk": "Wycena juz przy 18x — dalszy upside wymaga utrzymania przewagi tech vs Rubin"
         }
       ],
-      "fair_value_weighted": 152,
-      "fair_value_weighted_formula": "0.25x$87 + 0.55x$145 + 0.20x$252 = $152"
+      "fair_value_weighted": 125,
+      "fair_value_weighted_formula": "0.25x$78 + 0.55x$118 + 0.20x$203 = $125",
+      "weights_rationale": "Bear 25%: OpenAI ASIC to ryzyko egzystencjalne, ale MRA 750MW jest wiazace kontraktowo z karami obustronnymi — stad nie 35%. Base 55%: dostawy wiazace + $1B pozyczka OpenAI = obustronny commitment. Bull 20%: opcja 1.25GW w pelni dyskrecjonalna dla OpenAI."
     },
     "position_type": "moonshot",
     "ceo_profile": {
@@ -2173,10 +2175,10 @@
       "hunger": "GLODNY: 10 lat budowy wafer-scale wbrew konsensusowi branzy ('za duzy die, nie da sie'); 5. firma mimo ze po dwoch exitach nie musi pracowac; wzial deal OpenAI z karami umownymi za niedowiezienie capacity (OpenAI moze wypowiedziec MRA). NIE sprzedal akcji w 2025 Tender Offer — CFO Komin i COO Mallick sprzedali po ~$1.0M (S-1).",
       "domain_expertise": "EKSPERT komercyjno-produktowy: 20+ lat w compute infrastructure; architektura to domena CTO Sean Lie (co-founder), Feldman broni wafer-scale konkretem technicznym w wywiadach. Duet founderow = pelne pokrycie kompetencji.",
       "track_record": "SeaMicro -> AMD (exit), Force10 -> Dell (exit). Cerebras: revenue $24.6M -> $510M w 3 lata (+76% 2025); dowiozl MRA OpenAI 750MW i IPO $185 (powyzej widelek).",
-      "skin_in_the_game": "Jakosciowo mocne: brak udzialu w Tender Offer 2025, cash comp niski (target bonus $250k), wynagrodzenie RSU-heavy. Dokladny % akcji: tabela Principal Stockholders w S-1 nieprzeliczalna z ekstrakcji — BRAK POTWIERDZENIA, do weryfikacji z proxy.",
+      "skin_in_the_game": "ZWERYFIKOWANE (S-1 Principal Stockholders): Feldman 10,158,635 akcji = 5.4% spolki (~$2.2B przy $214); Lie 5.36M (2.9%). Brak udzialu w Tender Offer 2025 (CFO/COO sprzedali). Cash comp niski ($250k bonus target), RSU-heavy. Founder PRSU 2026: 9.0M akcji z progami market cap $40B/$150B/$250B (90-dn. srednia) — silna motywacja, ale i przyszla dylucja.",
       "red_flags": "Lock-up do ~10.11.2026 — pierwszy realny test sprzedazy insiderow. Kary w MRA: niedowiezienie tranches = prawo OpenAI do wypowiedzenia czesci/calosci umowy.",
       "verdict": "GLODNY EKSPERT",
-      "sources": "S-1/A 11.05.2026 (bio, Tender Offer, compensation — data/reports/CBRS/); web 13.06.2026"
+      "sources": "S-1/A 11.05.2026 (bio, Tender Offer, compensation — data/reports/CBRS/); web 13.06.2026; weryfikator 13.06 (ownership z tabeli S-1)"
     },
     "competitive_landscape": [
       {
@@ -2212,7 +2214,7 @@
         "public": true,
         "segment": "Cloud inference (us�ugi)",
         "threat": "srednie",
-        "note": "Konkuruja o te same workloady inference; jednoczesnie potencjalni partnerzy dystrybucji",
+        "note": "Konkuruja o inference; AWS JEDNOCZESNIE PARTNEREM: wiazacy term sheet (marzec 2026, multi-year lease + warrant 2.7M akcji @ $100) — S-1",
         "source": "S-1 Competition"
       },
       {
@@ -2239,8 +2241,8 @@
         "uzasadnienie": "Przewaga latency realna, ale substytut blisko (NVDA Rubin) i najwieksi klienci buduja wlasne chipy; moat = 2-3 lata przewagi tech, nie fosa"
       },
       "mgmt_rational": {
-        "ocena": "OK",
-        "uzasadnienie": "Finansowanie deals zamiast rozwodnienia (prepayments G42, loan OpenAI $1B); IPO w oknie po podpisaniu MRA"
+        "ocena": "UWAGA",
+        "uzasadnienie": "Deale finansowane ROZWODNIENIEM: warrant OpenAI 33.4M akcji (~13% spolki, exercise $0.00001) + Series H $1.0B (11.4M akcji) + warrant AWS 2.7M — skuteczne, ale kosztem akcjonariuszy; poprzednia ocena OK oparta na falszywej przeslance"
       },
       "mgmt_candid": {
         "ocena": "OK",
@@ -2262,7 +2264,7 @@
         "ocena": "BRAK",
         "uzasadnienie": "Za krotka historia publiczna (IPO 13.05.2026)"
       },
-      "wniosek": "3xOK / 3xUWAGA / 3xBRAK -> moonshot: MALA pozycja, MoS 30%+ (entry 0.70xFV), drabinka wyjscia aktywna"
+      "wniosek": "2xOK / 4xUWAGA / 3xBRAK -> moonshot: MALA pozycja, MoS 30%+ (entry 0.70xFV), drabinka wyjscia aktywna"
     }
   }
 }
