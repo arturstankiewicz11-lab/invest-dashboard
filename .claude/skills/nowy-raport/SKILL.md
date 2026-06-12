@@ -34,4 +34,5 @@ Realizuje workflow z CLAUDE.md sekcja 3, z twardymi zasadami z konstytucji (sekc
    `entry_point` / `thesis_breaker` TYLKO proponuj i czekaj na akceptację (pkt 1).
 
 6. **Walidacja + push**: `python3 tools/validate.py [TICKER]` — ERRORy napraw przed pushem.
-   Potem commit + push (pkt 9). Przypomnij użytkownikowi o odświeżeniu karty aplikacji.
+   Jeśli rewizja zmieniła FV/model → uruchom agenta `weryfikator` (werdykt NIEZGODNA
+   blokuje). Potem commit + push (pkt 9). Przypomnij o odświeżeniu karty aplikacji.

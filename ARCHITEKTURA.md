@@ -147,8 +147,10 @@ z założeń zapisanych w `dcf.stages` w recommendations.json. Czyli: **zakładk
    read-only
 3. ✅ Skille `/nowy-raport`, `/wycena` (.claude/skills/) — protokoły CLAUDE.md jako komendy;
    cienkie: wskazują na sekcje CLAUDE.md zamiast kopiować (jedno źródło prawdy)
-4. ⬜ Agent-weryfikator — niezależne przeliczenie każdej nowej wyceny (dla reguł jakościowych,
-   których kod nie sprawdzi); wpina się w ostatni krok /wycena
+4. ✅ Agent-weryfikator (.claude/agents/weryfikator.md) — adwersarz read-only: przelicza FV
+   od zera, sprawdza każdy input ze źródłem (anty-fabrykacja), kwestionuje założenia, ocenia
+   reguły jakościowe (CEO, konkurencja, cytaty). Werdykt ZGODNA/Z UWAGAMI/NIEZGODNA;
+   NIEZGODNA blokuje publikację. Wpięty w ostatni krok /wycena i /nowy-raport
 5. ✅ Konwencje w CLAUDE.md (konstytucja pkt 7: FV=base, entry=0.75×FV, etapy 5+5)
 
 **Backlog treściowy** (czyszczony przy rewizjach, nie hurtowo):

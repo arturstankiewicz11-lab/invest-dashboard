@@ -37,7 +37,8 @@ wpis w recommendations.json + rekomendacja w formacie z sekcji 8.
 6. **Zapis i kontrola**: pełny wpis do recommendations.json (dcf z wszystkimi polami,
    events — wpis inicjacji/rewizji, upcoming_events — earnings i katalizatory do
    kalendarza) → `python3 tools/validate.py [TICKER]` musi przejść bez ERRORów →
-   commit + push → przypomnij o odświeżeniu karty.
+   **agent-weryfikator** (subagent `weryfikator` z TICKEREM; werdykt NIEZGODNA blokuje
+   publikację — napraw findings i powtórz) → commit + push → odśwież kartę.
 
 7. **Output dla użytkownika**: format rekomendacji z CLAUDE.md sekcja 8 (teza, tenets,
    CEO, konkurencja, DCF z tabelą, entry, ryzyka, geopolityka, pozycja portfelowa).
