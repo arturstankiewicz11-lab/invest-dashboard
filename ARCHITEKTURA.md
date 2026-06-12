@@ -34,9 +34,7 @@ Przepływ zmiany: **edycja pliku → git push → Streamlit Cloud przebudowuje (
 
 ## 2. ZASADY WYCENY — gdzie są i jak zmienić
 
-**Plik: `CLAUDE.md`** (245 linii) — jedyne miejsce z zasadami. Sekcje:
-
-CLAUDE.md (po reorganizacji 12.06.2026, ~230 linii) ma 8 sekcji w logicznej kolejności:
+**Plik: `CLAUDE.md`** (~230 linii po reorganizacji 12.06.2026) — jedyne miejsce z zasadami. 8 sekcji w logicznej kolejności:
 
 | Sekcja | Co reguluje |
 |--------|-------------|
@@ -102,8 +100,8 @@ z założeń zapisanych w `dcf.stages` w recommendations.json. Czyli: **zakładk
 2. **W JSON**: `data/recommendations.json` → ticker → `dcf` — wszystkie założenia z uzasadnieniami w polach `note`, źródła danych bilansowych w `balance_sheet_inputs`.
 3. **Od źródła**: `dcf.note` → `fundamentals/TICKER` → `source_file` → PDF w `reports/`. Każda liczba powinna mieć tę ścieżkę. (Tam gdzie jej nie ma, jest oznaczenie ESTYMATA.)
 
-### Czego jeszcze brakuje (znane luki)
-- Brak automatycznego walidatora: zapisane `fair_value` może rozjechać się z tym, co implikują założenia (przypadki RHM/ETL/IONQ z audytu 12.06). Plan: `tools/validate.py` — patrz sekcja 7.
+### Weryfikacja automatyczna
+- `tools/validate.py` (od 12.06.2026) przelicza każdy model i porównuje z zapisanym FV + 11 innych checków — uruchamiany obowiązkowo przed pushem zmian w data/ (szczegóły: sekcja 7-8).
 
 ---
 
