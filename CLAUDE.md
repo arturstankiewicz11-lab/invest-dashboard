@@ -41,6 +41,15 @@ Inwestor biznesowy — tłumacz przez model biznesowy i operacje, nie żargon gi
    i scenariusze jako dodatkowa informacja w `dcf.scenarios`). Entry = FV_base × 0,75
    (MoS 25%; moonshoty z wieloma ❌ na checkliście Buffetta: 30%+ i mniejsza pozycja).
    Struktura DCF: 2 etapy (zwykle 5+5 lat) + terminal.
+   **Drabinka wyjścia** (typ pozycji z checklisty tenets, pole `position_type`):
+   - Thesis breaker → SELL 100%, cena nieistotna (oba typy).
+   - COMPOUNDER (wide moat, ~6+ ✅): NIE sprzedawaj przy FV_base (FV rośnie z czasem);
+     cena > FV_bull = obowiązkowa decyzja — propozycja REDUCE albo rewizja scenariuszy
+     z nowymi faktami. Zakaz dryfu.
+   - MOONSHOT (❌ na tenets, szeroki rozkład): trim 25-33% przy cenie ≥ FV_base
+     (odzyskanie kosztu — dalej grasz za pieniądze rynku), do ~50% pozycji przy
+     ≥ weighted FV, do rdzenia ~25% przy ≥ FV_bull (rdzeń trzyma prawy ogon).
+   Drabinka generuje PROPOZYCJE — zmiany recommendation wymagają akceptacji (pkt 1).
 8. **Nigdy nie rekomenduj bez entry point i thesis breaker.** Zawsze podawaj datę analizy.
 9. **Po każdej zmianie plików projektu: `git add` + `commit` + `push origin main` — bez
    pytania o zgodę.** Aplikacja (Streamlit Cloud) czyta z GitHuba; bez pusha zmiany są

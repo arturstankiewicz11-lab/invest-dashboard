@@ -179,7 +179,8 @@
         "impact": "negative",
         "fv_note": "Sentyment negatywny. Fundamenty bez zmian — okazja do dokupienia przy ."
       }
-    ]
+    ],
+    "position_type": "compounder"
   },
   "ETL.PA": {
     "name": "Eutelsat Communications",
@@ -267,7 +268,8 @@
         "event": "FY2026 results — verdict na IRIS² revenue trajectory (data z guidance spółki)",
         "type": "earnings"
       }
-    ]
+    ],
+    "position_type": "moonshot"
   },
   "RHM.DE": {
     "name": "Rheinmetall",
@@ -531,7 +533,8 @@
         "uzasadnienie": "Kurs ~20x od 2020 przy zatrzymywanych zyskach — spelniony z zapasem"
       },
       "wniosek": "8xOK/1xUWAGA — pelnowymiarowa pozycja dozwolona, MoS standardowy 25%"
-    }
+    },
+    "position_type": "compounder"
   },
   "BTC-USD": {
     "name": "Bitcoin",
@@ -591,7 +594,8 @@
     "buffett_moat": "Narrow",
     "last_updated": "2026-05-11",
     "next_earnings": null,
-    "priority_action": "Decyzja: czy to część defensywna? Jeśli nie — uwolnij kapitał na RHM."
+    "priority_action": "Decyzja: czy to część defensywna? Jeśli nie — uwolnij kapitał na RHM.",
+    "position_type": "compounder"
   },
   "0700.HK": {
     "name": "Tencent",
@@ -612,7 +616,8 @@
     "buffett_moat": "Wide",
     "last_updated": "2026-05-11",
     "next_earnings": null,
-    "priority_action": null
+    "priority_action": null,
+    "position_type": "compounder"
   },
   "SXRV.DE": {
     "name": "iShares Nasdaq 100",
@@ -803,7 +808,8 @@
         "impact": "neutral",
         "fv_note": "Wycena oparta wyłącznie na potencjale kontraktów z hyperscalerami. Wysokie ryzyko."
       }
-    ]
+    ],
+    "position_type": "moonshot"
   },
   "NVDA": {
     "name": "NVIDIA Corporation",
@@ -1175,7 +1181,8 @@
         "event": "Earnings Q2 FY2027 (szac.) — ostatni kwartał przed Rubin ramp H2",
         "type": "earnings"
       }
-    ]
+    ],
+    "position_type": "compounder"
   },
   "RKLB": {
     "events": [
@@ -1201,7 +1208,8 @@
       "Dilution — share count +19.7% YoY, kolejna emisja na build-out możliwa (-7% na FV)",
       "SpaceX Starship economics zalewa medium-lift, presja na marże Neutrona (-15% na FV)"
     ],
-    "priority_action": "Czekaj na pullback do $80-85 lub Neutron static fire success"
+    "priority_action": "Czekaj na pullback do $80-85 lub Neutron static fire success",
+    "position_type": "moonshot"
   },
   "LEU": {
     "events": [
@@ -1380,7 +1388,8 @@
         "event": "Earnings Q2 2026 (szac.) + status definitizacji $900M task order",
         "type": "earnings"
       }
-    ]
+    ],
+    "position_type": "moonshot"
   },
   "CCJ": {
     "events": [
@@ -1406,7 +1415,8 @@
       "Westinghouse execution - AP1000/AP300 opóźnienia historycznie typowe (-15% FV)",
       "Kazatomprom dumping - 40% globalnej produkcji może flood market (-20% FV)"
     ],
-    "priority_action": "Watch — BUY zone $70-90, no-buy &gt;$110. Czekaj na uranium cycle pullback lub korektę kursu."
+    "priority_action": "Watch — BUY zone $70-90, no-buy &gt;$110. Czekaj na uranium cycle pullback lub korektę kursu.",
+    "position_type": "moonshot"
   },
   "OKLO": {
     "events": [
@@ -1590,7 +1600,8 @@
       ],
       "fair_value_weighted": 63,
       "fair_value_weighted_formula": "0.175x$150 + 0.325x$75 + 0.30x$35 + 0.20x$10 = $63"
-    }
+    },
+    "position_type": "moonshot"
   },
   "IONQ": {
     "name": "IonQ",
@@ -1649,7 +1660,8 @@
         "impact": "positive",
         "fv_note": "Potwierdzenie bull case — growth bez precedensu w quantum. FV bez zmian ($29 bull / $16 base)."
       }
-    ]
+    ],
+    "position_type": "moonshot"
   },
   "GOOG": {
     "events": [
@@ -1799,7 +1811,8 @@
         "event": "Earnings Q2 2026 (szac. — Alphabet raportuje koniec lipca)",
         "type": "earnings"
       }
-    ]
+    ],
+    "position_type": "compounder"
   },
   "AMZN": {
     "name": "Amazon.com Inc.",
@@ -1998,7 +2011,8 @@
         "impact": "positive",
         "fv_note": "FV $378→$417. Entry $284→$313 (25% MoS)."
       }
-    ]
+    ],
+    "position_type": "compounder"
   },
   "CBRS": {
     "name": "Cerebras Systems Inc.",
@@ -2143,6 +2157,7 @@
       ],
       "fair_value_weighted": 152,
       "fair_value_weighted_formula": "0.25x$87 + 0.55x$145 + 0.20x$252 = $152"
-    }
+    },
+    "position_type": "moonshot"
   }
 }

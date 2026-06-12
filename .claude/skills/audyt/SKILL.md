@@ -18,8 +18,13 @@ decyzji użytkownika (konstytucja pkt 1 w CLAUDE.md).
 3. **Spójność cena ↔ rekomendacja ↔ entry**, per ticker:
    - BUY z ceną ≤ entry → "BUY aktywny" (OK, wyróżnij jako okazję)
    - BUY z ceną > FV → ❌ niespójność (kupowanie powyżej wartości)
-   - HOLD/pozycja z ceną > 1.3×FV → ⚠️ rozważ propozycję REDUCE (tylko propozycja!)
    - Pozycja z P&L < −20% → sprawdź thesis breaker (czy któryś warunek blisko aktywacji)
+
+3b. **Drabinka wyjścia** (konstytucja pkt 7; per pozycja w portfelu, wg `position_type`):
+   - MOONSHOT: cena ≥ FV_base → "trim 25-33% (odzyskanie kosztu)";
+     ≥ weighted FV → "trim do ~50%"; ≥ FV_bull (z dcf.scenarios) → "redukcja do rdzenia ~25%"
+   - COMPOUNDER: cena > FV_bull → "obowiązkowa decyzja: REDUCE albo rewizja scenariuszy"
+   - Wszystko jako PROPOZYCJE do akceptacji użytkownika
 
 4. **Świeżość**: `last_updated` > 60 dni przy aktywnej pozycji → do rewizji;
    eventy w `upcoming_events` w ciągu 14 dni → wyróżnij ("decyzja zbliża się").
