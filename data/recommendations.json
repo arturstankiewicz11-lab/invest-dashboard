@@ -1224,6 +1224,12 @@
   "OKLO": {
     "events": [
       {
+        "date": "2026-06-12",
+        "event": "Integracja analizy scenariuszowej (rozmowa 13-16.05) do systemu. FV $90 'blended' nie mialo udokumentowanego wyliczenia — zastapione probability-weighted $63 (4 scenariusze, unit economics: 75MW x 92% CF x $95-110/MWh, EBITDA 60-75% mature, dilution 174M->215M akcji). Kontekst konkurencyjny: TerraPower MA construction permit (kwi 2026) przed Oklo; X-energy (Amazon $500M), Kairos (Google). Gateway: COLA Phase 1 target 2H 2026, criticality target koniec 2027 (realnie 1H 2028).",
+        "impact": "neutral",
+        "fv_note": "FV $90->$63, BUY->HOLD, entry $52->$47 (25% MoS). Transze $47/$40/$35. Pozycja 200 szt. @ $64.02 trzymana — cena $57.86 przy FV."
+      },
+      {
         "date": "2026-05-18",
         "event": "18 maj 2026: Rewizja FV $115→$90 po Goldman PT cut ($91→$65) i Q1 2026 miss (loss $33M vs cons $29M). Entry obniżony $58→$52. Rajd kwi-maj ($45→$80) napędzony space nuclear mandate + short squeeze 16.45% float + DeWitte federal appointment — 80% sentyment, 20% fundamentals. Sell-off post-Q1 to powrót do bazy. Strategia 3-transzowa: $52/$45/$38. Altman exit z Chairman (kwi 2025) odblokowuje OpenAI PPA (oczekiwany 6-12 mies) — główny near-term catalyst.",
         "impact": "neutral",
@@ -1242,13 +1248,13 @@
         "fv_note": "Rekomendacja zmieniona na BUY."
       }
     ],
-    "recommendation": "BUY",
-    "last_updated": "2026-05-18",
+    "recommendation": "HOLD",
+    "last_updated": "2026-06-12",
     "name": "Oklo Inc.",
-    "fair_value": 90,
+    "fair_value": 63.0,
     "fair_value_currency": "USD",
-    "entry_point": 52,
-    "thesis_short": "Vertically integrated nuclear utility z 14 GW pipeline (Meta/DoD/Equinix) — po sell-offie post-Q1 entry $52 daje 42% MoS do blended FV $90.",
+    "entry_point": 47,
+    "thesis_short": "Vertically integrated nuclear utility (Aurora SMR + A3F fuel recycling + Atomic Alchemy izotopy). Pre-revenue do 2028. FV $63 probability-weighted (4 scenariusze). Cena ~$58 = przy FV — brak MoS. Entry $47. Gateway: COLA Phase 1 submission (target 2H 2026).",
     "thesis_full": "Oklo to vertically integrated nuclear utility (build-own-operate) z Aurora fast-fission reactor (1.5-15 MW) — jedyny komercyjnie zaawansowany US design pasujący do space nuclear mandate (White House, kwiecień 2026) oraz AI data center PPA. Pipeline 14 GW z Meta, DoD, Equinix daje utility-like recurring revenue 20+ lat. Altman ustąpił z Chairman w kwi 2025 by odblokować OpenAI-Oklo PPA (oczekiwany 6-12 mies). KRYTYCZNE RYZYKA: (1) dilution — share count wzrósł +132% w 24 mies (75M → 174M), $2.5B ATM uprawnień nadal aktywne, (2) zero revenue do 2027-2028, Q1 2026 strata $33M, (3) Goldman PT cut $91→$65 (18 maj 2026) sygnalizuje sell-side reversal. Blended FV $90 = średnia Goldman base ($65 NPV near-term) i bull case ($115 z pipeline option value). Strategia: 3 transze ($52/$45/$38) — kupować w panice po fundamentach, nie w euforii sentymentu.",
     "thesis_breaker": "(1) Kolejny analyst PT cut <$50 z fundamentalnym uzasadnieniem (nie technicznym), (2) Trzeci ATM program ($1B+) przed signed PPA, (3) Utrata Meta/DoD/Equinix z 14 GW pipeline, (4) NRC rejection lub material delay Aurora-INL license.",
     "buffett_moat": "Narrow-to-wide (forming): vertically integrated model (build-own-operate) + HALEU fuel recycling tworzą switching costs dla utility clients; NRC license + DOE pilot selection (sie 2025) to regulatory moat; ale brak revenue track record i high dilution obniżają jakość moat'u. CEO DeWitte w federalnym komitecie doradczym = regulatory insider access.",
@@ -1257,14 +1263,147 @@
       "Zero revenue do 2027-2028, burn rate $51M/Q rośnie — execution timeline slip",
       "Sentiment-driven volatility ±50% w 4 tyg (rajd kwi $45→$80, sell-off maj $80→$58) — no fundamentals anchor"
     ],
-    "priority_action": "Limit order $52 na 40% pozycji (90 dni). Tranche 2 @ $45, Tranche 3 @ $38. NIE gonić rajdów >$70.",
+    "priority_action": "HOLD — cena przy FV, NIE dokupuj powyzej $47 (25% MoS). Transze: $47 / $40 / $35. Katalizatory: COLA Phase 1 (target 2H 2026), criticality Aurora-INL (target koniec 2027).",
     "upcoming_events": [
       {
         "date": "2026-08-11",
-        "event": "Earnings Q2 2026 (szac.) — status Aurora INL i Atomic Alchemy first revenue",
+        "event": "Earnings Q2 2026 (szac.) — postep konstrukcji Aurora-INL, status A3F",
         "type": "earnings"
+      },
+      {
+        "date": "2026-12-31",
+        "event": "COLA Phase 1 submission do NRC — target spolki 2H 2026 (gateway event)",
+        "type": "catalyst"
+      },
+      {
+        "date": "2027-12-31",
+        "event": "Criticality Aurora-INL — oficjalny target Oklo koniec 2027 (realnie 1H 2028)",
+        "type": "catalyst"
       }
-    ]
+    ],
+    "dcf": {
+      "alt_valuation": {
+        "method": "Analiza scenariuszy — probability-weighted, unit economics SMR",
+        "method_reason": "Pre-revenue (TTM $0, strata operacyjna Q1 2026 -$51.2M). Pierwsza energia najwczesniej 2H 2028. Klasyczny DCF wymaga zbyt wielu niepewnych zalozen — wycena = opcja na deployment.",
+        "inputs": [
+          {
+            "name": "Unit economics 75MW Aurora",
+            "value": "604,800 MWh/rok",
+            "source": "75 MW x 8760h x 92% capacity factor"
+          },
+          {
+            "name": "Cena PPA (data center)",
+            "value": "$95-110/MWh",
+            "source": "Rynek DC premium za reliability; 20-letnie fixed-price PPA"
+          },
+          {
+            "name": "EBITDA margin (dojrzala operacja)",
+            "value": "60-75%",
+            "source": "Brak merchant exposure + fuel recycling -80% kosztu paliwa; vs Constellation ~30-35% (merchant + drogi fuel cycle)"
+          },
+          {
+            "name": "CapEx",
+            "value": "~$3,000/kW",
+            "source": "Guidance Oklo: pierwszy 50MW ~$145M; target $1,333/kW przy skali"
+          },
+          {
+            "name": "Gotowka",
+            "value": "$2.5B",
+            "source": "Q1 2026 po ATM $1.18B (sty 2026); runway ~5 lat"
+          },
+          {
+            "name": "Akcje (z dilution)",
+            "value": "174M -> ~215M (2030)",
+            "source": "Deployment 5GW+ wymaga ~$15B CapEx -> emisje pewne; wbudowane w scenariusze"
+          },
+          {
+            "name": "Pipeline",
+            "value": "~14 GW (95% niewiazace LOI)",
+            "source": "Switch 12GW MPA (niewiazacy), Meta 1.2GW (prepayment), Equinix 500MW (LOI + $25M zaliczki)"
+          }
+        ],
+        "steps": [
+          "Bull (idealne wykonanie, 9GW do 2035): rev 2035 $8.7B, EBITDA ~65% -> FV $150",
+          "Moderate (3-5GW do 2035, lekkie poslizgi): FV $75",
+          "Delays (criticality 2029+, konwersja LOI slaba): FV $35",
+          "NRC setback / major delay (precedens: odmowa 2022): FV $10",
+          "FV = 0.175x$150 + 0.325x$75 + 0.30x$35 + 0.175x$10 = $26.3+$24.4+$10.5+$1.8 = $63"
+        ],
+        "fair_value_computed": 63.0
+      },
+      "scenarios": [
+        {
+          "name": "Bull",
+          "probability_pct": 17.5,
+          "color": "f59e0b",
+          "fair_value": 150,
+          "description": "Idealne wykonanie: Switch konwertuje 50% LOI, criticality on-schedule koniec 2027, 9GW do 2035, EBITDA 65-70%. Rev 2030 ~$800M, 2035 ~$8.7B.",
+          "assumptions": {
+            "stage1_cagr_pct": 0,
+            "stage2_cagr_pct": 0,
+            "ebit_margin_pct": 65,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 10.0,
+            "terminal_g_pct": 3.0
+          },
+          "key_risk": "Wymaga perfekcji w branzy gdzie 90% projektow ma poslizg >12 mies."
+        },
+        {
+          "name": "Moderate",
+          "probability_pct": 32.5,
+          "color": "00d9a3",
+          "fair_value": 75,
+          "description": "3-5GW do 2035, pierwsza energia 2H 2028-1H 2029 (6-12 mies. poslizgu), konwersja LOI ~30%, jedna duza emisja $3-4B.",
+          "assumptions": {
+            "stage1_cagr_pct": 0,
+            "stage2_cagr_pct": 0,
+            "ebit_margin_pct": 60,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 11.0,
+            "terminal_g_pct": 2.5
+          },
+          "key_risk": "TerraPower (construction permit kwiecien 2026) wyprzedza w deployment"
+        },
+        {
+          "name": "Delays",
+          "probability_pct": 30,
+          "color": "94a3b8",
+          "fair_value": 35,
+          "description": "Criticality 2029+, sodium loop commissioning issues (60-70% prob.), A3F opozniony, konwersja LOI <20%. Druga emisja w slabych warunkach.",
+          "assumptions": {
+            "stage1_cagr_pct": 0,
+            "stage2_cagr_pct": 0,
+            "ebit_margin_pct": 50,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 12.0,
+            "terminal_g_pct": 2.0
+          },
+          "key_risk": "Historia SFR: Monju pozar sodu, Superphenix 278 dni pracy w 11 lat"
+        },
+        {
+          "name": "Setback",
+          "probability_pct": 17.5,
+          "color": "ef4444",
+          "fair_value": 10,
+          "description": "Drugie odrzucenie NRC (precedens 2022) lub powazny incydent sodowy w komissioningu. Wycena wraca do cash value.",
+          "assumptions": {
+            "stage1_cagr_pct": 0,
+            "stage2_cagr_pct": 0,
+            "ebit_margin_pct": 0,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 13.0,
+            "terminal_g_pct": 0
+          },
+          "key_risk": "DOE pilot path prawnie nieprzetestowana — zaden cywilny reaktor nie dzialal bez NRC license"
+        }
+      ],
+      "fair_value_weighted": 63,
+      "fair_value_weighted_formula": "0.175x$150 + 0.325x$75 + 0.30x$35 + 0.175x$10 = $63"
+    }
   },
   "IONQ": {
     "name": "IonQ",
