@@ -1602,16 +1602,13 @@ def page_detail(ticker, pos, prices, recs):
     t_wykres, t_dcf, t_actions, t_teza = st.tabs(["📈 Wykres", "📐 DCF", "⚡ Działania", "💡 Teza"])
 
     with t_wykres:
-        periods = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "3Y": "3y"}
-        intervals = {"Dzień": "1d", "Tydzień": "1wk", "Miesiąc": "1mo"}
-        c_per, c_int = st.columns([3, 2])
-        with c_per:
-            sel = st.radio("Okres", list(periods.keys()), horizontal=True, index=2,
-                           key=f"p_{ticker}", label_visibility="collapsed")
-        with c_int:
-            sel_int = st.radio("Granularność", list(intervals.keys()), horizontal=True, index=0,
-                               key=f"i_{ticker}", label_visibility="collapsed")
-        fig = price_chart(ticker, periods[sel], ep, fv, intervals[sel_int])
+        # (okres, interwał) — granularność dobrana automatycznie do zakresu
+        periods = {"1M": ("1mo", "1d"), "3M": ("3mo", "1d"), "6M": ("6mo", "1d"),
+                   "1Y": ("1y", "1d"), "3Y": ("3y", "1wk")}
+        sel = st.radio("Okres", list(periods.keys()), horizontal=True, index=2,
+                       key=f"p_{ticker}", label_visibility="collapsed")
+        per, itv = periods[sel]
+        fig = price_chart(ticker, per, ep, fv, itv)
         if fig:
             st.plotly_chart(fig, width="stretch")
         else:
