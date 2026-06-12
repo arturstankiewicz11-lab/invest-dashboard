@@ -1603,8 +1603,44 @@ def page_detail(ticker, pos, prices, recs):
     else:
         ep_color   = "#10b981" if ep and price and price <= ep * 1.05 else "#f59e0b"
         entry_html = f'<span style="color:{ep_color};font-size:16px;font-weight:700">{ep_txt}</span><span style="color:#475569;font-size:12px;margin-left:8px">rekomendowany entry z 20–30% MoS</span>' if ep else '<span style="color:#475569">Brak konkretnego entry — obserwuj</span>'
-        if fv:
-            exit_html = f'<span style="color:#f59e0b;font-size:16px;font-weight:700">{fv:.0f} {fv_c}</span><span style="color:#475569;font-size:12px;margin-left:8px">realizuj zysk przy Fair Value</span>'
+
+        # Drabinka wyjścia (konstytucja pkt 7) — standard sekcji "Kiedy wychodzić"
+        ptype  = rec.get("position_type")
+        dcf_d  = rec.get("dcf") or {}
+        wfv    = dcf_d.get("fair_value_weighted") or dcf_d.get("weighted_fv")
+        scen_d = dcf_d.get("scenarios") or (dcf_d.get("alt_valuation") or {}).get("scenarios")
+        bull_fv = None
+        if scen_d:
+            items = list(scen_d.values()) if isinstance(scen_d, dict) else scen_d
+            fvs = [s.get("fair_value") or s.get("fv_per_share")
+                   for s in items if isinstance(s, dict)]
+            fvs = [v for v in fvs if v]
+            bull_fv = max(fvs) if fvs else None
+        rungs = []   # (próg, etykieta, akcja, czy_trigger)
+        if ptype == "compounder":
+            if fv:      rungs.append((fv,      f"FV base {fv:.0f} {fv_c}",   "nie sprzedajemy — compounder, FV rośnie z czasem", False))
+            if bull_fv: rungs.append((bull_fv, f"&gt; bull {bull_fv:.0f} {fv_c}", "obowiązkowa decyzja: REDUCE albo rewizja scenariuszy", True))
+        elif ptype == "moonshot":
+            if fv:      rungs.append((fv,      f"&ge; base {fv:.0f} {fv_c}",     "trim 25–33% — odzyskaj koszt", True))
+            if wfv:     rungs.append((wfv,     f"&ge; weighted {wfv:.0f} {fv_c}", "trim do ~50% pozycji", True))
+            if bull_fv: rungs.append((bull_fv, f"&ge; bull {bull_fv:.0f} {fv_c}", "redukcja do rdzenia ~25% (rdzeń trzyma ogon)", True))
+        if rungs:
+            rows = ""
+            for thr, lbl, act, is_trig in rungs:
+                hit   = price is not None and thr and price >= thr and is_trig
+                col   = "#f59e0b" if hit else ("#94a3b8" if is_trig else "#475569")
+                badge = (' <span style="background:rgba(245,158,11,0.15);color:#f59e0b;border-radius:4px;'
+                         'padding:1px 6px;font-size:10px;font-weight:700">AKTYWNY</span>') if hit else ""
+                mark  = "🔔" if hit else ("·" if is_trig else "—")
+                rows += (f'<div style="display:flex;gap:8px;font-size:12.5px;margin-top:5px;align-items:baseline">'
+                         f'<span style="width:16px">{mark}</span>'
+                         f'<span style="color:{col};font-weight:600;min-width:160px">{lbl}</span>'
+                         f'<span style="color:#64748b">{act}{badge}</span></div>')
+            t_lbl = "COMPOUNDER" if ptype == "compounder" else "MOONSHOT"
+            exit_html = (f'<div style="font-size:10px;color:#475569;letter-spacing:0.5px">Drabinka wyjścia · {t_lbl}'
+                         + (f' · cena {price:.2f} {fv_c}' if price else '') + '</div>' + rows)
+        elif fv:
+            exit_html = f'<span style="color:#f59e0b;font-size:16px;font-weight:700">{fv:.0f} {fv_c}</span><span style="color:#475569;font-size:12px;margin-left:8px">brak position_type — drabinka po klasyfikacji</span>'
         else:
             exit_html = '<span style="color:#475569;font-size:13px">Brak ceny docelowej — patrz thesis breaker poniżej</span>'
 
