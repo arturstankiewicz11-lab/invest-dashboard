@@ -1271,18 +1271,27 @@ def tab_actions(rec: dict, row, prices: dict):
         st.markdown('<div class="sh">🟢 Kiedy dokupować</div>', unsafe_allow_html=True)
         if ep and fv:
             margin = (fv - ep) / fv * 100 if fv else 0
-            st.markdown(f"""
-            <div class="trigger-section">
-                <div class="trigger-item ti-buy">
-                    <span class="ti-icon">🎯</span>
-                    <span>Wejście przy <b>{ep:.0f} {rec.get('fair_value_currency','')}</b> — {margin:.0f}% margin of safety do FV {fv:.0f}</span>
-                </div>
-                <div class="trigger-item ti-buy">
-                    <span class="ti-icon">📉</span>
-                    <span>Korekta <b>-15%</b> od aktualnej ceny to okazja do uzupełnienia</span>
-                </div>
-                {"<div class='trigger-item ti-buy'><span class='ti-icon'>📰</span><span>Negatywne wydarzenie niezwiązane z fundamentami (sentiment-driven selloff)</span></div>" if recommendation in ("BUY","HOLD") else ""}
-            </div>""", unsafe_allow_html=True)
+            fvc = rec.get('fair_value_currency', '')
+            rows = (f'<div class="trigger-item ti-buy"><span class="ti-icon">🎯</span>'
+                    f'<span>Wejście przy <b>{ep:.0f} {fvc}</b> — {margin:.0f}% margin of safety do FV {fv:.0f}</span></div>')
+            if price:
+                to_entry = (ep / price - 1) * 100   # ujemne = ile spadku do entry
+                if price <= ep:
+                    rows += ('<div class="trigger-item ti-buy"><span class="ti-icon">✅</span>'
+                             '<span>Cena <b>w strefie zakupu</b> (≤ entry) — dokupowanie zgodne z zasadami</span></div>')
+                elif price > fv:
+                    rows += (f'<div class="trigger-item ti-hold"><span class="ti-icon">🚫</span>'
+                             f'<span>Cena <b>{price:.2f}</b> jest POWYŻEJ FV {fv:.0f} — żadna procentowa korekta '
+                             f'nie jest „okazją". Strefa zakupu zaczyna się od <b>{ep:.0f}</b> '
+                             f'({to_entry:.0f}% od obecnej ceny)</span></div>')
+                else:
+                    rows += (f'<div class="trigger-item ti-buy"><span class="ti-icon">📉</span>'
+                             f'<span>Do strefy zakupu brakuje <b>{to_entry:.0f}%</b> '
+                             f'(zejście do {ep:.0f} {fvc})</span></div>')
+                if recommendation in ("BUY", "HOLD") and price <= fv:
+                    rows += ('<div class="trigger-item ti-buy"><span class="ti-icon">📰</span>'
+                             '<span>Sentiment-driven selloff bez zmiany fundamentów = sprawdź entry ponownie</span></div>')
+            st.markdown(f'<div class="trigger-section">{rows}</div>', unsafe_allow_html=True)
         elif recommendation == "BUY":
             st.markdown(f"""
             <div class="trigger-section">
