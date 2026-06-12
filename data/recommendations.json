@@ -2201,6 +2201,12 @@
     "events": [
       {
         "date": "2026-06-13",
+        "event": "Cross-check z SemiAnalysis 'Cerebras — Faster Tokens Please' (13.05.2026, data/AI/ — raport ISTNIAL przed obiema analizami CBRS i zostal pominiety; luka procesu naprawiona zasada folderow badawczych). Raport POTWIERDZA mechanike warrantu z korekty weryfikatora (transze probable/not probable wg S-1), dodaje: contra-revenue max $2.74B (backlog netto), BOM $450k/rack po wzroscie cen pamieci (presja GM), teza 'fast tokens' = walidacja popytu. FV $125 bez zmian — base lekko konserwatywne (czesc 23.4M transzy to Additional Capacity).",
+        "impact": "neutral",
+        "fv_note": "FV $125 potwierdzone niezaleznym zrodlem branzowym. Bull (2GW) pozostaje 'not probable' wg samej spolki."
+      },
+      {
+        "date": "2026-06-13",
         "event": "Weryfikator: NIEZGODNA — finding KRYTYCZNY: shares 245M ignorowalo warrant OpenAI 33.4M (23.4M vestuje przy dostawach MRA = sprzecznosc: model bral przychody z dostaw bez akcji), RSU 15.7M, PRSU 9M, warrant AWS 2.7M, Class N 3.7M -> akcje 306M (base). Net cash +$2.0B styczen 2026 (Series H + pozyczka) pominiete -> $6.0B. FV $152->$125 (78/118/203). Skin in the game Feldmana ZWERYFIKOWANY: 5.4% (~$2.2B) — mocniejszy niz zakladano. mgmt_rational OK->UWAGA (deale = rozwodnienie ~15%+). Cena $214 > bull $203.",
         "impact": "negative",
         "fv_note": "FV $152->$125. PROPOZYCJE (czekaja na akceptacje): entry $114->$87 (MoS 30%), drabinka: redukcja do rdzenia ~25% pozycji. Pozycja 70 szt. @ $236.98 jest -11% i 71% nad FV."
@@ -2251,7 +2257,12 @@
           {
             "name": "Shares diluted (spojne ze scenariuszem)",
             "value": "bear 277M / base+bull 306M",
-            "source": "KOREKTA (finding KRYTYCZNY): S-1 'excludes' przy 219.6M: opcje 28.36M (WAEP $4.97 -> TSM net ~27.7M), RSU ~15.7M, Class N 3.7M, warrant OpenAI 33.4M @ $0.00001 (4.5M vested + 5.6M mcap>$40B pewne + 23.4M vestuje przy dostawach MRA = baza scenariusza base!), warrant AWS ~2.6M net, Founder PRSU transza $40B ~3M. Model NIE MOZE brac przychodow z MRA ignorujac akcje vestujace przy tych dostawach"
+            "source": "KOREKTA (finding KRYTYCZNY): S-1 'excludes' przy 219.6M: opcje 28.36M (WAEP $4.97 -> TSM net ~27.7M), RSU ~15.7M, Class N 3.7M, warrant OpenAI 33.4M @ $0.00001 (4.5M vested + 5.6M mcap>$40B pewne + 23.4M vestuje przy dostawach MRA = baza scenariusza base!), warrant AWS ~2.6M net, Founder PRSU transza $40B ~3M. Model NIE MOZE brac przychodow z MRA ignorujac akcje vestujace przy tych dostawach | SemiAnalysis 'Faster Tokens Please' (13.05, data/AI/) potwierdza transze: loan 4.46M + mcap 5.57M + Committed = 'probable' wg S-1; Additional Capacity (czesc z 23.4M, split nieujawniony) = 'not probable' -> base 306M lekko konserwatywne, bull poprawnie pelne"
+          },
+          {
+            "name": "Contra-revenue warrantu / BOM",
+            "value": "max ~$2.74B (10% rev OpenAI); CS-3 BOM $450k/rack",
+            "source": "SemiAnalysis (data/AI/): warrant @ $82.02 grant-date FV ksiegowany jako contra-revenue (ASC 505-50) — backlog $24.6B juz NETTO; BOM podniesiony $350k->$450k/rack przez wzrost cen pamieci od Q4'25 = headwind dla GM (potwierdza trend 42%->39%)"
           }
         ],
         "steps": [

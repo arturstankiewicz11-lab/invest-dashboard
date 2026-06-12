@@ -12,6 +12,8 @@ wpis w recommendations.json + rekomendacja w formacie z sekcji 8.
 
 1. **Dane źródłowe** (konstytucja pkt 3-6):
    - fundamentals z raportów (`data/fundamentals/`, brak → najpierw /nowy-raport)
+   - **foldery badawcze `data/<SEKTOR>/`** (AI, Quantum...) — `ls data/*/`, przeczytaj
+     wszystko co dotyczy tickera/sektora (raporty branżowe użytkownika)
    - cena live, market cap, shares — yfinance (NIE z pamięci; cross-check shares vs raport!)
    - fakty rynkowe — web z regułą 2 źródeł; transkrypcje calli (cytat+kontekst+wpływ, sekcja 7)
    - Morningstar FV/moat jako referencja, gdy użytkownik poda lub publicznie dostępne

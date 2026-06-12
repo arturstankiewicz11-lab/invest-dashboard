@@ -214,6 +214,13 @@ z EDGAR, raport roczny z IR) → 2. oficjalny PR spółki → 3. Reuters/Bloombe
 4. raporty branżowe (SemiAnalysis, ANS/NucNet, DCD — oznaczaj jako analizę, nie fakt) →
 5. reszta (tylko trop do weryfikacji). **Cytat zamiast parafrazy** przy ekstrakcji z weba.
 
+**Foldery badawcze `data/<SEKTOR>/` (AI, Quantum, ...) — OBOWIĄZKOWE sprawdzenie przy
+każdej wycenie i rewizji.** Użytkownik wrzuca tam raporty branżowe (SemiAnalysis itp.) —
+często dotyczą wycenianych spółek wprost. Krok: `ls data/*/` → przeczytaj pliki pasujące do
+tickera/sektora → cytuj z nazwą pliku (priorytet 4 hierarchii — analiza, nie fakt; fakty
+liczbowe z nich weryfikuj w dokumentach pierwotnych). Pominięcie istniejącego raportu
+o wycenianej spółce = błąd procesu.
+
 **Transkrypcje earnings calls** — do testu ekspertyzy CEO, mapy konkurencji, weryfikacji
 guidance. Źródła: IR spółki (MSFT/NVDA publikują pełne) · Motley Fool (darmowe) ·
 8-K exhibits · Quartr (też EU) · IR spółek EU (RHM, ETL).
