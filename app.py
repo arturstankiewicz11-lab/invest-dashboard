@@ -998,23 +998,39 @@ def tab_dcf(rec: dict):
 
     with col_nd:
         st.markdown('<div class="sh">💰 Krok 3 — Net Cash / Net Debt</div>', unsafe_allow_html=True)
-        bs = dcf.get("balance_sheet_inputs")
+        bs = dcf.get("balance_sheet_inputs") or {}
         net_debt_val = dcf.get("net_debt_m", -dcf.get("net_cash_m", 0))
-        if bs:
-            cash_bs = bs.get("cash_m", 0)
-            debt_bs = bs.get("debt_m", 0)
+        # Tolerancja na warianty nazw pól w modelach
+        cash_bs = (bs.get("cash_and_st_investments_m") or bs.get("cash_and_st_securities_m")
+                   or ((bs.get("cash_m") or 0) + (bs.get("marketable_securities_m") or 0)
+                       + (bs.get("marketable_debt_m") or 0)) or None)
+        debt_bs = (bs.get("total_debt_m") or bs.get("debt_m")
+                   or bs.get("lt_debt_book_value_m") or bs.get("debt_gross_m"))
+        bs_note = bs.get("note", "")
+        note_html = (f'<br><span style="color:#475569;font-size:11px">{_e(bs_note)}</span>'
+                     if bs_note else "")
+        if cash_bs and debt_bs is not None:
             net_bs  = cash_bs - debt_bs
             col_net = "#10b981" if net_bs > 0 else "#ef4444"
-            bridge_hint = "net cash &rarr; DODAJEMY do EV" if net_bs > 0 else "net debt &rarr; ODEJMUJEMY od EV"
+            bridge_hint = ("net cash &rarr; w kroku Bridge DODAJEMY do EV (Equity = EV + net cash)"
+                           if net_bs > 0 else
+                           "net debt &rarr; w kroku Bridge ODEJMUJEMY od EV (Equity = EV − net debt)")
             st.markdown(f"""<div style="{MONO}">
-Net Cash = Gotówka &minus; Dług<br>
+Net Cash = Gotówka &minus; Dług (brutto)<br>
 &nbsp;&nbsp;= {fmt_m(cash_bs)} &minus; {fmt_m(debt_bs)}<br>
 &nbsp;&nbsp;<b style="color:{col_net}">= {fmt_m(net_bs)}</b><br><br>
-<span style="color:#475569;font-size:11px">{bridge_hint}</span>
+<span style="color:#475569;font-size:11px">{bridge_hint}</span>{note_html}
 </div>""", unsafe_allow_html=True)
         else:
-            sign = "net cash" if net_debt_val < 0 else "net debt"
-            st.markdown(f'<div style="{MONO}">Net debt = <b style="{HL}">{fmt_m(net_debt_val)}</b> ({sign})</div>', unsafe_allow_html=True)
+            # Brak składowych w modelu — pokaż wartość używaną w Bridge, bez fabrykowania 0−0
+            net_cash_direct = (bs.get("net_cash_m") or bs.get("net_liquidity_m")
+                               or bs.get("net_cash_conservative_m") or -net_debt_val)
+            sign = "net cash (dodajemy do EV)" if net_cash_direct > 0 else "net debt (odejmujemy od EV)"
+            col  = "#10b981" if net_cash_direct > 0 else "#ef4444"
+            st.markdown(f"""<div style="{MONO}">
+Net cash/debt (wartość używana w Bridge) = <b style="color:{col}">{fmt_m(net_cash_direct)}</b><br>
+<span style="color:#475569;font-size:11px">{sign} — brak rozbicia gotówka/dług w modelu{(' · ' + _e(bs_note)) if bs_note else ''}</span>
+</div>""", unsafe_allow_html=True)
 
     # ── KROK 4: FCF Margin derivation
     st.markdown('<div class="sh">🧮 Krok 4 — Marże FCF (wyprowadzenie ze wzoru)</div>', unsafe_allow_html=True)
