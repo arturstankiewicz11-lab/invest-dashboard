@@ -15,7 +15,7 @@
       "GitHub Copilot traci developer mindshare na rzecz Claude Code/Codex — marza app layer trwale nizsza; IRS dispute $28.9B (transfer pricing) to dodatkowy tail risk"
     ],
     "buffett_moat": "Wide",
-    "last_updated": "2026-06-11",
+    "last_updated": "2026-06-13",
     "next_earnings": "2026-07-28",
     "priority_action": "Dokupuj poniżej entry — korekta po dealu OpenAI (Apr 2026) daje okno wejścia.",
     "dcf": {
@@ -28,7 +28,9 @@
         "rf_pct": 4.4,
         "beta": 1.0,
         "erp_pct": 5.0,
-        "note": "Re = 4.4 + 1.0 x 5.0 = 9.4% -> WACC 9.5%. Beta podniesiona 0.9->1.0: koniec wylacznosci OpenAI (Apr 2026), $190B CapEx commitment, IRS dispute $28.9B, execution risk (Fairwater 2+ lata bez fazy 1 vs Oracle 4 miesiace)."
+        "note": "Re = 4.4 + 1.0 x 5.0 = 9.4% -> WACC 9.5%. Beta podniesiona 0.9->1.0: koniec wylacznosci OpenAI (Apr 2026), $190B CapEx commitment, IRS dispute $28.9B, execution risk (Fairwater 2+ lata bez fazy 1 vs Oracle 4 miesiace).",
+        "credit_rating": "AAA (S&P) / Aaa (Moody's) — najwyzszy rating korporacyjny (do potwierdzenia w 10-K przy rewizji; powszechnie raportowany)",
+        "full_wacc_calc": "Pelny WACC: E = $2.90T (mcap 13.06), D ksiegowy = $40.3B (10-Q) -> wagi E 98.6% / D 1.4%. Rd z ratingu AAA: UST 4.4% + spread ~35bp = ~4.75% pre-tax, po podatku (19%) 3.85%. WACC = 0.986x9.4% + 0.014x3.85% = 9.32% -> FV +~$15 vs uzywane 9.5%. DECYZJA: uproszczenie WACC=Re=9.5% utrzymane (D/V 1.4% < 5%, konserwatywne; +0.1pp premii za IRS dispute $28.9B i execution risk po Big Pause)."
       },
       "terminal_growth_rationale": "g=3% < nominalny PKB USA (~4%). Enterprise lock-in (Office, Azure, Teams) strukturalnie trwaly, ale po 2032 bez OpenAI IP — g bez premii. Kazde -0.5pp g obniza FV o ~$40.",
       "balance_sheet_inputs": {
@@ -140,9 +142,45 @@
         }
       ],
       "fair_value_weighted": 571,
-      "fair_value_weighted_formula": "0.20x$279 + 0.50x$535 + 0.30x$827 = $571"
+      "fair_value_weighted_formula": "0.20x$279 + 0.50x$535 + 0.30x$827 = $571",
+      "base_breakdown": {
+        "label": "Q3 FY2026 (kwartal, 10-Q) — trzy segmenty raportowe + Azure wewnatrz Intelligent Cloud",
+        "ttm_note": "Baza modelu = revenue annualized $322.4B (Q3 FY2026). CAGR Stage1 20% = blended: Azure ~+35-40% przy ~40% wagi + Productivity ~+13% + MPC ~+6%.",
+        "items": [
+          {
+            "segment": "Productivity & Business Processes (M365, LinkedIn, Dynamics)",
+            "revenue_m": 35013,
+            "yoy_pct": null,
+            "note": "Q3 FY2026 kwartalnie. M365 Copilot 20M+ platnych seatow. Marza segmentu ~60% (op income 20,973/35,013)"
+          },
+          {
+            "segment": "Intelligent Cloud (Azure, Server, AI)",
+            "revenue_m": 34681,
+            "yoy_pct": null,
+            "note": "Azure +40% YoY (39% CC); AI ARR $37B (+123%). Marza segmentu ~40% — NIZSZA niz Productivity przez AI CapEx; mix shift trzyma blended"
+          },
+          {
+            "segment": "More Personal Computing (Windows, Gaming, Devices)",
+            "revenue_m": 13192,
+            "yoy_pct": null,
+            "note": "Najwolniejszy segment; Gaming po Activision. Marza najnizsza"
+          },
+          {
+            "segment": "RAZEM Q3 FY2026",
+            "revenue_m": 82886,
+            "yoy_pct": 18.8,
+            "note": "Annualized $322.4B = baza Stage1. YoY segmentow nie wyekstrahowane z 10-Q — uzupelnic przy Q4 (28.07)"
+          }
+        ]
+      }
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Uzupelnienie do nowych zasad (bez zmiany FV — model z 11.06 aktualny): ceo_profile Nadella = SYTY EKSPERT (0 zakupow/9 sprzedazy w 5 lat, plan sprzedazy od 31.08.2026 z 10-Q, comp $96.5M; ale ekspertyza techniczna realna i firma dziala glodnie — akceptowalne dla compoundera). Konkurencja per segment (AWS/GCP wysokie, Claude Code vs Copilot wysokie, OpenAI partner-konkurent rosnace). Tenets 7xOK/2xUWAGA -> pelna pozycja. Krok 0: 3 segmenty z marzami. Rd z ratingu AAA: pelny WACC 9.32% vs uzywane 9.5% (uproszczenie konserwatywne, D/V 1.4%).",
+        "impact": "neutral",
+        "fv_note": "FV $535 bez zmian. Cena $390.74 < entry $400 -> BUY aktywny, upside +37%. Q4 FY2026 earnings 28.07."
+      },
       {
         "date": "2026-06-11",
         "event": "Entry point $385->$400 (25% MoS od nowego FV $535). Cena $390.34 ponizej entry — BUY aktywny. Stock spadl $416->$390 w tydzien (-6%).",
@@ -180,7 +218,106 @@
         "fv_note": "Sentyment negatywny. Fundamenty bez zmian — okazja do dokupienia przy ."
       }
     ],
-    "position_type": "compounder"
+    "position_type": "compounder",
+    "ceo_profile": {
+      "name": "Satya Nadella (58)",
+      "ceo_since": "2014-02 (w Microsoft od 1992 — 34 lata)",
+      "background": "Inzynier (EE) + MS CS + MBA; przed CEO prowadzil Bing, potem Server & Tools/Azure — techniczna droga przez kluczowe biznesy. Architekt zwrotu do cloud (mcap $300B -> $2.9T) i zakladu OpenAI (2019: $1B -> stake warty ~$228B).",
+      "founder_or_manager": "Najemny menedzer — ale jeden z najskuteczniejszych transformatorow w historii tech",
+      "hunger": "MIESZANY, sygnaly sytosci osobistej narastaja: 0 zakupow / 9 sprzedazy akcji w 5 lat, sprzedaz polowy pakietu 2021 ($285M), kolejna $75M 09.2025, NOWY plan sprzedazy od 31.08.2026 (10-Q Q3 FY2026); comp $96.5M; ksiazki, Davos. ALE firma dziala glodnie: CapEx $190B, restrukturyzacja dealu OpenAI, agresywna pogon za capacity po Big Pause.",
+      "domain_expertise": "EKSPERT: techniczne korzenie realne (budowal Azure), w earnings calls odpowiada konkretem o infrastrukturze i modelach; rozumie stack AI glebiej niz typowy CEO-MBA.",
+      "track_record": "Transformacja chmurowa = podrecznikowa. ALE ostatnie 24 mies. z rysami: 'Big Pause' datacenter (SemiAnalysis: oddane ~$150B gross profit Oracle), Maia ASIC dead last, utrata wylacznosci OpenAI. Guidance: konsekwentnie dowozone.",
+      "skin_in_the_game": "~900K akcji (~$352M; <0.013% spolki) — niski wzgledem majatku generowanego z comp; kierunek transakcji jednostronny (tylko sprzedaze). Zrodlo: GuruFocus/Form 4, 13.06.2026.",
+      "red_flags": "Plan sprzedazy akcji od 31.08.2026 (10-Q) — obserwowac skale; sukcesja niezaadresowana publicznie (58 lat, 12 lat na stanowisku).",
+      "verdict": "SYTY EKSPERT — akceptowalne dla compoundera (instytucja > jednostka); dyskwalifikujace dla moonshota",
+      "sources": "10-Q Q3 FY2026 (plan sprzedazy), GuruFocus/Form 4, GeekWire (comp), web 13.06.2026"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Amazon AWS",
+        "ticker": "AMZN",
+        "public": true,
+        "segment": "Intelligent Cloud / Azure — IaaS+PaaS",
+        "threat": "wysokie",
+        "note": "Lider cloud; Bedrock = jedyny CSP z rosnacymi marzami (SemiAnalysis); Trainium = przewaga kosztowa, ktorej MSFT nie ma (Maia dead last)",
+        "source": "SemiAnalysis Tokenomics (data/reports/MSFT/pdf.pdf) + AMZN 10-K"
+      },
+      {
+        "name": "Google Cloud / Gemini",
+        "ticker": "GOOG",
+        "public": true,
+        "segment": "Cloud + Workspace vs M365 + modele (Gemini vs OpenAI/MAI)",
+        "threat": "wysokie",
+        "note": "TPU = wlasny chip; Gemini Enterprise konkuruje z Foundry; Workspace jedyna realna alternatywa dla M365",
+        "source": "SemiAnalysis + 10-K"
+      },
+      {
+        "name": "Anthropic (Claude Code) / OpenAI (Codex)",
+        "ticker": null,
+        "public": false,
+        "segment": "Dev tools — GitHub Copilot pod oblezeniem",
+        "threat": "wysokie",
+        "note": "SemiAnalysis: Copilot z ~100% 1P tokens do kupowania tokenow Anthropic (50-60% GM) — trwala kompresja marzy; labs buduja wlasne produkty na swoich harnessach",
+        "source": "SemiAnalysis 'GitHub Copilot's Moat Under Siege' (cytaty w data/reports/MSFT/)"
+      },
+      {
+        "name": "OpenAI",
+        "ticker": null,
+        "public": false,
+        "segment": "Partner-konkurent: modele + wlasny ASIC + (po Apr 2026) dowolny cloud",
+        "threat": "srednie -> rosnace",
+        "note": "Po restrukturyzacji: niewylacznosc, $50B deal z AWS; IP licencja MSFT wygasa 2032; OpenAI ASIC moze obsluzyc ich inference",
+        "source": "8-K/PR Apr 2026 (zweryfikowane 2 zrodla, rewizja 11.06)"
+      },
+      {
+        "name": "CoreWeave + neoclouds",
+        "ticker": "CRWV",
+        "public": true,
+        "segment": "AI IaaS — capacity race",
+        "threat": "srednie",
+        "note": "Po Big Pause MSFT zmuszony wynajmowac od nich z premia (margin drag Stage1); ClusterMAX: Azure ryzyko degradacji do Silver",
+        "source": "SemiAnalysis"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "OK",
+        "uzasadnienie": "Subskrypcje enterprise (M365/Azure) — model zrozumialy, przewidywalny, switching costs ogromne"
+      },
+      "business_consistent_history": {
+        "ocena": "OK",
+        "uzasadnienie": "50 lat, ten sam rdzen (produktywnosc + platforma); transformacje bez zmiany DNA"
+      },
+      "business_longterm_prospects": {
+        "ocena": "OK",
+        "uzasadnienie": "Enterprise lock-in + pricing power; uwaga: po 2032 bez OpenAI IP — MAI musi dowieziec"
+      },
+      "mgmt_rational": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Big Pause = oddane ~$150B GP Oracle, neocloud premium teraz; ale restrukturyzacja OpenAI deal i buybacki rozsadne"
+      },
+      "mgmt_candid": {
+        "ocena": "OK",
+        "uzasadnienie": "AI ARR ujawniane wprost ($37B +123%), RPO z rozbiciem na OpenAI; metryki uczciwe"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "CapEx $190B czesciowo 'bo wszyscy buduja'; Activision $69B; ale Big Pause dowodzi tez samodzielnego (blednego) myslenia"
+      },
+      "fin_roe": {
+        "ocena": "OK",
+        "uzasadnienie": "ROE ~40% konsekwentnie przy rosnacym kapitale"
+      },
+      "fin_margins": {
+        "ocena": "OK",
+        "uzasadnienie": "EBIT 47.4% — najwyzsze w mega-tech; drag Copilot/neocloud wkalkulowany w Stage1 45%"
+      },
+      "fin_dollar_test": {
+        "ocena": "OK",
+        "uzasadnienie": "Dekada: zatrzymane zyski ~$0.5T -> przyrost mcap ~$2.5T — spelniony 5x"
+      },
+      "wniosek": "7xOK / 2xUWAGA -> pelnowymiarowa pozycja compounder, MoS standardowy 25%"
+    }
   },
   "ETL.PA": {
     "name": "Eutelsat Communications",
