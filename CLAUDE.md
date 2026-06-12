@@ -104,8 +104,23 @@ sumują się do 100%. Zapis: `dcf.scenarios` (app renderuje sekcję "Analiza sce
 `fair_value` = Base; weighted jako informacja dodatkowa. Więcej niż 3 scenariusze dozwolone
 (np. NVDA: Bear/Base/Bull/Jensen).
 
-Dopiero po kroku E wolno napisać "Fair Value = X". WACC z CAPM: pokaż Rf (waluty spółki!),
-betę, ERP w `wacc_inputs`. Terminal g z uzasadnieniem + wrażliwość (±0,5pp → wpływ na FV).
+Dopiero po kroku E wolno napisać "Fair Value = X".
+
+**Parametry DCF — pełne wyprowadzenie i źródła (OBOWIĄZKOWE dla każdego parametru):**
+
+- **WACC** (`wacc_inputs`): Rf = rentowność 10Y obligacji W WALUCIE SPÓŁKI z datą i źródłem
+  (Bund dla EUR, UST dla USD); beta — podaj zmierzoną (yfinance) ORAZ przyjętą, z uzasadnieniem
+  różnicy; ERP ze źródłem/konwencją; **Rd**: dług brutto z bilansu (nie net!), market cap,
+  wagi E/V i D/V, stopa długu ze źródłem — LUB udokumentowane uproszczenie WACC=Re, dozwolone
+  tylko gdy D/V < 5% i z policzonym wpływem na FV (`full_wacc_calc`, wzorzec RHM.DE).
+- **Terminal g** (`terminal_growth_rationale`): kotwica (nominalny PKB = inflacja + realny PKB),
+  uzasadnienie odchylenia w górę/dół, wrażliwość ±0,5pp → wpływ na FV w walucie.
+- **CAGR per stage** (`stages[].note`): wyprowadzenie — blended z segmentów (Krok 0) LUB kotwice:
+  guidance spółki, backlog/coverage, trajektoria historyczna — każda kotwica ze źródłem.
+  Dla rozbudowanych uzasadnień: `cagr_context` (app renderuje jako Krok 4b).
+- **Marże EBIT per stage**: vs historia spółki (ostatnie FY ze źródłem) i target zarządu.
+
+Parametr bez wyprowadzenia i źródła = ESTYMATA → blokuje BUY (konstytucja pkt 5).
 
 ---
 

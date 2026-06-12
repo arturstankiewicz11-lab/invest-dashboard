@@ -22,6 +22,7 @@ Sprawdza:
   W5  "ESTYMATA" w inputach przy rekomendacji BUY
   W6  last_updated starsze niż 90 dni = WARN (świeżość)
   W7  Scenariusze Bear/Base/Bull obowiązkowe przy każdym DCF (Krok F, od 12.06.2026)
+  W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
 """
 import json, os, re, sys
 from datetime import datetime, date
@@ -162,6 +163,21 @@ def check_ticker(t, r):
     elif mode == "DCF":
         # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
         warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
+
+    # W8: wyprowadzenie parametrów DCF ze źródłami (zasada z 2026-06-13)
+    if mode == "DCF":
+        wi = dcf.get("wacc_inputs") or {}
+        if not wi:
+            warns.append("W8: brak wacc_inputs — wyprowadzenie WACC obowiązkowe")
+        else:
+            miss = [k for k in ("rf_pct", "beta", "erp_pct") if k not in wi]
+            if miss:
+                warns.append(f"W8: wacc_inputs bez pól {miss}")
+        if not dcf.get("terminal_growth_rationale"):
+            warns.append("W8: brak terminal_growth_rationale (kotwica + wrażliwość ±0.5pp)")
+        no_note = [s.get("period", "?") for s in (dcf.get("stages") or []) if not s.get("note")]
+        if no_note and not dcf.get("cagr_context"):
+            warns.append(f"W8: stages bez uzasadnienia CAGR w note: {no_note}")
 
     # W1: entry vs konwencja 0.75×FV
     ep = r.get("entry_point")

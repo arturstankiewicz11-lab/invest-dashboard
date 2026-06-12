@@ -966,6 +966,19 @@ def tab_dcf(rec: dict):
 &nbsp;&nbsp;= {E_w/100*Re/100*100:.2f}% + {D_w/100*Rd_at/100*100:.3f}%<br>
 &nbsp;&nbsp;<b style="{HL}">= {wacc_r*100:.2f}% &asymp; {dcf['wacc_pct']}%</b>
 </div>""", unsafe_allow_html=True)
+        # Źródła i uzasadnienia składowych WACC (note, full_wacc_calc, *_source)
+        wi_extra = ""
+        for key, label in [("note", "Uzasadnienie / źródła"),
+                           ("full_wacc_calc", "Pełny WACC z długiem"),
+                           ("rf_source", "Źródło Rf"), ("beta_source", "Źródło bety"),
+                           ("erp_source", "Źródło ERP")]:
+            if wi.get(key):
+                wi_extra += (f'<div style="margin-top:8px"><b style="color:#475569;font-size:10px;'
+                             f'text-transform:uppercase;letter-spacing:1px">{label}</b><br>'
+                             f'<span style="color:#64748b;font-size:11.5px;line-height:1.6">{_e(wi[key])}</span></div>')
+        if wi_extra:
+            st.markdown(f'<div style="background:rgba(255,255,255,0.02);border-radius:8px;'
+                        f'padding:10px 16px;margin-top:8px">{wi_extra}</div>', unsafe_allow_html=True)
     else:
         st.markdown(f'<div style="{MONO}">WACC = <b style="{HL}">{dcf["wacc_pct"]}%</b> (założenie — brak danych CAPM w modelu)</div>', unsafe_allow_html=True)
 
@@ -1024,6 +1037,7 @@ Net Cash = Gotówka &minus; Dług<br>
                 f'&nbsp;&nbsp;= {ebit_s}% &times; {100-tax_s:.0f}% + {da_s}% &minus; {capex_s}%<br>'
                 f'&nbsp;&nbsp;= NOPAT {nopat_s:.2f}% + D&amp;A {da_s}% &minus; CapEx {capex_s}%<br>'
                 f'&nbsp;&nbsp;<b style="{HL}">= {fcm_s:.2f}%</b>{check}'
+                + (f'<br><span style="color:#475569;font-size:11px">↳ {_e(stage["note"])}</span>' if stage.get("note") else "")
             )
         elif "fcf_margin_pct" in stage:
             fcm_parts.append(
