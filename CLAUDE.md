@@ -96,6 +96,14 @@ Cel: widzieć co rośnie i z jaką marżą (wzorzec AMZN: AWS szybki wzrost + wy
 **Krok E — Bridge**: `EV = PV_FCF + PV_TV`; `Equity = EV − net_debt` (ujemny net_debt =
 gotówka netto → dodajemy); `FV = Equity / shares`.
 
+**Krok F — Scenariusze Bear / Base / Bull (obowiązkowe przy każdym DCF)**
+Po policzeniu Base (kroki 0–E) policz Bear i Bull: dla każdego jawnie wskaż, KTÓRE założenia
+się zmieniają i dlaczego (CAGR, marża, WACC, g — z uzasadnieniem biznesowym, np. Bear =
+zawieszenie broni / utrata klienta, Bull = cele zarządu trafione). Wagi prawdopodobieństw
+sumują się do 100%. Zapis: `dcf.scenarios` (app renderuje sekcję "Analiza scenariuszowa").
+`fair_value` = Base; weighted jako informacja dodatkowa. Więcej niż 3 scenariusze dozwolone
+(np. NVDA: Bear/Base/Bull/Jensen).
+
 Dopiero po kroku E wolno napisać "Fair Value = X". WACC z CAPM: pokaż Rf (waluty spółki!),
 betę, ERP w `wacc_inputs`. Terminal g z uzasadnieniem + wrażliwość (±0,5pp → wpływ na FV).
 

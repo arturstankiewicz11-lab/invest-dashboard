@@ -21,6 +21,7 @@ Sprawdza:
   W4  Daty w upcoming_events/next_earnings parsowalne (YYYY-MM-DD)
   W5  "ESTYMATA" w inputach przy rekomendacji BUY
   W6  last_updated starsze niż 90 dni = WARN (świeżość)
+  W7  Scenariusze Bear/Base/Bull obowiązkowe przy każdym DCF (Krok F, od 12.06.2026)
 """
 import json, os, re, sys
 from datetime import datetime, date
@@ -149,13 +150,18 @@ def check_ticker(t, r):
     if tv_s and pv_tv_s and pv_tv_s >= tv_s:
         errors.append(f"E4: PV_TV ({pv_tv_s:,.0f}) >= TV ({tv_s:,.0f}) — matematycznie niemożliwe, bridge sfabrykowany")
 
-    # E5: wagi scenariuszy (obsługa obu formatów: lista i dict)
+    # E5 + W7: scenariusze (obsługa obu formatów: lista i dict)
     scen = dcf.get("scenarios") or (alt.get("scenarios") if has_alt else None)
     if scen:
         items = list(scen.values()) if isinstance(scen, dict) else scen
         s = sum(x.get("probability_pct", 0) for x in items if isinstance(x, dict))
         if abs(s - 100) > 0.5:
             errors.append(f"E5: wagi scenariuszy sumują się do {s}% (≠100%)")
+        if len(items) < 3:
+            warns.append(f"W7: tylko {len(items)} scenariusze — wymagane min. Bear/Base/Bull (Krok F)")
+    elif mode == "DCF":
+        # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
+        warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
 
     # W1: entry vs konwencja 0.75×FV
     ep = r.get("entry_point")
