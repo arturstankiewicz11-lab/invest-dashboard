@@ -143,10 +143,12 @@ z założeń zapisanych w `dcf.stages` w recommendations.json. Czyli: **zakładk
 1. ✅ `tools/validate.py` — sprawdza: FV vs model (E1), FV bez modelu (E2), schemat stages (E3),
    PV_TV<TV (E4), wagi=100% (E5), BUY na placeholderze (E6), entry vs 0.75×FV, thesis breaker,
    net_debt vs fundamentals, daty, ESTYMATY, świeżość. Obowiązkowy przed pushem (CLAUDE.md pkt 9).
-2. ⬜ Skill `/audyt` — przegląd wszystkich wycen jedną komendą (walidator + ceny live + staleness)
-3. ⬜ Skille `/nowy-raport`, `/wycena` — sformalizowane protokoły z CLAUDE.md
+2. ✅ Skill `/audyt` (.claude/skills/audyt/) — walidator + ceny live + spójność + świeżość,
+   read-only
+3. ✅ Skille `/nowy-raport`, `/wycena` (.claude/skills/) — protokoły CLAUDE.md jako komendy;
+   cienkie: wskazują na sekcje CLAUDE.md zamiast kopiować (jedno źródło prawdy)
 4. ⬜ Agent-weryfikator — niezależne przeliczenie każdej nowej wyceny (dla reguł jakościowych,
-   których kod nie sprawdzi)
+   których kod nie sprawdzi); wpina się w ostatni krok /wycena
 5. ✅ Konwencje w CLAUDE.md (konstytucja pkt 7: FV=base, entry=0.75×FV, etapy 5+5)
 
 **Backlog treściowy** (czyszczony przy rewizjach, nie hurtowo):
