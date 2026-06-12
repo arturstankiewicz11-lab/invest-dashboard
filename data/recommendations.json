@@ -1705,53 +1705,63 @@
         "type": "catalyst"
       }
     ],
-    "alt_valuation": {
-      "method": "EV/Revenue Multiple — 3 scenariusze",
-      "method_reason": "DCF niemozliwy: OCF -$10M FY2025, spolka w hyper-ramp (revenue +76%, od 2026 +175% z OpenAI MRA), FCF nieprzewidywalny przez customer deposits i working capital swings",
-      "inputs": [
-        {
-          "name": "Revenue FY2025",
-          "value": "$510.0M",
-          "source": "S-1/A 11.05.2026 (audited)"
-        },
-        {
-          "name": "RPO",
-          "value": "$24.6B",
-          "source": "S-1/A — 15% do konca 2027, 43% w 2028-29"
-        },
-        {
-          "name": "Revenue 2027E (base)",
-          "value": "$2.8B",
-          "source": "RPO: 15% x $24.6B = $3.69B na 2026-27, split 38/62 -> 2027E $2.29B z RPO + ~$0.5B non-RPO (cloud, pass-through, nowi klienci). ESTYMATA"
-        },
-        {
-          "name": "Peer forward EV/Revenue",
-          "value": "mediana ~12.5x",
-          "source": "NVDA 15.5x (nasz model), AMD ~9x, ARM ~28x, CoreWeave ~10x (szac. czerwiec 2026)"
-        },
-        {
-          "name": "Zastosowany multiple (base)",
-          "value": "12x",
-          "source": "Mediana 12.5x + premia za wzrost (CAGR 134% vs peers ~35%, +40%) - dyskonto za koncentracje >85%, GM 39%, OpenAI ASIC risk (-40%)"
-        },
-        {
-          "name": "Net cash post-IPO",
-          "value": "~$5.5B",
-          "source": "Cash ~$6.5B (S-1 pro forma $5,534M @ $155 + repricing do $185) - $1.0B OpenAI loan. ESTYMATA"
-        },
-        {
-          "name": "Shares diluted",
-          "value": "~245M",
-          "source": "219.6M outstanding (Yahoo) + ~25M opcje. ESTYMATA"
-        }
-      ],
-      "steps": [
-        "EV_2027 = Revenue 2027E x multiple = $2,800M x 12 = $33,600M",
-        "PV(EV) = $33,600M / 1.12 (dyskonto 1 rok) = $30,000M",
-        "Equity = PV(EV) + net cash = $30,000M + $5,500M = $35,500M",
-        "FV/share (base) = $35,500M / 245M = $145"
-      ],
-      "fair_value_computed": 152.0,
+    "events": [
+      {
+        "date": "2026-06-12",
+        "event": "Inicjacja HOLD @ FV $152 (EV/Revenue, scenariusze 25/55/20). Zrodlo: S-1/A #2 (11.05.2026) z SEC EDGAR. Kluczowe: OpenAI MRA 750MW + opcja 1.25GW, RPO $24.6B, revenue $510M (+76%), GM 39%, koncentracja UAE 86%. IPO $185 (13.05), debiut $350, cena $226.55. Pozycja uzytkownika: 70 szt. @ $236.98 (08.06) — kupiona 56% nad FV, bez analizy w systemie.",
+        "impact": "neutral",
+        "fv_note": "Inicjacja HOLD. FV $152, entry $114 (25% MoS). Cena $227 = +49% nad FV — premium IPO hype. Net cash floor $22.4/akcje."
+      }
+    ],
+    "dcf": {
+      "alt_valuation": {
+        "method": "EV/Revenue Multiple — 3 scenariusze",
+        "method_reason": "DCF niemozliwy: OCF -$10M FY2025, spolka w hyper-ramp (revenue +76%, od 2026 +175% z OpenAI MRA), FCF nieprzewidywalny przez customer deposits i working capital swings",
+        "inputs": [
+          {
+            "name": "Revenue FY2025",
+            "value": "$510.0M",
+            "source": "S-1/A 11.05.2026 (audited)"
+          },
+          {
+            "name": "RPO",
+            "value": "$24.6B",
+            "source": "S-1/A — 15% do konca 2027, 43% w 2028-29"
+          },
+          {
+            "name": "Revenue 2027E (base)",
+            "value": "$2.8B",
+            "source": "RPO: 15% x $24.6B = $3.69B na 2026-27, split 38/62 -> 2027E $2.29B z RPO + ~$0.5B non-RPO (cloud, pass-through, nowi klienci). ESTYMATA"
+          },
+          {
+            "name": "Peer forward EV/Revenue",
+            "value": "mediana ~12.5x",
+            "source": "NVDA 15.5x (nasz model), AMD ~9x, ARM ~28x, CoreWeave ~10x (szac. czerwiec 2026)"
+          },
+          {
+            "name": "Zastosowany multiple (base)",
+            "value": "12x",
+            "source": "Mediana 12.5x + premia za wzrost (CAGR 134% vs peers ~35%, +40%) - dyskonto za koncentracje >85%, GM 39%, OpenAI ASIC risk (-40%)"
+          },
+          {
+            "name": "Net cash post-IPO",
+            "value": "~$5.5B",
+            "source": "Cash ~$6.5B (S-1 pro forma $5,534M @ $155 + repricing do $185) - $1.0B OpenAI loan. ESTYMATA"
+          },
+          {
+            "name": "Shares diluted",
+            "value": "~245M",
+            "source": "219.6M outstanding (Yahoo) + ~25M opcje. ESTYMATA"
+          }
+        ],
+        "steps": [
+          "EV_2027 = Revenue 2027E x multiple = $2,800M x 12 = $33,600M",
+          "PV(EV) = $33,600M / 1.12 (dyskonto 1 rok) = $30,000M",
+          "Equity = PV(EV) + net cash = $30,000M + $5,500M = $35,500M",
+          "FV/share (base) = $35,500M / 245M = $145"
+        ],
+        "fair_value_computed": 152.0
+      },
       "scenarios": [
         {
           "name": "Bear",
@@ -1807,14 +1817,6 @@
       ],
       "fair_value_weighted": 152,
       "fair_value_weighted_formula": "0.25x$87 + 0.55x$145 + 0.20x$252 = $152"
-    },
-    "events": [
-      {
-        "date": "2026-06-12",
-        "event": "Inicjacja HOLD @ FV $152 (EV/Revenue, scenariusze 25/55/20). Zrodlo: S-1/A #2 (11.05.2026) z SEC EDGAR. Kluczowe: OpenAI MRA 750MW + opcja 1.25GW, RPO $24.6B, revenue $510M (+76%), GM 39%, koncentracja UAE 86%. IPO $185 (13.05), debiut $350, cena $226.55. Pozycja uzytkownika: 70 szt. @ $236.98 (08.06) — kupiona 56% nad FV, bez analizy w systemie.",
-        "impact": "neutral",
-        "fv_note": "Inicjacja HOLD. FV $152, entry $114 (25% MoS). Cena $227 = +49% nad FV — premium IPO hype. Net cash floor $22.4/akcje."
-      }
-    ]
+    }
   }
 }

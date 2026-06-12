@@ -850,11 +850,13 @@ def tab_dcf(rec: dict):
         </div>""", unsafe_allow_html=True)
         return
 
-    # If no DCF stages but alt_valuation exists — show only alternative method
+    # If no DCF stages but alt_valuation exists — show alternative method (+ scenarios if present)
     has_stages = bool(dcf.get("stages"))
     if not has_stages:
         if alt:
             _render_alt_valuation(alt, fv_currency)
+            if dcf.get("scenarios"):
+                _render_dcf_scenarios(dcf["scenarios"], dcf, rec)
         else:
             st.markdown("""
             <div style="padding:40px;text-align:center;color:#475569">
