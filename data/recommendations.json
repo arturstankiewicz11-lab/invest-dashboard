@@ -272,11 +272,11 @@
   "RHM.DE": {
     "name": "Rheinmetall",
     "recommendation": "BUY",
-    "fair_value": 1950,
+    "fair_value": 1740.0,
     "fair_value_currency": "EUR",
     "entry_point": 1250,
     "upside_pct": 60,
-    "thesis_short": "NATO rearmament. Backlog €135B. Przy 52-tygodniowym minimum. +65% do avg PT.",
+    "thesis_short": "Europejski lider rearmamentu. FY2025: rev EUR 9.9B (+30%), marza 18.5%, backlog EUR 63.8B (+36%). Target 2030: EUR 50B / marza >20%. DCF base FV EUR 1,740 (80% celu spolki), bull EUR 2,877, Morningstar EUR 2,320. Cena EUR 1,206 < entry — BUY aktywny.",
     "thesis_full": "Rheinmetall to główny beneficjent europejskiego rearmamentu NATO. Revenue +45% YoY w 2026. Backlog zamówień podwaja się do €135B. OBECNIE przy 52-tygodniowym minimum (€1218 vs high €2008) — najlepsza okazja w portfelu. 15 analityków Buy, 0 Sell. Avg PT €2009 (+65%). Moat: certyfikacje wojskowe zajmują lata, oligopol europejski, NATO standardy.",
     "thesis_breaker": "Trwałe zawieszenie broni + redukcja budżetów NATO przez 2+ kolejne lata.",
     "risks": [
@@ -285,44 +285,116 @@
       "Ryzyko wykonawcze / moce produkcyjne"
     ],
     "buffett_moat": "Wide",
-    "last_updated": "2026-05-11",
+    "last_updated": "2026-06-12",
     "next_earnings": null,
     "priority_action": "PRIORYTET 2: Dokup. Obecna cena = dobry entry. Alokuj kapitał z ETL + AGGG.",
     "dcf": {
-      "wacc_pct": 10.0,
-      "terminal_growth_pct": 3.0,
-      "revenue_ttm_m": 10000,
+      "wacc_pct": 9.0,
+      "terminal_growth_pct": 2.5,
+      "revenue_ttm_m": 9900,
       "net_debt_m": 500,
-      "shares_m": 83,
+      "shares_m": 46.54,
+      "wacc_inputs": {
+        "rf_pct": 2.6,
+        "beta": 1.25,
+        "erp_pct": 5.0,
+        "note": "Re = 2.6 (Bund 10Y) + 1.25 x 5.0 = 8.85% -> WACC 9.0%. Poprzedni model uzywal 10% (US-style rf) — za wysoko dla spolki EUR z rzadowym popytem."
+      },
+      "terminal_growth_rationale": "g=2.5%: NATO 3.5-5% GDP era + cykl odtworzeniowy amunicji trwa dekady, ale po supercyklu wzrost normalizuje. Kazde +0.5pp g podnosi FV o ~EUR 150.",
+      "morningstar_reference": "Morningstar FV EUR 2,320 (podniesione 7% po FY2025) — miedzy naszym base EUR 1,740 a bull EUR 2,877. Morningstar zaklada pelna realizacje celow 2030.",
       "stages": [
         {
-          "period": "2026–2030",
+          "period": "FY2026-2030",
           "n_years": 5,
-          "rev_cagr_pct": 28,
-          "ebit_margin_pct": 14,
+          "rev_cagr_pct": 32,
+          "ebit_margin_pct": 19.5,
           "tax_pct": 28,
-          "capex_pct": 6,
-          "da_pct": 3
+          "capex_pct": 7,
+          "da_pct": 4,
+          "fcf_margin_pct": 11.04,
+          "note": "CAGR 32% = 80% celu spolki (EUR 40B w 2030 vs target 50B) — dyskonto za execution. Guidance 2026 (+40-45%) i backlog 63.8B daja pokrycie ~70% sciezki. EBIT 19.5%: guidance 2026 ~19%, target >20% w 2030. CapEx 7%: szczyt inwestycji w amunicje/digitalizacje do 2027."
         },
         {
-          "period": "2031–2035",
+          "period": "FY2031-2035",
           "n_years": 5,
           "rev_cagr_pct": 8,
-          "ebit_margin_pct": 16,
+          "ebit_margin_pct": 20,
           "tax_pct": 28,
           "capex_pct": 5,
-          "da_pct": 3
+          "da_pct": 4.5,
+          "fcf_margin_pct": 13.9,
+          "note": "Post-supercykl: NATO utrzymuje podwyzszone budzety, cykl odtworzeniowy. Marza 20% = dolny kraniec targetu."
         }
       ],
-      "pv_fcf_m": 15321,
-      "terminal_value_m": 70720,
-      "pv_terminal_m": 147029,
-      "enterprise_value_m": 162350,
-      "fair_value": 1950,
-      "notes": "⚠️ Uwaga metodologiczna: DCF (model 10-letni) daje wartość konserwatywną €507 — typowe dla spółek obronnych, gdzie >90% wartości leży poza 10-letnim horyzontem. Analitycy (15 Buy, PT avg €2009) używają EV/EBITDA (backlog €135B = 10 lat przychodów). Fair Value €1950 pochodzi z metody porównawczej i analyst consensus, nie z czystego DCF. WACC 10% = premia za ryzyko cyklu obronnego.",
-      "valuation_method": "Peer Multiple / Analyst Consensus (15 analityków Buy, PT avg €2009). DCF (WACC 10%, 10 lat) daje €507 — typowe dla spółek obronnych gdzie >90% wartości leży poza 10-letnim horyzontem. FV €1950 to metoda porównawcza: EV/backlog + EV/EBITDA vs peers (KNDS, Thales, BAE). Nie jest wynikiem DCF."
+      "pv_fcf_m": 27500,
+      "pv_terminal_m": 54000,
+      "enterprise_value_m": 81500,
+      "equity_value_m": 81000,
+      "fair_value_computed": 1740.0,
+      "notes": "PRZEBUDOWA 2026-06-12. Poprzedni model mial DWA krytyczne bledy: (1) shares 83M zamiast 46.54M (+78%!), (2) EBIT 14%/16% z placeholdera vs rzeczywiste 18.5% i target >20%. Do tego zapisany bridge mial sfabrykowane liczby (PV_TV > TV). Nowy model: dane z annual report 11.03.2026, share count z Yahoo. Net debt EUR 500M = estymata do weryfikacji z PDF raportu.",
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 20,
+          "color": "ef4444",
+          "fair_value": 663,
+          "description": "Zawieszenie broni w Ukrainie + NATO capex peak 2027. CAGR 20%, marza 17-18%, WACC 10%.",
+          "assumptions": {
+            "stage1_cagr_pct": 20,
+            "stage2_cagr_pct": 4,
+            "ebit_margin_pct": 17,
+            "fcf_margin_s1_pct": 9.24,
+            "fcf_margin_s2_pct": 11.96,
+            "wacc_pct": 10.0,
+            "terminal_g_pct": 2.0
+          },
+          "key_risk": "Polityczna normalizacja = de-rating calego sektora defence"
+        },
+        {
+          "name": "Base",
+          "probability_pct": 55,
+          "color": "00d9a3",
+          "fair_value": 1740,
+          "description": "80% celu spolki: EUR 40B revenue 2030, marza 19.5-20%. Backlog 63.8B pokrywa ~70% sciezki.",
+          "assumptions": {
+            "stage1_cagr_pct": 32,
+            "stage2_cagr_pct": 8,
+            "ebit_margin_pct": 19.5,
+            "fcf_margin_s1_pct": 11.04,
+            "fcf_margin_s2_pct": 13.9,
+            "wacc_pct": 9.0,
+            "terminal_g_pct": 2.5
+          },
+          "key_risk": "Wykonanie skokowego skalowania mocy produkcyjnych"
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 25,
+          "color": "f59e0b",
+          "fair_value": 2877,
+          "description": "Cele CMD trafione: EUR 50B 2030, marza 20.5%+, NATO 3.5-5% GDP era. Zbiezny z Morningstar EUR 2,320.",
+          "assumptions": {
+            "stage1_cagr_pct": 38,
+            "stage2_cagr_pct": 10,
+            "ebit_margin_pct": 20.5,
+            "fcf_margin_s1_pct": 11.76,
+            "fcf_margin_s2_pct": 14.62,
+            "wacc_pct": 8.5,
+            "terminal_g_pct": 3.0
+          },
+          "key_risk": "Wycena wymaga 5x wzrostu revenue w 5 lat — bez precedensu w EU industrials"
+        }
+      ],
+      "fair_value_weighted": 1809,
+      "fair_value_weighted_formula": "0.20xEUR663 + 0.55xEUR1,740 + 0.25xEUR2,877 = EUR 1,809"
     },
     "events": [
+      {
+        "date": "2026-06-12",
+        "event": "Pelna przebudowa DCF po audycie. Wykryte bledy starego modelu: shares 83M zamiast 46.54M (+78%), EBIT 14/16% z placeholdera vs rzeczywiste 18.5% (FY2025) i target >20% (CMD), sfabrykowany bridge (PV_TV>TV). Nowe dane: annual report 11.03.2026 — rev EUR 9.9B (+30%), backlog EUR 63.8B (+36%), guidance 2026 EUR 14-14.5B @ 19%, target 2030 EUR 50B @ >20%. Morningstar FV EUR 2,320.",
+        "impact": "neutral",
+        "fv_note": "FV EUR 1,950 -> 1,740 (base, uczciwie policzony). Scenariusze: 663/1,740/2,877, weighted 1,809. Cena 1,206 < entry 1,250 -> BUY aktywny. Propozycja entry 1,250->1,305 (25% MoS) czeka na akceptacje."
+      },
       {
         "date": "2026-05-07",
         "event": "Q1 2026 earnings preview — revenue +40-45% YoY potwierdzony. Order backlog €135B.",
