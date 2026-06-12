@@ -75,6 +75,34 @@ i tym wyższy wymagany MoS (30%+ zamiast 25%).
 - **Jaka jest wartość biznesu?** — odpowiada protokół DCF / metod alternatywnych (poniżej).
 - **Czy da się kupić ze znaczącym dyskontem?** — odpowiada entry point z margin of safety.
 
+## Mapa konkurencji — obowiązkowa przy każdej wycenie
+
+Każda inicjacja i pełna rewizja zawiera sekcję `competitive_landscape` w recommendations.json.
+Konkurencję mapuj **per linia produktowa/segment** (spójnie z Krokiem 0 DCF) — np. Amazon:
+AWS vs Azure/GCP, Advertising vs Google/Meta, e-commerce vs Walmart/Temu.
+
+Źródła w kolejności priorytetu:
+1. **10-K/S-1 sekcja "Competition"** (US) / "Market environment" (EU) — spółka sama wymienia
+   konkurentów z mocy prawa; baza obowiązkowa, jest w data/reports/
+2. **Morningstar** — peers + moat ratings (subskrypcja użytkownika)
+3. **Branżowe raporty** — SemiAnalysis (AI/semis), ANS/NucNet (nuclear), DCD (data centers)
+4. **Earnings calls Q&A** — szczersze niż filing
+5. yfinance sektor/branża — tylko uzupełniająco (mechaniczne)
+
+Format per konkurent:
+```json
+"competitive_landscape": [
+  {"name": "TerraPower", "ticker": null, "public": false,
+   "segment": "SMR sodium-cooled (bezpośrednia)", "threat": "wysokie",
+   "note": "Construction permit przed Oklo (kwi 2026); Gates funding; 345MW vs 75MW",
+   "source": "NRC filings + web research 05/2026"}
+]
+```
+Pola: nazwa, ticker (null jeśli prywatna), segment w którym konkuruje, poziom zagrożenia
+(wysokie/średnie/niskie) z uzasadnieniem, źródło informacji. Przy rewizji aktualizuj —
+zmiana pozycji konkurenta (np. konkurent dostaje licencję/kontrakt pierwszy) to event
+do `events` i potencjalna zmiana wag scenariuszy.
+
 ## Profil Inwestora
 
 - Horyzont: 1–3 lata
