@@ -275,9 +275,9 @@
     "fair_value": 1658.0,
     "fair_value_currency": "EUR",
     "entry_point": 1250,
-    "upside_pct": 60,
+    "upside_pct": null,
     "thesis_short": "Europejski lider rearmamentu. FY2025: rev EUR 9.9B (+30%), EBIT 16.9% (op result 18.5%), backlog 63.8B, net liquidity +369M. Q1 2026: guidance reaffirmed, NVL naval skonsolidowane. DCF base EUR 1,658 (zweryfikowany z pelnego AR), bull 2,742, Morningstar 2,320. Cena ~1,206 < entry 1,250 -> BUY.",
-    "thesis_full": "Rheinmetall to główny beneficjent europejskiego rearmamentu NATO. Revenue +45% YoY w 2026. Backlog zamówień podwaja się do €135B. OBECNIE przy 52-tygodniowym minimum (€1218 vs high €2008) — najlepsza okazja w portfelu. 15 analityków Buy, 0 Sell. Avg PT €2009 (+65%). Moat: certyfikacje wojskowe zajmują lata, oligopol europejski, NATO standardy.",
+    "thesis_full": "Rheinmetall to europejski lider rearmamentu z rekordowym backlogiem EUR 63.8B (+36% YoY, AR 2025) i nomination pipeline EUR 26.4B. FY2025: revenue EUR 9.9B (+30%), operating result EUR 1,841M (18.5%), EBIT EUR 1,684M (16.9%), OFCF EUR 1,218M, net liquidity +EUR 369M. Guidance 2026: +40-45% (EUR 14.0-14.5B) @ ~19% op margin — reaffirmed w Q1 2026 (sales +8% sezonowo, akceleracja od Q2; NVL naval skonsolidowane). Target CMD 2030: EUR ~50B revenue, marza >20%, cash conversion >50% (segmenty: Vehicle 13-15B, Ammo 14-16B, Air Defence 3-4B, Digital 8-10B). DCF base EUR 1,658 = 80% celu spolki (CAGR 32%, EBIT 18%, WACC 9%); bull EUR 2,742 (cele trafione) — Morningstar EUR 2,320 miedzy base a bull. Sprzedaz automotive H1 2026 czysci profil na pure defence.",
     "thesis_breaker": "Trwałe zawieszenie broni + redukcja budżetów NATO przez 2+ kolejne lata.",
     "risks": [
       "Ceasefire w Ukrainie = krótkoterminowy sentyment negatywny",
@@ -298,7 +298,7 @@
         "rf_pct": 2.6,
         "beta": 1.25,
         "erp_pct": 5.0,
-        "note": "Re = 2.6 (Bund 10Y) + 1.25 x 5.0 = 8.85% -> WACC 9.0%. Poprzedni model uzywal 10% (US-style rf) — za wysoko dla spolki EUR z rzadowym popytem."
+        "note": "Re = 2.6 (Bund 10Y) + 1.25 x 5.0 = 8.85% -> WACC 9.0%. Poprzedni model uzywal 10% (US-style rf) — za wysoko dla spolki EUR z rzadowym popytem. | Weryfikator 12.06.2026: Bund 10Y ~2.99% po podwyzce ECB 11.06 (vs 2.6% w modelu) -> Re 9.24%, FV ~1,585 (-4.4%). Do aktualizacji przy najblizszej rewizji; BUY przezywa (MoS przy entry 1250 nadal ~21%)."
       },
       "terminal_growth_rationale": "g=2.5%: NATO 3.5-5% GDP era + cykl odtworzeniowy amunicji trwa dekady, ale po supercyklu wzrost normalizuje. Kazde +0.5pp g podnosi FV o ~EUR 150.",
       "morningstar_reference": "Morningstar FV EUR 2,320 (podniesione 7% po FY2025) — miedzy naszym base EUR 1,740 a bull EUR 2,877. Morningstar zaklada pelna realizacje celow 2030.",
@@ -393,6 +393,12 @@
       }
     },
     "events": [
+      {
+        "date": "2026-06-12",
+        "event": "Pierwsza weryfikacja agentem-weryfikatorem: WERDYKT ZGODNA Z UWAGAMI. FV odtwarzalne co do eurocenta (1657.89 vs 1658). Naprawione findings: upside_pct=60 (relikt FV 1950), thesis_full ze stalym 'backlogiem 135B' (to budzet obronny Niemiec w USD — AR 2025 podaje backlog 63.8B). Odnotowane do rewizji: Rf 2.6% vs Bund ~2.99% po ECB 11.06 (FV -4.4% wrazliwosci), tax 28% vs 30% ustawowe (obnizka CIT od 2028), beta 1.25 niezrodlowana (yfinance 0.42 — konserwatywnie OK).",
+        "impact": "neutral",
+        "fv_note": "FV 1658 bez zmian (arytmetyka potwierdzona niezaleznie). Czysciej: thesis_full i upside_pct."
+      },
       {
         "date": "2026-06-12",
         "event": "Pelna przebudowa DCF po audycie. Wykryte bledy starego modelu: shares 83M zamiast 46.54M (+78%), EBIT 14/16% z placeholdera vs rzeczywiste 18.5% (FY2025) i target >20% (CMD), sfabrykowany bridge (PV_TV>TV). Nowe dane: annual report 11.03.2026 — rev EUR 9.9B (+30%), backlog EUR 63.8B (+36%), guidance 2026 EUR 14-14.5B @ 19%, target 2030 EUR 50B @ >20%. Morningstar FV EUR 2,320. UPDATE 12.06 wieczor: pobrano PELNY Annual Report 2025 (13MB) + Q1 2026 statement do data/reports/. Zweryfikowane: net liquidity +369M (nie -500M!), EBIT 16.9% vs op result 18.5% (marze w modelu skorygowane w dol o ~1.5pp), Q1 2026 guidance reaffirmed.",
