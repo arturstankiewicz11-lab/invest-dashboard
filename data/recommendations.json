@@ -298,7 +298,11 @@
         "rf_pct": 2.99,
         "beta": 1.25,
         "erp_pct": 5.0,
-        "note": "Re = 2.99 (Bund 10Y, Trading Economics 12.06.2026, po podwyzce ECB 11.06; potwierdzone 2 obserwacjami) + 1.25 x 5.0 = 9.24% -> WACC 9.25%. Beta 1.25 konserwatywna deklaracja (yfinance raw beta 0.42 — defence ma niska korelacje z rynkiem, ale ryzyko polityczne/cykliczne uzasadnia premie). Tax 28% vs ustawowe 30%: niemiecka obnizka CIT od 2028 potwierdzona w AR 2025."
+        "note": "Re = 2.99 (Bund 10Y, Trading Economics 12.06.2026, po podwyzce ECB 11.06; potwierdzone 2 obserwacjami) + 1.25 x 5.0 = 9.24% -> WACC 9.25%. Beta 1.25 konserwatywna deklaracja (yfinance raw beta 0.42 — defence ma niska korelacje z rynkiem, ale ryzyko polityczne/cykliczne uzasadnia premie). Tax 28% vs ustawowe 30%: niemiecka obnizka CIT od 2028 potwierdzona w AR 2025.",
+        "rd_estimate_pct": 3.75,
+        "debt_gross_m": 1281,
+        "market_cap_m": 56111,
+        "full_wacc_calc": "Pelny WACC z dlugiem: E = EUR 56.1B (market cap 12.06), D brutto = EUR 1,281M (AR 2025: non-current 1,155 + current 126; cash 1,650 - 1,281 = net liquidity +369 — bilans sie domyka). Wagi: E 97.8% / D 2.2%. Rd ~3.75% pre-tax (ESTYMATA: Bund 2.99% + spread IG ~75bp; AR nie podaje sredniej stopy wprost — stopy stale, glownie convertible po konwersjach 915->224M) -> po podatku 2.70%. WACC = 0.978x9.24% + 0.022x2.70% = 9.09% -> FV 1,630 (+2.8%). DECYZJA: model uzywa uproszczenia WACC = Re = 9.25% — konserwatywne (zaniza FV o ~2.8%) i nie wymaga niezrodlowanej estymaty Rd przy wadze dlugu 2.2%."
       },
       "terminal_growth_rationale": "g=2.5%: NATO 3.5-5% GDP era + cykl odtworzeniowy amunicji trwa dekady, ale po supercyklu wzrost normalizuje. Kazde +0.5pp g podnosi FV o ~EUR 150.",
       "morningstar_reference": "Morningstar FV EUR 2,320 (podniesione 7% po FY2025) — miedzy naszym base EUR 1,740 a bull EUR 2,877. Morningstar zaklada pelna realizacje celow 2030.",
