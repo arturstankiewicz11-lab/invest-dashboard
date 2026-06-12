@@ -36,24 +36,20 @@ Przepływ zmiany: **edycja pliku → git push → Streamlit Cloud przebudowuje (
 
 **Plik: `CLAUDE.md`** (245 linii) — jedyne miejsce z zasadami. Sekcje:
 
+CLAUDE.md (po reorganizacji 12.06.2026, ~230 linii) ma 8 sekcji w logicznej kolejności:
+
 | Sekcja | Co reguluje |
 |--------|-------------|
-| `## Rola` | 5 obowiązkowych elementów każdej rekomendacji (teza, DCF, entry, ryzyka, geopolityka) |
-| `## Profil Inwestora` | horyzont 1-3 lata, 50-250k PLN, moonshoty 10-50x |
-| `## Format rekomendacji` | szablon tabeli rekomendacji |
-| `## Git — automatyczny push` | każda zmiana = commit+push (Streamlit czyta z GitHuba) |
-| `## Zasady` | **żadnych zmian recommendation/entry_point/thesis_breaker bez Twojej zgody**; FV tylko z pełnego wyliczenia |
-| `## Protokół: nowy raport finansowy` | co się dzieje po "nowy raport TICKER" (5 kroków) |
-| `## Protokół alternatywnych metod` | kiedy EV/Revenue, EV/EBITDA, scenariusze (np. pre-revenue) |
-| `## Protokół DCF` | obowiązkowe kroki A-E (FCF margin → tabela → dyskonto → TV → bridge) |
-| `## Struktura danych fundamentals` | format JSON-ów w fundamentals/ |
+| `1. Rola i profil inwestora` | 6 elementów rekomendacji; kapitał 1 mln PLN, cały świat, 10-50x |
+| `2. Zasady twarde (konstytucja)` | **10 punktów**: zakaz zmian rec/entry/breaker bez zgody, FV tylko z wyliczenia, liczby tylko z narzędzi, "nie wiem" obowiązkowe, source+data (ESTYMATY blokują BUY), reguła 2 źródeł, konwencje (FV=base, entry=0.75×FV, etapy 5+5), entry+breaker zawsze, auto-push, rewizja=teza |
+| `3. Workflow: nowy raport` | 5 kroków po "nowy raport TICKER"; pełny stack net debt (lekcja AMZN) |
+| `4. Protokół DCF` | Krok 0 (segmenty, blended CAGR) + kroki A-E; sanity PV_TV<TV (lekcja RHM) |
+| `5. Metody alternatywne` | EV/Revenue, EV/EBITDA, scenariusze — kiedy i jak |
+| `6. Checklisty jakościowe` | Buffett Tenets (✅/⚠️/❌ → wielkość pozycji), profil CEO (głód/ekspertyza, werdykt 2×2), mapa konkurencji per segment |
+| `7. Źródła danych i transkrypcje` | hierarchia źródeł, cytat+kontekst+wpływ na wycenę |
+| `8. Formaty danych` | fundamentals JSON, alt_valuation, szablon rekomendacji |
 
-**Jak zmienić zasadę:** edytuj CLAUDE.md (sam lub powiedz mi) → commit. Od następnej rozmowy stosuję nową wersję. Przykład: chcesz MoS 30% zamiast 25% → zmień w `## Zasady` i powiedz mi, żebym przeliczył entry pointy.
-
-Konwencje przyjęte w trakcie pracy (jeszcze NIE zapisane w CLAUDE.md — do dopisania):
-- FV = scenariusz **base** (nie bull, nie weighted); scenariusze jako dodatkowa informacja
-- Struktura DCF: 2 etapy po 5 lat (lub 3+7), potem terminal
-- Entry = FV × 0.75 (25% MoS)
+**Jak zmienić zasadę:** edytuj CLAUDE.md (sam lub powiedz mi) → commit. Od następnej rozmowy stosuję nową wersję. Przykład: chcesz MoS 30% zamiast 25% → zmień pkt 7 konstytucji i powiedz mi, żebym przeliczył entry pointy.
 
 ---
 
