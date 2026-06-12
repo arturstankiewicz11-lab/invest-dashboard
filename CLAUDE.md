@@ -362,3 +362,45 @@ Pliki `data/fundamentals/[TICKER]/[PERIOD].json` zawierają:
   "notes": "Źródło: strona X raportu. Azure +40% YoY."
 }
 ```
+
+## Zasady źródeł danych spoza raportów — anty-halucynacja
+
+**Zakaz liczb z pamięci.** Każda liczba (cena, liczba akcji, warunki umów, daty, wyceny) musi
+pochodzić z narzędzia w trakcie sesji: dokument w data/reports/, yfinance, web search/fetch
+z linkiem. Wiedza treningowa służy do rozumienia kontekstu, NIGDY jako źródło liczb.
+
+**Hierarchia źródeł** (wyższe wygrywa przy sprzeczności):
+1. Dokument pierwotny: 10-K/10-Q/S-1/8-K (SEC EDGAR), raport roczny z IR spółki
+2. Oficjalny komunikat spółki (PR, prezentacja IR)
+3. Renomowana prasa finansowa: Reuters, Bloomberg, CNBC, FT, WSJ
+4. Raporty branżowe (SemiAnalysis, ANS/NucNet, DCD) — cenne, ale oznaczaj jako analizę, nie fakt
+5. Pozostałe (agregatory, blogi) — tylko jako trop do weryfikacji wyżej
+
+**Reguła 2 źródeł.** Fakt wpływający na wycenę (warunki dealu, kontrakt, guidance, zmiana
+regulacyjna) wymaga: 2 niezależnych źródeł LUB 1 dokumentu pierwotnego. Jedno źródło
+prasowe = oznacz "(1 źródło — do potwierdzenia)".
+
+**Source + data przy każdym inpucie.** Każdy input w dcf/alt_valuation ma pole "source"
+z nazwą źródła i datą. Liczba bez źródła = ESTYMATA (oznaczona) albo nieużywana.
+Estymaty blokują rekomendację BUY do czasu weryfikacji.
+
+**Cytat zamiast parafrazy.** Przy ekstrakcji kluczowych faktów z weba zapisuj w notach
+dosłowną frazę źródła — parafraza to pierwsza forma halucynacji.
+
+**"Brak potwierdzenia w źródłach"** — gdy czegoś nie da się zweryfikować, pisz to wprost
+(analogicznie do "brak w raporcie"). Zgadywanie zakazane.
+
+**Świeżość:** fakt z weba starszy niż kwartał wymaga odświeżenia przy rewizji wyceny.
+
+## Transkrypcje earnings calls — źródła
+
+Używaj do: testu ekspertyzy CEO (konkret vs slogany w Q&A), mapy konkurencji
+(management mówi o konkurencji szczerzej niż w filingu), weryfikacji guidance.
+
+1. **IR spółki** — MSFT, NVDA publikują pełne transkrypcje/prepared remarks (najlepsze źródło)
+2. **Motley Fool** — fool.com/earnings-call-transcripts (darmowe, szerokie pokrycie US)
+3. **SEC 8-K exhibits** — prepared remarks niektórych spółek
+4. **Quartr** — także spółki EU (free tier)
+5. Spółki EU (RHM, ETL): sekcja IR — nagrania i prezentacje z calli
+
+Cytaty z transkrypcji w analizach zawsze z datą calla i dosłownym brzmieniem.
