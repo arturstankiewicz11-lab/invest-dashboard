@@ -1677,6 +1677,88 @@ def page_detail(ticker, pos, prices, recs):
                 {ne_html}
             </div>""", unsafe_allow_html=True)
 
+        # ── Profil CEO (gdy istnieje w danych)
+        ceo = rec.get("ceo_profile")
+        if ceo:
+            verdict = ceo.get("verdict", "")
+            v_up = verdict.upper()
+            vc = "#10b981" if ("GLODNY" in v_up or "GŁODNY" in v_up) and ("EKSPERT" in v_up) \
+                 else "#ef4444" if "SYTY" in v_up else "#f59e0b"
+            rows = ""
+            for key, label in [("background", "Kim jest"), ("hunger", "Głód"),
+                               ("domain_expertise", "Ekspertyza domenowa"),
+                               ("track_record", "Track record"),
+                               ("skin_in_the_game", "Skin in the game"),
+                               ("capital_allocation", "Alokacja kapitału"),
+                               ("red_flags", "Czerwone flagi")]:
+                val = ceo.get(key)
+                if val:
+                    warn_style = "color:#f59e0b" if "BRAK POTWIERDZENIA" in str(val).upper() else "color:#94a3b8"
+                    rows += (f'<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;'
+                             f'color:#475569;text-transform:uppercase;letter-spacing:1.2px">{label}</div>'
+                             f'<div style="{warn_style};font-size:12.5px;line-height:1.6">{_e(val)}</div></div>')
+            st.markdown(f"""
+            <div style="margin-top:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:18px 22px">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+                    <div><span style="font-size:10px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:1.5px">👤 Profil CEO</span>
+                    <div style="color:#e2e8f0;font-size:16px;font-weight:700;margin-top:2px">{_e(ceo.get('name','—'))}
+                    <span style="color:#475569;font-size:12px;font-weight:400"> · CEO od {_e(ceo.get('ceo_since','—'))}</span></div></div>
+                    <span style="background:{vc}22;border:1px solid {vc}55;color:{vc};border-radius:8px;padding:4px 12px;font-size:12px;font-weight:700">{_e(verdict)}</span>
+                </div>
+                {rows}
+            </div>""", unsafe_allow_html=True)
+
+        # ── Mapa konkurencji (gdy istnieje)
+        comp = rec.get("competitive_landscape")
+        if comp:
+            st.markdown('<div class="sh" style="margin-top:20px">⚔️ Mapa konkurencji</div>', unsafe_allow_html=True)
+            t_colors = {"wysokie": "#ef4444", "średnie": "#f59e0b", "srednie": "#f59e0b", "niskie": "#64748b"}
+            html = '<div style="display:flex;flex-direction:column;gap:8px">'
+            for c in comp:
+                tc = t_colors.get(str(c.get("threat", "")).lower(), "#64748b")
+                tick = f' <span style="color:#475569;font-size:11px">({_e(c["ticker"])})</span>' if c.get("ticker") else \
+                       ' <span style="color:#475569;font-size:11px">(prywatna)</span>'
+                html += f"""<div style="background:rgba(255,255,255,0.03);border-left:2px solid {tc};
+                            border-radius:0 10px 10px 0;padding:10px 16px">
+                    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+                        <span style="color:#e2e8f0;font-weight:700;font-size:13px">{_e(c.get('name','—'))}{tick}</span>
+                        <span style="color:{tc};font-size:11px;font-weight:700;text-transform:uppercase">zagrożenie: {_e(c.get('threat','—'))}</span>
+                    </div>
+                    <div style="color:#94a3b8;font-size:12px;margin-top:3px">{_e(c.get('segment',''))}</div>
+                    <div style="color:#64748b;font-size:11.5px;margin-top:3px">{_e(c.get('note',''))}
+                        <span style="color:#334155"> · źródło: {_e(c.get('source','—'))}</span></div>
+                </div>"""
+            html += '</div>'
+            st.markdown(html, unsafe_allow_html=True)
+
+        # ── Buffett Tenets checklist (gdy istnieje)
+        tenets = rec.get("buffett_tenets")
+        if tenets:
+            st.markdown('<div class="sh" style="margin-top:20px">📋 Buffett Tenets</div>', unsafe_allow_html=True)
+            LABELS = {"business_simple": "Biznes prosty i zrozumiały", "business_consistent_history": "Spójna historia operacyjna",
+                      "business_longterm_prospects": "Perspektywy długoterminowe", "mgmt_rational": "Management racjonalny",
+                      "mgmt_candid": "Szczerość wobec akcjonariuszy", "mgmt_institutional_imperative": "Odporność na imperatyw instytucjonalny",
+                      "fin_roe": "ROE (nie EPS)", "fin_margins": "Wysokie marże", "fin_dollar_test": "Test $1 za $1",
+                      "fin_owner_earnings": "Owner earnings"}
+            MARK = {"OK": ("✅", "#10b981"), "UWAGA": ("⚠️", "#f59e0b")}
+            html = '<div style="display:flex;flex-direction:column;gap:6px">'
+            for key, item in tenets.items():
+                if key == "wniosek" or not isinstance(item, dict):
+                    continue
+                mark, mc = MARK.get(str(item.get("ocena", "")).upper(), ("❌", "#ef4444"))
+                html += f"""<div style="display:flex;gap:10px;align-items:baseline;background:rgba(255,255,255,0.02);
+                            border-radius:8px;padding:7px 12px">
+                    <span style="font-size:13px">{mark}</span>
+                    <span style="color:#e2e8f0;font-size:12.5px;font-weight:600;min-width:230px">{LABELS.get(key, key)}</span>
+                    <span style="color:#64748b;font-size:12px">{_e(item.get('uzasadnienie',''))}</span>
+                </div>"""
+            html += '</div>'
+            st.markdown(html, unsafe_allow_html=True)
+            if tenets.get("wniosek"):
+                st.markdown(f"""<div style="margin-top:10px;background:rgba(0,217,163,0.06);border:1px solid rgba(0,217,163,0.2);
+                    border-radius:10px;padding:10px 16px;font-size:12.5px;color:#94a3b8">
+                    <b style="color:#00d9a3">Wniosek dla pozycji:</b> {_e(tenets['wniosek'])}</div>""", unsafe_allow_html=True)
+
 # ─── CHAT HISTORY PERSISTENCE ────────────────────────────────────────────────
 CHAT_HISTORY_FILE = "data/chat_history.json"
 CHAT_CONTEXT_LIMIT = 20  # max messages sent to API (saves tokens)

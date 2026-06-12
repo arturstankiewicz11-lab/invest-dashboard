@@ -274,7 +274,7 @@
     "recommendation": "BUY",
     "fair_value": 1585.0,
     "fair_value_currency": "EUR",
-    "entry_point": 1250,
+    "entry_point": 1189,
     "upside_pct": null,
     "thesis_short": "Europejski lider rearmamentu. FY2025: rev EUR 9.9B (+30%), op result 18.5%, backlog 63.8B, net liquidity +369M. CEO Papperger = GLODNY EKSPERT (35 lat w firmie, Economist best CEO 2025). DCF base EUR 1,585 (WACC 9.25 po ECB 11.06), bull 2,602, Morningstar 2,320. Cena ~1,206 vs entry — patrz propozycja 1,189.",
     "thesis_full": "Rheinmetall to europejski lider rearmamentu z rekordowym backlogiem EUR 63.8B (+36% YoY, AR 2025) i nomination pipeline EUR 26.4B. FY2025: revenue EUR 9.9B (+30%), operating result EUR 1,841M (18.5%), EBIT EUR 1,684M (16.9%), OFCF EUR 1,218M, net liquidity +EUR 369M. Guidance 2026: +40-45% (EUR 14.0-14.5B) @ ~19% op margin — reaffirmed w Q1 2026 (sales +8% sezonowo, akceleracja od Q2; NVL naval skonsolidowane). Target CMD 2030: EUR ~50B revenue, marza >20%, cash conversion >50% (segmenty: Vehicle 13-15B, Ammo 14-16B, Air Defence 3-4B, Digital 8-10B). DCF base EUR 1,658 = 80% celu spolki (CAGR 32%, EBIT 18%, WACC 9%); bull EUR 2,742 (cele trafione) — Morningstar EUR 2,320 miedzy base a bull. Sprzedaz automotive H1 2026 czysci profil na pure defence.",
@@ -287,7 +287,7 @@
     "buffett_moat": "Wide",
     "last_updated": "2026-06-12",
     "next_earnings": null,
-    "priority_action": "PRIORYTET 2: Dokup. Obecna cena = dobry entry. Alokuj kapitał z ETL + AGGG.",
+    "priority_action": "Dokupuj ponizej entry 1,189 (25% MoS od FV 1,585). Cena ~1,206 tuz nad progiem — czekaj na zejscie. Checkpoint: raport H1 06.08 (skin in the game CEO, wplyw NVL).",
     "dcf": {
       "wacc_pct": 9.25,
       "terminal_growth_pct": 2.5,
@@ -397,7 +397,7 @@
         "date": "2026-06-12",
         "event": "Pelna aktualizacja po findings weryfikatora: Rf 2.6->2.99% (Bund po ECB 11.06, 2 zrodla) -> WACC 9.25%, FV 1658->1585 (zgodne z niezaleznym wyliczeniem weryfikatora). Scenariusze 617/1585/2602, weighted 1646. Dodane checklisty: ceo_profile (Papperger: GLODNY EKSPERT — 35 lat w firmie, Economist best CEO 2025, cel rosyjskiego zamachu 2024; skin in the game BRAK POTWIERDZENIA — do weryfikacji), competitive_landscape (KNDS/BAE/GDLS z AR + Hanwha oznaczona do potwierdzenia), buffett_tenets (8xOK/1xUWAGA -> pelna pozycja, MoS 25%).",
         "impact": "neutral",
-        "fv_note": "FV 1658->1585. PROPOZYCJA (czeka na akceptacje): entry 1250->1189 (25% MoS). Uwaga: cena 1205.6 jest 1.4% NAD proponowanym entry — BUY formalnie czeka na 1189."
+        "fv_note": "FV 1658->1585. Entry 1250->1189 (25% MoS) — ZAAKCEPTOWANE 12.06. Cena 1205.6 = 1.4% nad entry, BUY czeka na 1,189."
       },
       {
         "date": "2026-06-12",
