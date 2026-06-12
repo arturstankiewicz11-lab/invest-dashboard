@@ -260,7 +260,26 @@ Jeśli dane różnią się od założeń w `recommendations.json` o więcej niż
 
 ## Protokół DCF — obowiązkowe wyliczenie krok po kroku
 
-**Zasada twarda:** Każde podanie Fair Value wymaga przejścia przez wszystkie 5 kroków poniżej. Nie ma wyjątków — nie ma "szacunkowo", "około", "widełek" bez liczenia.
+**Zasada twarda:** Każde podanie Fair Value wymaga przejścia przez wszystkie kroki poniżej. Nie ma wyjątków — nie ma "szacunkowo", "około", "widełek" bez liczenia.
+
+**Krok 0 — Dekompozycja po liniach produktowych / segmentach (OBOWIĄZKOWA gdy spółka raportuje segmenty)**
+
+Cel: widzieć co rośnie, a co nie — i z jaką marżą (wzorzec: Amazon, gdzie AWS rośnie najszybciej przy znacznie wyższej marży niż e-commerce).
+
+1. Rozbij bazę przychodów na segmenty z raportu. Dla każdego segmentu podaj:
+   - revenue (ostatni rok/TTM) + źródło
+   - wzrost YoY (z ostatnich kwartałów — pokaż trajektorię, czy przyspiesza/zwalnia)
+   - marżę segmentu, jeśli raportowana (operating margin / EBIT)
+   - kluczowy driver i założony CAGR na Stage 1
+2. CAGR każdego stage'u wyprowadź jako **blended z segmentów** — pokaż działanie:
+   `np. AWS 26% × waga + Ads 22% × waga + E-comm 15% × waga = blended 18%`
+3. Jeśli marże segmentowe są znane, EBIT% stage'u również wyprowadź bottom-up z miksu
+   segmentów (mix shift w stronę wysokomarżowych segmentów = rosnąca marża blended — pokaż).
+4. **Agregacja na końcu:** suma segmentów = baza revenue do Kroku B. Zapis w
+   `dcf.base_breakdown` (segmenty, YoY, noty) — aplikacja renderuje to jako "Krok 0"
+   w zakładce DCF. Osobne drivery o różnej dynamice (jak NVDA: hyperscaler + sovereign AI)
+   zapisuj w `dcf.drivers` z osobnymi CAGR.
+5. Spółki bez raportowanych segmentów: jedna linia, z adnotacją "brak segmentacji w raporcie".
 
 **Krok A — FCF margin ze wzoru**
 ```
