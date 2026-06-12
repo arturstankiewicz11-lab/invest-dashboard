@@ -110,9 +110,13 @@ Dopiero po kroku E wolno napisać "Fair Value = X".
 
 - **WACC** (`wacc_inputs`): Rf = rentowność 10Y obligacji W WALUCIE SPÓŁKI z datą i źródłem
   (Bund dla EUR, UST dla USD); beta — podaj zmierzoną (yfinance) ORAZ przyjętą, z uzasadnieniem
-  różnicy; ERP ze źródłem/konwencją; **Rd**: dług brutto z bilansu (nie net!), market cap,
-  wagi E/V i D/V, stopa długu ze źródłem — LUB udokumentowane uproszczenie WACC=Re, dozwolone
-  tylko gdy D/V < 5% i z policzonym wpływem na FV (`full_wacc_calc`, wzorzec RHM.DE).
+  różnicy; ERP ze źródłem/konwencją; **Rd — hierarchia wyprowadzenia (zakaz generycznego
+  "spreadu IG")**: (1) YTM notowanych obligacji spółki, (2) rating kredytowy (Moody's/S&P/Fitch
+  ze źródłem i datą — np. Baa1 → spread ~100bp EUR) → spread odpowiadający ratingowi,
+  (3) koszt odsetkowy z raportu: interest expense / średni dług brutto, (4) rating syntetyczny
+  z interest coverage — gdy spółka nieratowana. Do tego: dług brutto z bilansu (nie net!),
+  market cap, wagi E/V i D/V. Uproszczenie WACC=Re dozwolone tylko gdy D/V < 5%
+  i z policzonym wpływem na FV (`full_wacc_calc`, wzorzec RHM.DE).
 - **Terminal g** (`terminal_growth_rationale`): kotwica (nominalny PKB = inflacja + realny PKB),
   uzasadnienie odchylenia w górę/dół, wrażliwość ±0,5pp → wpływ na FV w walucie.
 - **CAGR per stage** (`stages[].note`): wyprowadzenie — blended z segmentów (Krok 0) LUB kotwice:
