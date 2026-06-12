@@ -2480,12 +2480,13 @@ p.document.addEventListener('keydown', function(e){
             <span style="font-size:16px">📢</span>
             <span>Earnings <b style="color:#818cf8">{t}</b> — {ne} ({label}). Sprawdź czy teza aktualna.</span>
         </div>"""
-    if reminders_html:
+    # Alerty i banery BUY tylko na Overview — strony spółek zaczynają się od własnych danych
+    if reminders_html and page_key == "__overview__":
         st.markdown(f'<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">{reminders_html}</div>',
                     unsafe_allow_html=True)
 
     all_buys = sorted(alerts, key=lambda x: -(x[4] or 0)) + sorted(buy_above, key=lambda x: -(x[4] or 0))
-    if all_buys:
+    if all_buys and page_key == "__overview__":
         html = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">'
         for t, name, p, ep, upside, fv, fv_c in all_buys:
             up_s     = f"+{upside:.0f}%" if upside else ""
