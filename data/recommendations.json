@@ -2,12 +2,12 @@
   "MSFT": {
     "name": "Microsoft",
     "recommendation": "BUY",
-    "fair_value": 535.0,
+    "fair_value": 520.0,
     "fair_value_currency": "USD",
     "entry_point": 400,
     "upside_pct": null,
     "thesis_short": "Azure +40% YoY, AI ARR $37B (+123%). FV DCF $535 = $510 operacyjny + $25 stake OpenAI (26.79% x $852B, po tax haircut). Rewizja po dealu OpenAI Apr 2026: rev share 20% cap $38B, koniec wylacznosci Azure, IP do 2032.",
-    "thesis_full": "Microsoft to wiodaca platforma AI enterprise z trzema motorami: (1) Azure — +40% YoY Q3 FY2026, Commercial RPO $627B (+99%, 45% OpenAI commitments); (2) AI ARR $37B (+123% YoY); (3) M365 Copilot 100M+ MAU z unikalnym moat danych Office. NOWY DEAL OpenAI (27 Apr 2026) zmienia profil: rev share 20% przez 2030 z hard cap $38B (trafiony ~2028 przy ARR OpenAI $130B+), wylacznosc Azure SKONCZONA (OpenAI moze AWS/GCP — $50B deal z Amazon aktywny), licencja IP niewylaczna do 2032. Po 2032 MAI (dzis #38 LMArena, $16B/rok compute na trening) musi zastapic OpenAI IP — kluczowe ryzyko Stage 2. GitHub Copilot kupuje tokeny Anthropic (50-60% GM Anthropic) = trwala kompresja marzy z ~85% do ~40-45% na tej linii. Token stack: Azure Foundry TaaS rosnie, ale AI-native startupy wybieraja CoreWeave/AWS (ClusterMAX: Azure grozi spadek do Silver). CapEx $190B commitment 2026 (33% rev annualized) = szczyt buildoutu, normalizacja do 13% w Stage 2. UKRYTY ASSET: 26.79% OpenAI = $228B przy wycenie $852B (Mar 2026); IPO OpenAI late 2026/2027 przy $1T+ moze ujawnic wartosc — w FV liczone konserwatywnie $25/akcje po 20% tax haircut. DCF: WACC 9.5%, Stage1 FY2027-29 CAGR 20%/EBIT 45%, Stage2 FY2030-36 CAGR 12%/EBIT 44%, g=3%.",
+    "thesis_full": "Microsoft to wiodaca platforma AI enterprise z trzema motorami: (1) Azure — +40% YoY Q3 FY2026, Commercial RPO $627B (+99%, 45% OpenAI commitments); (2) AI ARR $37B (+123% YoY); (3) Copilot ~100M MAU (wszystkie warianty; M365 paid seats ~15M) z unikalnym moat danych Office. NOWY DEAL OpenAI (27 Apr 2026) zmienia profil: rev share 20% przez 2030 z hard cap $38B (trafiony ~2028 przy ARR OpenAI $130B+), wylacznosc Azure SKONCZONA (OpenAI moze AWS/GCP — $50B deal z Amazon aktywny), licencja IP niewylaczna do 2032. Po 2032 MAI (dzis #38 LMArena, $16B/rok compute na trening) musi zastapic OpenAI IP — kluczowe ryzyko Stage 2. GitHub Copilot kupuje tokeny Anthropic (50-60% GM Anthropic) = trwala kompresja marzy z ~85% do ~40-45% na tej linii. Token stack: Azure Foundry TaaS rosnie, ale AI-native startupy wybieraja CoreWeave/AWS (ClusterMAX: Azure grozi spadek do Silver). CapEx: 9M annualized $107B (33% rev), guidance ~$190B na CY2026 (~59% rev) — szczyt przed nami = szczyt buildoutu, normalizacja do 13% w Stage 2. UKRYTY ASSET: 26.79% OpenAI = $228B przy wycenie $852B (Mar 2026); IPO OpenAI late 2026/2027 przy $1T+ moze ujawnic wartosc — w FV liczone konserwatywnie $25/akcje po 20% tax haircut. DCF: WACC 9.5%, Stage1 FY2027-29 CAGR 20%/EBIT 45%, Stage2 FY2030-36 CAGR 12%/EBIT 44%, g=3%.",
     "thesis_breaker": "Azure growth poniżej 25% przez 2 kolejne kwartały. ROI na AI CapEx nie materializuje się.",
     "risks": [
       "OpenAI IP cliff 2032 — MAI (#38 LMArena) musi osiagnac frontier do 2030; jesli nie, Foundry 1P marze nie do odzyskania. Impact: Stage2 EBIT -3pp dodatkowo, FV -$60",
@@ -22,7 +22,7 @@
       "wacc_pct": 9.5,
       "terminal_growth_pct": 3.0,
       "revenue_ttm_m": 322443,
-      "net_debt_m": -38010,
+      "net_debt_m": 24890,
       "shares_m": 7445,
       "wacc_inputs": {
         "rf_pct": 4.4,
@@ -36,8 +36,9 @@
       "balance_sheet_inputs": {
         "cash_and_st_investments_m": 78272,
         "total_debt_m": 40262,
-        "net_cash_m": 38010,
-        "note": "Q3 FY2026 10-Q. Net cash $38B (spadek z $80B — dywidendy, buybacki, CapEx AI)."
+        "finance_leases_m": 62900,
+        "net_debt_m": 24890,
+        "note": "KOREKTA po weryfikatorze 13.06: finance leases $62.9B (10-Q Note 12; wzrost z $46.2B w 9 mies.!) wlaczone do dlugu — ich splaty kapitalu nie sa w formule FCF. Net: 78,272 - 40,262 - 62,900 = NET DEBT $24.9B (nie net cash $38B). Dodatkowo $19.5B nowych aktywow finance lease w 9M = buildout poza linia CapEx."
       },
       "openai_stake": {
         "ownership_pct": 26.79,
@@ -61,10 +62,10 @@
           "rev_cagr_pct": 20,
           "ebit_margin_pct": 45,
           "tax_pct": 19,
-          "capex_pct": 28,
+          "capex_pct": 32,
           "da_pct": 12,
-          "fcf_margin_pct": 20.45,
-          "note": "CAGR 20% (z 18%): Azure +40% Q3 FY2026 + RPO $627B daje visibility; OpenAI commitments 45% RPO konsumowane przez ~5 lat. EBIT 45% (z 47%): Copilot kupuje tokeny Anthropic (drag ~1pp), neocloud premium za wynajem GPU po Big Pause (~1pp). CapEx 28% (z 25%): $190B commitment 2026, committed leases $196.6B FY2026-31."
+          "fcf_margin_pct": 16.45,
+          "note": "CAGR 20% wymaga AKCELERACJI z +18% YoY (zalozenie agresywne, oparte na RPO $627B +99% — ale 45% RPO to OpenAI po utracie wylacznosci). EBIT 45%: Copilot/neocloud drag. CapEx 32% (KOREKTA z 28% po weryfikatorze): guidance ~$190B CY2026 = ~59% revenue -> sciezka normalizacji wolniejsza; 28% zakladalo przepolowienie tuz po szczycie. Tax 19% efektywny (10-Q)."
         },
         {
           "period": "FY2030-2036",
@@ -80,26 +81,26 @@
       ],
       "pv_fcf_stage1_m": 238240,
       "pv_fcf_stage2_m": 1029786,
-      "pv_fcf_total_m": 1268026,
+      "pv_fcf_total_m": 1221000,
       "terminal_value_m": 6175657,
       "pv_terminal_m": 2491965,
-      "enterprise_value_m": 3759991,
-      "equity_value_m": 3798001,
-      "fair_value_operational": 510.0,
-      "fair_value_computed": 535.0,
+      "enterprise_value_m": 3713000,
+      "equity_value_m": 3689000,
+      "fair_value_operational": 495.4,
+      "fair_value_computed": 520.0,
       "notes": "FV $535 = $510 DCF operacyjny + $25 stake OpenAI (po tax haircut). Rewizja 2026-06-11 po: (1) deal OpenAI 27 Apr 2026 — rev share cap $38B, koniec wylacznosci, IP do 2032; (2) SemiAnalysis 'MSFT AI Strategy Deconstructed' — Big Pause 3.5GW, neocloud premium, Maia dead last, Copilot margin drag; (3) Q3 FY2026 actuals. TV = 66% EV. Poprzednie FV $604 nie uwzglednialo OpenAI cliff ani konca wylacznosci.",
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 20,
           "color": "ef4444",
-          "fair_value": 279,
+          "fair_value": 265,
           "description": "Azure deceleruje <25% (thesis breaker), AI CapEx bez ROI, MAI flop, Copilot przegrywa z Claude Code/Codex. Wycena OpenAI spada — stake tylko +$15.",
           "assumptions": {
             "stage1_cagr_pct": 14,
             "stage2_cagr_pct": 8,
             "ebit_margin_pct": 43,
-            "fcf_margin_s1_pct": 16.8,
+            "fcf_margin_s1_pct": 12.83,
             "fcf_margin_s2_pct": 26.4,
             "wacc_pct": 10.0,
             "terminal_g_pct": 2.5
@@ -110,13 +111,13 @@
           "name": "Base",
           "probability_pct": 50,
           "color": "00d9a3",
-          "fair_value": 535,
+          "fair_value": 520,
           "description": "Ten model. Azure CAGR 20% Stage1, EBIT 45%/44%, cap $38B trafiony 2028, MAI przyzwoity ale nie frontier. Stake OpenAI +$25.",
           "assumptions": {
             "stage1_cagr_pct": 20,
             "stage2_cagr_pct": 12,
             "ebit_margin_pct": 45,
-            "fcf_margin_s1_pct": 20.45,
+            "fcf_margin_s1_pct": 16.45,
             "fcf_margin_s2_pct": 31.64,
             "wacc_pct": 9.5,
             "terminal_g_pct": 3.0
@@ -127,13 +128,13 @@
           "name": "Bull",
           "probability_pct": 30,
           "color": "f59e0b",
-          "fair_value": 827,
+          "fair_value": 832,
           "description": "MAI osiaga frontier do 2028 -> Foundry 1P marze ~99% wracaja (+30-40pp na linii AI tokens). Azure utrzymuje 40%+ dluzej. IPO OpenAI $1T+ -> stake +$36.",
           "assumptions": {
             "stage1_cagr_pct": 24,
             "stage2_cagr_pct": 14,
             "ebit_margin_pct": 46,
-            "fcf_margin_s1_pct": 23.3,
+            "fcf_margin_s1_pct": 19.26,
             "fcf_margin_s2_pct": 36.7,
             "wacc_pct": 9.0,
             "terminal_g_pct": 3.0
@@ -141,8 +142,8 @@
           "key_risk": "MAI dzis #38 LMArena — frontier do 2028 to ambitne zalozenie"
         }
       ],
-      "fair_value_weighted": 571,
-      "fair_value_weighted_formula": "0.20x$279 + 0.50x$535 + 0.30x$827 = $571",
+      "fair_value_weighted": 563,
+      "fair_value_weighted_formula": "0.20x$265 + 0.50x$520 + 0.30x$832 = $563",
       "base_breakdown": {
         "label": "Q3 FY2026 (kwartal, 10-Q) — trzy segmenty raportowe + Azure wewnatrz Intelligent Cloud",
         "ttm_note": "Baza modelu = revenue annualized $322.4B (Q3 FY2026). CAGR Stage1 20% = blended: Azure ~+35-40% przy ~40% wagi + Productivity ~+13% + MPC ~+6%.",
@@ -150,31 +151,37 @@
           {
             "segment": "Productivity & Business Processes (M365, LinkedIn, Dynamics)",
             "revenue_m": 35013,
-            "yoy_pct": null,
-            "note": "Q3 FY2026 kwartalnie. M365 Copilot 20M+ platnych seatow. Marza segmentu ~60% (op income 20,973/35,013)"
+            "yoy_pct": 17,
+            "note": "Q3 FY2026. M365 Copilot paid seats ~15M (dane publiczne, BRAK w 10-Q — poprzednie '20M+' bez pokrycia); Copilot wszystkie warianty ~100M MAU. Marza segmentu ~60%"
           },
           {
             "segment": "Intelligent Cloud (Azure, Server, AI)",
             "revenue_m": 34681,
-            "yoy_pct": null,
+            "yoy_pct": 30,
             "note": "Azure +40% YoY (39% CC); AI ARR $37B (+123%). Marza segmentu ~40% — NIZSZA niz Productivity przez AI CapEx; mix shift trzyma blended"
           },
           {
             "segment": "More Personal Computing (Windows, Gaming, Devices)",
             "revenue_m": 13192,
-            "yoy_pct": null,
+            "yoy_pct": -1,
             "note": "Najwolniejszy segment; Gaming po Activision. Marza najnizsza"
           },
           {
             "segment": "RAZEM Q3 FY2026",
             "revenue_m": 82886,
-            "yoy_pct": 18.8,
-            "note": "Annualized $322.4B = baza Stage1. YoY segmentow nie wyekstrahowane z 10-Q — uzupelnic przy Q4 (28.07)"
+            "yoy_pct": 18.3,
+            "note": "Annualized $322.4B = baza Stage1. YoY z 10-Q: P&BP +17%, IC +30%, MPC -1%; total +18.3%"
           }
         ]
       }
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Weryfikator: ZGODNA Z UWAGAMI — arytmetyka odtworzona co do dolara, ale 2 istotne korekty: (1) finance leases $62.9B do net debt (net cash $38B -> NET DEBT $24.9B), (2) CapEx Stage1 28->32% (guidance $190B CY2026 = 59% rev; '33%' w tezie mylilo annualized 9M z guidance). Poprawione tez: Copilot 100M MAU = wszystkie warianty (M365 seats ~15M), YoY segmentow z 10-Q (P&BP +17/IC +30/MPC -1), ROE 32-35%, Oracle dodany do konkurencji.",
+        "impact": "negative",
+        "fv_note": "FV $535->$520 (scenariusze 265/520/832, weighted 563). PROPOZYCJA: entry $400->$390 (0.75x520) — cena 390.74 dokladnie na progu. Czeka na akceptacje."
+      },
       {
         "date": "2026-06-13",
         "event": "Uzupelnienie do nowych zasad (bez zmiany FV — model z 11.06 aktualny): ceo_profile Nadella = SYTY EKSPERT (0 zakupow/9 sprzedazy w 5 lat, plan sprzedazy od 31.08.2026 z 10-Q, comp $96.5M; ale ekspertyza techniczna realna i firma dziala glodnie — akceptowalne dla compoundera). Konkurencja per segment (AWS/GCP wysokie, Claude Code vs Copilot wysokie, OpenAI partner-konkurent rosnace). Tenets 7xOK/2xUWAGA -> pelna pozycja. Krok 0: 3 segmenty z marzami. Rd z ratingu AAA: pelny WACC 9.32% vs uzywane 9.5% (uproszczenie konserwatywne, D/V 1.4%).",
@@ -277,6 +284,15 @@
         "threat": "srednie",
         "note": "Po Big Pause MSFT zmuszony wynajmowac od nich z premia (margin drag Stage1); ClusterMAX: Azure ryzyko degradacji do Silver",
         "source": "SemiAnalysis"
+      },
+      {
+        "name": "Oracle (OCI)",
+        "ticker": "ORCL",
+        "public": true,
+        "segment": "AI IaaS — glowny beneficjent Big Pause",
+        "threat": "srednie",
+        "note": "Przejal kontrakt Stargate OpenAI (~$420B TCV / ~$150B GP wg SemiAnalysis) — wprost kosztem Azure",
+        "source": "SemiAnalysis (data/reports/MSFT/pdf.pdf)"
       }
     ],
     "buffett_tenets": {
@@ -306,7 +322,7 @@
       },
       "fin_roe": {
         "ocena": "OK",
-        "uzasadnienie": "ROE ~40% konsekwentnie przy rosnacym kapitale"
+        "uzasadnienie": "ROE ~32-35% (NI ann. $130.6B / equity $414.4B) — wysokie, choc nizsze niz historyczne ~40%"
       },
       "fin_margins": {
         "ocena": "OK",

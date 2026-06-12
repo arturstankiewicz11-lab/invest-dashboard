@@ -5,7 +5,7 @@
   "report_type": "annual",
   "source_file": null,
   "extracted": "2026-05-26",
-  "revenue_m": 245000,
+  "revenue_m": 281700,
   "ebit_m": 107800,
   "ebit_margin_pct": 44.0,
   "da_m": 12250,
@@ -15,5 +15,5 @@
   "shares_diluted_m": 7450,
   "guidance_revenue_m": null,
   "guidance_notes": "Azure +40% YoY. AI revenue $37B annualized (+123%).",
-  "notes": "Dane z założeń DCF — zastąp plikiem PDF po kolejnym raporcie. Q3 FY2026 (kwiecień 2026): EPS beat, Azure +40% YoY."
+  "notes": "KOREKTA 13.06: poprzednia wartosc 245,000 byla liczba FY2024. FY2025 ~$281.7B (10-Q Q3 FY2026: 9M FY2025 = $205,283M + Q4E). Nadal placeholder czesciowy — zastapic pelnym 10-K FY2025. Wzrost FY2026E vs FY2025: ~+18%, nie +31%."
 }
