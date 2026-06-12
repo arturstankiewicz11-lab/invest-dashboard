@@ -140,10 +140,35 @@ z założeń zapisanych w `dcf.stages` w recommendations.json. Czyli: **zakładk
 
 ---
 
-## 7. PLAN WZMOCNIENIA (uzgodniony kierunek, status)
+## 7. PLAN WZMOCNIENIA (status: 2026-06-12)
 
-1. ⬜ `tools/validate.py` + schemat JSON — automatyczne sprawdzanie: FV zgodne z założeniami, entry = 25% MoS, wagi scenariuszy = 100%, brak placeholderów przy BUY, PV_TV < TV
-2. ⬜ Skill `/audyt` — przegląd wszystkich wycen jedną komendą
+1. ✅ `tools/validate.py` — sprawdza: FV vs model (E1), FV bez modelu (E2), schemat stages (E3),
+   PV_TV<TV (E4), wagi=100% (E5), BUY na placeholderze (E6), entry vs 0.75×FV, thesis breaker,
+   net_debt vs fundamentals, daty, ESTYMATY, świeżość. Obowiązkowy przed pushem (CLAUDE.md pkt 9).
+2. ⬜ Skill `/audyt` — przegląd wszystkich wycen jedną komendą (walidator + ceny live + staleness)
 3. ⬜ Skille `/nowy-raport`, `/wycena` — sformalizowane protokoły z CLAUDE.md
-4. ⬜ Agent-weryfikator — niezależne przeliczenie każdej nowej wyceny
-5. ⬜ Dopisanie do CLAUDE.md konwencji z sekcji 2 (FV=base, 5+5 lat, entry=0.75×FV)
+4. ⬜ Agent-weryfikator — niezależne przeliczenie każdej nowej wyceny (dla reguł jakościowych,
+   których kod nie sprawdzi)
+5. ✅ Konwencje w CLAUDE.md (konstytucja pkt 7: FV=base, entry=0.75×FV, etapy 5+5)
+
+**Backlog treściowy** (czyszczony przy rewizjach, nie hurtowo):
+- 10 błędów walidatora: ETL.PA (FV≠model), PZU.WA / 0700.HK / FRMI / RKLB / CCJ (FV bez modelu),
+  IONQ (FV=bull, entry>FV) — pełne analizy, najlepiej przy earnings VII-VIII 2026
+- Backfill nowych checklist (ceo_profile, competitive_landscape, Buffett tenets) dla 23 tickerów
+- App: wyświetlanie ceo_profile i competitive_landscape w zakładce Teza (gdy dane powstaną)
+
+## 8. JAK WALIDATOR "UCZY SIĘ" NOWYCH ZASAD
+
+Walidator NIE uczy się sam — to deterministyczny kod, i to jego zaleta (nie dryfuje,
+nie halucynuje, daje ten sam wynik za każdym razem). Cykl życia nowej zasady:
+
+1. Ustalasz zasadę → trafia do CLAUDE.md (sekcja 2 lub protokoły)
+2. Claude ocenia: czy zasada jest sprawdzalna maszynowo?
+   - **TAK** (arytmetyka, schemat, struktura, progi): w TYM SAMYM commicie dopisuje check
+     do tools/validate.py — zasada bez checku to tylko prośba
+   - **NIE** (jakościowe: "głód CEO", wiarygodność źródła, trafność cytatu): zostaje
+     instrukcją dla Claude'a; docelowo weryfikuje ją agent-weryfikator (pkt 4 planu)
+3. Test: `python3 tools/validate.py` na wszystkich tickerach — nowy check nie może
+   fałszywie alarmować na zdrowych wycenach
+
+Zasada spójności: **zmiana reguły w CLAUDE.md i zmiana walidatora = jeden commit.**
