@@ -272,11 +272,11 @@
   "RHM.DE": {
     "name": "Rheinmetall",
     "recommendation": "BUY",
-    "fair_value": 1658.0,
+    "fair_value": 1585.0,
     "fair_value_currency": "EUR",
     "entry_point": 1250,
     "upside_pct": null,
-    "thesis_short": "Europejski lider rearmamentu. FY2025: rev EUR 9.9B (+30%), EBIT 16.9% (op result 18.5%), backlog 63.8B, net liquidity +369M. Q1 2026: guidance reaffirmed, NVL naval skonsolidowane. DCF base EUR 1,658 (zweryfikowany z pelnego AR), bull 2,742, Morningstar 2,320. Cena ~1,206 < entry 1,250 -> BUY.",
+    "thesis_short": "Europejski lider rearmamentu. FY2025: rev EUR 9.9B (+30%), op result 18.5%, backlog 63.8B, net liquidity +369M. CEO Papperger = GLODNY EKSPERT (35 lat w firmie, Economist best CEO 2025). DCF base EUR 1,585 (WACC 9.25 po ECB 11.06), bull 2,602, Morningstar 2,320. Cena ~1,206 vs entry — patrz propozycja 1,189.",
     "thesis_full": "Rheinmetall to europejski lider rearmamentu z rekordowym backlogiem EUR 63.8B (+36% YoY, AR 2025) i nomination pipeline EUR 26.4B. FY2025: revenue EUR 9.9B (+30%), operating result EUR 1,841M (18.5%), EBIT EUR 1,684M (16.9%), OFCF EUR 1,218M, net liquidity +EUR 369M. Guidance 2026: +40-45% (EUR 14.0-14.5B) @ ~19% op margin — reaffirmed w Q1 2026 (sales +8% sezonowo, akceleracja od Q2; NVL naval skonsolidowane). Target CMD 2030: EUR ~50B revenue, marza >20%, cash conversion >50% (segmenty: Vehicle 13-15B, Ammo 14-16B, Air Defence 3-4B, Digital 8-10B). DCF base EUR 1,658 = 80% celu spolki (CAGR 32%, EBIT 18%, WACC 9%); bull EUR 2,742 (cele trafione) — Morningstar EUR 2,320 miedzy base a bull. Sprzedaz automotive H1 2026 czysci profil na pure defence.",
     "thesis_breaker": "Trwałe zawieszenie broni + redukcja budżetów NATO przez 2+ kolejne lata.",
     "risks": [
@@ -289,16 +289,16 @@
     "next_earnings": null,
     "priority_action": "PRIORYTET 2: Dokup. Obecna cena = dobry entry. Alokuj kapitał z ETL + AGGG.",
     "dcf": {
-      "wacc_pct": 9.0,
+      "wacc_pct": 9.25,
       "terminal_growth_pct": 2.5,
       "revenue_ttm_m": 9900,
       "net_debt_m": -369,
       "shares_m": 46.54,
       "wacc_inputs": {
-        "rf_pct": 2.6,
+        "rf_pct": 2.99,
         "beta": 1.25,
         "erp_pct": 5.0,
-        "note": "Re = 2.6 (Bund 10Y) + 1.25 x 5.0 = 8.85% -> WACC 9.0%. Poprzedni model uzywal 10% (US-style rf) — za wysoko dla spolki EUR z rzadowym popytem. | Weryfikator 12.06.2026: Bund 10Y ~2.99% po podwyzce ECB 11.06 (vs 2.6% w modelu) -> Re 9.24%, FV ~1,585 (-4.4%). Do aktualizacji przy najblizszej rewizji; BUY przezywa (MoS przy entry 1250 nadal ~21%)."
+        "note": "Re = 2.99 (Bund 10Y, Trading Economics 12.06.2026, po podwyzce ECB 11.06; potwierdzone 2 obserwacjami) + 1.25 x 5.0 = 9.24% -> WACC 9.25%. Beta 1.25 konserwatywna deklaracja (yfinance raw beta 0.42 — defence ma niska korelacje z rynkiem, ale ryzyko polityczne/cykliczne uzasadnia premie). Tax 28% vs ustawowe 30%: niemiecka obnizka CIT od 2028 potwierdzona w AR 2025."
       },
       "terminal_growth_rationale": "g=2.5%: NATO 3.5-5% GDP era + cykl odtworzeniowy amunicji trwa dekady, ale po supercyklu wzrost normalizuje. Kazde +0.5pp g podnosi FV o ~EUR 150.",
       "morningstar_reference": "Morningstar FV EUR 2,320 (podniesione 7% po FY2025) — miedzy naszym base EUR 1,740 a bull EUR 2,877. Morningstar zaklada pelna realizacje celow 2030.",
@@ -326,18 +326,18 @@
           "note": "Post-supercykl. EBIT 19% = target op >20% minus ~1pp roznicy definicyjnej."
         }
       ],
-      "pv_fcf_m": 25600,
-      "pv_terminal_m": 51200,
-      "enterprise_value_m": 76800,
-      "equity_value_m": 77200,
-      "fair_value_computed": 1658.0,
-      "notes": "ZWERYFIKOWANE Z PELNEGO RAPORTU (AR 2025 PDF w data/reports/RHM.DE/, 12.06.2026). Bledy poprzednich wersji naprawione: shares 83->46.54M, EBIT z placeholdera 14% -> realne 16.9% (op result 18.5%), net debt -500M -> net liquidity +369M. EBIT vs operating result rozroznione (~1.5pp). Q1 2026: guidance reaffirmed, NVL naval skonsolidowane.",
+      "pv_fcf_m": 25200,
+      "pv_terminal_m": 48200,
+      "enterprise_value_m": 73400,
+      "equity_value_m": 73800,
+      "fair_value_computed": 1585.0,
+      "notes": "Rewizja 12.06 wieczor: Rf 2.6->2.99% (ECB 11.06) -> WACC 9.25%, FV 1658->1585 — zgodne z niezaleznym wyliczeniem weryfikatora. ZWERYFIKOWANE Z PELNEGO RAPORTU (AR 2025 PDF w data/reports/RHM.DE/, 12.06.2026). Bledy poprzednich wersji naprawione: shares 83->46.54M, EBIT z placeholdera 14% -> realne 16.9% (op result 18.5%), net debt -500M -> net liquidity +369M. EBIT vs operating result rozroznione (~1.5pp). Q1 2026: guidance reaffirmed, NVL naval skonsolidowane.",
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 20,
           "color": "ef4444",
-          "fair_value": 639,
+          "fair_value": 617,
           "description": "Zawieszenie broni w Ukrainie + NATO capex peak 2027. CAGR 20%, marza 17-18%, WACC 10%.",
           "assumptions": {
             "stage1_cagr_pct": 20,
@@ -345,7 +345,7 @@
             "ebit_margin_pct": 16,
             "fcf_margin_s1_pct": 8.52,
             "fcf_margin_s2_pct": 11.24,
-            "wacc_pct": 10.0,
+            "wacc_pct": 10.25,
             "terminal_g_pct": 2.0
           },
           "key_risk": "Polityczna normalizacja = de-rating calego sektora defence"
@@ -354,7 +354,7 @@
           "name": "Base",
           "probability_pct": 55,
           "color": "00d9a3",
-          "fair_value": 1658,
+          "fair_value": 1585,
           "description": "80% celu spolki: EUR 40B revenue 2030, marza 19.5-20%. Backlog 63.8B pokrywa ~70% sciezki.",
           "assumptions": {
             "stage1_cagr_pct": 32,
@@ -362,7 +362,7 @@
             "ebit_margin_pct": 18,
             "fcf_margin_s1_pct": 9.96,
             "fcf_margin_s2_pct": 13.18,
-            "wacc_pct": 9.0,
+            "wacc_pct": 9.25,
             "terminal_g_pct": 2.5
           },
           "key_risk": "Wykonanie skokowego skalowania mocy produkcyjnych"
@@ -371,7 +371,7 @@
           "name": "Bull",
           "probability_pct": 25,
           "color": "f59e0b",
-          "fair_value": 2742,
+          "fair_value": 2602,
           "description": "Cele CMD trafione: EUR 50B 2030, marza 20.5%+, NATO 3.5-5% GDP era. Zbiezny z Morningstar EUR 2,320.",
           "assumptions": {
             "stage1_cagr_pct": 38,
@@ -379,20 +379,26 @@
             "ebit_margin_pct": 19,
             "fcf_margin_s1_pct": 10.68,
             "fcf_margin_s2_pct": 13.9,
-            "wacc_pct": 8.5,
+            "wacc_pct": 8.75,
             "terminal_g_pct": 3.0
           },
           "key_risk": "Wycena wymaga 5x wzrostu revenue w 5 lat — bez precedensu w EU industrials"
         }
       ],
-      "fair_value_weighted": 1725,
-      "fair_value_weighted_formula": "0.20xEUR639 + 0.55xEUR1,658 + 0.25xEUR2,742 = EUR 1,725",
+      "fair_value_weighted": 1646,
+      "fair_value_weighted_formula": "0.20xEUR617 + 0.55xEUR1,585 + 0.25xEUR2,602 = EUR 1,646",
       "balance_sheet_inputs": {
         "net_liquidity_m": 369,
         "note": "Net liquidity +369M z AR 2025 (zweryfikowane z pelnego raportu, nie estymata). NVL acquisition Q1 2026 czesciowo skonsumuje."
       }
     },
     "events": [
+      {
+        "date": "2026-06-12",
+        "event": "Pelna aktualizacja po findings weryfikatora: Rf 2.6->2.99% (Bund po ECB 11.06, 2 zrodla) -> WACC 9.25%, FV 1658->1585 (zgodne z niezaleznym wyliczeniem weryfikatora). Scenariusze 617/1585/2602, weighted 1646. Dodane checklisty: ceo_profile (Papperger: GLODNY EKSPERT — 35 lat w firmie, Economist best CEO 2025, cel rosyjskiego zamachu 2024; skin in the game BRAK POTWIERDZENIA — do weryfikacji), competitive_landscape (KNDS/BAE/GDLS z AR + Hanwha oznaczona do potwierdzenia), buffett_tenets (8xOK/1xUWAGA -> pelna pozycja, MoS 25%).",
+        "impact": "neutral",
+        "fv_note": "FV 1658->1585. PROPOZYCJA (czeka na akceptacje): entry 1250->1189 (25% MoS). Uwaga: cena 1205.6 jest 1.4% NAD proponowanym entry — BUY formalnie czeka na 1189."
+      },
       {
         "date": "2026-06-12",
         "event": "Pierwsza weryfikacja agentem-weryfikatorem: WERDYKT ZGODNA Z UWAGAMI. FV odtwarzalne co do eurocenta (1657.89 vs 1658). Naprawione findings: upside_pct=60 (relikt FV 1950), thesis_full ze stalym 'backlogiem 135B' (to budzet obronny Niemiec w USD — AR 2025 podaje backlog 63.8B). Odnotowane do rewizji: Rf 2.6% vs Bund ~2.99% po ECB 11.06 (FV -4.4% wrazliwosci), tax 28% vs 30% ustawowe (obnizka CIT od 2028), beta 1.25 niezrodlowana (yfinance 0.42 — konserwatywnie OK).",
@@ -430,7 +436,97 @@
         "event": "Raport H1 2026 (szac.) — backlog i marże defence",
         "type": "earnings"
       }
-    ]
+    ],
+    "ceo_profile": {
+      "name": "Armin Papperger",
+      "ceo_since": "2013-01-01",
+      "background": "W Rheinmetall od 1990 (zaczal w quality management dywizji Defence). 2007: szef Weapon & Munitions; 2010: dodatkowo Vehicle Systems; 2013: CEO. 35 lat w jednej firmie, droga od inzyniera jakosci przez kierowanie kluczowymi dywizjami produktowymi.",
+      "founder_or_manager": "Najemny menedzer, ale z trajektoria 'wewnetrznego foundera' — zbudowal obecna firme",
+      "hunger": "GLODNY: osobisty architekt europejskiego rearmamentu; The Economist 'best CEO 2025' (158% shareholder return); w 2024 sluzby USA/Niemiec udaremnily rosyjski plan zamachu na niego — nie zwolnil tempa. Agresywne cele (5x revenue do 2030) stawiane publicznie.",
+      "domain_expertise": "EKSPERT: inzynierska kariera w produkcji zbrojeniowej od 1990, prowadzil dywizje amunicji i pojazdow zanim zostal CEO; w wywiadach schodzi do szczegolow produkcyjnych (capacity ramp amunicji 155mm).",
+      "track_record": "Transformacja konglomeratu automotive-defence w pure-play defence juggernaut; kurs ~20x od 2020; guidance 2026 reaffirmed w Q1. Test $1 za $1: spelniony z ogromnym zapasem.",
+      "skin_in_the_game": "BRAK POTWIERDZENIA w zrodlach sesji: % akcji i transakcje insiderskie do weryfikacji przy rewizji H1 (06.08.2026)",
+      "red_flags": "Koncentracja decyzyjna na jednej osobie + ryzyko osobiste (cel rosyjskich sluzb) = key-man risk realny",
+      "verdict": "GLODNY EKSPERT",
+      "sources": "Wikipedia/Bloomberg/The Org + The Economist via web 12.06.2026; AR 2025"
+    },
+    "competitive_landscape": [
+      {
+        "name": "KNDS (KMW+Nexter)",
+        "ticker": null,
+        "public": false,
+        "segment": "Vehicle Systems (czolgi, IFV) — partner w Puma/Leopard i konkurent w przetargach",
+        "threat": "wysokie",
+        "note": "Wspolny projekt Puma 200 szt. (AR 2025), ale rywalizacja o MGCS i eksport czolgow",
+        "source": "AR 2025 (pdftotext, sekcja zamowien)"
+      },
+      {
+        "name": "BAE Systems Land",
+        "ticker": "BA.L",
+        "public": true,
+        "segment": "Weapon & Ammunition + pojazdy (XM30 USA)",
+        "threat": "srednie",
+        "note": "Wymieniany w AR 2025 wielokrotnie; konkurent w 155mm i programach US Army",
+        "source": "AR 2025"
+      },
+      {
+        "name": "General Dynamics Land Systems",
+        "ticker": "GD",
+        "public": true,
+        "segment": "Pojazdy (XM30 — obaj w fazach 3-4 przetargu US Army)",
+        "threat": "srednie",
+        "note": "AR 2025: 'competitors to proceed to phases 3 and 4 of the XM30 programme'",
+        "source": "AR 2025, cytat doslowny"
+      },
+      {
+        "name": "Hanwha Aerospace",
+        "ticker": "012450.KS",
+        "public": true,
+        "segment": "Amunicja artyleryjska + haubice (eksport EU: Polska)",
+        "threat": "srednie",
+        "note": "Koreanska konkurencja cenowa w EU; BRAK w sekcji konkurencji AR — dodane z wiedzy sektorowej, do potwierdzenia",
+        "source": "wiedza sektorowa — oznaczone do weryfikacji"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "OK",
+        "uzasadnienie": "Produkcja amunicji/pojazdow dla rzadow — model zrozumialy, popyt z budzetow NATO"
+      },
+      "business_consistent_history": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "135 lat historii, ale skala 5x w 5 lat = nowa firma operacyjnie; sprzedaz automotive zmienia profil"
+      },
+      "business_longterm_prospects": {
+        "ocena": "OK",
+        "uzasadnienie": "Backlog 63.8B + NATO 3.5-5% GDP = dekada popytu; moat: certyfikacje, capacity, polityczne preferencje EU"
+      },
+      "mgmt_rational": {
+        "ocena": "OK",
+        "uzasadnienie": "Alokacja w capacity amunicji (najwyzsze ROIC), sprzedaz automotive, dywidenda rosnie umiarkowanie"
+      },
+      "mgmt_candid": {
+        "ocena": "OK",
+        "uzasadnienie": "Q1 2026: wprost o slabszej sezonowosci i working capital; guidance utrzymane bez kreatywnych metryk"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "OK",
+        "uzasadnienie": "Wyprzedzil sektor o 2 lata w buildupie capacity zamiast czekac na zamowienia"
+      },
+      "fin_roe": {
+        "ocena": "OK",
+        "uzasadnienie": "Operating result +33% przy rosnacym kapitale; cash conversion target >50%"
+      },
+      "fin_margins": {
+        "ocena": "OK",
+        "uzasadnienie": "Op margin 18.5% -> target >20%, rosnaca z miksem ammo"
+      },
+      "fin_dollar_test": {
+        "ocena": "OK",
+        "uzasadnienie": "Kurs ~20x od 2020 przy zatrzymywanych zyskach — spelniony z zapasem"
+      },
+      "wniosek": "8xOK/1xUWAGA — pelnowymiarowa pozycja dozwolona, MoS standardowy 25%"
+    }
   },
   "BTC-USD": {
     "name": "Bitcoin",
