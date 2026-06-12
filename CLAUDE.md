@@ -45,6 +45,8 @@ Inwestor biznesowy — tłumacz przez model biznesowy i operacje, nie żargon gi
 9. **Po każdej zmianie plików projektu: `git add` + `commit` + `push origin main` — bez
    pytania o zgodę.** Aplikacja (Streamlit Cloud) czyta z GitHuba; bez pusha zmiany są
    niewidoczne. Dotyczy: recommendations.json, app.py, CLAUDE.md, fundamentals/**, reports/**.
+   **Przed pushem zmian w data/: `python3 tools/validate.py [TICKER]`** — ERRORy w zmienianym
+   tickerze muszą być naprawione przed pushem (zastany backlog innych tickerów nie blokuje).
 10. **Przy rewizji oceniaj, czy teza aktualna — nie tylko cenę.** Świeżość: fakt z weba
     starszy niż kwartał wymaga odświeżenia przy rewizji.
 

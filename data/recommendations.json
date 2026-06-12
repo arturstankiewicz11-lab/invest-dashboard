@@ -1405,7 +1405,7 @@
           "Moderate (3-5GW do 2035, lekkie poslizgi): FV $75",
           "Delays (criticality 2029+, konwersja LOI slaba): FV $35",
           "NRC setback / major delay (precedens: odmowa 2022): FV $10",
-          "FV = 0.175x$150 + 0.325x$75 + 0.30x$35 + 0.175x$10 = $26.3+$24.4+$10.5+$1.8 = $63"
+          "FV = 0.175x$150 + 0.325x$75 + 0.30x$35 + 0.20x$10 = $26.3+$24.4+$10.5+$2.0 = $63"
         ],
         "fair_value_computed": 63.0
       },
@@ -1463,7 +1463,7 @@
         },
         {
           "name": "Setback",
-          "probability_pct": 17.5,
+          "probability_pct": 20,
           "color": "ef4444",
           "fair_value": 10,
           "description": "Drugie odrzucenie NRC (precedens 2022) lub powazny incydent sodowy w komissioningu. Wycena wraca do cash value.",
@@ -1480,7 +1480,7 @@
         }
       ],
       "fair_value_weighted": 63,
-      "fair_value_weighted_formula": "0.175x$150 + 0.325x$75 + 0.30x$35 + 0.175x$10 = $63"
+      "fair_value_weighted_formula": "0.175x$150 + 0.325x$75 + 0.30x$35 + 0.20x$10 = $63"
     }
   },
   "IONQ": {
