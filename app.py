@@ -786,9 +786,24 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
                 </div>
             </div>""", unsafe_allow_html=True)
 
-        # ── Assumptions table
-        st.markdown("""
-        <div style="margin-top:20px">
+        # ── Assumptions table (jeden string — Streamlit domyka tagi per st.markdown!)
+        rows_html = ""
+        for sc in scenarios:
+            a = sc["assumptions"]
+            c = sc["color"]
+            rows_html += f"""<tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+              <td style="padding:7px 6px;color:#{c};font-weight:600">{sc['name']}</td>
+              <td style="padding:7px 6px;color:#64748b;text-align:center">{sc['probability_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage1_cagr_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage2_cagr_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['ebit_margin_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['fcf_margin_s1_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['wacc_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['terminal_g_pct']}%</td>
+              <td style="padding:7px 6px;color:#{c};font-weight:700;text-align:right">${sc['fair_value']}</td>
+            </tr>"""
+        st.markdown(f"""
+        <div style="margin-top:20px;overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'Inter',sans-serif">
           <thead>
             <tr style="border-bottom:1px solid rgba(255,255,255,0.08)">
@@ -803,37 +818,18 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
               <th style="text-align:right;padding:8px 6px;color:#475569;font-weight:600">FV</th>
             </tr>
           </thead>
-          <tbody>""", unsafe_allow_html=True)
+          <tbody>{rows_html}</tbody>
+        </table>
+        </div>""", unsafe_allow_html=True)
 
-        for sc in scenarios:
-            a   = sc["assumptions"]
-            c   = sc["color"]
-            row = f"""
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
-              <td style="padding:7px 6px;color:#{c};font-weight:600">{sc['name']}</td>
-              <td style="padding:7px 6px;color:#64748b;text-align:center">{sc['probability_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage1_cagr_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage2_cagr_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['ebit_margin_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['fcf_margin_s1_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['wacc_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['terminal_g_pct']}%</td>
-              <td style="padding:7px 6px;color:#{c};font-weight:700;text-align:right">${sc['fair_value']}</td>
-            </tr>"""
-            st.markdown(row, unsafe_allow_html=True)
-
-        st.markdown("</tbody></table></div>", unsafe_allow_html=True)
-
-        # ── Risk per scenario
-        st.markdown('<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">', unsafe_allow_html=True)
-        for sc in scenarios:
-            c = sc["color"]
-            st.markdown(f"""
-            <div style="background:rgba(255,255,255,0.03);border-left:2px solid #{c};
-                        border-radius:0 6px 6px 0;padding:6px 10px;font-size:10px;color:#64748b;flex:1;min-width:180px">
-                <b style="color:#{c}">{sc['name']} risk:</b> {sc.get('key_risk','—')}
-            </div>""", unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        # ── Risk per scenario (również jeden string)
+        risks_html = "".join(
+            f"""<div style="background:rgba(255,255,255,0.03);border-left:2px solid #{sc['color']};
+                 border-radius:0 6px 6px 0;padding:6px 10px;font-size:10px;color:#64748b;flex:1;min-width:180px">
+                 <b style="color:#{sc['color']}">{sc['name']} risk:</b> {_e(sc.get('key_risk','—'))}</div>"""
+            for sc in scenarios)
+        st.markdown(f'<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">{risks_html}</div>',
+                    unsafe_allow_html=True)
 
 
 def tab_dcf(rec: dict):
