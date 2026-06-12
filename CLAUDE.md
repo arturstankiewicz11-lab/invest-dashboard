@@ -106,9 +106,9 @@ do `events` i potencjalna zmiana wag scenariuszy.
 ## Profil Inwestora
 
 - Horyzont: 1–3 lata
-- Kapitał: 50k–250k PLN
+- Kapitał: 1 mln PLN
 - Ryzyko: wysoka tolerancja, szuka 10–50x asymetrii
-- Giełdy: globalny mandat (US, EU, PL)
+- Giełdy: cały świat (bez ograniczeń geograficznych)
 - Metryka: DCF + intrinsic value vs. market price
 - Narzędzia: Morningstar (aktywna subskrypcja)
 
