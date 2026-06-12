@@ -938,7 +938,8 @@
           "da_pct": 1.5,
           "capex_pct": 3.5,
           "fcf_margin_pct": 53.25,
-          "rev_cagr_pct": 27.7
+          "rev_cagr_pct": 27.7,
+          "note": "Vera Rubin full ramp + sovereign AI acceleration + agentic AI inference boom"
         },
         {
           "period": "FY2033-FY2037",
@@ -950,7 +951,8 @@
           "da_pct": 2.0,
           "capex_pct": 3.0,
           "fcf_margin_pct": 51.29,
-          "rev_cagr_pct": 14
+          "rev_cagr_pct": 14,
+          "note": "Post-Rubin normalizacja, upgrade cycles sovereign, physical AI / robotics ramp"
         }
       ],
       "revenue_table_m": [
