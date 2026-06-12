@@ -2030,13 +2030,13 @@
       "Lock-up expiry ~10.11.2026 (180 dni od IPO) — 185M akcji Class B insiders vs 34.5M float; podazowy klif typowy dla hot IPO"
     ],
     "buffett_moat": "NARROW i kruchy. Wafer-scale to realna przewaga technologiczna w latency-critical inference (brak inter-chip communication overhead), ale: (1) brak ekosystemu software jak CUDA, (2) NVDA Rubin 10x cost-per-token zmniejsza przewage, (3) klienci (OpenAI, G42) maja zasoby na wlasne chipy. Moat zalezy od utrzymania 2-3 lat przewagi technologicznej — wyscig, nie fosa.",
-    "last_updated": "2026-06-12",
-    "next_earnings": "2026-08-13",
+    "last_updated": "2026-06-13",
+    "next_earnings": "2026-06-23",
     "priority_action": "NIE dokupuj — cena 49% nad FV (IPO premium). Pozycja 70 szt. @ $236.98 powyzej nawet FV. Obserwuj: pierwsze earnings publiczne (~13.08, szac.) i lock-up expiry 10.11.2026.",
     "upcoming_events": [
       {
-        "date": "2026-08-13",
-        "event": "Pierwsze earnings jako spolka publiczna (szac.) — Q2 2026, pierwsze przychody OpenAI MRA",
+        "date": "2026-06-23",
+        "event": "PIERWSZE earnings publiczne (data potwierdzona) — Q1/Q2 2026, pierwsze przychody OpenAI MRA, guidance",
         "type": "earnings"
       },
       {
@@ -2046,6 +2046,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Pelna rewizja wg nowych zasad (tenets + CEO + konkurencja). Feldman: GLODNY EKSPERT — seryjny founder (SeaMicro->AMD, Force10->Dell), NIE sprzedal w Tender Offer 2025 (CFO/COO sprzedali po $1M), komp RSU-heavy; % akcji do potwierdzenia z proxy. Konkurencja z S-1: NVDA 'dominant leader', custom ASICs klientow (OpenAI chip!), AMD/Intel, CSP, CoreWeave. Tenets: 3xOK/3xUWAGA/3xBRAK -> MoS 30%+. NOWE: 9 inicjacji analitykow (PT $250-340, avg $294) — UWAGA: banki z konsorcjum IPO, konflikt interesow; nie zmienia modelu opartego na RPO. Pierwsze earnings POTWIERDZONE 23.06 (nie sierpien). Cena $214: drabinka wyjscia — trim do ~50% AKTYWNY (>= weighted $152).",
+        "impact": "neutral",
+        "fv_note": "FV $152 bez zmian (brak nowych danych finansowych do 23.06). PROPOZYCJA: entry $114 -> $106 (MoS 30% — wniosek z tenets: 3x BRAK). Czeka na akceptacje."
+      },
       {
         "date": "2026-06-12",
         "event": "Inicjacja HOLD @ FV $152 (EV/Revenue, scenariusze 25/55/20). Zrodlo: S-1/A #2 (11.05.2026) z SEC EDGAR. Kluczowe: OpenAI MRA 750MW + opcja 1.25GW, RPO $24.6B, revenue $510M (+76%), GM 39%, koncentracja UAE 86%. IPO $185 (13.05), debiut $350, cena $226.55. Pozycja uzytkownika: 70 szt. @ $236.98 (08.06) — kupiona 56% nad FV, bez analizy w systemie.",
@@ -2158,6 +2164,105 @@
       "fair_value_weighted": 152,
       "fair_value_weighted_formula": "0.25x$87 + 0.55x$145 + 0.20x$252 = $152"
     },
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "ceo_profile": {
+      "name": "Andrew D. Feldman (56)",
+      "ceo_since": "2016-04 (co-founder)",
+      "background": "Seryjny przedsiebiorca infrastruktury obliczeniowej — Cerebras to 5. firma: SeaMicro founder-CEO 2007-12 (sprzedana AMD), nastepnie AMD CVP/GM 2012-14; wczesniej Force10 Networks VP 2003-06 (sprzedana Dell). Rdzen zespolu (CTO Sean Lie) idzie za nim od SeaMicro.",
+      "founder_or_manager": "Founder — seryjny, z dwoma exitami za soba",
+      "hunger": "GLODNY: 10 lat budowy wafer-scale wbrew konsensusowi branzy ('za duzy die, nie da sie'); 5. firma mimo ze po dwoch exitach nie musi pracowac; wzial deal OpenAI z karami umownymi za niedowiezienie capacity (OpenAI moze wypowiedziec MRA). NIE sprzedal akcji w 2025 Tender Offer — CFO Komin i COO Mallick sprzedali po ~$1.0M (S-1).",
+      "domain_expertise": "EKSPERT komercyjno-produktowy: 20+ lat w compute infrastructure; architektura to domena CTO Sean Lie (co-founder), Feldman broni wafer-scale konkretem technicznym w wywiadach. Duet founderow = pelne pokrycie kompetencji.",
+      "track_record": "SeaMicro -> AMD (exit), Force10 -> Dell (exit). Cerebras: revenue $24.6M -> $510M w 3 lata (+76% 2025); dowiozl MRA OpenAI 750MW i IPO $185 (powyzej widelek).",
+      "skin_in_the_game": "Jakosciowo mocne: brak udzialu w Tender Offer 2025, cash comp niski (target bonus $250k), wynagrodzenie RSU-heavy. Dokladny % akcji: tabela Principal Stockholders w S-1 nieprzeliczalna z ekstrakcji — BRAK POTWIERDZENIA, do weryfikacji z proxy.",
+      "red_flags": "Lock-up do ~10.11.2026 — pierwszy realny test sprzedazy insiderow. Kary w MRA: niedowiezienie tranches = prawo OpenAI do wypowiedzenia czesci/calosci umowy.",
+      "verdict": "GLODNY EKSPERT",
+      "sources": "S-1/A 11.05.2026 (bio, Tender Offer, compensation — data/reports/CBRS/); web 13.06.2026"
+    },
+    "competitive_landscape": [
+      {
+        "name": "NVIDIA",
+        "ticker": "NVDA",
+        "public": true,
+        "segment": "AI accelerators (hardware) — S-1: 'a dominant market leader'",
+        "threat": "wysokie",
+        "note": "Rubin (H2 FY2027): 10x nizszy cost-per-token zweza przewage latency Cerebras; CUDA ecosystem",
+        "source": "S-1 sekcja Competition (cytat doslowny)"
+      },
+      {
+        "name": "Custom ASICs klientow (OpenAI chip, Trainium, TPU)",
+        "ticker": null,
+        "public": false,
+        "segment": "AI accelerators — S-1: 'developed by hyperscalers and private companies'",
+        "threat": "wysokie",
+        "note": "OpenAI rozwija wlasny chip = najwiekszy klient moze stac sie konkurentem; S-1 wprost: 'Certain of our competitors are also current or prospective customers'",
+        "source": "S-1 Competition + risk factors"
+      },
+      {
+        "name": "AMD / Intel",
+        "ticker": "AMD",
+        "public": true,
+        "segment": "AI accelerators (hardware)",
+        "threat": "srednie",
+        "note": "Wymienieni w S-1; MI-series konkuruje w inference, ale bez przewagi latency wafer-scale",
+        "source": "S-1 Competition"
+      },
+      {
+        "name": "CSP: AWS / Azure / GCP / Oracle",
+        "ticker": null,
+        "public": true,
+        "segment": "Cloud inference (us�ugi)",
+        "threat": "srednie",
+        "note": "Konkuruja o te same workloady inference; jednoczesnie potencjalni partnerzy dystrybucji",
+        "source": "S-1 Competition"
+      },
+      {
+        "name": "CoreWeave + neo-clouds",
+        "ticker": "CRWV",
+        "public": true,
+        "segment": "AI-optimized specialized clouds",
+        "threat": "srednie",
+        "note": "S-1: 'AI-optimized specialized clouds such as CoreWeave and other neo-clouds'",
+        "source": "S-1 Competition (cytat)"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Produkt zrozumialy (najszybsza inferencja swiata), ale model przychodow zlozony: hardware + cloud + pass-through, RPO accounting wymaga uwagi"
+      },
+      "business_consistent_history": {
+        "ocena": "BRAK",
+        "uzasadnienie": "3 lata komercyjne; mix klientow zmienia sie co rok (G42 85% -> MBZUAI 62% -> OpenAI od 2026)"
+      },
+      "business_longterm_prospects": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Przewaga latency realna, ale substytut blisko (NVDA Rubin) i najwieksi klienci buduja wlasne chipy; moat = 2-3 lata przewagi tech, nie fosa"
+      },
+      "mgmt_rational": {
+        "ocena": "OK",
+        "uzasadnienie": "Finansowanie deals zamiast rozwodnienia (prepayments G42, loan OpenAI $1B); IPO w oknie po podpisaniu MRA"
+      },
+      "mgmt_candid": {
+        "ocena": "OK",
+        "uzasadnienie": "S-1 wprost: koncentracja 86% UAE, kary MRA, konkurenci=klienci — bez lukru"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "OK",
+        "uzasadnienie": "Wafer-scale przez dekade wbrew calej branzy — definicja odpornosci na imperatyw"
+      },
+      "fin_roe": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Kapital swiezo zebrany; GAAP NI $237.8M zawiera one-off $363M — niemiarodajne"
+      },
+      "fin_margins": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "GM 39% vs NVDA 71%; trend 42%->39% spadkowy (mix hardware)"
+      },
+      "fin_dollar_test": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Za krotka historia publiczna (IPO 13.05.2026)"
+      },
+      "wniosek": "3xOK / 3xUWAGA / 3xBRAK -> moonshot: MALA pozycja, MoS 30%+ (entry 0.70xFV), drabinka wyjscia aktywna"
+    }
   }
 }
