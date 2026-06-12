@@ -44,10 +44,23 @@ i tym wyższy wymagany MoS (30%+ zamiast 25%).
 
 **Obowiązkowy profil CEO przy każdej wycenie** (sekcja `ceo_profile` w recommendations.json):
 - Imię i nazwisko, od kiedy CEO, droga do stanowiska (CV: wykształcenie, poprzednie role, branża)
+- **Founder czy najemny menedżer?** Founder-CEO z misją > zawodowy administrator
+- **Głód (kluczowe kryterium):** czy CEO MUSI wygrać — ego, ambicja dominacji, obsesja misji
+  pchające go do przodu (archetyp Zuckerberg/Bezos/Musk: "zawsze głodny"), czy wygodny
+  zarządca optymalizujący własny komfort i pensję? Sygnały głodu: pracuje jakby firma była
+  jego życiem, agresywne cele, osobiste zaangażowanie w produkt, nie sprzedaje akcji.
+  Sygnały sytości: maksymalizacja wynagrodzenia, sprzedaż akcji, PR zamiast produktu,
+  dywersyfikacja własnego czasu (rady nadzorcze, polityka, książki).
+- **Ekspertyza domenowa:** czy ZNA SIĘ na tym, co firma robi (inżynier/twórca produktu,
+  potrafi zejść do szczegółu technicznego), czy tylko zarządza (MBA bez zrozumienia domeny)?
+  Test: czy w wywiadach/earnings calls odpowiada konkretem technicznym, czy sloganami?
 - Track record: co obiecywał vs co dostarczył (guidance vs wykonanie, poprzednie firmy)
-- Skin in the game: % akcji w posiadaniu, ostatnie transakcje insiderskie (kupno/sprzedaż)
+- **Skin in the game:** % akcji w posiadaniu, ostatnie transakcje insiderskie (kupno/sprzedaż),
+  struktura wynagrodzenia (equity-heavy = aligned, cash-heavy = najemnik)
 - Alokacja kapitału: historia decyzji (akwizycje, buybacki, emisje) i ich efekty
 - Czerwone flagi: rotacja zarządu, spory z radą, przeszłe kontrowersje
+- **Werdykt: GŁODNY EKSPERT / GŁODNY MENEDŻER / SYTY EKSPERT / SYTY MENEDŻER** —
+  moonshot wymaga głodnego eksperta; syty menedżer w moonshocie = ❌ na całej checkliście
 
 ### Financial Tenets
 - **ROE, nie EPS** — zwrot z kapitału własnego zamiast zysku na akcję (EPS rośnie z samego
