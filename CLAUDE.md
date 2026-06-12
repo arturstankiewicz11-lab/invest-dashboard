@@ -387,8 +387,11 @@ Estymaty blokują rekomendację BUY do czasu weryfikacji.
 **Cytat zamiast parafrazy.** Przy ekstrakcji kluczowych faktów z weba zapisuj w notach
 dosłowną frazę źródła — parafraza to pierwsza forma halucynacji.
 
-**"Brak potwierdzenia w źródłach"** — gdy czegoś nie da się zweryfikować, pisz to wprost
-(analogicznie do "brak w raporcie"). Zgadywanie zakazane.
+**"Nie wiem" jest pełnoprawną odpowiedzią — i obowiązkową, gdy jest prawdziwa.**
+Gdy czegoś nie da się zweryfikować, pisz wprost: "nie wiem" / "brak potwierdzenia
+w źródłach" / "brak w raporcie". Pewnie brzmiąca odpowiedź bez pokrycia jest GORSZA
+niż przyznanie niewiedzy — bo użytkownik podejmuje na jej podstawie decyzje kapitałowe.
+Zgadywanie i wypełnianie luk "prawdopodobnymi" wartościami zakazane.
 
 **Świeżość:** fakt z weba starszy niż kwartał wymaga odświeżenia przy rewizji wyceny.
 
@@ -403,4 +406,14 @@ Używaj do: testu ekspertyzy CEO (konkret vs slogany w Q&A), mapy konkurencji
 4. **Quartr** — także spółki EU (free tier)
 5. Spółki EU (RHM, ETL): sekcja IR — nagrania i prezentacje z calli
 
-Cytaty z transkrypcji w analizach zawsze z datą calla i dosłownym brzmieniem.
+**Format cytowania transkrypcji — zawsze trójka: cytat + kontekst + wpływ na wycenę.**
+Sam cytat bez interpretacji jest bezużyteczny; interpretacja bez cytatu to parafraza (ryzyko
+halucynacji). Obowiązkowy format:
+
+> **Cytat (dosłownie):** "Our AWS Trainium chips [...] now power more than 50% of Amazon
+> Bedrock token usage." — Matt Garman, AWS CEO, earnings call Q3 2025 (data)
+> **Co to znaczy dla wyceny:** Trainium obniża COGS AWS vs zakup NVIDIA → wspiera założenie
+> EBIT Stage2 24% (vs 22% wcześniej); bez tego cytatu założenie byłoby czystą spekulacją.
+
+Cytat, którego nie umiesz powiązać z konkretnym założeniem modelu (CAGR, marża, WACC,
+scenariusz, ryzyko) — nie wnosi nic do analizy i nie powinien się w niej znaleźć.
