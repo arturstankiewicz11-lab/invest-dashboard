@@ -4843,7 +4843,7 @@
           "fy2025_m": 109200,
           "pct": 26.2,
           "cagr_s1": 12,
-          "note": "DRIVER: +15% YoY, marza brutto 75.3%. Mix shift podnosi blended margin (jak AWS)."
+          "note": "DRIVER: +15% YoY, marza brutto 75.3%. Mix shift podnosi blended margin (jak AWS). POTWIERDZONY lever (WWDC26): serwerowe funkcje AI maja dzienne limity -> wyzszy iCloud+/Apple One = wieksze limity. 'iCloud+ jako platny tier AI' (MacRumors). Niskie ryzyko regulacyjne (wlasny tier, nie 30% od cudzych transakcji) -> de-ryzykuje wzrost Services."
         },
         "Wearables": {
           "fy2025_m": 35700,
@@ -4901,7 +4901,7 @@
       "scenarios": [
         {
           "name": "Bear",
-          "probability_pct": 20,
+          "probability_pct": 15,
           "color": "ef4444",
           "fair_value": 101,
           "assumptions": {
@@ -4933,7 +4933,7 @@
         },
         {
           "name": "Bull",
-          "probability_pct": 25,
+          "probability_pct": 30,
           "color": "10b981",
           "fair_value": 205,
           "assumptions": {
@@ -4964,8 +4964,8 @@
           "key_risk": "Prowizja agentic NIEpotwierdzona ('fees a possibility'), opor deweloperow, i MAKSYMALNA ekspozycja regulacyjna — 30% take-rate to dokladnie to, co EU DMA/DOJ demontuja."
         }
       ],
-      "fair_value_weighted": 162,
-      "fair_value_weighted_formula": "0.20x$101 + 0.45x$147 + 0.25x$205 + 0.10x$243 = $162; fair_value = BASE $147 (konwencja). UWAGA: nawet Ultra $243 PONIZEJ ceny $291 — rynek wycenia agentic-commerce powyzej mojego Ultra.",
+      "fair_value_weighted": 167,
+      "fair_value_weighted_formula": "0.15x$101 + 0.45x$147 + 0.30x$205 + 0.10x$243 = $167; fair_value = BASE $147 (konwencja). Re-weight: iCloud+ AI-tier (potwierdzony, low-reg) de-ryzykuje Services -> mniej bear, wiecej bull. Nawet tak weighted $167 ponizej ceny $291.",
       "notes": "DCF 2-etapowy. Base FV $147 vs cena $291 = Apple ~2x wartosci wewnetrznej. Nawet bull $205 nie uzasadnia ceny — rynek placi premie za jakosc/bezpieczenstwo/buyback. Net debt ~$16B immaterialny dla FV. Dla profilu moonshot brak asymetrii."
     },
     "upcoming_events": [
@@ -4981,6 +4981,12 @@
     "events": [
       {
         "date": "2026-06-14",
+        "event": "Potwierdzony lever Services (WWDC26, iOS27): serwerowe funkcje Apple Intelligence (np. generowanie obrazow) maja dzienne limity; iCloud+ subscribers dostaja wyzsze limity (najtanszy $0.99 moze nie kwalifikowac) -> upsell do wyzszych tierow/Apple One. 'iCloud+ jako platny tier AI' (MacRumors); analityk: 'monetization lever'. Niskie ryzyko regulacyjne. Re-weight scenariuszy (bear 20->15, bull 25->30), weighted $162->$167.",
+        "impact": "positive",
+        "fv_note": "Lever de-ryzykuje wzrost Services (potwierdzony, low-reg, marza 75%). Wzmacnia base/bull. Base $147 bez zmian (lever byl implicite w Services 12%). Weighted $167 — dalej ponizej $291."
+      },
+      {
+        "date": "2026-06-14",
         "event": "Analiza tezy Apple Intelligence (WWDC26, 3 poziomy): (1) on-device wymaga 8-12GB RAM -> realny supercycle wymiany iPhone [potwierdzone]; (2) cloud = custom Gemini 1.2T params za ~$1B/rok = ~$0.70/urzadzenie (1.4 mld) — frontier AI tanio, chroni ekosystem [potwierdzone]; (3) agentic commerce — Siri via App Intents + Mastercard Agent Pay bookuje/kupuje; share z subskrypcji AI (model App Store). Dodany scenariusz Ultra $243.",
         "impact": "positive",
         "fv_note": "Ultra $243 (agentic commerce) dodany; weighted $147->$162. ALE nawet Ultra ponizej ceny $291 — agentic prowizja niepotwierdzona + max ekspozycja regulacyjna. Base $147 bez zmian."
@@ -4994,6 +5000,7 @@
     ],
     "caveats": [
       "AGENTIC COMMERCE (prawy ogon, teza bycza): Siri AI jako warstwa transakcyjna 1.4 mld urzadzen + share z subskrypcji AI moze byc nowym wysokomarzowym Services. Poziomy 1-2 potwierdzone (RAM-gating supercycle + tani Gemini $1B/rok). ALE prowizja agentic NIEpotwierdzona ('fees a possibility'), opor deweloperow, MAX ekspozycja regulacyjna (30% take-rate to to, co EU DMA/DOJ demontuja). Nawet pelny scenariusz Ultra ($243) PONIZEJ ceny $291.",
+      "iCLOUD+ AI-TIER (potwierdzony lever Services, WWDC26): limity serwerowych funkcji AI -> upsell iCloud+/Apple One. LEPSZY driver niz prowizja agentic — potwierdzony, niskie ryzyko regulacyjne (wlasny tier), marza 75%. De-ryzykuje wzrost Services (umacnia base/bull). ALE incremental (Services to 26% rev) — nie step-change; nie czyni $291 tanim.",
       "WYCENA: cena $291 to ~2x DCF FV $147; NAWET bull $205 jest ponizej ceny. Apple handluje na premii jakosci/bezpieczenstwa/buyback, nie na wzroscie (PE 35 przy ~6% rev growth). Kupno teraz = placenie 2x za jakosc.",
       "DOPASOWANIE: to NIE jest moonshot (10-50x). Bezpieczny wide-moat compounder bez asymetrii — kotwica defensywna, nie zrodlo asymetrii ktorej szukasz. Inny profil niz reszta portfela (AI/Energy/Space).",
       "ZMIANA CEO: Tim Cook -> Executive Chairman, John Ternus (inzynier, SVP Hardware) CEO od 01.09.2026. Pozytyw (inzynier w erze hardware/AI), ale niesprawdzony jako CEO + ryzyko tranzycji w czasie AI-lag.",
