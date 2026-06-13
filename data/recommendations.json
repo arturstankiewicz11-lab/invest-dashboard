@@ -2113,11 +2113,11 @@
   "IONQ": {
     "name": "IonQ",
     "recommendation": "HOLD",
-    "fair_value": 29.0,
+    "fair_value": 31,
     "fair_value_currency": "USD",
-    "entry_point": 32.0,
+    "entry_point": 22,
     "upside_pct": null,
-    "thesis_short": "Trapped-ion quantum leader. Q1 2026 +755% YoY, $265M FY guidance, $470M RPO. DCF FV $29 (bull) / $16 (base). Cena $55 = 67x revenue — overvalued. Czekaj na $30-35.",
+    "thesis_short": "Lider trapped-ion quantum. Revenue $265M (+100%) ale mcap $21.6B = ~80x sprzedazy — wycena czysto na opcjonalnosci kategorii ($4B-$65B TAM 2030). FV base $31 (EV/Revenue+TAM), cena $58 = rynek wycenia Bull-Ultra. Net cash $3.07B = floor $7.3. Najmniejsza pozycja (0✅/2⚠️/7❌ tenets).",
     "thesis_full": "IonQ to niekwestionowany lider trapped-ion quantum computing. Q1 2026: $64.7M revenue (+755% YoY), FY guidance podniesiony do $260-270M, RPO $470M (+554% YoY). Cash: $3.1B przy $30M długu = fort finansowy. Technologia trapped-ion oferuje najwyższe gate fidelities wśród wszystkich platform. Kluczowi klienci: DoD, NSA, US Airforce + komercja przez AWS/Azure/Google Cloud. Moat: patenty na trapped-ion, 6-letnia przewaga czasu na rynku nad INFQ. JEDNAK: przy cenie $55 spółka wyceniana jest na 67x 2026 revenue i $20.8B market cap — DCF FV base $16, bull $29. Rynek wycenia scenariusz ultra-bull ($3-4B revenue do 2030+). Nie kupuj teraz — obserwuj korektę do $30-35.",
     "thesis_breaker": "Revenue growth spada poniżej 50% w 2027 LUB Google/IBM demonstruje quantum advantage na komercyjnych workloadach przed IonQ LUB top-3 klientów odpowiada za ponad 60% revenue (koncentracja).",
     "buffett_moat": "Narrow",
@@ -2127,29 +2127,13 @@
       "Pre-profitability do ~2029 — EBITDA guidance 2026: -$320M (większa strata niż revenue)"
     ],
     "priority_action": "Obserwuj. Cena $55 = 67x 2026 revenue. Brak margin of safety. Otwórz pozycję przy korekcie do $30-35.",
-    "last_updated": "2026-05-15",
+    "last_updated": "2026-06-13",
     "dcf": {
       "wacc_pct": 12.0,
       "terminal_growth_pct": 4.0,
       "shares_m": 373.27,
       "net_cash_m": 3070,
       "notes": "Base case (WACC 12%): FV $16. Bull case (WACC 10%, aggressive growth): FV $29. Cena $55 implikuje ultra-bull scenario z $3-4B revenue do 2030. Stages: 2026 $265M→2027 $530M→2028 $900M→2029 $1.3B→2030 $1.7B. FCF margin: -120%→-40%→-5%→+10%→+20% terminal 22%.",
-      "stages": [
-        {
-          "period": "2026-2028",
-          "n_years": 3,
-          "rev_cagr_pct": 84,
-          "fcf_margin_pct": -55,
-          "note": "Scaling phase — heavy R&D + SG&A, FCF deeply negative"
-        },
-        {
-          "period": "2029-2030",
-          "n_years": 2,
-          "rev_cagr_pct": 37,
-          "fcf_margin_pct": 15,
-          "note": "Path to profitability — fixed costs amortize over growing revenue base"
-        }
-      ],
       "pv_fcf_m": 84,
       "terminal_value_m": 4863,
       "pv_terminal_m": 2760,
@@ -2158,9 +2142,173 @@
       "fair_value_bull": 29.0,
       "fair_value": 29.0,
       "valuation_method": "Scenariusz pre-revenue (FCF margin per stage). Base FV $15.9 (WACC 12%), Bull FV $29 (WACC 10%). Obliczona FV może się różnić od stored ze względu na uproszczenie marży FCF do jednolitej wartości per stage zamiast rok po roku.",
-      "revenue_ttm_m": 144
+      "revenue_ttm_m": 144,
+      "method": "EV/Revenue forward + scenariusze (DCF bezsensowny przy FCF -55%)",
+      "alt_valuation": {
+        "method": "EV/Revenue 2030E + scenariusze",
+        "method_reason": "Pre-profitable (FCF -55%), revenue 0.0001 docelowego TAM — DCF to fantazja terminala; EV/Revenue z TAM-anchored scenariuszami",
+        "inputs": [
+          {
+            "name": "Revenue 2026E",
+            "value": "$260-270M (+100% YoY)",
+            "source": "IonQ guidance FY2026 (8-K)"
+          },
+          {
+            "name": "RPO",
+            "value": "$470M",
+            "source": "IonQ Q1 2026"
+          },
+          {
+            "name": "Net cash",
+            "value": "$3.07B",
+            "source": "bilans Q1 2026 (raisy)"
+          },
+          {
+            "name": "Shares (forward diluted)",
+            "value": "~420M",
+            "source": "373M obecnie + dilution"
+          },
+          {
+            "name": "WACC",
+            "value": "12%",
+            "source": "pre-profitable, ekstremalny execution+kategoria risk"
+          }
+        ],
+        "steps": [
+          "Base: rev30 $1.3B (25% TAM $12B) x 12x = EV30 $15.6B -> dzis $9.9B + cash $3.07B = $12.97B / 420M = $31",
+          "Bear $15 / Bull $75 / Ultra $171; weighted 30/40/20/10 = $49",
+          "Net cash floor = $3.07B/420M = $7.3"
+        ],
+        "fair_value_computed": 31
+      },
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 30,
+          "color": "ef4444",
+          "fair_value": 15,
+          "description": "Quantum winter — kategoria rozczarowuje, rev30 $600M, IonQ pali gotowke. Floor net cash $7.3 chroni przed zerem.",
+          "assumptions": {
+            "stage1_cagr_pct": 30,
+            "stage2_cagr_pct": 10,
+            "ebit_margin_pct": 0,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 12,
+            "terminal_g_pct": 0
+          },
+          "key_risk": "Quantum advantage nie materializuje sie komercyjnie; trapped-ion przegrywa modalnosc"
+        },
+        {
+          "name": "Base",
+          "probability_pct": 40,
+          "color": "00d9a3",
+          "fair_value": 31,
+          "description": "Egzekucja: rev30 $1.3B (~25% udzial w TAM $12B), EV/Rev kompresuje do 12x. RPO $470M wspiera trajektorie.",
+          "assumptions": {
+            "stage1_cagr_pct": 70,
+            "stage2_cagr_pct": 40,
+            "ebit_margin_pct": 0,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 12,
+            "terminal_g_pct": 0
+          },
+          "key_risk": "TAM 2030 skrajnie niepewny ($4B-$65B); 25% udzial wymaga utrzymania pozycji trapped-ion"
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 20,
+          "color": "f59e0b",
+          "fair_value": 75,
+          "description": "Quantum inflection — rev30 $3B, IonQ lider, TAM $20B+. Cena $58 zaklada ~ten scenariusz.",
+          "assumptions": {
+            "stage1_cagr_pct": 85,
+            "stage2_cagr_pct": 55,
+            "ebit_margin_pct": 0,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 11,
+            "terminal_g_pct": 0
+          },
+          "key_risk": "Wymaga TAM $20B+ i dominacji IonQ — jeden z optymistycznych scenariuszy"
+        },
+        {
+          "name": "Ultra",
+          "probability_pct": 10,
+          "color": "a855f7",
+          "fair_value": 171,
+          "description": "Quantum advantage osiagniete, IonQ dominuje, rev30 $6B, TAM $65B (MRF). Lottery ticket payoff.",
+          "assumptions": {
+            "stage1_cagr_pct": 95,
+            "stage2_cagr_pct": 70,
+            "ebit_margin_pct": 0,
+            "fcf_margin_s1_pct": 0,
+            "fcf_margin_s2_pct": 0,
+            "wacc_pct": 10,
+            "terminal_g_pct": 0
+          },
+          "key_risk": "Scenariusz marzenie — wymaga przelomu technologicznego + dominacji rynkowej"
+        }
+      ],
+      "fair_value_weighted": 49,
+      "fair_value_weighted_formula": "0.30x$15 + 0.40x$31 + 0.20x$75 + 0.10x$171 = $49; fair_value = BASE $31 (konwencja)",
+      "tam_analysis": {
+        "purpose": "Dyscyplina upside dla najczystszego moonshota. TAM quantum SAM W SOBIE jest ryzykiem — prognozy rozjezdzaja sie 16x.",
+        "markets": [
+          {
+            "name": "Quantum computing 2030",
+            "size": "$4.2B (Grand View) / $20B (M&M) / $65B (MRF) — rozjazd 16x",
+            "source": "web 13.06.2026",
+            "leu_addressable": "IonQ realny udzial 20-25% (lider trapped-ion, ale modalnosc niepewna)"
+          },
+          {
+            "name": "Quantum 2035 (McKinsey)",
+            "size": "~$72B quantum computing",
+            "source": "McKinsey via web",
+            "leu_addressable": "dlugoterminowa opcjonalnosc jesli kategoria wypali"
+          }
+        ],
+        "bridge_cases": [
+          {
+            "label": "Konserwatywny",
+            "shares": "TAM $7B x 20% = rev30 $1.4B",
+            "rev_2035_b": 1.4,
+            "margin": 0,
+            "mult": 12,
+            "implied_fv": 33,
+            "note": "~nasz Base $31"
+          },
+          {
+            "label": "Realistyczny",
+            "shares": "TAM $15B x 22% = rev30 $3.3B",
+            "rev_2035_b": 3.3,
+            "margin": 0,
+            "mult": 13,
+            "implied_fv": 80,
+            "note": "~nasz Bull $75 — cena $58 tu siedzi"
+          },
+          {
+            "label": "Agresywny",
+            "shares": "TAM $40B x 25% = rev30 $10B",
+            "rev_2035_b": 10.0,
+            "margin": 0,
+            "mult": 15,
+            "implied_fv": 260,
+            "note": "powyzej Ultra — wymaga $65B TAM"
+          }
+        ],
+        "market_implied": "Cena $58 implikuje ~realistyczny TAM ($15B 2030, IonQ 22%) — czyli rynek juz wycenia, ze quantum wypali I IonQ bedzie liderem.",
+        "conclusion": "Spojne z LEU/scenariuszami (bull $75 vs TAM-real $80, rozjazd 6% — drabinka NIE dostanie ostrzezenia). ALE absolutny poziom: cena $58 wymaga uwierzyc w realistyczny-TAM scenariusz, ktory sam zaklada nierozstrzygniety wyscig modalnosci. Floor $7.3 (net cash) vs cena $58 = 87% wartosci to czysta opcjonalnosc. Najmniejsza pozycja, MoS 30%+."
+      }
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Pelna przebudowa wg nowych zasad. NAPRAWIONY bug: FV $29 bylo = bull, entry $32 > FV (odwrocony MoS). Nowy FV base $31 (EV/Revenue+TAM, nie DCF — FCF -55%), entry $22 (zaakceptowane). Scenariusze Bear $15/Base $31/Bull $75/Ultra $171 (weighted $49); ceo de Masi = GLODNY MENEDZER (SPAC-operator, NIE quantum-ekspert — czerwona flaga); competitive_landscape (Quantinuum/IBM/Google modalnosci); tenets 0OK/2UWAGA/7BRAK -> najmniejsza pozycja; TAM (quantum $4-65B 2030, rozjazd 16x). Cena $58 = rynek wycenia Bull-realistic; net cash floor $7.3, 87% wartosci to opcjonalnosc.",
+        "impact": "neutral",
+        "fv_note": "FV $29->$31 (base), entry $32->$22 (zaakceptowane, naprawiony odwrocony MoS). HOLD. Cena $58 >> FV $31 = nie kupowac."
+      },
       {
         "date": "2026-05-06",
         "event": "Q1 2026: $64.7M revenue (+755% YoY). FY guidance podniesiony do $260-270M. RPO $470M (+554%). Cash $3.1B. EBITDA loss guidance -$310 do -$330M.",
@@ -2168,7 +2316,97 @@
         "fv_note": "Potwierdzenie bull case — growth bez precedensu w quantum. FV bez zmian ($29 bull / $16 base)."
       }
     ],
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "ceo_profile": {
+      "name": "Niccolo de Masi (~45)",
+      "ceo_since": "2025-02 (Chairman od 2025-08; w radzie od 2021)",
+      "background": "Fizyk (BA+MS Cambridge), ALE kariera = mobile games (CEO Glu Mobile) + SPAC-i (dMY Technology). Przeprowadzil IPO IonQ przez SPAC 2021. Po objeciu Chairman wypchnal Petera Chapmana (ex-Amazon, CEO 2019-25).",
+      "founder_or_manager": "NAJEMNY MENEDZER/PROMOTOR — nie founder-naukowiec. Prawdziwa nauka u founderow Monroe/Kim (akademicy)",
+      "hunger": "GLODNY operatorsko (konsolidacja wladzy: CEO+Chairman), ale to glod FINANSISTY, nie misjonarza technologii",
+      "domain_expertise": "SLABA dla quantum: fizyk z dyplomu, ale 20 lat w mobile games i SPAC-ach, nie w fizyce kwantowej. Czerwona flaga dla deep-tech moonshota",
+      "track_record": "Glu Mobile (sprzedane EA), seria SPAC dMY. IonQ: revenue +100%, ale to faza pre-profit; brak dowiezionego quantum advantage",
+      "skin_in_the_game": "BRAK POTWIERDZENIA — do weryfikacji z proxy; sektor quantum znany z heavy insider selling",
+      "red_flags": "SPAC-operator u steru deep-tech; wypchniecie technicznego prezesa; konsolidacja CEO+Chairman; insider selling sektora",
+      "verdict": "GLODNY MENEDZER (NIE ekspert domenowy) — czerwona flaga dla quantum-moonshota; wzmacnia argument za najmniejsza pozycja",
+      "sources": "IonQ IR, BusinessWire, Clay, Panabee; web 13.06.2026"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Quantinuum",
+        "ticker": null,
+        "public": false,
+        "segment": "Trapped-ion — bezposrednia (modalnosc #1)",
+        "threat": "wysokie",
+        "note": "Honeywell+Cambridge Quantum; uznawany za #1 trapped-ion (Twoj QNT); Helios 98q",
+        "source": "sektor"
+      },
+      {
+        "name": "IBM / Google",
+        "ticker": "IBM",
+        "public": true,
+        "segment": "Superconducting qubits",
+        "threat": "wysokie",
+        "note": "Najwieksze budzety R&D; inna modalnosc — moze wygrac wyscig",
+        "source": "sektor"
+      },
+      {
+        "name": "Rigetti / D-Wave",
+        "ticker": "RGTI",
+        "public": true,
+        "segment": "Superconducting / annealing",
+        "threat": "srednie",
+        "note": "Publiczni konkurenci, podobna bubble-wycena",
+        "source": "sektor"
+      },
+      {
+        "name": "PsiQuantum / Microsoft",
+        "ticker": null,
+        "public": false,
+        "segment": "Fotonika / topological",
+        "threat": "srednie",
+        "note": "Alternatywne modalnosci; Microsoft topological = high-risk high-reward",
+        "source": "sektor"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Quantum computing to definicja biznesu NIEzrozumialego — Buffett by uciekl"
+      },
+      "business_consistent_history": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Pre-profitable, brak historii; kategoria komercyjnie nieudowodniona"
+      },
+      "business_longterm_prospects": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Moze byc warta $72B (McKinsey 2035) albo zniknac; modalnosc trapped-ion niepewna"
+      },
+      "mgmt_rational": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "SPAC-operator u steru; konsolidacja wladzy; raisy rozwadniaja, ale daja $3B runway"
+      },
+      "mgmt_candid": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Za krotka kadencja de Masi do oceny szczerosci"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Brak danych"
+      },
+      "fin_roe": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Pre-profitable, straty"
+      },
+      "fin_margins": {
+        "ocena": "BRAK",
+        "uzasadnienie": "FCF -55%"
+      },
+      "fin_dollar_test": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Brak zatrzymanych zyskow"
+      },
+      "wniosek": "0xOK / 2xUWAGA / 7xBRAK -> NAJMNIEJSZA pozycja w portfelu (lottery ticket), MoS 30%+, entry $22"
+    }
   },
   "GOOG": {
     "events": [
