@@ -2277,8 +2277,8 @@
             "rev_2035_b": 3.3,
             "margin": 0,
             "mult": 13,
-            "implied_fv": 80,
-            "note": "~nasz Bull $75 — cena $58 tu siedzi"
+            "implied_fv": 72,
+            "note": "~nasz Bull $75 (rozjazd 4%) — cena $58 tu siedzi"
           },
           {
             "label": "Agresywny",
@@ -2286,15 +2286,22 @@
             "rev_2035_b": 10.0,
             "margin": 0,
             "mult": 15,
-            "implied_fv": 260,
-            "note": "powyzej Ultra — wymaga $65B TAM"
+            "implied_fv": 234,
+            "note": "powyzej Ultra $171 — wymaga $40B TAM + 25% udzialu"
           }
         ],
-        "market_implied": "Cena $58 implikuje ~realistyczny TAM ($15B 2030, IonQ 22%) — czyli rynek juz wycenia, ze quantum wypali I IonQ bedzie liderem.",
-        "conclusion": "Spojne z LEU/scenariuszami (bull $75 vs TAM-real $80, rozjazd 6% — drabinka NIE dostanie ostrzezenia). ALE absolutny poziom: cena $58 wymaga uwierzyc w realistyczny-TAM scenariusz, ktory sam zaklada nierozstrzygniety wyscig modalnosci. Floor $7.3 (net cash) vs cena $58 = 87% wartosci to czysta opcjonalnosc. Najmniejsza pozycja, MoS 30%+."
+        "market_implied": "Cena $58 implikuje ~realistyczny TAM ($15B 2030, IonQ 22% -> FV $72) — rynek juz wycenia, ze quantum wypali I IonQ bedzie liderem. Wszystkie akcje liczone 420M (forward diluted).",
+        "conclusion": "Spojne z LEU/scenariuszami (bull $75 vs TAM-real $80, rozjazd 6% — drabinka NIE dostanie ostrzezenia). ALE absolutny poziom: cena $58 wymaga uwierzyc w realistyczny-TAM scenariusz, ktory sam zaklada nierozstrzygniety wyscig modalnosci. Floor $7.3 (net cash) vs cena $58 = 87% wartosci to czysta opcjonalnosc. Najmniejsza pozycja, MoS 30%+.",
+        "note_shares": "Wszystkie bridge_cases: 420M akcji (forward diluted), dyskonto 4 lata @ WACC 12%, +net cash $3.07B"
       }
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Korekta TAM (pytanie uzytkownika): bridge_cases uzyly niespojnie liczby akcji (kons 420M, real/agr 373M). Ujednolicone na 420M (forward diluted, jak scenariusze): realistyczny $80->$72, agresywny $260->$234. Konserwatywny $33 bez zmian. Bull $75 vs TAM-real $72 = rozjazd 4% (spojne, drabinka bez ostrzezenia).",
+        "impact": "neutral",
+        "fv_note": "FV base $31 bez zmian. TAM bridge skorygowany do spojnych 420M."
+      },
       {
         "date": "2026-06-13",
         "event": "Pelna przebudowa wg nowych zasad. NAPRAWIONY bug: FV $29 bylo = bull, entry $32 > FV (odwrocony MoS). Nowy FV base $31 (EV/Revenue+TAM, nie DCF — FCF -55%), entry $22 (zaakceptowane). Scenariusze Bear $15/Base $31/Bull $75/Ultra $171 (weighted $49); ceo de Masi = GLODNY MENEDZER (SPAC-operator, NIE quantum-ekspert — czerwona flaga); competitive_landscape (Quantinuum/IBM/Google modalnosci); tenets 0OK/2UWAGA/7BRAK -> najmniejsza pozycja; TAM (quantum $4-65B 2030, rozjazd 16x). Cena $58 = rynek wycenia Bull-realistic; net cash floor $7.3, 87% wartosci to opcjonalnosc.",
