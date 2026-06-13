@@ -2607,6 +2607,14 @@ p.document.addEventListener('keydown', function(e){
             emoji = REC_EMOJI.get(r.get("recommendation"), "👁")
             labels.append(f"{emoji} {t}")
             keys.append(t)
+        # Analizowane tickery z rekomendacją spoza portfela/watchlisty (np. HOLD bez pozycji):
+        # bez tego pełna rekomendacja istnieje, ale jest nienawigowalna (bug: XE niewidoczny).
+        for t in sorted(recs.keys()):
+            if t in seen: continue
+            seen.add(t)
+            emoji = REC_EMOJI.get(recs[t].get("recommendation"), "⚪")
+            labels.append(f"{emoji} {t}")
+            keys.append(t)
 
         # Apply programmatic navigation BEFORE rendering the selectbox
         if "_nav_goto" in st.session_state:
