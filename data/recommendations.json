@@ -1368,6 +1368,12 @@
     "events": [
       {
         "date": "2026-06-13",
+        "event": "Korekta przekazu drabinki: wczesniejsze 'redukcja do rdzenia' bylo zbyt mechaniczne. Bull $151 vs TAM-realistic $185 sa SPOJNE (rozjazd 18%), wiec cena $162 jest w granicach wartosci (ponizej TAM-real). LEU = fully valued, trim opcjonalny nie pilny. Kontrast z OKLO (bull $150 vs TAM $34 = rozjazd 341% -> drabinka dostaje ostrzezenie o niespojnosci).",
+        "impact": "neutral",
+        "fv_note": "Bez zmiany FV/rec. Drabinka LEU spojna z TAM; przekaz zlagodzony z 'redukuj' na 'trim opcjonalny'."
+      },
+      {
+        "date": "2026-06-13",
         "event": "Weryfikator: ZGODNA Z UWAGAMI (brak findingu krytycznego — shares 22.446M diluted, net cash $692M, revenue/EBIT, $900M task order, backlog wszystko potwierdzone w 10-K/10-Q). 3 poprawki: (1) dopisana struktura lat 5/3/2 per scenariusz (base 5/3/2 = $93.4 odtwarzalne); (2) Bear $29 oznaczony jako net cash floor, nie DCF (model Bear dalby ~$52); (3) SWU $220 -> $200 zgodnie z 10-K (+488%, nie +547% — bledny back-calc). Uwaga: TV/EV 87% w base — model stoi na terminalu (typowe dla pre-komercyjnej spolki).",
         "impact": "neutral",
         "fv_note": "FV $93 (base) potwierdzone strukturalnie. Cena $162.58 > bull $151 — drabinka redukcji aktywna."
@@ -1418,7 +1424,7 @@
       "DOE funding continuity — FY2027 budget nie zawiera finansowania kaskady demonstracyjnej; HALEU Production Contract $900M w trakcie definitizacji; zmiana administracji = ryzyko polityczne",
       "Rosyjskie SWU / chiński import — 43% globalnego wzbogacania to Rosja; jeśli rynek znajdzie obejście, SWU spot spada; lagged contracts chronią krótkoterm, nowe kontrakty musiałyby być po niższych cenach"
     ],
-    "priority_action": "NIE dokupuj powyzej FV. Najblizsze decyzje: (1) przedluzenie HALEU Operations Contract — wygasa 30.06.2026; (2) definitizacja $900M task order. Po obu — rewizja scenariuszy.",
+    "priority_action": "FULLY VALUED — cena $162 miedzy bull $151 a TAM-realistic $185. Trim OPCJONALNY (realizacja zysku/dyscyplina), NIE pilna redukcja — TAM broni wyceny. NIE dokupuj powyzej $70. Katalizator: HALEU contract 30.06.",
     "dcf": {
       "method": "Scenario DCF — 3 scenariusze z wagami probabilistycznymi",
       "wacc_pct": 11.9,

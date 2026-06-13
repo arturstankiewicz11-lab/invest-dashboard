@@ -1766,7 +1766,20 @@ def page_detail(ticker, pos, prices, recs):
                          f'<span style="color:{col};font-weight:600;min-width:160px">{lbl}</span>'
                          f'<span style="color:#64748b">{act}{badge}</span></div>')
             t_lbl = "COMPOUNDER" if ptype == "compounder" else "MOONSHOT"
-            exit_html = (f'<div style="font-size:10px;color:#475569;letter-spacing:0.5px">Drabinka wyjścia · {t_lbl}'
+            # Ostrzeżenie: scenariusz-bull vs TAM-realistic rozjeżdżają się >30% → drabinka niewiarygodna
+            tam_warn = ""
+            ta = (rec.get("dcf") or {}).get("tam_analysis")
+            if ta and bull_fv:
+                real = next((c.get("implied_fv") for c in ta.get("bridge_cases", [])
+                             if "ealist" in c.get("label", "")), None)
+                if real and abs(bull_fv - real) / real > 0.30:
+                    kier = "powyżej" if bull_fv > real else "poniżej"
+                    tam_warn = (f'<div style="background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.3);'
+                                f'border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:11.5px;color:#fbbf24">'
+                                f'⚠️ Scenariusz-bull ({bull_fv:.0f}) i TAM-realistic ({real:.0f}) rozjeżdżają się '
+                                f'{abs(bull_fv-real)/real*100:.0f}% (bull {kier} TAM) — sygnał drabinki NIEPEWNY, '
+                                f'czytaj łącznie z sekcją TAM w zakładce DCF, nie mechanicznie.</div>')
+            exit_html = (tam_warn + f'<div style="font-size:10px;color:#475569;letter-spacing:0.5px">Drabinka wyjścia · {t_lbl}'
                          + (f' · cena {price:.2f} {fv_c}' if price else '') + '</div>' + rows)
         elif fv:
             exit_html = f'<span style="color:#f59e0b;font-size:16px;font-weight:700">{fv:.0f} {fv_c}</span><span style="color:#475569;font-size:12px;margin-left:8px">brak position_type — drabinka po klasyfikacji</span>'
