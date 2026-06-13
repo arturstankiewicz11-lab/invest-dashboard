@@ -1368,6 +1368,12 @@
     "events": [
       {
         "date": "2026-06-13",
+        "event": "Przeglad cash-burn (systemowy): LEU (Centrus) RENTOWNY — Q1'26 op income +$0.8M, net income +$10.0M, gross profit +$31.5M, rev $76.7M. Nie pali gotowki na drodze do rev docelowego. Korekta cash-burn nie dotyczy. FV $93 bez zmian.",
+        "impact": "neutral",
+        "fv_note": "Bez zmiany — spolka rentowna, brak cash-burn."
+      },
+      {
+        "date": "2026-06-13",
         "event": "Korekta przekazu drabinki: wczesniejsze 'redukcja do rdzenia' bylo zbyt mechaniczne. Bull $151 vs TAM-realistic $185 sa SPOJNE (rozjazd 18%), wiec cena $162 jest w granicach wartosci (ponizej TAM-real). LEU = fully valued, trim opcjonalny nie pilny. Kontrast z OKLO (bull $150 vs TAM $34 = rozjazd 341% -> drabinka dostaje ostrzezenie o niespojnosci).",
         "impact": "neutral",
         "fv_note": "Bez zmiany FV/rec. Drabinka LEU spojna z TAM; przekaz zlagodzony z 'redukuj' na 'trim opcjonalny'."
@@ -1778,6 +1784,12 @@
     "events": [
       {
         "date": "2026-06-13",
+        "event": "Przeglad cash-burn (systemowy): OKLO NIE ma bledu pelnego kredytu gotowki — wycena scenariuszowa idzie z economics dzialajacych elektrowni 2035 (rev x EBITDA), z JAWNA dylucja 174M->215M akcji na ~$15B CapEx deployment. Gotowka $2.5B to runway (input), nie doliczana do zdyskontowanego EV. Nakladanie haircutu = podwojna kara. FV $63 bez zmian. (Dane SEC Q1'26: op burn $82M/rok, CapEx eksploduje $32.8M/Q — potwierdza, ze dylucja w modelu jest konieczna i jest.)",
+        "impact": "neutral",
+        "fv_note": "Bez zmiany — model juz uwzglednia burn przez dylucje akcji, nie przez pelny kredyt cash."
+      },
+      {
+        "date": "2026-06-13",
         "event": "Uzupelnienie do nowych zasad + TAM. ceo_profile DeWitte = GLODNY EKSPERT z czerwona flaga (doktorat nuclear MIT, founder 2013, ALE insider selling co-founderow setki mln$). competitive_landscape (TerraPower wyprzedza permitem, X-energy/Amazon, Kairos/Google). buffett_tenets 3xOK/2xUWAGA/4xBRAK (czysty pre-revenue moonshot). TAM ODKRYCIE: scenariusze Moderate $75/Bull $150 ZA WYSOKIE — agresywny TAM (8GW) daje tylko $68; cena $57 juz wycenia ~8GW deployed (ponad polowa pipeline 14GW LOI). Odwrotnosc LEU: TAM podwaza upside.",
         "impact": "negative",
         "fv_note": "FV $63 (weighted) bez zmian na teraz, ALE TAM sygnalizuje rewizje scenariuszy w dol (Bull realniej ~$90-100). PROPOZYCJA czeka na akceptacje."
@@ -2117,9 +2129,9 @@
   "IONQ": {
     "name": "IonQ",
     "recommendation": "HOLD",
-    "fair_value": 31,
+    "fair_value": 28,
     "fair_value_currency": "USD",
-    "entry_point": 22,
+    "entry_point": 20,
     "upside_pct": null,
     "thesis_short": "Lider trapped-ion quantum. Revenue $265M (+100%) ale mcap $21.6B = ~80x sprzedazy — wycena czysto na opcjonalnosci kategorii ($4B-$65B TAM 2030). FV base $31 (EV/Revenue+TAM), cena $58 = rynek wycenia Bull-Ultra. Net cash $3.07B = floor $7.3. Najmniejsza pozycja (0✅/2⚠️/7❌ tenets).",
     "thesis_full": "IonQ to lider trapped-ion w wyscigu o quantum computing. Q1 2026: revenue $64.7M (+755% YoY), FY2026 guidance $260-270M (+100% organicznie), RPO $470M, net cash ~$3.07B (cash+inwestycje). Wycena: mcap $21.6B = ~80x revenue 2026E — czysto na opcjonalnosci. Metoda EV/Revenue 2030E + scenariusze (DCF bezsensowny, FCF gleboko ujemny). FV base $31 (rev30 $1.3B x 12x, ~25% udzial w TAM $12B), weighted $49. Bear $15 (quantum winter) / Bull $75 (inflection) / Ultra $171 (quantum advantage). Net cash floor $7.3/akcje — 87% ceny $58 to opcjonalnosc. CEO de Masi = SPAC-operator (nie quantum-ekspert), tenets 0OK/2UWAGA/7BRAK -> najmniejsza pozycja w portfelu. TAM quantum 2030 skrajnie niepewny: $4.2B-$65B (rozjazd 16x) = ryzyko samo w sobie. Wyscig modalnosci nierozstrzygniety.",
@@ -2135,7 +2147,7 @@
     "dcf": {
       "wacc_pct": 12.0,
       "shares_m": 373.27,
-      "net_cash_m": 3070,
+      "net_cash_m": 1970,
       "notes": "Base case (WACC 12%): FV $16. Bull case (WACC 10%, aggressive growth): FV $29. Cena $55 implikuje ultra-bull scenario z $3-4B revenue do 2030. Stages: 2026 $265M→2027 $530M→2028 $900M→2029 $1.3B→2030 $1.7B. FCF margin: -120%→-40%→-5%→+10%→+20% terminal 22%.",
       "fair_value": 29.0,
       "valuation_method": "Scenariusz pre-revenue (FCF margin per stage). Base FV $15.9 (WACC 12%), Bull FV $29 (WACC 10%). Obliczona FV może się różnić od stored ze względu na uproszczenie marży FCF do jednolitej wartości per stage zamiast rok po roku.",
@@ -2156,8 +2168,8 @@
           },
           {
             "name": "Net cash",
-            "value": "$3.07B",
-            "source": "bilans Q1 2026 (raisy)"
+            "value": "$2.0B (po burn)",
+            "source": "$3.07B bilans Q1'26 - ~$1.1B skumulowany burn do 2030 (op loss ~$260M/rok malejacy). NIE pelne $3.07B"
           },
           {
             "name": "Shares (forward diluted)",
@@ -2171,18 +2183,19 @@
           }
         ],
         "steps": [
-          "Base: rev30 $1.3B (25% TAM $12B) x 12x = EV30 $15.6B -> dzis $9.9B + cash $3.07B = $12.97B / 420M = $31",
-          "Bear $15 / Bull $75 / Ultra $171; weighted 30/40/20/10 = $49",
-          "Net cash floor = $3.07B/420M = $7.3"
+          "KOREKTA cash-burn: cash $3.07B -> ~$2.0B (skumulowany burn ~$1.1B do 2030: op loss ~$260M/rok malejacy + capex; pelny kredyt $3.07B byl za optymistyczny)",
+          "Base: rev30 $1.3B (25% TAM $12B) x 12x = EV30 $15.6B -> dzis $9.9B + cash $2.0B = $11.9B / 420M = $28",
+          "Bear $12 / Bull $72 / Ultra $168; weighted 30/40/20/10 = $46",
+          "Net cash floor (po burn) = $2.0B/420M = $4.7"
         ],
-        "fair_value_computed": 31
+        "fair_value_computed": 28
       },
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 30,
           "color": "ef4444",
-          "fair_value": 15,
+          "fair_value": 12,
           "description": "Quantum winter — kategoria rozczarowuje, rev30 $600M, IonQ pali gotowke. Floor net cash $7.3 chroni przed zerem.",
           "assumptions": {
             "stage1_cagr_pct": 30,
@@ -2199,7 +2212,7 @@
           "name": "Base",
           "probability_pct": 40,
           "color": "00d9a3",
-          "fair_value": 31,
+          "fair_value": 28,
           "description": "Egzekucja: rev30 $1.3B (~25% udzial w TAM $12B), EV/Rev kompresuje do 12x. RPO $470M wspiera trajektorie.",
           "assumptions": {
             "stage1_cagr_pct": 70,
@@ -2216,7 +2229,7 @@
           "name": "Bull",
           "probability_pct": 20,
           "color": "f59e0b",
-          "fair_value": 75,
+          "fair_value": 72,
           "description": "Quantum inflection — rev30 $3B, IonQ lider, TAM $20B+. Cena $58 zaklada ~ten scenariusz.",
           "assumptions": {
             "stage1_cagr_pct": 85,
@@ -2233,7 +2246,7 @@
           "name": "Ultra",
           "probability_pct": 10,
           "color": "a855f7",
-          "fair_value": 171,
+          "fair_value": 168,
           "description": "Quantum advantage osiagniete, IonQ dominuje, rev30 $6B, TAM $65B (MRF). Lottery ticket payoff.",
           "assumptions": {
             "stage1_cagr_pct": 95,
@@ -2247,8 +2260,8 @@
           "key_risk": "Scenariusz marzenie — wymaga przelomu technologicznego + dominacji rynkowej"
         }
       ],
-      "fair_value_weighted": 49,
-      "fair_value_weighted_formula": "0.30x$15 + 0.40x$31 + 0.20x$75 + 0.10x$171 = $49; fair_value = BASE $31 (konwencja)",
+      "fair_value_weighted": 46,
+      "fair_value_weighted_formula": "0.30x$12 + 0.40x$28 + 0.20x$72 + 0.10x$168 = $46; fair_value = BASE $28 (konwencja)",
       "tam_analysis": {
         "purpose": "Dyscyplina upside dla najczystszego moonshota. TAM quantum SAM W SOBIE jest ryzykiem — prognozy rozjezdzaja sie 16x.",
         "markets": [
@@ -2301,6 +2314,12 @@
       }
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "KOREKTA cash-burn (systemowa, po feedbacku XE): pelny kredyt $3.07B cash byl za optymistyczny — IonQ pali ~$260M/rok (op loss; op cash use Q1'26 az $151M). Netto po ~$1.1B burn do 2030 ~$2.0B. Kazdy scenariusz -$2.62/akcje. Base $31->$28, weighted $49->$46, floor $7.3->$4.7. Entry $22->$20.",
+        "impact": "negative",
+        "fv_note": "FV $31->$28 (korekta cash-burn). Entry $20."
+      },
       {
         "date": "2026-06-13",
         "event": "Korekta TAM (pytanie uzytkownika): bridge_cases uzyly niespojnie liczby akcji (kons 420M, real/agr 373M). Ujednolicone na 420M (forward diluted, jak scenariusze): realistyczny $80->$72, agresywny $260->$234. Konserwatywny $33 bez zmian. Bull $75 vs TAM-real $72 = rozjazd 4% (spojne, drabinka bez ostrzezenia).",
@@ -3124,6 +3143,12 @@
     "events": [
       {
         "date": "2026-06-13",
+        "event": "Przeglad cash-burn (systemowy): op cash use FY2025 tylko $10.0M (rev $510M, blisko progu rentownosci). Pelny kredyt ~$6.0B cash zasadny — gotowka nie jest 'zjadana' na drodze do rev docelowego. FV $125 bez zmian.",
+        "impact": "neutral",
+        "fv_note": "Bez zmiany — burn pomijalny ($10M/rok), korekta nieuzasadniona."
+      },
+      {
+        "date": "2026-06-13",
         "event": "Pelna lektura SemiAnalysis 'Faster Tokens Please' (sekcje deal economics + ramp + limitations). FV $125 BEZ ZMIAN, ale ryzyka przepisane na ostrzejsze: (1) WSE-3 ekonomiczny tylko dla malych modeli — Spark to destylat 120B, 'tokens likely aren't worth $10B today' (SemiAnalysis); (2) pass-through brutto zawyza revenue (wspiera nasze dyskonto w multiple 12x vs mediana 12.75x); (3) akceleracja splaty $1B przy zerwaniu MRA + kontrola OpenAI nad srodkami; (4) pozytyw: TSMC wafer loadings rosna kwartal do kwartalu — popyt widoczny w lancuchu dostaw; destylacja poprawia male modele ('GPT 5.5-level w 120B za mniej niz rok') — to broni base/bull.",
         "impact": "neutral",
         "fv_note": "FV $125 potwierdzone. Wagi 25/55/20 utrzymane: handicap malych modeli rownowazy trend destylacji."
@@ -3363,9 +3388,9 @@
   "QNT": {
     "name": "Quantinuum Inc.",
     "recommendation": "HOLD",
-    "fair_value": 36,
+    "fair_value": 33,
     "fair_value_currency": "USD",
-    "entry_point": 25,
+    "entry_point": 23,
     "position_type": "moonshot",
     "last_updated": "2026-06-13",
     "thesis_short": "Quantinuum = #1 trapped-ion (Helios 98q, ahead of IonQ), Honeywell+Cambridge Quantum. Rev FY2025 $30.9M (lumpy, Q1'26 spadek), bookings $79.3M, burn ~$160M/rok, cash post-IPO ~$1.6B. mcap ~$13B = ~360x revenue — czysta opcjonalnosc. FV base $34 (EV/Rev+TAM), IPO $47.50. Ekstremalna koncentracja (klient rzadowy 60%). Up-C ~275M akcji ekonomicznych.",
@@ -3471,7 +3496,7 @@
       "method": "EV/Revenue 2030E + scenariusze (pre-komercyjny, rev lumpy)",
       "wacc_pct": 12,
       "revenue_base_fy2026e_m": 35,
-      "net_cash_m": 1600,
+      "net_cash_m": 900,
       "shares_diluted_m": 253.937,
       "wacc_inputs": {
         "rf_pct": 4.4,
@@ -3500,8 +3525,8 @@
           },
           {
             "name": "Cash post-IPO",
-            "value": "~$1.6B",
-            "source": "$677M Q1'26 + IPO ~$0.95B net (21.05M x $47.50)"
+            "value": "~$0.9B (po burn)",
+            "source": "$1.6B post-IPO - ~$0.7B skumulowany burn do 2030 (op loss $199M/rok FY2025 rosnacy). NIE pelne $1.6B"
           },
           {
             "name": "Shares (economic, Up-C)",
@@ -3515,18 +3540,19 @@
           }
         ],
         "steps": [
-          "Base: rev30 $1.0B (~18% TAM $12B) x 12x = EV30 $12B -> dzis $7.6B + cash $1.6B = $9.2B / 253.9M = $36",
-          "Bear $14 / Bull $100 / Ultra $232; weighted 30/40/20/10 = $62",
-          "Net cash floor $6.3"
+          "KOREKTA cash-burn: cash $1.6B -> ~$0.9B (skumulowany burn ~$0.7B do 2030: op loss $199M/rok FY2025 rosnacy; pelny kredyt $1.6B byl za optymistyczny)",
+          "Base: rev30 $1.0B (~18% TAM $12B) x 12x = EV30 $12B -> dzis $7.6B + cash $0.9B = $8.5B / 253.9M = $33",
+          "Bear $11 / Bull $97 / Ultra $229; weighted 30/40/20/10 = $59",
+          "Net cash floor (po burn) $3.5"
         ],
-        "fair_value_computed": 36
+        "fair_value_computed": 33
       },
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 30,
           "color": "ef4444",
-          "fair_value": 14,
+          "fair_value": 11,
           "description": "Quantum winter, rev30 $400M, utrata klienta rzadowego. Floor net cash $5.8. [EV/Rev 8x]",
           "assumptions": {
             "stage1_cagr_pct": 40,
@@ -3543,7 +3569,7 @@
           "name": "Base",
           "probability_pct": 40,
           "color": "00d9a3",
-          "fair_value": 36,
+          "fair_value": 33,
           "description": "Egzekucja: rev30 $1.0B (~18% TAM $12B), #1 trapped-ion utrzymane. Bookings $79.3M ku konwersji. [EV/Rev 12x]",
           "assumptions": {
             "stage1_cagr_pct": 80,
@@ -3560,7 +3586,7 @@
           "name": "Bull",
           "probability_pct": 20,
           "color": "f59e0b",
-          "fair_value": 100,
+          "fair_value": 97,
           "description": "Inflection, #1 pozycja, rev30 $2.5B, TAM $20B+. Cena IPO $47.50 zaklada ~baze-bull. [EV/Rev 15x]",
           "assumptions": {
             "stage1_cagr_pct": 95,
@@ -3577,7 +3603,7 @@
           "name": "Ultra",
           "probability_pct": 10,
           "color": "a855f7",
-          "fair_value": 232,
+          "fair_value": 229,
           "description": "Quantum advantage komercyjny, Quantinuum dominuje (FTQC Apollo), rev30 $5B, TAM $65B. [EV/Rev 18x]",
           "assumptions": {
             "stage1_cagr_pct": 110,
@@ -3591,8 +3617,8 @@
           "key_risk": "Scenariusz marzenie — przelom + dominacja"
         }
       ],
-      "fair_value_weighted": 62,
-      "fair_value_weighted_formula": "0.30x$14 + 0.40x$36 + 0.20x$100 + 0.10x$232 = $62; fair_value = BASE $36 (konwencja)",
+      "fair_value_weighted": 59,
+      "fair_value_weighted_formula": "0.30x$11 + 0.40x$33 + 0.20x$97 + 0.10x$229 = $59; fair_value = BASE $33 (konwencja)",
       "tam_analysis": {
         "purpose": "Dyscyplina upside najczystszego moonshota. TAM quantum SAM ryzykiem (rozjazd 16x).",
         "shares_used": 253.937,
@@ -3653,6 +3679,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "KOREKTA cash-burn (systemowa, po feedbacku XE): pelny kredyt $1.6B cash za optymistyczny — Quantinuum pali op loss $199M/rok (FY2025, rosnacy; net loss $192.6M). Netto po ~$0.7B burn do 2030 ~$0.9B. Kazdy scenariusz -$2.76/akcje. Base $36->$33, weighted $62->$59, floor $6.3->$3.5. Entry $25->$23.",
+        "impact": "negative",
+        "fv_note": "FV $36->$33 (korekta cash-burn). Entry $23."
+      },
       {
         "date": "2026-06-13",
         "event": "Weryfikator: ZGODNA Z UWAGAMI, finding KRYTYCZNY (znowu liczba akcji, wzorzec RHM): shares 275M = podwojne liczenie IPO (Class A 25.9M JUZ zawiera 21M IPO). Poprawione na 253.9M (zgodnie z fundamentals + S-1). FV $34->$36, scenariusze 14/36/100/232 (weighted $62), entry $24->$25. Naprawione tez: Honeywell ~49.1% voting (nie 100%), CEO Hazra od 02.2023 + Micron 2020-23 (nie sam Intel), mnozniki dopisane do scenariuszy.",
