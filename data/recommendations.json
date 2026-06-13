@@ -333,7 +333,12 @@
         "uzasadnienie": "Dekada: zatrzymane zyski ~$0.5T -> przyrost mcap ~$2.5T — spelniony 5x"
       },
       "wniosek": "7xOK / 2xUWAGA -> pelnowymiarowa pozycja compounder, MoS standardowy 25%"
-    }
+    },
+    "caveats": [
+      "OpenAI deal mechanics kluczowe dla FV: IP cliff 2032 (MAI #38 LMArena musi osiagnac frontier do 2030, inaczej Foundry 1P marze nie do odzyskania).",
+      "AI CapEx $190B przy FCF margin Stage1 tylko 20.45%; Azure ponizej 25% YoY przez 2 kwartaly = thesis breaker -> kompresja FV.",
+      "Weryfikator: net debt liczy finance leases (nie operating); arytmetyka FV $520 odtworzona co do dolara."
+    ]
   },
   "ETL.PA": {
     "name": "Eutelsat Communications",
@@ -422,7 +427,12 @@
         "type": "earnings"
       }
     ],
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "caveats": [
+      "DOWNGRADE BUY->HOLD, FV EUR8->EUR3.50 (19.05): Operating Verticals -5.6% YoY.",
+      "Starlink price competition eroduje Fixed/Enterprise (-30% cen) -> FV -25%.",
+      "Capex EUR4B+ na OneWeb gen2 + IRIS2 wymaga dalszej dilucji akcji -> FV -20%."
+    ]
   },
   "RHM.DE": {
     "name": "Rheinmetall",
@@ -687,7 +697,12 @@
       },
       "wniosek": "8xOK/1xUWAGA — pelnowymiarowa pozycja dozwolona, MoS standardowy 25%"
     },
-    "position_type": "compounder"
+    "position_type": "compounder",
+    "caveats": [
+      "FV EUR1585 — porownuj z Morningstar (rozne metody). Rd liczony z ratingu kredytowego, nie generycznego spreadu IG.",
+      "Rf 2.99% (Bund po ECB 11.06) -> WACC 9.25%; FV wrazliwe na stopy EUR i katalizator 30.06.",
+      "Ceasefire Ukraina = krotkoterminowy negatywny sentyment (nie thesis breaker — compounder, FV rosnie z czasem)."
+    ]
   },
   "BTC-USD": {
     "name": "Bitcoin",
@@ -748,7 +763,10 @@
     "last_updated": "2026-05-11",
     "next_earnings": null,
     "priority_action": "Decyzja: czy to część defensywna? Jeśli nie — uwolnij kapitał na RHM.",
-    "position_type": "compounder"
+    "position_type": "compounder",
+    "caveats": [
+      "REDUCE: ekspozycja na stopy procentowe + ryzyko polityczne (wplyw na zarzad). Model wyceny do aktualizacji."
+    ]
   },
   "0700.HK": {
     "name": "Tencent",
@@ -770,7 +788,10 @@
     "last_updated": "2026-05-11",
     "next_earnings": null,
     "priority_action": null,
-    "position_type": "compounder"
+    "position_type": "compounder",
+    "caveats": [
+      "Ryzyko geopolityczne strukturalne: eskalacja Pentagon blacklist + regulacje chinskie + konflikt Tajwan. Model wyceny do aktualizacji."
+    ]
   },
   "SXRV.DE": {
     "name": "iShares Nasdaq 100",
@@ -962,7 +983,12 @@
         "fv_note": "Wycena oparta wyłącznie na potencjale kontraktów z hyperscalerami. Wysokie ryzyko."
       }
     ],
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "caveats": [
+      "SELL: governance disaster — CEO Neugebauer fired 'for cause' 30/04, CFO resigned. Blokuje signing hyperscalerow 12-18 mies.",
+      "Pozew Neugebauer moze wymusic Special Meeting i forced sale at depressed valuation.",
+      "'For cause' termination = sygnal nieujawnionych problemow ksiegowych/regulacyjnych."
+    ]
   },
   "NVDA": {
     "name": "NVIDIA Corporation",
@@ -1335,7 +1361,12 @@
         "type": "earnings"
       }
     ],
-    "position_type": "compounder"
+    "position_type": "compounder",
+    "caveats": [
+      "Koncentracja klientow: top 3 = 54% rev (Q1 FY27); capex cut 30% obniza FV o ~$80.",
+      "Sovereign AI to OSOBNY driver wzrostu w DCF — jesli sie nie zmaterializuje, FV nizej. FV $346 zaklada Stage1 5 lat (nie 4).",
+      "Export controls Bliski Wschod (deals Trump odwracalne) — utrata $15-30B/rok, FV -$25."
+    ]
   },
   "RKLB": {
     "events": [
@@ -1362,7 +1393,12 @@
       "SpaceX Starship economics zalewa medium-lift, presja na marże Neutrona (-15% na FV)"
     ],
     "priority_action": "Czekaj na pullback do $80-85 lub Neutron static fire success",
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "caveats": [
+      "Neutron pierwszy lot Q4 2026 = BINARY event (-38% FV przy failure/opoznieniu).",
+      "Cena $117.5 znacznie powyzej FV $81 (po +43% rajdzie) — powyzej wartosci.",
+      "BRAK pelnej metody (TAM/CEO profile/Buffett tenets) — analiza z 14.05, do uzupelnienia."
+    ]
   },
   "LEU": {
     "events": [
@@ -1751,7 +1787,12 @@
         "uzasadnienie": "Net cash $692M ($30.8/akcje) = twardy floor; kurs ~5x w 2 lata na tezie"
       },
       "wniosek": "6xOK / 3xUWAGA -> moonshot (pre-komercyjny Piketon), MoS 25-30%; ALE cena >> FV wszystkich scenariuszy"
-    }
+    },
+    "caveats": [
+      "RENTOWNY (nietypowe dla moonshota): Q1'26 net income +$10M, op income +$0.8M — korekta cash-burn NIE dotyczy.",
+      "DOE funding continuity: budget FY2027 bez finansowania kaskady demo; HALEU contract $900M kluczowy dla tezy.",
+      "43% globalnego wzbogacania to Rosja — obejscie sankcji obniza SWU spot."
+    ]
   },
   "CCJ": {
     "events": [
@@ -1778,7 +1819,12 @@
       "Kazatomprom dumping - 40% globalnej produkcji może flood market (-20% FV)"
     ],
     "priority_action": "Watch — BUY zone $70-90, no-buy &gt;$110. Czekaj na uranium cycle pullback lub korektę kursu.",
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "caveats": [
+      "DROGO: cena $122 znacznie powyzej FV $80 (-34% downside). Watch dla pullbacku do ~$90 (na watchliscie, nie kupuj tutaj).",
+      "Westinghouse 49% stake = optionality AP300 SMR, ale execution AP1000/AP300 historycznie opozniony.",
+      "Kazatomprom (40% produkcji) moze flood market -> spot do $60 kompresuje EBITDA -40% (FV -25%)."
+    ]
   },
   "OKLO": {
     "events": [
@@ -2124,7 +2170,12 @@
         "uzasadnienie": "Brak historii zatrzymanych zyskow"
       },
       "wniosek": "3xOK / 2xUWAGA / 4xBRAK -> czysty moonshot: MALA pozycja (mniejsza niz LEU/CBRS), MoS 30%+, drabinka aktywna"
-    }
+    },
+    "caveats": [
+      "DCF scenariuszowy (nie czysty): dilution 174M->215M akcji na ~$15B CapEx WBUDOWANA — dlatego korekta cash-burn nie dotyczy. Bull $150 zaklada idealne wykonanie (9GW do 2035).",
+      "Zero revenue do 2027-28, burn $51M/Q rosnie — execution timeline slip kluczowe dla FV.",
+      "Cena zmienna ±50% w 4 tyg bez kotwicy fundamentalnej (rajd kwi $45->$80, sell-off maj ->$58)."
+    ]
   },
   "IONQ": {
     "name": "IonQ",
@@ -2752,7 +2803,12 @@
         "uzasadnienie": "Dekada: mcap $400B->$4.4T; reinwestycje + buyback tworza wartosc"
       },
       "wniosek": "8xOK / 1xUWAGA (Search/AI) -> pelnowymiarowa pozycja compounder, MoS 25%"
-    }
+    },
+    "caveats": [
+      "Antitrust DOJ: wymuszone divestiture Chrome lub zakaz default-search z Apple (~$20B/rok) -> FV -15%.",
+      "Search cannibalization przez Gemini — mniej klikniec w reklamy; ad growth zwalnia z +18%.",
+      "Capex $180B/rok FY26 — jesli AI ROI nie dostarczy do 2027, FCF margin 24%->15% (-20% FV)."
+    ]
   },
   "AMZN": {
     "name": "Amazon.com Inc.",
@@ -3111,7 +3167,12 @@
         "uzasadnienie": "Dekada: reinwestycje -> mcap $300B->$2.6T; flywheel tworzy wartosc"
       },
       "wniosek": "8xOK / 1xUWAGA -> pelnowymiarowa pozycja compounder, MoS standardowy 25%"
-    }
+    },
+    "caveats": [
+      "Net cash: tylko finance leases ($11.7B) w net debt, NIE operating leases ($79.1B — czynsz juz w EBIT). Korekta weryfikatora.",
+      "AWS erozja share: Azure +40% vs AWS +28.4%; Trainium/Bedrock deal mechanics wspieraja EBIT Stage2.",
+      "Dlug $119B (emisja $53B Q1'26, LT debt x2) — przy credit event ogranicza elastycznosc."
+    ]
   },
   "CBRS": {
     "name": "Cerebras Systems Inc.",
