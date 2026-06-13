@@ -4497,7 +4497,7 @@
       "Konkurenci ATF PRZED Lightbridge: Westinghouse (uranium silicide), Framatome (EATF ukonczyl cykl w Calvert Cliffs), GE Vernova (IronClad) — z relacjami utilities + wlasna fabrykacja. Ryzyko, ze metaliczne paliwo bedzie zbedne zanim sie zakwalifikuje.",
       "~20 lat pre-revenue + erozja cash: burn ~$19M/rok rosnie z testami, ATM dilution (35.1M akcji rosnie). Cash floor $6.14 maleje z czasem; przez 15-20 lat wymaga ciaglych emisji."
     ],
-    "buffett_moat": "WASKI/NIEUDOWODNIONY: patenty na metaliczne paliwo + partnerstwo DOE-INL (umbrella SPP/CRADA) to bariera, ALE paliwo niezakwalifikowane, komercjalizacja 15-20 lat, a incumbenci ATF z przodu. Moat realny tylko jesli paliwo przejdzie testy ATR + NRC + adopcje utilities — niezweryfikowane. Capital-light (licencja/JV) ogranicza ryzyko kapitalowe.",
+    "buffett_moat": "WASKI/NIEUDOWODNIONY: patenty na metaliczne paliwo (lity stop U-Zr, ksztalt helical cruciform) + partnerstwo DOE-INL. KLUCZOWY differentiator vs ATF incumbentow: nie tylko bezpieczenstwo, lecz UPRATE MOCY ~17% (istniejace PWR) do 30% (nowe) — metal przewodzi cieplo ~3-5x lepiej niz ceramika UO2. To ekonomiczny hak (wiecej MWh z tej samej elektrowni), nie tylko 'ubezpieczenie'. ALE rewolucyjna forma = najdluzsza kwalifikacja (15-20 lat); incumbenci (ewolucyjny ATF, ~2030) zaspokoja potrzebe bezpieczenstwa pierwsi. Moat realny tylko jesli paliwo przejdzie testy ATR + NRC + adopcje utilities.",
     "ceo_profile": {
       "name": "Seth Grae",
       "ceo_since": "2006 (od formacji spolki, ~20 lat; President & CEO)",
@@ -4518,7 +4518,7 @@
         "public": false,
         "segment": "Accident-tolerant fuel (LWR)",
         "threat": "wysokie",
-        "note": "EATF ukonczyl pierwszy cykl w Calvert Cliffs (USA) — PRZED Lightbridge w realnych reaktorach. Wlasna fabrykacja + relacje utilities. Cel adopcji ~2030.",
+        "note": "EATF ukonczyl pierwszy cykl w Calvert Cliffs — PRZED Lightbridge. ALE to ATF EWOLUCYJNY (powloki Cr na cyrkonie, domieszkowane pastylki) — glownie bezpieczenstwo, drop-in, szybka kwalifikacja ~2030. LTBR = rewolucyjne metaliczne paliwo z uprate mocy 17-30%, ale 15-20 lat. Rozne zaklady, nie to samo.",
         "source": "web: NEI Magazine/PowerMag (2026)"
       },
       {
@@ -4655,7 +4655,7 @@
           "assumptions": {
             "wacc_pct": 14
           },
-          "description": "Metaliczne paliwo jako standard ATF; licencja/JV z fabrykatorem (model capital-light), slice rynku paliwa $40B+. 15-20 lat, mocno dyskontowane.",
+          "description": "Metaliczne paliwo jako standard; uprate mocy 17-30% staje sie ekonomicznym argumentem dla utilities; licencja/JV z fabrykatorem, slice rynku paliwa $40B+. 15-20 lat, mocno dyskontowane.",
           "key_risk": "Wymaga zwyciestwa nad incumbentami + adopcji konserwatywnych utilities w skali."
         }
       ],
@@ -4729,6 +4729,7 @@
     "caveats": [
       "HORYZONT 15-20 LAT do komercyjnych zamowien wg WLASNEGO harmonogramu firmy — to opcja dlugoogonowa, NIE teza fundamentalna w oknie 1-3 lata. Nie kupuj jako 'inwestycji' na 1-3 lata; tylko jako spekulacja na sentyment/kamienie milowe.",
       "Cash floor $6.14/akcje (gotowka $215.7M, ZERO dlugu = ~70% mcap) ogranicza downside — ALE eroduje przez burn ~$19M/rok + ATM dilution. EV samej technologii ~$114M.",
+      "DIFFERENTIATOR vs ATF: Lightbridge to nie 'wolniejszy ATF' lecz INNY zaklad — rewolucyjne metaliczne paliwo (U-Zr, helical cruciform) z UPRATE MOCY ~17-30% (hak ekonomiczny, nie tylko bezpieczenstwo). ATF incumbentow (Cr-powloki/domieszki) = ewolucyjny, glownie bezpieczenstwo, ~2030. Cena uprate'u: najdluzsza kwalifikacja (15-20 lat).",
       "Cena $9.40 placi ~$3.3 powyzej cash floor za opcje; fair_value base $6 (cash floor) — BRAK MoS na bazie. Weighted $9.5 ~= cena (rynek wycenia pelna ryzykowana opcje).",
       "Konkurenci ATF PRZED Lightbridge: Framatome (ukonczyl cykl w Calvert Cliffs), Westinghouse, GE Vernova — z fabrykacja i relacjami utilities. Ryzyko zbednosci metalicznego paliwa.",
       "CEO Seth Grae to PRAWNIK/policy-insider, NIE inzynier paliwa — ❌ na tescie 'glodny ekspert'. ~20 lat spolki bez przychodow. skin-in-the-game niepotwierdzone w sesji."
