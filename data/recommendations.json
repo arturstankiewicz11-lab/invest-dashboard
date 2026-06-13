@@ -4480,5 +4480,258 @@
       "Marza brutto +40% (POZYTYW vs pre-rev peers) — straty z R&D/SG&A, nie z ujemnych unit economics. Beta 3.44 = ekstremalna zmiennosc."
     ],
     "priority_action": "CZEKAJ na Q2 (14.08): kup MALA pozycje (1-2% portfela) TYLKO jesli izotopy pokaza realny revenue komercyjny LUB cena spadnie do entry $5.5. Dzis ($6.55) ani strefa ceny, ani teza niezwalidowana — nie scigaj."
+  },
+  "LTBR": {
+    "name": "Lightbridge Corporation",
+    "recommendation": "HOLD",
+    "fair_value": 6,
+    "fair_value_currency": "USD",
+    "entry_point": 4.2,
+    "position_type": "moonshot",
+    "last_updated": "2026-06-14",
+    "thesis_short": "Pre-revenue ($0) projektant metalicznego paliwa jadrowego (UZr) dla istniejacych reaktorow LWR/CANDU. Model capital-light (testy w INL/DOE). KLUCZOWE: komercyjne zamowienia 15-20 lat wg WLASNEGO harmonogramu firmy — nie pasuje do horyzontu 1-3 lata. Cash floor $6.14/akcje (gotowka $215.7M = ~70% mcap, zero dlugu). FV base $6 (=cash floor), cena $9.40 placi premie za opcje. CEO Seth Grae = prawnik/policy, nie inzynier. HOLD, opcja dlugoogonowa.",
+    "thesis_full": "Lightbridge rozwija Lightbridge Fuel — opatentowane metaliczne prety paliwowe (stop uran-cyrkon, delta-faza UZr) dla istniejacych reaktorow lekkowodnych i ciezkowodnych (CANDU) oraz zaawansowanych. Obietnica: lepsza ekonomika, bezpieczenstwo, odpornosc na proliferacje vs ceramiczne UO2. Model CAPITAL-LIGHT: nie buduje fabryk, korzysta z DOE/INL (umbrella SPP + CRADA z Battelle, 7-letnie) -> testy napromieniania w reaktorze ATR na uranie z DOE. Kamienie 2026: ko-ekstruzja kuponu UZr w INL, walidacja modelu materialowego, patent na zespoly dla CANDU, partnerstwo Studsvik (software). PROBLEM HORYZONTU: wg wlasnego harmonogramu firmy demo lead test rods w reaktorach komercyjnych dopiero w latach 2030., a PIERWSZE zamowienia paliwa od utilities 15-20 LAT od dzis. To czyni LTBR opcja dlugoogonowa, nie teza fundamentalna w oknie 1-3 lata. Dodatkowo konkurenci ATF (Westinghouse uranium silicide, Framatome EATF — ukonczyl cykl w Calvert Cliffs, GE Vernova IronClad) sa PRZED Lightbridge z relacjami utilities i fabrykacja. WYCENA zdominowana przez cash floor: $215.7M gotowki, zero dlugu, 35.1M akcji = $6.14/akcje samego cashu; EV tech ~$114M. Scenariusze: bear $3.5 (cash erozja + przegrana ATF), base $6 (cash floor + minimalna premia, slaby postep), bull $18 (testy ATR OK + LOI utilities + re-rating sektora), ultra $45 (paliwo jako standard ATF, licencja/JV, slice rynku paliwa $40B+). Cena $9.40 ~= weighted $9.5 (rynek wycenia pelna premie opcji); base $6 nizej. Mocna strona: czysty bilans, ~11 lat runway. Slaba: ultra-dlugi horyzont, CEO nie-inzynier, ~20 lat pre-revenue.",
+    "thesis_breaker": "Porzucenie programu paliwa / utrata partnerstwa DOE-INL, LUB negatywne wyniki testow napromieniania ATR (paliwo nie spelnia parametrow), LUB konkurenci ATF (Westinghouse/Framatome/GE) zdobywaja powszechna adopcje czyniac metaliczne paliwo Lightbridge zbednym, LUB gotowka spada ponizej ~2 lat runway bez postepu (przyspieszony burn/dilution).",
+    "risks": [
+      "HORYZONT 15-20 LAT do komercyjnych zamowien (wg wlasnego harmonogramu firmy) — brak przychodow w oknie 1-3 lata; wartosc to czysta opcja, nie fundament. Re-rating tylko na sentymencie/kamieniach milowych.",
+      "Konkurenci ATF PRZED Lightbridge: Westinghouse (uranium silicide), Framatome (EATF ukonczyl cykl w Calvert Cliffs), GE Vernova (IronClad) — z relacjami utilities + wlasna fabrykacja. Ryzyko, ze metaliczne paliwo bedzie zbedne zanim sie zakwalifikuje.",
+      "~20 lat pre-revenue + erozja cash: burn ~$19M/rok rosnie z testami, ATM dilution (35.1M akcji rosnie). Cash floor $6.14 maleje z czasem; przez 15-20 lat wymaga ciaglych emisji."
+    ],
+    "buffett_moat": "WASKI/NIEUDOWODNIONY: patenty na metaliczne paliwo + partnerstwo DOE-INL (umbrella SPP/CRADA) to bariera, ALE paliwo niezakwalifikowane, komercjalizacja 15-20 lat, a incumbenci ATF z przodu. Moat realny tylko jesli paliwo przejdzie testy ATR + NRC + adopcje utilities — niezweryfikowane. Capital-light (licencja/JV) ogranicza ryzyko kapitalowe.",
+    "ceo_profile": {
+      "name": "Seth Grae",
+      "ceo_since": "2006 (od formacji spolki, ~20 lat; President & CEO)",
+      "background": "Korporacyjny prawnik (NY) przed Lightbridge. BA Brandeis (cum laude), MBA + LLM prawo miedzynarodowe Georgetown, JD. Dolaczyl pomagajac PRAWNIE przy paliwie torowym, poznal inzyniera z pomyslem -> powstal Lightbridge.",
+      "founder_or_manager": "Wspoltworca od formacji (2006), ale NIE techniczny zalozyciel — wszedl jako prawnik.",
+      "hunger": "Wysokie zaangazowanie (20 lat, mocno usieciowiony: chair ANS International Council, board NEI, Atlantic Council, Nuclear Security Working Group) — ale to networking/policy, nie obsesja produktowa inzyniera. Misja energetyki jadrowej, nie 'glod' budowniczego.",
+      "domain_expertise": "NISKA technicznie — prawnik/biznes/policy, nie inzynier paliwa. Technika rezyduje w zespole + INL. Test ekspertyzy: jezyk policy/bezpieczenstwa/geopolityki, nie szczegolu metalurgicznego UZr.",
+      "track_record": "SLABY na komercjalizacji: ~20 lat, $0 revenue, komercjalizacja WCIAZ 15-20 lat przed nami ('wiecznie obiecujace'). Pozytyw: utrzymal spolke, zbudowal partnerstwa DOE/INL, duzy bufor gotowki bez nadmiernej dilucji.",
+      "skin_in_the_game": "% wlasnosci i transakcje insiderskie NIEPOTWIERDZONE w sesji — DO WERYFIKACJI (mala spolka, wynagrodzenie equity prawdopodobne, ale nie sprawdzone).",
+      "red_flags": "20 lat pre-revenue z horyzontem nadal 15-20 lat; CEO nie-techniczny w gleboko technicznym biznesie; ATM dilution; mikrokap podatny na hype nuklearny.",
+      "verdict": "ZAANGAZOWANY POLICY-INSIDER, NIE glodny ekspert-inzynier. Brakuje archetypu founder-eksperta wymaganego dla moonshota (przeciwienstwo Jensena/Hassabisa). To ❌ na kluczowym tescie. Steruje: minimalna pozycja, ostroznosc.",
+      "sources": "web: ltbridge.com/about/management-team, LinkedIn, Nuclear Security Working Group, ANS/Atlantic Council bio (background prawniczy + Georgetown JD/LLM)"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Framatome (EATF)",
+        "ticker": null,
+        "public": false,
+        "segment": "Accident-tolerant fuel (LWR)",
+        "threat": "wysokie",
+        "note": "EATF ukonczyl pierwszy cykl w Calvert Cliffs (USA) — PRZED Lightbridge w realnych reaktorach. Wlasna fabrykacja + relacje utilities. Cel adopcji ~2030.",
+        "source": "web: NEI Magazine/PowerMag (2026)"
+      },
+      {
+        "name": "Westinghouse",
+        "ticker": null,
+        "public": false,
+        "segment": "ATF + fuel fabrication (LWR)",
+        "threat": "wysokie",
+        "note": "Testuje uranium silicide (gestszy uran, dluzszy cykl). Dominujacy dostawca paliwa LWR + 49% Westinghouse w rekach Cameco/Brookfield. Wspolpraca z EDF nad ATF.",
+        "source": "web: World Nuclear News (2026)"
+      },
+      {
+        "name": "GE Vernova (Global Nuclear Fuel)",
+        "ticker": "GEV",
+        "public": true,
+        "segment": "ATF (IronClad cladding)",
+        "threat": "wysokie",
+        "note": "IronClad (stal Fe-Cr-Al) z Oak Ridge; testowany 6 lat w komercyjnym uzyciu. Incumbent fuel fabricator BWR.",
+        "source": "web: DOE/Interesting Engineering (2026)"
+      },
+      {
+        "name": "TRISO/HALEU (X-energy, BWXT)",
+        "ticker": "XE/BWXT",
+        "public": true,
+        "segment": "Paliwo reaktorow zaawansowanych",
+        "threat": "srednie",
+        "note": "Inny segment (HTGR/SMR, nie LWR retrofit), ale konkuruje o ten sam DOE/utility mindshare i kapital w 'advanced fuel'.",
+        "source": "sektor"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": "UWAGA — koncept prosty (lepszy metaliczny pret paliwowy), ale kwalifikacja i komercjalizacja ultra-zlozone i 15-20-letnie.",
+      "business_consistent_history": "UWAGA — robi to samo od 2006 (spojnosc kierunku), ALE $0 revenue przez ~20 lat = to NIE dzialajacy biznes w sensie Buffetta, lecz projekt R&D.",
+      "business_longterm_prospects": "UWAGA — JESLI paliwo sie zakwalifikuje, picks-and-shovels dla floty LWR; ale 15-20 lat, incumbenci (Westinghouse/Framatome/GE) z przodu, utilities skrajnie konserwatywne wobec nowego paliwa.",
+      "mgmt_rational": "UWAGA — capital-light (plus: nie pali na fabryki, korzysta z INL/DOE), ale 20 lat bez revenue + ATM dilution; alokacja = przedluzanie opcji.",
+      "mgmt_candid": "OK — uczciwy timeline (sam podaje 15-20 lat — nie ukrywa odleglosci komercjalizacji).",
+      "mgmt_institutional_imperative": "UWAGA — silnie wpisany w narracje policy/sektora; przetrwanie zalezne od ciaglego wsparcia DOE.",
+      "fin_roe": "BRAK — $0 revenue, straty operacyjne, ROE ujemny.",
+      "fin_margins": "BRAK — brak przychodow, brak marz.",
+      "fin_dollar_test": "BRAK — pali kapital (~$19M/rok), nie generuje; test niespelniony.",
+      "wniosek": "Bardzo slaby (3 BRAK + 6 UWAGA) + CEO nie-ekspert (❌). Klasyczny ultra-dlugoterminowy projekt R&D, nie biznes. Wartosc = cash floor + opcja dlugoogonowa niepasujaca do horyzontu 1-3 lata. Steruje: MINIMALNA pozycja spekulacyjna, MoS 30%+, kotwica gotowki."
+    },
+    "dcf": {
+      "method": "Scenariusze — cash floor + opcja dlugoogonowa (DCF niemozliwy: $0 revenue, komercyjne PO 15-20 lat wg firmy)",
+      "wacc_pct": 14.0,
+      "net_cash_m": 215.7,
+      "shares_diluted_m": 35.1,
+      "wacc_inputs": {
+        "rf_pct": 4.2,
+        "beta": 2.09,
+        "erp_pct": 5.0,
+        "credit_rating": "brak (nieratowana, mikrokap, zero dlugu)",
+        "note": "Rf=UST 10Y ~4.2% (06.2026). Beta 2.09 (yfinance). Dyskonto scenariuszowe 14% — wysokie ze wzgledu na ultra-dlugi horyzont (15-20 lat) i binarne ryzyko kwalifikacji. Nie pelny CAPM bridge (brak revenue) — wartosc opcyjna."
+      },
+      "alt_valuation": {
+        "method": "Scenariusze probability-weighted: cash floor + ryzyko opcji metalicznego paliwa",
+        "method_reason": "$0 revenue, komercyjne zamowienia 15-20 lat wg firmy -> DCF niemozliwy; wartosc to gotowka + opcja dlugoogonowa.",
+        "inputs": [
+          {
+            "name": "Cash / dlug",
+            "value": "$215.7M / $0 (net cash)",
+            "source": "SEC 10-Q Q1'26"
+          },
+          {
+            "name": "Akcje",
+            "value": "35.1M (Apr'26); forward diluted ~50M",
+            "source": "SEC; ATM dilution przez 15-20 lat pewna"
+          },
+          {
+            "name": "Cash floor",
+            "value": "$6.14/akcje",
+            "source": "$215.7M / 35.1M"
+          },
+          {
+            "name": "Timeline komercjalizacji",
+            "value": "PO 15-20 lat, demo lata 2030.",
+            "source": "web: harmonogram wlasny Lightbridge"
+          },
+          {
+            "name": "TAM paliwo jadrowe",
+            "value": "$34.5B (2025) -> $43.9B (2032)",
+            "source": "web: The Business Research Company (analiza)"
+          }
+        ],
+        "steps": [
+          "DYSCYPLINA: cash $215.7M to kotwica downside ($6.14/akcje DZIS), ale eroduje przez burn ~$19M/rok + ATM dilution przez 15-20 lat.",
+          "Bear $3.5: przegrana wyscigu ATF / porzucenie; gotowka czesciowo spalona + dilucja -> diluted residual ~$3.5.",
+          "Base $6: trade ~ cash floor (eroziujacy) + minimalna premia opcji; slaby postep, komercjalizacja nadal odlegla. = fair_value.",
+          "Bull $18: testy ATR OK + LOI utilities + re-rating sektora wycenia opcje 2030.",
+          "Ultra $45: metaliczne paliwo jako standard ATF, licencja/JV z fabrykatorem, slice rynku paliwa $40B+ (15-20 lat, mocno dyskontowane).",
+          "Weighted (35/40/20/5) = $9.5; fair_value = BASE $6 (cash floor). Cena $9.40 ~= weighted (rynek placi pelna premie opcji)."
+        ],
+        "fair_value_computed": 6
+      },
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 35,
+          "color": "ef4444",
+          "fair_value": 3.5,
+          "assumptions": {
+            "wacc_pct": 14
+          },
+          "description": "Przegrana wyscigu ATF (Westinghouse/Framatome/GE adoptowani pierwsi) lub porzucenie programu; gotowka spalona + dilucja -> diluted residual ~$3.5.",
+          "key_risk": "Metaliczne paliwo zbedne zanim sie zakwalifikuje; 15-20 lat burnu bez przychodu."
+        },
+        {
+          "name": "Base",
+          "probability_pct": 40,
+          "color": "f59e0b",
+          "fair_value": 6,
+          "assumptions": {
+            "wacc_pct": 14
+          },
+          "description": "Trade ~ cash floor (eroziujacy) + minimalna premia opcji. Slaby ale stabilny postep, komercjalizacja nadal 15-20 lat. = cash $6.14 dryfujacy.",
+          "key_risk": "Cash floor eroduje przez burn + ATM dilution; brak katalizatora fundamentalnego w horyzoncie."
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 20,
+          "color": "10b981",
+          "fair_value": 18,
+          "assumptions": {
+            "wacc_pct": 14
+          },
+          "description": "Testy napromieniania ATR udane + LOI/commitment utilities + re-rating sektora wycenia opcje komercjalizacji 2030.",
+          "key_risk": "Re-rating sentymentalny moze sie cofnac; kwalifikacja nadal lata przed komercja."
+        },
+        {
+          "name": "Ultra",
+          "probability_pct": 5,
+          "color": "8b5cf6",
+          "fair_value": 45,
+          "assumptions": {
+            "wacc_pct": 14
+          },
+          "description": "Metaliczne paliwo jako standard ATF; licencja/JV z fabrykatorem (model capital-light), slice rynku paliwa $40B+. 15-20 lat, mocno dyskontowane.",
+          "key_risk": "Wymaga zwyciestwa nad incumbentami + adopcji konserwatywnych utilities w skali."
+        }
+      ],
+      "fair_value_weighted": 9.5,
+      "fair_value_weighted_formula": "0.35x$3.5 + 0.40x$6 + 0.20x$18 + 0.05x$45 = $9.5; fair_value = BASE $6 (cash floor, konwencja). Cena $9.40 ~= weighted -> rynek placi pelna premie opcji.",
+      "tam_analysis": {
+        "purpose": "Dyscyplina upside: czy bull/ultra sa TAM-spojne i co implikuje cena. fair_value = base $6 (cash floor).",
+        "shares_used": 50,
+        "note_shares": "~50M akcji (forward diluted — ATM dilution przez 15-20 lat horyzontu komercjalizacji)",
+        "markets": [
+          {
+            "name": "Rynek paliwa jadrowego (global)",
+            "tam": "$34.5B (2025) -> $43.9B (2032)",
+            "source": "web: The Business Research Company (analiza)"
+          },
+          {
+            "name": "Fabrykacja paliwa LWR (segment docelowy)",
+            "tam": "podzbior ~$10-15B/rok (LWR)",
+            "source": "World Nuclear Association (jakosciowe)"
+          }
+        ],
+        "bridge_cases": [
+          {
+            "label": "Konserwatywny",
+            "shares": "cash floor",
+            "rev_2035_b": 0.0,
+            "margin": 0,
+            "mult": 0,
+            "implied_fv": 6,
+            "note": "= cash floor $6.14; brak wartosci tech = base"
+          },
+          {
+            "label": "Bull",
+            "shares": "opcja komercjalizacji 2030+",
+            "rev_2035_b": 0.0,
+            "margin": 0,
+            "mult": 0,
+            "implied_fv": 18,
+            "note": "re-rating na udanych testach + LOI utilities"
+          },
+          {
+            "label": "Ultra",
+            "shares": "licencja/JV, slice rynku paliwa",
+            "rev_2035_b": 0.0,
+            "margin": 0,
+            "mult": 0,
+            "implied_fv": 45,
+            "note": "standard ATF, 15-20 lat, mocno dyskontowane"
+          }
+        ],
+        "market_implied": "Cena $9.40 = cash floor $6.14 + ~$3.3 premii za opcje (~$114M EV tech). Rynek wycenia LTBR ~= weighted $9.5 (pelna ryzykowana wartosc opcji), bez MoS na bazie.",
+        "conclusion": "TAM duzy ($40B+ rynek paliwa), wiec ultra TAM-spojny gdyby paliwo wygralo. ALE problem nie w TAM, lecz w HORYZONCIE (15-20 lat) i incumbentach przed nami. fair_value = cash floor $6 (dyscyplina); reszta to opcja niepasujaca do 1-3 lat."
+      },
+      "notes": "Wycena zdominowana przez cash floor ($6.14/akcje, $215.7M gotowki zero dlugu). Komercjalizacja 15-20 lat wg firmy -> DCF niemozliwy, wartosc opcyjna. Base $6 = cash floor eroziujacy. Cena $9.40 placi premie opcji ~= weighted $9.5. Niepasujace do horyzontu 1-3 lata."
+    },
+    "upcoming_events": [
+      {
+        "date": "2026-08-14",
+        "event": "Q2 2026 earnings (szac.) — postep testow napromieniania ATR, tempo burnu/dilucji, ewentualne LOI utilities.",
+        "watch": true
+      }
+    ],
+    "events": [
+      {
+        "date": "2026-06-14",
+        "event": "INICJACJA pokrycia: HOLD, FV base $6 (cash floor; scenariusze, DCF niemozliwy — $0 revenue). Cena $9.40. Metaliczne paliwo UZr dla LWR/CANDU, model capital-light (INL/DOE). KLUCZOWE: komercyjne PO 15-20 lat wg firmy — opcja dlugoogonowa, nie teza 1-3 lata. Incumbenci ATF (Framatome/Westinghouse/GE) z przodu. CEO Seth Grae = prawnik/policy, nie inzynier. Tenets bardzo slabe.",
+        "impact": "neutral",
+        "fv_note": "FV base $6 (=cash floor $6.14) vs cena $9.40 (+57% powyzej base). Cash chroni downside; upside to opcja 15-20 lat. Mala pozycja spekulacyjna, entry $4.2."
+      }
+    ],
+    "caveats": [
+      "HORYZONT 15-20 LAT do komercyjnych zamowien wg WLASNEGO harmonogramu firmy — to opcja dlugoogonowa, NIE teza fundamentalna w oknie 1-3 lata. Nie kupuj jako 'inwestycji' na 1-3 lata; tylko jako spekulacja na sentyment/kamienie milowe.",
+      "Cash floor $6.14/akcje (gotowka $215.7M, ZERO dlugu = ~70% mcap) ogranicza downside — ALE eroduje przez burn ~$19M/rok + ATM dilution. EV samej technologii ~$114M.",
+      "Cena $9.40 placi ~$3.3 powyzej cash floor za opcje; fair_value base $6 (cash floor) — BRAK MoS na bazie. Weighted $9.5 ~= cena (rynek wycenia pelna ryzykowana opcje).",
+      "Konkurenci ATF PRZED Lightbridge: Framatome (ukonczyl cykl w Calvert Cliffs), Westinghouse, GE Vernova — z fabrykacja i relacjami utilities. Ryzyko zbednosci metalicznego paliwa.",
+      "CEO Seth Grae to PRAWNIK/policy-insider, NIE inzynier paliwa — ❌ na tescie 'glodny ekspert'. ~20 lat spolki bez przychodow. skin-in-the-game niepotwierdzone w sesji."
+    ]
   }
 }

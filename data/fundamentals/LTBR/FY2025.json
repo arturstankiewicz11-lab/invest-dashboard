@@ -1,0 +1,19 @@
+{
+  "ticker": "LTBR",
+  "period": "FY2025",
+  "period_end": "2025-12-31",
+  "report_type": "annual",
+  "source_file": "data/reports/LTBR/ltbr-10q-Q1-2026.htm",
+  "extracted": "2026-06-14",
+  "revenue_m": 0.0,
+  "ebit_m": -23.23,
+  "ebit_margin_pct": null,
+  "da_m": null,
+  "capex_m": null,
+  "fcf_m": -14.28,
+  "net_debt_m": -201.9,
+  "shares_diluted_m": 34.15,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Pre-revenue. Komercyjne PO na paliwo 15-20 lat wg wlasnego harmonogramu firmy.",
+  "notes": "SEC XBRL CIK 0001084554 (10-K FY2025). Revenue $0 (pre-revenue). Op loss $23.23M, net loss $19.58M (interest income na gotowce zmniejsza). Op cash burn $14.28M, R&D $9.21M. Cash $201.9M (31.12), ZERO dlugu. Model capital-light (testy w INL/DOE)."
+}

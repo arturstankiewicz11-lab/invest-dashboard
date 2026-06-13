@@ -58,6 +58,12 @@
       "name": "ASP Isotopes Inc.",
       "note": "Wzbogacanie izotopow (medyczne Yb-176/C-14 + Si-28 quantum) + HALEU (QLE, framework TerraPower 150t) + helium/LNG (Renergen). HOLD: rev $24M rosnie, marza brutto +40%, ale gleboko nierentowny + CIEN pozwu securities/short Fuzzy Panda na komercyjnosc tech. FV base $8 vs cena $6.55. Mala pozycja spekulacyjna, MoS 30%+ (entry $5.5).",
       "added": "2026-06-13"
+    },
+    {
+      "ticker": "LTBR",
+      "name": "Lightbridge Corporation",
+      "note": "Metaliczne paliwo jadrowe (UZr) dla LWR/CANDU, model capital-light (INL/DOE). HOLD: $0 revenue, komercyjne PO 15-20 lat wg firmy = opcja dlugoogonowa NIE pasujaca do 1-3 lata. Cash floor $6.14/akcje (zero dlugu). FV base $6 vs cena $9.40 (premia opcji). CEO prawnik, nie inzynier. Incumbenci ATF z przodu.",
+      "added": "2026-06-14"
     }
   ],
   "Quantum": [

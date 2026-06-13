@@ -1,0 +1,19 @@
+{
+  "ticker": "LTBR",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/LTBR/ltbr-10q-Q1-2026.htm",
+  "extracted": "2026-06-14",
+  "revenue_m": 0.0,
+  "ebit_m": -7.68,
+  "ebit_margin_pct": null,
+  "da_m": null,
+  "capex_m": null,
+  "fcf_m": -4.77,
+  "net_debt_m": -215.7,
+  "shares_diluted_m": 35.1,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Pre-revenue. Faza: testy napromieniania w ATR (INL) na uranie z DOE.",
+  "notes": "SEC 10-Q Q1 2026. Revenue $0. Op loss $7.68M (rosnie z testami), op cash burn $4.77M (~$19M/rok annualiz. -> runway ~11 lat). Cash $215.7M (wzrost z $201.9M przez ATM raise Q1; akcje 34.15M->35.1M), ZERO dlugu. Cash floor = $215.7M/35.1M = $6.14/akcje."
+}
