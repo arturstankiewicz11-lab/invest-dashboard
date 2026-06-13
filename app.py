@@ -1608,16 +1608,18 @@ def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
         for ev in r.get("upcoming_events") or []:
             evtxt = ev.get("event", "")
             is_lockup = "lock" in evtxt.lower()  # lock-up/lockup/lock up
-            # nie-aktywne (HOLD spoza portfela): przepuszczamy TYLKO lock-up (nawis podażowy
-            # bywa katalizatorem wejścia — chcemy go widzieć zanim kupimy)
-            if not active and not is_lockup:
+            is_watch = bool(ev.get("watch"))      # katalizator decyzyjny (np. earnings-trigger wejścia)
+            # nie-aktywne (HOLD spoza portfela): przepuszczamy lock-up oraz eventy oznaczone
+            # 'watch' (katalizatory wejścia — chcemy je widzieć zanim kupimy)
+            if not active and not (is_lockup or is_watch):
                 continue
             try:
                 d = datetime.strptime(str(ev.get("date", "")), "%Y-%m-%d").date()
             except Exception:
                 continue
             if d >= today:
-                cal.append((d, t, evtxt, "lockup" if is_lockup else ev.get("type", "catalyst")))
+                typ = "lockup" if is_lockup else ("watch" if is_watch else ev.get("type", "catalyst"))
+                cal.append((d, t, evtxt, typ))
     if cal:
         cal.sort(key=lambda x: x[0])
         st.markdown('<div class="sh">📅 Kalendarz wydarzeń</div>', unsafe_allow_html=True)
@@ -1626,7 +1628,7 @@ def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
             days = (d - today).days
             when = "DZIŚ" if days == 0 else "jutro" if days == 1 else f"za {days} dni"
             urg  = "#ef4444" if days <= 3 else "#f59e0b" if days <= 14 else "#64748b"
-            icon = "📊" if typ == "earnings" else "🔓" if typ == "lockup" else "⚡"
+            icon = "📊" if typ == "earnings" else "🔓" if typ == "lockup" else "🎯" if typ == "watch" else "⚡"
             html += f"""<div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);
                         border:1px solid rgba(255,255,255,0.06);border-left:2px solid {urg};
                         border-radius:10px;padding:10px 16px;flex-wrap:wrap">
