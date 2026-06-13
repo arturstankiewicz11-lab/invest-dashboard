@@ -1,0 +1,19 @@
+{
+  "ticker": "ASPI",
+  "period": "FY2025",
+  "period_end": "2025-12-31",
+  "report_type": "annual",
+  "source_file": "data/reports/ASPI/aspi-10q-Q1-2026.htm",
+  "extracted": "2026-06-13",
+  "revenue_m": 23.85,
+  "ebit_m": -59.91,
+  "ebit_margin_pct": -251.2,
+  "da_m": null,
+  "capex_m": 9.65,
+  "fcf_m": -47.43,
+  "net_debt_m": -275.95,
+  "shares_diluted_m": 125.9,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Renergen: target >$300M EBITDA do 2030, plan finansowania ~$750M (CEO/web, do potwierdzenia, pod cieniem pozwu)",
+  "notes": "Zrodlo: SEC XBRL CIK 0001921865 (10-K FY2025). Rev $23.85M, op loss $59.91M, net loss $159.84M (~$100M strat NIEOPERACYJNYCH z wyceny warrantow/converts/contingent consideration). Op cash burn $37.78M, capex $9.65M. Cash $285.6M (31.12), LT debt tylko $1.47M."
+}

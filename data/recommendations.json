@@ -4115,5 +4115,256 @@
       "UJEMNA marza brutto: direct costs $65.4M > revenue $43.4M. 'Przychody' to dotowany przez DOE development, nie zyskowny biznes.",
       "Struktura Up-C (406.4M economic = 287.5M Class A + 118.9M Common Units). yfinance liczy tylko Class A float -> myli mcap."
     ]
+  },
+  "ASPI": {
+    "name": "ASP Isotopes Inc.",
+    "recommendation": "HOLD",
+    "fair_value": 8,
+    "fair_value_currency": "USD",
+    "entry_point": 5.5,
+    "position_type": "moonshot",
+    "last_updated": "2026-06-13",
+    "thesis_short": "Wzbogacanie izotopow (ASP + Quantum Enrichment): medyczne (Yb-176/C-14/Mo-100), pol-quantum (Si-28) i HALEU (subsydiariusz QLE, framework TerraPower 150t 2028-37) + helium/LNG (przejety Renergen). Rev $24M FY2025 rosnie (+279% YoY Q1), DODATNIA marza brutto 40%, ale gleboko nierentowny (op loss $60M->~$100M annualiz.), ciezka dylucja przed nami. CIEN: pozew securities + short Fuzzy Panda kwestionujacy komercyjnosc technologii. FV base $8 vs cena $6.55. Founder Paul Mann (Wall St + inzynier chem). HOLD — moonshot spekulacyjny, mala pozycja.",
+    "thesis_full": "ASP Isotopes wzbogaca izotopy proprietary technologia (Aerodynamic Separation Process + Quantum Enrichment), fabryki w Pretorii (RPA). Trzy drivery: (1) IZOTOPY — medyczne (Yb-176 terapia, C-14, Mo-100 dla PET) + pol-quantum Si-28 (ultra-czysty krzem dla qubitow); 3 PO podpisane (US semiconductor, global industrial gas, US buyer), pierwsze komercyjne dostawy 2026. (2) HALEU przez Quantum Leap Energy (QLE): framework TerraPower do 150 ton 2028-37 + warunkowy loan $22M (2032); MOU (NIEWIAZACE) z US nuclear operator (III.2026), EU nuclear tech (V.2026, dostawy 2028+), Necsa RPA (Pre-Implementation Contract II.2026); planowany SPIN-OFF QLE (value unlock). (3) HELIUM/LNG — przejety Renergen (I.2026), target zarzadu >$300M EBITDA do 2030, plan finansowania ~$750M. RYZYKO KLUCZOWE: pozew zbiorowy securities (SDNY 1:24-cv-09253) + raport short-sellera Fuzzy Panda (XI.2024) twierdzacy, ze technologia wzbogacania jest przestarzala i komercyjnie niewykonalna — uderza w rdzen tezy. CEO odrzuca jako atak shorta. Wycena scenariuszowa (DCF niemozliwy — pre-profit, rev <$50M): base $8 zaklada Renergen ~$120M EBITDA 2030 (ponizej targetu) + izotopy ~$30M; bear $1.6 (short thesis trafiony — tylko helium ma wartosc, -76%); bull $23 / ultra $42. Cena $6.55 miedzy bear a base. Asymetria moonshot, ale cien wiarygodnosci wymaga malej pozycji i MoS 30%+.",
+    "thesis_breaker": "Niekorzystne rozstrzygniecie pozwu securities POTWIERDZAJACE material misrepresentation o technologii/komercyjnosci, LUB dowod ze wzbogacanie ASP nie skaluje komercyjnie (brak realnych przychodow izotopowych do 2027), LUB awaria produkcji helium Renergen (jedyny namacalny aktyw), LUB kryzys plynnosci wymuszajacy distressed raise.",
+    "risks": [
+      "POZEW SECURITIES + SHORT THESIS na technologie: class action SDNY (1:24-cv-09253) + Fuzzy Panda (XI.2024) twierdzi, ze tech wzbogacania przestarzala/niekomercyjna. Jesli trafione — izotopy+HALEU sie walą, zostaje tylko helium Renergen (bear $1.6, -76%). Ryzyko TEZOWE.",
+      "MOU NIEWIAZACE + ciezka dylucja: wiekszosc umow HALEU to non-binding (poza framework TerraPower); plan finansowania Renergen ~$750M + capex wzbogacania vs $207M cash -> duze emisje akcji, dylucja 125.9M -> ~180M+.",
+      "Rozrzucony biznes + RPA: trzy biznesy roznej dojrzalosci (izotopy/HALEU/helium) + swieze M&A Renergen+Numed + planowany spin-off QLE; zlozonosc wykonawcza. Fabryki + Renergen + Necsa w RPA (Eskom/grid, polityka, JSE)."
+    ],
+    "buffett_moat": "WASKI/SPORNY: proprietary ASP + Quantum Enrichment moze byc picks-and-shovels dla izotopow/HALEU (krytyczne, ograniczona podaz domestic HALEU vs Rosja), ALE komercyjnosc technologii kwestionowana przez short-sellera i pozew. Moat realny tylko jesli tech dziala w skali — niezweryfikowane. Renergen helium = realny aktyw, ale rynek mniejszy.",
+    "ceo_profile": {
+      "name": "Paul E. Mann",
+      "ceo_since": "2021 (co-founder, Chairman + CEO)",
+      "background": "20+ lat Wall Street (Soros Fund Management, Highbridge Capital, Morgan Stanley) — inwestowanie w healthcare/chemicals. Start jako research scientist w P&G (wynalazca kremow Oil of Olay). MA Cantab + Master of Engineering Cambridge (Natural Sciences + Chemical Engineering). CFA.",
+      "founder_or_manager": "FOUNDER (wspolzalozyciel IX.2021)",
+      "hunger": "WYSOKI — founder, agresywna ekspansja (M&A Renergen/Numed, serie raisow, spin-off QLE, wiele MOU). Buduje imperium izotopowo-energetyczne. Sygnaly glodu obecne.",
+      "domain_expertise": "NIEPEWNA — z wyksztalcenia inzynier chemik (realne), ale kariera to FINANSE/inwestowanie, nie fizyka izotopow ani operacje wzbogacania. Short-seller (Fuzzy Panda) zarzuca przesadzanie mozliwosci tech. To KLUCZOWE otwarte pytanie: ekspert czy promotor finansowy? Test ekspertyzy w earnings calls niejednoznaczny.",
+      "track_record": "Krotki — spolka od 2021, pre-komercyjna; pierwsze probki izotopow wyslane VIII.2025, komercyjne dostawy dopiero 2026. Brak historii 'obiecal vs dostarczyl' w skali.",
+      "skin_in_the_game": "Founder — udzial istotny, ale dokladny % i transakcje insiderskie DO WERYFIKACJI (brak potwierdzenia w sesji). Pozew obejmuje CEO+CFO osobiscie.",
+      "red_flags": "POWAZNE: pozew securities (CEO osobiscie), raport short-sellera na rdzen technologii, rozrzucone M&A, wiele NIEWIAZACYCH MOU prezentowanych jako kamienie milowe. Profil finansisty-promotora w moonshocie tech = ryzyko.",
+      "verdict": "GLODNY FOUNDER, ale EKSPERTYZA DOMENOWA NIEZWERYFIKOWANA + cien wiarygodnosci (pozew/short). To NIE czysty 'glodny ekspert' — to glodny finansista z dyplomem inzyniera, pod zarzutami. Wymaga ostroznosci: mala pozycja, czekac na walidacje technologii/rozstrzygniecie pozwu.",
+      "sources": "web: aspisotopes.com/people, Bloomberg/Equilar bio, PR firmy, Fuzzy Panda Research (XI.2024), GlobeNewswire (odpowiedz firmy)"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Centrus Energy",
+        "ticker": "LEU",
+        "public": true,
+        "segment": "HALEU/wzbogacanie (domestic US)",
+        "threat": "wysokie",
+        "note": "Lider domestic HALEU (Piketon, kontrakt DOE), RENTOWNY, sprawdzona kaskada wirowkowa. ASPI/QLE maly challenger z niesprawdzona tech. LEU znacznie dalej.",
+        "source": "sektor + web"
+      },
+      {
+        "name": "Urenco / Orano / Rosatom (TENEX)",
+        "ticker": null,
+        "public": false,
+        "segment": "Wzbogacanie uranu (globalne)",
+        "threat": "wysokie",
+        "note": "Giganci wzbogacania; Rosja ~40%+ globalnego. Domestic HALEU to tailwind geopolityczny dla QLE, ale skala konkurentow ogromna.",
+        "source": "World Nuclear Association"
+      },
+      {
+        "name": "Curium / Lantheus / NorthStar / Nusano / Eckert&Ziegler",
+        "ticker": null,
+        "public": true,
+        "segment": "Izotopy medyczne / radiofarmaceutyki",
+        "threat": "srednie",
+        "note": "Ugruntowani gracze nuclear medicine; ASPI wchodzi z izotopami wzbogaconymi (Yb-176, Mo-100) — nisza dostawcza, nie konkurent kliniczny wprost.",
+        "source": "sektor + web"
+      },
+      {
+        "name": "Air Products / Linde / Air Liquide",
+        "ticker": "APD/LIN/AI.PA",
+        "public": true,
+        "segment": "Helium / industrial gas (Renergen)",
+        "threat": "srednie",
+        "note": "Giganci helium; Renergen maly producent (RPA). Helium crunch = tailwind, ale ASPI nieduzy gracz.",
+        "source": "sektor + web"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": "BRAK — rozrzucony: wzbogacanie izotopow (medyczne+pol-quantum) + HALEU + helium/LNG + planowany spin-off. Twarda tech, trudna do weryfikacji przez laika; dokladnie typ 'trudnego problemu', ktorego Buffett unika.",
+      "business_consistent_history": "BRAK — zalozona 2021, pre-komercyjna, pierwsze dostawy 2026; seryjne M&A (Renergen, Numed). Zero spojnej historii operacyjnej.",
+      "business_longterm_prospects": "UWAGA — JESLI tech dziala: picks-and-shovels dla krytycznych izotopow + domestic HALEU (tailwind vs Rosja). ALE komercyjnosc sporna (short/pozew). Substytuty: ugruntowani gracze w kazdej wertykali.",
+      "mgmt_rational": "UWAGA — agresywna alokacja (M&A + raisy + spin-off); founder-led, ale finansista-promotor; dylucja akcjonariuszy znaczaca.",
+      "mgmt_candid": "BRAK/UWAGA — zarzuty material misrepresentation (pozew, nieudowodnione); MOU niewiazace prezentowane jako milestones; CEO odrzuca short jako atak.",
+      "mgmt_institutional_imperative": "UWAGA — kopiuje narracje sektora (HALEU/quantum/helium) szeroko; ekspansja moze byc napedzana hype'em.",
+      "fin_roe": "BRAK — gleboko nierentowny, ROE ujemny; net loss $160M FY2025.",
+      "fin_margins": "UWAGA — marza brutto +40% (POZYTYW, realne unit economics), ale op margin gleboko ujemny przez R&D/SG&A; daleko do owner earnings.",
+      "fin_dollar_test": "BRAK — pali kapital, nie generuje; test $1 za $1 niespelniony (pre-profit).",
+      "wniosek": "Wynik bardzo slaby (5+ BRAK): klasyczny wysokoryzykowny moonshot z dodatkowym cieniem wiarygodnosci. Steruje to MALA pozycja (spekulacyjna) i MoS 30%+. NIE dopuszczenie — ale sizing minimalny do czasu walidacji tech/pozwu."
+    },
+    "dcf": {
+      "method": "Analiza scenariuszy — probability-weighted (DCF niemozliwy: pre-profit, rev <$50M, 3 biznesy roznej dojrzalosci)",
+      "wacc_pct": 13.0,
+      "net_cash_m": 202,
+      "shares_diluted_m": 125.9,
+      "wacc_inputs": {
+        "rf_pct": 4.2,
+        "beta": 3.44,
+        "erp_pct": 5.0,
+        "credit_rating": "brak (nieratowana, mikrokap)",
+        "note": "Rf=UST 10Y ~4.2% (06.2026). Beta zmierzona yfinance 3.44 (ekstremalna — mikrokap moonshot). Re=4.2+3.44x5.0=21.4% bylby zaporowy; przyjmuje WACC 13% jako dyskonto scenariuszowe (typowe dla pre-profit moonshot, spojnie z OKLO/IONQ 12%, +1pp za cien wiarygodnosci/pozew). Uproszczenie: wycena scenariuszowa per 2030, nie pelny CAPM bridge."
+      },
+      "alt_valuation": {
+        "method": "Scenariusze EV/EBITDA per 2030 (consolidated 3 biznesy), z modelowana dylucja i dyscyplina cash-burn",
+        "method_reason": "Pre-profit (op loss $60M), rev $24M <$50M, 3 drivery roznej dojrzalosci + cien wiarygodnosci -> DCF niemozliwy, scenariusze najuczciwsze.",
+        "inputs": [
+          {
+            "name": "Revenue FY2025",
+            "value": "$23.85M",
+            "source": "SEC 10-K"
+          },
+          {
+            "name": "Cash / LT debt",
+            "value": "$207.35M / $5.06M (net cash ~$202M)",
+            "source": "SEC 10-Q Q1'26"
+          },
+          {
+            "name": "Akcje (z dilution do 2030)",
+            "value": "125.9M -> ~180M",
+            "source": "plan finansowania Renergen ~$750M + capex wzbogacania -> emisje pewne"
+          },
+          {
+            "name": "Renergen EBITDA target 2030",
+            "value": ">$300M (zarzad)",
+            "source": "CEO/web — credibility-discounted (pozew)"
+          },
+          {
+            "name": "HALEU framework TerraPower",
+            "value": "do 150 ton 2028-37 + loan $22M",
+            "source": "web/PR (warunkowy)"
+          }
+        ],
+        "steps": [
+          "DYSCYPLINA cash-burn: $202M gotowki zuzyte na buildout do rev/EBITDA 2030 -> NIE doliczane do EV (jak XE/OKLO). Dylucja modelowana w akcjach.",
+          "Bear: short thesis trafiony — tech izotop/HALEU niekomercyjna, zostaje czesc Renergen helium. EBITDA30 $40M x 8x = $320M EV / 200M (distress raises) = $1.6",
+          "Base: Renergen ~$120M EBITDA (ponizej targetu $300M) + izotopy ~$30M, HALEU minimalny = EBITDA30 $150M x 10x = $1.5B EV / 180M = $8.3 -> $8",
+          "Bull: Renergen ~$270M (blisko targetu) + izotopy ~$60M + HALEU start = EBITDA30 $330M x 12x = $3.96B / 172M = $23",
+          "Ultra: wszystkie 3 + spin-off QLE value + Si-28 quantum inflection = EBITDA30 $480M x 15x = $7.2B / 172M = $42",
+          "Weighted (35/35/20/10, bear ciezko wazony za cien wiarygodnosci) = $12.2; fair_value = BASE $8 (konwencja)"
+        ],
+        "fair_value_computed": 8
+      },
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 35,
+          "color": "ef4444",
+          "fair_value": 1.6,
+          "description": "Short thesis trafiony: wzbogacanie ASP niekomercyjne, izotopy+HALEU bez wartosci, zostaje czesc helium Renergen. Pozew niekorzystny. EBITDA30 $40M x 8x, 200M akcji (distress). -76% od ceny."
+        },
+        {
+          "name": "Base",
+          "probability_pct": 35,
+          "color": "f59e0b",
+          "fair_value": 8,
+          "description": "Renergen ramp ~$120M EBITDA (ponizej targetu $300M), izotopy ~$30M, HALEU minimalny. EBITDA30 $150M x 10x / 180M (dylucja). Cash zuzyty na buildout (nie doliczany)."
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 20,
+          "color": "10b981",
+          "fair_value": 23,
+          "description": "Renergen ~$270M (blisko targetu zarzadu), izotopy $60M, HALEU start z framework TerraPower. EBITDA30 $330M x 12x / 172M. Tech zwalidowana, pozew oddalony."
+        },
+        {
+          "name": "Ultra",
+          "probability_pct": 10,
+          "color": "8b5cf6",
+          "fair_value": 42,
+          "description": "Wszystkie 3 drivery firalize + spin-off QLE unlock value + Si-28 quantum demand inflection. EBITDA30 $480M x 15x / 172M. Picks-and-shovels dla izotopow potwierdzone."
+        }
+      ],
+      "fair_value_weighted": 12,
+      "fair_value_weighted_formula": "0.35x$1.6 + 0.35x$8 + 0.20x$23 + 0.10x$42 = $12.2; fair_value = BASE $8 (konwencja). Bear ciezko wazony (35%) za cien wiarygodnosci.",
+      "tam_analysis": {
+        "purpose": "Dyscyplina upside dla moonshota: czy bull/ultra sa TAM-spojne i jaki udzial implikuje cena $6.55. fair_value pozostaje = base $8.",
+        "shares_used": 180,
+        "note_shares": "~180M akcji (forward diluted do 2030 z plan finansowania Renergen ~$750M + capex); cash zuzyty na buildout (~$0 doliczane); dyskonto wbudowane w mnozniki",
+        "markets": [
+          {
+            "name": "Izotopy medyczne (radioisotopes)",
+            "tam": "$27B do 2030",
+            "source": "360iResearch/Mordor (analiza, nie fakt)"
+          },
+          {
+            "name": "HALEU (paliwo advanced reactors)",
+            "tam": "50 t/rok do 2035 (DOE); NEI do 400t kumul. 2030",
+            "source": "DOE/INL/NEI"
+          },
+          {
+            "name": "Helium (Renergen)",
+            "tam": "$6B do 2030 (CAGR 6.7%)",
+            "source": "Grand View Research"
+          },
+          {
+            "name": "Si-28 (quantum/semi)",
+            "tam": "nascent — brak wiarygodnego TAM (quantum materials wczesne)",
+            "source": "NIST (jakosciowe)"
+          }
+        ],
+        "bridge_cases": [
+          {
+            "label": "Konserwatywny",
+            "shares": "EBITDA30 $100M x 9x",
+            "rev_2035_b": 0.0,
+            "margin": 0,
+            "mult": 9,
+            "implied_fv": 5,
+            "note": "~ponizej ceny; sam Renergen czesciowo"
+          },
+          {
+            "label": "Bazowy",
+            "shares": "EBITDA30 $150M x 10x",
+            "rev_2035_b": 0.0,
+            "margin": 0,
+            "mult": 10,
+            "implied_fv": 8,
+            "note": "= base FV $8; cena $6.55 tu siedzi (~-18%)"
+          },
+          {
+            "label": "Agresywny",
+            "shares": "EBITDA30 $330M x 12x",
+            "rev_2035_b": 0.0,
+            "margin": 0,
+            "mult": 12,
+            "implied_fv": 23,
+            "note": "= bull; wymaga Renergen blisko targetu + izotopy"
+          }
+        ],
+        "market_implied": "Cena $6.55 (mcap ~$825M) implikuje ~EBITDA30 $120M @ 10x z dylucja — czyli Renergen blisko polowy targetu zarzadu PLUS dzialajace izotopy. Rynek czesciowo wierzy w komercjalizacje mimo cienia pozwu.",
+        "conclusion": "Bull $23 / Ultra $42 sa TAM-spojne (rynki izotopow+helium+HALEU lacznie >$30B; ASPI potrzebuje malego udzialu). Problem NIE w TAM, lecz w WYKONANIU i WIARYGODNOSCI TECH. fair_value = base $8 (dyscyplina). Asymetria realna, ale cien pozwu/short uzasadnia mala pozycje."
+      },
+      "notes": "Wycena scenariuszowa pod cieniem pozwu securities + short Fuzzy Panda. Base $8 zaklada Renergen ~$120M EBITDA 2030 (znacznie ponizej targetu zarzadu $300M — celowo zachowawczo, bo zarzad pod zarzutami). Dyscyplina cash-burn: $202M gotowki NIE doliczane (zuzyte na buildout). Dylucja 125.9M->~180M modelowana. Beta 3.44 sygnalizuje ekstremalna zmiennosc."
+    },
+    "upcoming_events": [
+      {
+        "date": "2026-08-14",
+        "event": "Q2 2026 earnings (szac.) — czy izotopy (Si-28/Yb-176) generuja realny revenue komercyjny; Renergen helium ramp; postep pozwu."
+      },
+      {
+        "date": "2026-12-31",
+        "event": "Spin-off QLE (planowany, bez daty) — potencjalny value unlock dla HALEU; oraz konwersja MOU TerraPower/EU na wiazace umowy."
+      }
+    ],
+    "events": [
+      {
+        "date": "2026-06-13",
+        "event": "INICJACJA pokrycia: HOLD, FV base $8 (scenariusze, DCF niemozliwy — pre-profit). Cena $6.55. Moonshot izotopowo-energetyczny (izotopy+HALEU+helium Renergen). KLUCZOWY cien: pozew securities SDNY + short Fuzzy Panda na komercyjnosc tech. CEO Paul Mann (founder, Wall St + inzynier chem — ekspertyza domenowa niepewna). Tenets bardzo slabe (5+ BRAK).",
+        "impact": "neutral",
+        "fv_note": "FV base $8 vs cena $6.55 (+22%); bear $1.6 (-76% jesli short trafiony), bull $23. Mala pozycja spekulacyjna."
+      }
+    ],
+    "caveats": [
+      "POZEW SECURITIES (SDNY 1:24-cv-09253) + short Fuzzy Panda (XI.2024) twierdza, ze technologia wzbogacania ASP jest przestarzala/komercyjnie niewykonalna — uderza w rdzen tezy (izotopy+HALEU). CEO odrzuca jako atak shorta. NIEROZSTRZYGNIETE.",
+      "yfinance pokazuje 'dlug $262M' MYLNIE: realny LT debt tylko $5M; reszta to contingent consideration/converts/warranty z Renergen/Numed (stad net loss $160M FY25 vs op loss $60M = ~$100M zmian FV instrumentow). Realnie NET CASH ~$202M.",
+      "Wiekszosc umow HALEU to NIEWIAZACE MOU (US operator, EU nuclear); jedyna konkretna kotwica to framework TerraPower (150t, warunkowy loan $22M).",
+      "Ciezka dylucja przed nami: plan finansowania Renergen ~$750M + capex wzbogacania vs $207M cash -> emisje pewne (125.9M -> ~180M+ akcji).",
+      "Koncentracja RPA: fabryki wzbogacania (Pretoria) + Renergen + Necsa w Afryce Poludniowej (ryzyko Eskom/grid, polityczne, JSE).",
+      "Marza brutto +40% (POZYTYW vs pre-rev peers) — straty z R&D/SG&A, nie z ujemnych unit economics. Beta 3.44 = ekstremalna zmiennosc."
+    ]
   }
 }

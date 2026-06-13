@@ -1,0 +1,19 @@
+{
+  "ticker": "ASPI",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/ASPI/aspi-10q-Q1-2026.htm",
+  "extracted": "2026-06-13",
+  "revenue_m": 4.18,
+  "ebit_m": -24.89,
+  "ebit_margin_pct": -595.5,
+  "da_m": null,
+  "capex_m": 6.14,
+  "fcf_m": -23.9,
+  "net_debt_m": -202.29,
+  "shares_diluted_m": 125.9,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Pierwsze komercyjne dostawy Si-28, Yb-176, C-14 w 2026 (3 PO: US semiconductor, global industrial gas, US buyer). HALEU TerraPower framework 150t 2028-37.",
+  "notes": "Zrodlo: SEC 10-Q Q1 2026 (aspi-20260331). Rev $4.18M (+279% YoY z $1.10M; teraz z Renergen helium/LNG + radiopharmacy + nuclear medicine). DODATNIA marza brutto 40% (COGS $2.51M, GP $1.67M) — straty z R&D $5.26M + SG&A, NIE z ujemnych unit economics (vs XE). Op loss $24.89M (rosnie). Cash $207.35M, LT debt $5.06M -> net cash ~$202M. Brak flagi going-concern. PR podaje net loss $26.7M (rozni sie od XBRL net -$7.12M attributable — NCI/Renergen)."
+}
