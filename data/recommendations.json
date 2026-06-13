@@ -1548,7 +1548,44 @@
         ]
       },
       "backlog_note": "Total $3.8B do 2040 (Dec 31 2025); LEU segment $2.9B (w tym $2.3B contingent: $2.1B definitive + $0.2B subject to definitive). Tech Solutions $0.9B.",
-      "scenario_structure_note": "Kazdy scenariusz = 3-etapowy DCF 5/3/2 lat (potwierdzone: base 5/3/2 = $93.4). Stage1 5 lat (Piketon CapEx, FCF ujemny base), Stage2 3 lata (komercyjne wzbogacanie ramp), Stage3 2 lata (dojrzaly). WACC 11.9%, net cash $692.1M, shares 22.446M diluted."
+      "scenario_structure_note": "Kazdy scenariusz = 3-etapowy DCF 5/3/2 lat (potwierdzone: base 5/3/2 = $93.4). Stage1 5 lat (Piketon CapEx, FCF ujemny base), Stage2 3 lata (komercyjne wzbogacanie ramp), Stage3 2 lata (dojrzaly). WACC 11.9%, net cash $692.1M, shares 22.446M diluted.",
+      "catalyst_sensitivity": {
+        "event": "HALEU Operations Contract wygasa 30.06.2026 + kontekst definityzacji $900M task order",
+        "current_price": 162.58,
+        "note": "Katalizator przesuwa WAGI scenariuszy, nie same FV. Przy cenie $162 (powyzej bull $151) asymetryczny w dol: dobry wynik potwierdza max ~$113-151 (wciaz < cena), zly aktywuje thesis breaker ku $73. Jedyna sciezka uzasadniajaca $162 to scenariusz premium $270.",
+        "outcomes": [
+          {
+            "label": "Zly: brak przedluzenia / $900M anulowany",
+            "weights": "40/50/10",
+            "weighted_fv": 73,
+            "comment": "Aktywuje thesis breaker (warunek #1)"
+          },
+          {
+            "label": "Neutralny: czyste przedluzenie, brak news o $900M",
+            "weights": "8/65/27",
+            "weighted_fv": 103,
+            "comment": "Najbardziej prawdopodobny — bez zmian fundamentalnych"
+          },
+          {
+            "label": "Dobry: przedluzenie + definityzacja $900M",
+            "weights": "5/55/40",
+            "weighted_fv": 113,
+            "comment": "De-ryzykuje finansowanie Piketon"
+          },
+          {
+            "label": "Premium (opcjonalnosc): $900M na warunkach premium + sygnal $35k/kg",
+            "weights": "ku scenariuszowi $270",
+            "weighted_fv": 270,
+            "comment": "Jedyny przypadek uzasadniajacy cene $162; wymaga warunkow cenowych, nie samej definityzacji"
+          }
+        ],
+        "what_to_watch": [
+          "Marza/struktura $900M — cost-plus (jak dzis HALEU 5.9%) czy udzial w cenie rynkowej?",
+          "Przedluzenie vs definitywna umowa wieloletnia",
+          "Jakikolwiek sygnal pricing ku $35k/kg = ruch ku $270",
+          "Czy General Matter/Orano pojawia sie w narracji DOE (thesis breaker #4)"
+        ]
+      }
     },
     "upcoming_events": [
       {

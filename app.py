@@ -832,6 +832,38 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
                     unsafe_allow_html=True)
 
 
+def _render_catalyst_sensitivity(cs: dict):
+    """Renderuje wrażliwość wyceny na nadchodzący katalizator (dcf.catalyst_sensitivity)."""
+    st.markdown('<div class="sh" style="margin-top:22px">🎲 Wrażliwość na katalizator</div>', unsafe_allow_html=True)
+    ev = cs.get("event", "")
+    note = cs.get("note", "")
+    rows = ""
+    for o in cs.get("outcomes", []):
+        fv = o.get("weighted_fv")
+        # kolor wg relacji do ceny biezacej (jesli podana)
+        px = cs.get("current_price")
+        col = "#94a3b8"
+        if fv is not None and px:
+            col = "#10b981" if fv >= px else "#ef4444"
+        rows += (f'<div style="display:flex;gap:12px;align-items:baseline;padding:7px 0;'
+                 f'border-bottom:1px solid rgba(255,255,255,0.04)">'
+                 f'<span style="color:{col};font-weight:700;font-size:13px;min-width:64px">${fv}</span>'
+                 f'<span style="color:#475569;font-size:11px;min-width:58px">{_e(str(o.get("weights","")))}</span>'
+                 f'<span style="flex:1"><span style="color:#e2e8f0;font-size:12.5px">{_e(o.get("label",""))}</span>'
+                 f'<br><span style="color:#64748b;font-size:11px">{_e(o.get("comment",""))}</span></span></div>')
+    watch = "".join(f'<li style="margin-bottom:3px">{_e(w)}</li>' for w in cs.get("what_to_watch", []))
+    px_html = (f' · cena ${cs["current_price"]}' if cs.get("current_price") else "")
+    st.markdown(f"""
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px 20px">
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:4px"><b style="color:#f59e0b">⏱ {_e(ev)}</b></div>
+        <div style="font-size:11.5px;color:#64748b;line-height:1.6;margin-bottom:12px">{_e(note)}{px_html}</div>
+        <div style="font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Weighted FV wg wyniku</div>
+        {rows}
+        <div style="font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:1px;margin:14px 0 4px">Co obserwować</div>
+        <ul style="margin:0;padding-left:18px;color:#94a3b8;font-size:12px;line-height:1.5">{watch}</ul>
+    </div>""", unsafe_allow_html=True)
+
+
 def tab_dcf(rec: dict):
     dcf = rec.get("dcf")
     alt = dcf.get("alt_valuation") if dcf else None
@@ -853,6 +885,8 @@ def tab_dcf(rec: dict):
             _render_alt_valuation(alt, fv_currency)
             if dcf.get("scenarios"):
                 _render_dcf_scenarios(dcf["scenarios"], dcf, rec)
+            if dcf.get("catalyst_sensitivity"):
+                _render_catalyst_sensitivity(dcf["catalyst_sensitivity"])
         else:
             st.markdown("""
             <div style="padding:40px;text-align:center;color:#475569">
@@ -1230,6 +1264,10 @@ Net cash/debt (wartość używana w Bridge) = <b style="color:{col}">{fmt_m(net_
     scenarios = dcf.get("scenarios")
     if scenarios:
         _render_dcf_scenarios(scenarios, dcf, rec)
+
+    # Catalyst sensitivity (optional)
+    if dcf.get("catalyst_sensitivity"):
+        _render_catalyst_sensitivity(dcf["catalyst_sensitivity"])
 
 # ─── TAB: DZIAŁANIA ───────────────────────────────────────────────────────────
 def tab_actions(rec: dict, row, prices: dict):
