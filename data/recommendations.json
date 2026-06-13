@@ -1368,7 +1368,13 @@
     "events": [
       {
         "date": "2026-06-13",
-        "event": "Pelna rewizja wg nowych zasad. fair_value 101 (weighted) -> 93 (BASE, konwencja pkt 7). Dodane: ceo_profile Vexler = GLODNY EKSPERT (ex-CEO Orano USA + 20 lat GE/Global Nuclear Fuels — ekspertyza bezdyskusyjna), competitive_landscape (Urenco/Orano wysokie, Tenex=tailwind nie zagrozenie, General Matter srednie), buffett_tenets 6xOK/3xUWAGA, Krok 0 segmenty (LEU GM 32% vs HALEU 5.9%). Fresh data: SWU $220 (model mial $200, +tailwind ale lagged), backlog $3.8B do 2040, HALEU contract extended do 30.06.2026, $900M task order wciaz niedefinitized. Cena $162.58 PRZEKRACZA bull $151 — drabinka moonshot: redukcja do rdzenia AKTYWNA.",
+        "event": "Weryfikator: ZGODNA Z UWAGAMI (brak findingu krytycznego — shares 22.446M diluted, net cash $692M, revenue/EBIT, $900M task order, backlog wszystko potwierdzone w 10-K/10-Q). 3 poprawki: (1) dopisana struktura lat 5/3/2 per scenariusz (base 5/3/2 = $93.4 odtwarzalne); (2) Bear $29 oznaczony jako net cash floor, nie DCF (model Bear dalby ~$52); (3) SWU $220 -> $200 zgodnie z 10-K (+488%, nie +547% — bledny back-calc). Uwaga: TV/EV 87% w base — model stoi na terminalu (typowe dla pre-komercyjnej spolki).",
+        "impact": "neutral",
+        "fv_note": "FV $93 (base) potwierdzone strukturalnie. Cena $162.58 > bull $151 — drabinka redukcji aktywna."
+      },
+      {
+        "date": "2026-06-13",
+        "event": "Pelna rewizja wg nowych zasad. fair_value 101 (weighted) -> 93 (BASE, konwencja pkt 7). Dodane: ceo_profile Vexler = GLODNY EKSPERT (ex-CEO Orano USA + 20 lat GE/Global Nuclear Fuels — ekspertyza bezdyskusyjna), competitive_landscape (Urenco/Orano wysokie, Tenex=tailwind nie zagrozenie, General Matter srednie), buffett_tenets 6xOK/3xUWAGA, Krok 0 segmenty (LEU GM 32% vs HALEU 5.9%). Fresh data: SWU $200 (10-K, +488% od 2018; korekta z bledcnego $220/+547%), backlog $3.8B do 2040, HALEU contract extended do 30.06.2026, $900M task order wciaz niedefinitized. Cena $162.58 PRZEKRACZA bull $151 — drabinka moonshot: redukcja do rdzenia AKTYWNA.",
         "impact": "neutral",
         "fv_note": "FV 101->93 (base; weighted nadal $101). Cena $162.58 > bull $151 -> wszystkie szczeble drabinki aktywne. PROPOZYCJA: entry $76->$70 (25% MoS od base $93). Katalizator: HALEU contract 30.06."
       },
@@ -1431,7 +1437,7 @@
           "probability_pct": 10,
           "color": "ef4444",
           "fair_value": 29,
-          "description": "Piketon cancelled/fail 2029, powrot do LEU trading; SWU spot spada gdy Chiny wypelniaja luke po Rosji. Net cash $30.8/akcje = floor.",
+          "description": "Piketon cancelled/fail 2029, powrot do LEU trading. FV = NET CASH FLOOR $30.8/akcje (DCF Bear dalby ~$52, ale floor to twarda podloga). General Matter/Orano lub chinski import wypelnia luke.",
           "assumptions": {
             "stage1_cagr_pct": 5,
             "stage2_cagr_pct": 3,
@@ -1439,9 +1445,11 @@
             "fcf_margin_s1_pct": 5.0,
             "fcf_margin_s2_pct": 11.0,
             "wacc_pct": 11.9,
-            "terminal_g_pct": 1.5
+            "terminal_g_pct": 1.5,
+            "stage_years": "5/3/2 (stage1/2/3)"
           },
-          "key_risk": "General Matter/Orano (po $900M DOE) lub chinski import wypelniaja luke przed Piketon"
+          "key_risk": "General Matter/Orano (po $900M DOE) lub chinski import wypelniaja luke przed Piketon",
+          "fair_value_basis": "NET CASH FLOOR $30.8/akcje (nie DCF: model Bear dalby ~$51.6; floor przyjety jako konserwatywna podloga)"
         },
         {
           "name": "Base",
@@ -1456,7 +1464,8 @@
             "fcf_margin_s1_pct": -12.1,
             "fcf_margin_s2_pct": 15.38,
             "wacc_pct": 11.9,
-            "terminal_g_pct": 2.5
+            "terminal_g_pct": 2.5,
+            "stage_years": "5/3/2 (stage1/2/3)"
           },
           "key_risk": "Execution Piketon ($560M Oak Ridge expansion) — pierwsza komercyjna centrifugownia USA od dekad"
         },
@@ -1473,7 +1482,8 @@
             "fcf_margin_s1_pct": -10.0,
             "fcf_margin_s2_pct": 18.0,
             "wacc_pct": 11.9,
-            "terminal_g_pct": 3.0
+            "terminal_g_pct": 3.0,
+            "stage_years": "5/3/2 (stage1/2/3)"
           },
           "key_risk": "Wycena bull wymaga premium HALEU pricing + first-mover utrzymany vs General Matter/Orano"
         }
@@ -1515,7 +1525,7 @@
             "segment": "LEU — SWU",
             "revenue_m": 298.7,
             "yoy_pct": null,
-            "note": "Sprzedaz separative work units utilities; GM segmentu 32.2%. SWU spot $220 (2025, +547% od 2018) — ale lagged long-term contracts, wiec spot wchodzi powoli"
+            "note": "Sprzedaz SWU utilities; GM segmentu 32.2%. SWU spot $200 na 31.12.2025 (10-K: +488% od historic low 2018) — ale lagged long-term contracts, wiec spot wchodzi powoli"
           },
           {
             "segment": "LEU — uran",
@@ -1537,7 +1547,8 @@
           }
         ]
       },
-      "backlog_note": "Total $3.8B do 2040 (Dec 31 2025); LEU segment $2.9B (w tym $2.3B contingent: $2.1B definitive + $0.2B subject to definitive). Tech Solutions $0.9B."
+      "backlog_note": "Total $3.8B do 2040 (Dec 31 2025); LEU segment $2.9B (w tym $2.3B contingent: $2.1B definitive + $0.2B subject to definitive). Tech Solutions $0.9B.",
+      "scenario_structure_note": "Kazdy scenariusz = 3-etapowy DCF 5/3/2 lat (potwierdzone: base 5/3/2 = $93.4). Stage1 5 lat (Piketon CapEx, FCF ujemny base), Stage2 3 lata (komercyjne wzbogacanie ramp), Stage3 2 lata (dojrzaly). WACC 11.9%, net cash $692.1M, shares 22.446M diluted."
     },
     "upcoming_events": [
       {
