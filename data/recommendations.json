@@ -2178,7 +2178,7 @@
       "Dług $119B — emisja $53B Q1 2026 (LT debt 2x wzrost); przy wzroście stóp lub credit event ogranicza elastyczność. Net cash tylko $24B buforem"
     ],
     "buffett_moat": "Wide — AWS #1 cloud (31% share) z enterprise switching costs; Advertising unikalne dane zakupowe niereplikowalne przez Google/Meta; Prime lock-in 230M+ subskrybentów; FBA logistics flywheel obniża koszt wejścia dla sprzedawców 3P",
-    "last_updated": "2026-06-01",
+    "last_updated": "2026-06-13",
     "next_earnings": "2026-08-01",
     "priority_action": null,
     "dcf": {
@@ -2191,7 +2191,9 @@
         "rf_pct": 4.4,
         "beta": 1.15,
         "erp_pct": 5.0,
-        "note": "Re = 4.4 + 1.15 × 5.0 = 10.15% → WACC 10.5% (premia +0.35pp za ryzyko szczytowego CapEx cycle i dźwigni $119B LT debt)"
+        "note": "Re = 4.4 + 1.15 × 5.0 = 10.15% → WACC 10.5% (premia +0.35pp za ryzyko szczytowego CapEx cycle i dźwigni $119B LT debt)",
+        "credit_rating": "AA (S&P) / A1 (Moody's) — do potwierdzenia w 10-K; powszechnie raportowany dla AMZN",
+        "full_wacc_calc": "Pelny WACC: E = $2.57T (mcap 13.06), D = LT debt $119.1B + finance leases (~$80B per 10-Q) -> D/V ~7%. Rd z ratingu AA: UST 4.4% + spread ~50bp = ~4.9% pre-tax, po 15% tax 4.17%. WACC ~ 0.93x10.15% + 0.07x4.17% = 9.73% vs uzywane 10.5%. UWAGA: net cash $24B (cash $143.1B - LT debt $119.1B) NIE uwzglednia finance leases (~$80B) — z nimi net DEBT ~$56B -> FV ~-$3/akcje (pomijalne). DECYZJA: WACC 10.5% (premia +0.35pp za szczyt CapEx + dzwignie) i net cash $24B utrzymane — konserwatywne."
       },
       "terminal_growth_rationale": "g=3% < nominalny PKB USA (~4%). AWS cloud TAM strukturalnie rośnie przez dekadę — g=3% konserwatywne. Każde -0.5pp g obniża FV o ~$25.",
       "balance_sheet_inputs": {
@@ -2344,9 +2346,70 @@
             "CapEx normalizacja: 24.4% (dziś) → 17% (Stage1) → 8% (Stage2) to główny driver FCF recovery — każde -1pp CapEx/rev = +$8.4B FCF"
           ]
         }
-      }
+      },
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 20,
+          "color": "ef4444",
+          "fair_value": 197,
+          "description": "AWS deceleruje <15% (strefa thesis breaker), AI CapEx bez ROI kompresuje FCF przez 4+ lat, Azure/GCP odbieraja AI workloady. EBIT nie rosnie ku 24%.",
+          "assumptions": {
+            "stage1_cagr_pct": 13,
+            "stage2_cagr_pct": 8,
+            "ebit_margin_pct": 15,
+            "fcf_margin_s1_pct": 4.0,
+            "fcf_margin_s2_pct": 14.0,
+            "wacc_pct": 11.0,
+            "terminal_g_pct": 2.5
+          },
+          "key_risk": "AWS <20% YoY przez 2 kwartaly = thesis breaker; AI capex $100B+/rok bez zwrotu"
+        },
+        {
+          "name": "Base",
+          "probability_pct": 55,
+          "color": "00d9a3",
+          "fair_value": 417,
+          "description": "AWS 26% + Ads 22% + e-comm 15% blended 18% S1; Bedrock EBIT ~55% podnosi AWS marze; CapEx normalizuje 24%->17%->8%. Trainium2/3 obniza COGS.",
+          "assumptions": {
+            "stage1_cagr_pct": 18,
+            "stage2_cagr_pct": 12,
+            "ebit_margin_pct": 17,
+            "fcf_margin_s1_pct": 7.45,
+            "fcf_margin_s2_pct": 18.68,
+            "wacc_pct": 10.5,
+            "terminal_g_pct": 3.0
+          },
+          "key_risk": "Normalizacja CapEx 17% Stage1 — jesli szczyt trwa dluzej, FCF recovery slips"
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 25,
+          "color": "f59e0b",
+          "fair_value": 729,
+          "description": "AWS reaccel >28% utrzymane (Bedrock $5.5B->$20B+ run rate), Advertising triopol, International margin dojrzewa do NA-level, robotics +3-5pp e-comm margin.",
+          "assumptions": {
+            "stage1_cagr_pct": 22,
+            "stage2_cagr_pct": 15,
+            "ebit_margin_pct": 21,
+            "fcf_margin_s1_pct": 10.0,
+            "fcf_margin_s2_pct": 22.0,
+            "wacc_pct": 10.0,
+            "terminal_g_pct": 3.5
+          },
+          "key_risk": "Wymaga utrzymania AWS >28% przy bazie $160B+ — prawo wielkich liczb"
+        }
+      ],
+      "fair_value_weighted": 451,
+      "fair_value_weighted_formula": "0.20x$197 + 0.55x$417 + 0.25x$729 = $451; fair_value = BASE $417 (konwencja)"
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Pelna rewizja wg nowych zasad (bez zmiany FV $417 — base DCF zweryfikowany co do dolara). Dodane: scenariusze Bear $197/Base $417/Bull $729 (weighted $451); ceo_profile Jassy = GLODNY EKSPERT (zalozyciel AWS, ekspertyza cloud bezdyskusyjna, equity-aligned $561M); competitive_landscape per segment (Azure/GCP wysokie, Walmart/Temu srednie, Trainium atut vs NVDA); buffett_tenets 8xOK/1xUWAGA; Rd z ratingu AA (pelny WACC ~9.7% vs uzywane 10.5% konserwatywne; finance leases ~$80B obnizaja net cash, wplyw ~-$3/akcje pomijalny). Krok 0 segmenty juz byl (wzorzec).",
+        "impact": "neutral",
+        "fv_note": "FV $417 bez zmian. Cena $238.55 < entry $313 -> BUY aktywny, upside +75%. Compounder, drabinka: do bull $729 nic."
+      },
       {
         "date": "2026-05-31",
         "event": "Inicjacja BUY @ FV $378. DCF: WACC 10.5%, FY2026E $840B, Stage1 CAGR 18%/FCF 5.75%, Stage2 CAGR 12%/FCF 17.04%, g=3%. Q1 2026: Revenue $181.5B (+16.6%), AWS +28.4% (marża 37.7%), backlog $364B (+$120B QoQ). Advertising $17.2B (+23.9%). CapEx $44.2B (+116% YoY) — szczyt buildoutu. Net cash $24B po emisji $53B obligacji.",
@@ -2360,7 +2423,97 @@
         "fv_note": "FV $378→$417. Entry $284→$313 (25% MoS)."
       }
     ],
-    "position_type": "compounder"
+    "position_type": "compounder",
+    "ceo_profile": {
+      "name": "Andy Jassy (58)",
+      "ceo_since": "2021-07 (w Amazon od 1997)",
+      "background": "W Amazon od IPO 1997; ZALOZYL AWS w 2003 i prowadzil do 2021 (zbudowal segment od zera do $100B+). Nastepca Bezosa. Harvard MBA.",
+      "founder_or_manager": "Founder AWS (najwazniejszego segmentu) — nie founder Amazona, ale tworca jego silnika zysku",
+      "hunger": "Umiarkowany-glodny: zbudowal AWS od zera (founder-grade dla tego biznesu), pcha agresywny AI capex $100B+; ALE comp tylko $2.1M cash (RSU-heavy, $242M unvested) i sprzedaje stopniowo (20k akcji 05.2026 ~$5M). Nie ma obsesji-zalozyciela Bezosa; bardziej dyscyplinowany operator.",
+      "domain_expertise": "EKSPERT najwyzszej proby w cloud/AI: zbudowal AWS, rozumie infrastrukture i ekonomike tokenow od podszewki (Bedrock/Trainium to jego decyzje).",
+      "track_record": "AWS 0->$100B+ ARR; jako CEO Amazon: AWS marza 37.7%, Bedrock $5.5B run rate, Advertising $68.6B. Dowiozl turnaround marzy po 2022.",
+      "skin_in_the_game": "2.28M akcji (~$561M, 0.02% spolki); cash comp minimalny $2.1M, equity-heavy ($242M unvested) = aligned. Sprzedaze stopniowe, niewielkie.",
+      "red_flags": "Nie-founder Amazona (Bezos wciaz Exec Chairman, kontroluje wizje); sukcesja AWS po jego awansie",
+      "verdict": "GLODNY EKSPERT (ekspertyza bezdyskusyjna; glod operatorski, nie zalozycielski — OK dla compoundera)",
+      "sources": "GuruFocus/Form4, Yahoo (comp), Amazon IR; web 13.06.2026"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Microsoft Azure",
+        "ticker": "MSFT",
+        "public": true,
+        "segment": "AWS vs Azure (cloud IaaS+PaaS)",
+        "threat": "wysokie",
+        "note": "Azure +40% vs AWS +28%; OpenAI na Azure. ALE AWS marza 37.7% rosnaca (Bedrock), Azure spada (neocloud premium, SemiAnalysis)",
+        "source": "SemiAnalysis (data/AI/) + 10-K"
+      },
+      {
+        "name": "Google Cloud / Meta",
+        "ticker": "GOOG",
+        "public": true,
+        "segment": "Cloud (GCP) + Advertising (Google/Meta vs Amazon Ads)",
+        "threat": "wysokie",
+        "note": "GCP TPU; w reklamie Amazon #3 (~8% vs Google 39%/Meta 18%) ale unikalne dane zakupowe niereplikowalne",
+        "source": "10-K + SemiAnalysis"
+      },
+      {
+        "name": "Walmart / Temu / Shein",
+        "ticker": "WMT",
+        "public": true,
+        "segment": "E-commerce",
+        "threat": "srednie",
+        "note": "Walmart+ konkuruje z Prime; Temu/Shein presja cenowa low-end. Amazon broni sie FBA logistics flywheel + Prime 230M",
+        "source": "10-K"
+      },
+      {
+        "name": "NVIDIA (przez Trainium)",
+        "ticker": "NVDA",
+        "public": true,
+        "segment": "AI chips — AWS Trainium vs kupno NVDA",
+        "threat": "niskie (atut)",
+        "note": "Trainium2/3 = wlasny chip obniza COGS AWS (50%+ Bedrock tokenow); przewaga vs MSFT (brak Maia)",
+        "source": "SemiAnalysis + AWS CEO"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "OK",
+        "uzasadnienie": "Trzy zrozumiale silniki: AWS (cloud), Advertising, e-commerce/Prime — kazdy z jasna ekonomika"
+      },
+      "business_consistent_history": {
+        "ocena": "OK",
+        "uzasadnienie": "~30 lat, konsekwentny flywheel; AWS 20 lat dowiezionego wzrostu"
+      },
+      "business_longterm_prospects": {
+        "ocena": "OK",
+        "uzasadnienie": "Cloud TAM $720B->$2T, retail media triopol, Prime lock-in 230M — wide moat na 3 frontach"
+      },
+      "mgmt_rational": {
+        "ocena": "OK",
+        "uzasadnienie": "Trainium zamiast pelnej zaleznosci NVDA; CapEx w AWS (najwyzszy ROIC); emisja $53B obligacji = conviction, nie desperacja"
+      },
+      "mgmt_candid": {
+        "ocena": "OK",
+        "uzasadnienie": "Backlog $364B i marze segmentowe ujawniane wprost; Jassy przyznaje sie do faz inwestycji"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "OK",
+        "uzasadnienie": "Wlasny chip (Trainium) wbrew latwemu kupnu NVDA; retail media zbudowane samodzielnie"
+      },
+      "fin_roe": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "ROE zmienne przez fazy CapEx; FCF TTM skompresowany ($1.2B przy capex $44B/kw) — recovery zalezy od normalizacji"
+      },
+      "fin_margins": {
+        "ocena": "OK",
+        "uzasadnienie": "AWS 37.7% (rosnaca ku 40%+), Ads ~50%, blended EBIT ku 17%->24%; mix shift ku wysokomarzowym"
+      },
+      "fin_dollar_test": {
+        "ocena": "OK",
+        "uzasadnienie": "Dekada: reinwestycje -> mcap $300B->$2.6T; flywheel tworzy wartosc"
+      },
+      "wniosek": "8xOK / 1xUWAGA -> pelnowymiarowa pozycja compounder, MoS standardowy 25%"
+    }
   },
   "CBRS": {
     "name": "Cerebras Systems Inc.",
