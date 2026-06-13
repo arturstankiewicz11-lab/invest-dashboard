@@ -1367,6 +1367,12 @@
   "LEU": {
     "events": [
       {
+        "date": "2026-06-13",
+        "event": "Pelna rewizja wg nowych zasad. fair_value 101 (weighted) -> 93 (BASE, konwencja pkt 7). Dodane: ceo_profile Vexler = GLODNY EKSPERT (ex-CEO Orano USA + 20 lat GE/Global Nuclear Fuels — ekspertyza bezdyskusyjna), competitive_landscape (Urenco/Orano wysokie, Tenex=tailwind nie zagrozenie, General Matter srednie), buffett_tenets 6xOK/3xUWAGA, Krok 0 segmenty (LEU GM 32% vs HALEU 5.9%). Fresh data: SWU $220 (model mial $200, +tailwind ale lagged), backlog $3.8B do 2040, HALEU contract extended do 30.06.2026, $900M task order wciaz niedefinitized. Cena $162.58 PRZEKRACZA bull $151 — drabinka moonshot: redukcja do rdzenia AKTYWNA.",
+        "impact": "neutral",
+        "fv_note": "FV 101->93 (base; weighted nadal $101). Cena $162.58 > bull $151 -> wszystkie szczeble drabinki aktywne. PROPOZYCJA: entry $76->$70 (25% MoS od base $93). Katalizator: HALEU contract 30.06."
+      },
+      {
         "date": "2026-06-12",
         "event": "Rekomendacja BUY->HOLD, entry $71->$76 (zaakceptowane). Cena $158.68 = 57% nad FV $101 i nad bull case $151 — brak uzasadnienia dla dokupowania. Pozycja 120 szt. @ $170.89 trzymana: net cash floor $30.8/akcje + opcjonalnosc HALEU premium ($270).",
         "impact": "neutral",
@@ -1392,9 +1398,9 @@
       }
     ],
     "recommendation": "HOLD",
-    "last_updated": "2026-06-12",
+    "last_updated": "2026-06-13",
     "name": "Centrus Energy",
-    "fair_value": 101,
+    "fair_value": 93,
     "fair_value_currency": "USD",
     "entry_point": 76,
     "thesis_short": "Jedyny operacyjny US enricher HALEU z NRC license. Net cash $692M ($30.8/akcje). Backlog $3.9B. FV $101 (scenariusze 10/65/25) / $270 HALEU premium jako opcjonalnosc. Cena $159 > bull $151 — rynek wycenia wiecej niz kontrakty. Catalyst: przedluzenie HALEU Operations Contract do 30.06.2026.",
@@ -1419,89 +1425,59 @@
       "revenue_base_fy2026e_m": 450,
       "net_cash_m": 692.1,
       "shares_diluted_m": 22.45,
-      "scenarios": {
-        "bear": {
+      "scenarios": [
+        {
+          "name": "Bear",
           "probability_pct": 10,
-          "description": "Piketon fails/cancelled 2029, company reverts to LEU trading only",
-          "stage1": {
-            "n_years": 3,
-            "rev_cagr_pct": 5,
-            "fcf_margin_pct": 5.0
+          "color": "ef4444",
+          "fair_value": 29,
+          "description": "Piketon cancelled/fail 2029, powrot do LEU trading; SWU spot spada gdy Chiny wypelniaja luke po Rosji. Net cash $30.8/akcje = floor.",
+          "assumptions": {
+            "stage1_cagr_pct": 5,
+            "stage2_cagr_pct": 3,
+            "ebit_margin_pct": 12,
+            "fcf_margin_s1_pct": 5.0,
+            "fcf_margin_s2_pct": 11.0,
+            "wacc_pct": 11.9,
+            "terminal_g_pct": 1.5
           },
-          "stage2": {
-            "n_years": 4,
-            "rev_cagr_pct": 3,
-            "fcf_margin_pct": 11.0
-          },
-          "stage3": {
-            "n_years": 3,
-            "rev_cagr_pct": 2,
-            "fcf_margin_pct": 12.0
-          },
-          "terminal_growth_pct": 1.5,
-          "net_cash_terminal_m": 150,
-          "pv_fcf_m": 273.1,
-          "pv_tv_m": 236.7,
-          "ev_m": 509.8,
-          "equity_m": 659.8,
-          "fv_per_share": 29.4
+          "key_risk": "General Matter/Orano (po $900M DOE) lub chinski import wypelniaja luke przed Piketon"
         },
-        "base": {
+        {
+          "name": "Base",
           "probability_pct": 65,
-          "description": "Piketon succeeds, commercial enrichment from 2032",
-          "stage1": {
-            "n_years": 5,
-            "rev_cagr_pct": 18,
-            "fcf_margin_pct": -12.1,
-            "note": "FCF% = 10% × (1-21%) + 4% - 24% = -12.1%"
+          "color": "00d9a3",
+          "fair_value": 93,
+          "description": "Piketon ekspansja sukces, komercyjne wzbogacanie od 2032; $900M HALEU task order definitized; SWU $220 utrzymane (lagged contracts chronia).",
+          "assumptions": {
+            "stage1_cagr_pct": 18,
+            "stage2_cagr_pct": 15,
+            "ebit_margin_pct": 22,
+            "fcf_margin_s1_pct": -12.1,
+            "fcf_margin_s2_pct": 15.38,
+            "wacc_pct": 11.9,
+            "terminal_g_pct": 2.5
           },
-          "stage2": {
-            "n_years": 3,
-            "rev_cagr_pct": 15,
-            "fcf_margin_pct": 15.38,
-            "note": "FCF% = 22% × (1-21%) + 6% - 8% = 15.38%"
-          },
-          "stage3": {
-            "n_years": 2,
-            "rev_cagr_pct": 8,
-            "fcf_margin_pct": 18.75,
-            "note": "FCF% = 25% × (1-21%) + 5% - 6% = 18.75%"
-          },
-          "terminal_growth_pct": 2.5,
-          "net_cash_terminal_m": 692.1,
-          "pv_fcf_m": 192.4,
-          "pv_tv_m": 1213.0,
-          "ev_m": 1405.4,
-          "equity_m": 2097.5,
-          "fv_per_share": 93.4
+          "key_risk": "Execution Piketon ($560M Oak Ridge expansion) — pierwsza komercyjna centrifugownia USA od dekad"
         },
-        "bull": {
+        {
+          "name": "Bull",
           "probability_pct": 25,
-          "description": "Piketon przed harmonogramem, first-mover w 3-graczowym rynku (General Matter i Orano dostali po $900M, ale sa 4-6 lat za Centrus: General Matter w design phase bez NRC license). SWU $200 utrzymane, premium HALEU pricing.",
-          "stage1": {
-            "n_years": 5,
-            "rev_cagr_pct": 22,
-            "fcf_margin_pct": -10.0
+          "color": "f59e0b",
+          "fair_value": 151,
+          "description": "Piketon przed harmonogramem, quasi-monopol HALEU post-Russian ban (Jan 2028); premium pricing; 50+ advanced reactors deployed.",
+          "assumptions": {
+            "stage1_cagr_pct": 22,
+            "stage2_cagr_pct": 20,
+            "ebit_margin_pct": 26,
+            "fcf_margin_s1_pct": -10.0,
+            "fcf_margin_s2_pct": 18.0,
+            "wacc_pct": 11.9,
+            "terminal_g_pct": 3.0
           },
-          "stage2": {
-            "n_years": 3,
-            "rev_cagr_pct": 20,
-            "fcf_margin_pct": 18.0
-          },
-          "stage3": {
-            "n_years": 2,
-            "rev_cagr_pct": 12,
-            "fcf_margin_pct": 22.0
-          },
-          "terminal_growth_pct": 3.0,
-          "net_cash_terminal_m": 692.1,
-          "pv_fcf_m": 514.1,
-          "pv_tv_m": 2180.5,
-          "ev_m": 2694.6,
-          "equity_m": 3386.7,
-          "fv_per_share": 150.9
+          "key_risk": "Wycena bull wymaga premium HALEU pricing + first-mover utrzymany vs General Matter/Orano"
         }
-      },
+      ],
       "weighted_fv": 101.4,
       "fair_value_computed": 101,
       "haleu_premium_scenario": {
@@ -1528,7 +1504,40 @@
       },
       "notes": "FY2025 dane: revenue $448.7M, EBIT $50.2M, EBITDA $60.1M, FCF $31.3M, D&A $9.9M, CapEx $19.7M. Q1 2026: net cash $692.1M, shares diluted 22.45M. Backlog $3.9B (LEU $3.1B incl. $2.4B contingent + Tech $0.8B). $900M HALEU Production task order (Jan 2026, w trakcie definitizacji). Piketon: Fluor EPC + Geiger Brothers, pierwsze centrifugi 2029.",
       "weights_rationale": "Rewizja wag 2026-06-12: Bear 15->10% (Fluor EPC podpisany Feb, Geiger construction Apr, $108.2M Option 1a funded, $900M task order w negocjacji — execution de-risked). Bull 20->25% (SWU $200 historyczne max utrzymane, DOE $2.7B sektorowy commitment, Oklo JV deconversion) ALE opis bull bez quasi-monopolu: General Matter + Orano po $900M (Jan 2026) — DOE celowo finansuje 3 enricherow. Scenariusze wewnetrznie bez zmian (brak nowych danych finansowych od 10-Q Q1 2026).",
-      "market_implied": "Cena $158.68 (2026-06-11) > bull FV $151 — rynek wycenia >100% prawdopodobienstwa bull lub czesciowo HALEU premium scenario ($270: 50+ advanced reactors + $35k/kg premium). Szczyt $231 (2026-05-06), drawdown -31%."
+      "market_implied": "Cena $158.68 (2026-06-11) > bull FV $151 — rynek wycenia >100% prawdopodobienstwa bull lub czesciowo HALEU premium scenario ($270: 50+ advanced reactors + $35k/kg premium). Szczyt $231 (2026-05-06), drawdown -31%.",
+      "fair_value_weighted": 93,
+      "fair_value_weighted_formula": "0.10x$29 + 0.65x$93 + 0.25x$151 = $101 (weighted); fair_value = BASE $93 (konwencja pkt 7)",
+      "base_breakdown": {
+        "label": "FY2025 (10-K) — dwa segmenty: LEU (SWU+uran) i Technical Solutions (HALEU dla DOE)",
+        "ttm_note": "Baza modelu revenue ~$450M FY2025. Wzrost napedzany SWU pricing (lagged) + HALEU ramp.",
+        "items": [
+          {
+            "segment": "LEU — SWU",
+            "revenue_m": 298.7,
+            "yoy_pct": null,
+            "note": "Sprzedaz separative work units utilities; GM segmentu 32.2%. SWU spot $220 (2025, +547% od 2018) — ale lagged long-term contracts, wiec spot wchodzi powoli"
+          },
+          {
+            "segment": "LEU — uran",
+            "revenue_m": 47.5,
+            "yoy_pct": null,
+            "note": "Sprzedaz komponentu uranowego"
+          },
+          {
+            "segment": "Technical Solutions (HALEU dla DOE)",
+            "revenue_m": 102.5,
+            "yoy_pct": null,
+            "note": "Cost-plus kontrakty HALEU; GM tylko 5.9% (cost-plus) ALE to opcja na komercyjny HALEU + $900M task order + $560M Oak Ridge expansion"
+          },
+          {
+            "segment": "RAZEM FY2025",
+            "revenue_m": 448.7,
+            "yoy_pct": 1.5,
+            "note": "GM blended 26.2% ($117.5M/$448.7M). Mix shift ku HALEU = nizsza marza dzis, opcjonalnosc jutro"
+          }
+        ]
+      },
+      "backlog_note": "Total $3.8B do 2040 (Dec 31 2025); LEU segment $2.9B (w tym $2.3B contingent: $2.1B definitive + $0.2B subject to definitive). Tech Solutions $0.9B."
     },
     "upcoming_events": [
       {
@@ -1542,7 +1551,97 @@
         "type": "earnings"
       }
     ],
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "ceo_profile": {
+      "name": "Amir Vexler (51)",
+      "ceo_since": "2024-01-01",
+      "background": "Inzynier mechanik (BASc Toronto) + MBA (Wilfrid Laurier). 20 lat w GE — CEO/Chairman/COO Global Nuclear Fuels (JV GE+Hitachi); potem CEO Orano USA (paliwo nuklearne, dekomisja, izotopy medyczne, uslugi federalne). Czysty insider branzy paliwa jadrowego.",
+      "founder_or_manager": "Najemny menedzer, ale gleboko branzowy — nie administrator z zewnatrz",
+      "hunger": "Umiarkowany-glodny: przyszedl 2024 do spolki w punkcie zwrotnym (Russian ban + nuclear renaissance), pcha $560M Oak Ridge expansion + Piketon. Aktywnie ostrzega publicznie o supply gap (kreuje narracje popytu). Skin in the game: BRAK POTWIERDZENIA % akcji — do proxy.",
+      "domain_expertise": "EKSPERT najwyzszej proby: prowadzil najwiekszy zachodni nuclear fuel JV (GNF) i Orano USA — zna enrichment, HALEU, kontrakty DOE i utilities od podszewki. Rzadki przypadek CEO ktory ZNAL branze przed objeciem sterow.",
+      "track_record": "Krotki w Centrus (2.5 roku), ale: launch komercyjnego LEU enrichment, 900kg+ HALEU dostarczone DOE, $900M task order wygrany, $560M expansion. W Orano/GE — dlugi staz operacyjny.",
+      "skin_in_the_game": "BRAK POTWIERDZENIA w zrodlach sesji — % akcji i transakcje do weryfikacji z proxy/Form 4",
+      "red_flags": "Krotki staz (od 2024); spolka zalezna od decyzji politycznych DOE (key dependency, nie wina CEO)",
+      "verdict": "GLODNY EKSPERT (ekspertyza bezdyskusyjna; glod umiarkowany — menedzer w idealnym momencie, nie founder-obsesjonista)",
+      "sources": "Centrus IR/proxy bio, Bloomberg, LinkedIn, web 13.06.2026"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Urenco",
+        "ticker": null,
+        "public": false,
+        "segment": "Wzbogacanie uranu (SWU) — najwiekszy zachodni enricher",
+        "threat": "wysokie",
+        "note": "Konsorcjum UK/DE/NL; dominuje zachodnia podaz SWU; rozbudowa USA (New Mexico). Glowny konkurent cenowy",
+        "source": "wiedza sektorowa + INN supply gap report"
+      },
+      {
+        "name": "Orano",
+        "ticker": null,
+        "public": false,
+        "segment": "Wzbogacanie + HALEU — dostal $900M DOE (jak Centrus)",
+        "threat": "wysokie",
+        "note": "Francuski panstwowy; rozbudowa enrichment USA; rownolegly $900M DOE award (Jan 2026). CEO Vexler to b. szef Orano USA — zna ich od srodka",
+        "source": "DOE $2.7B award (3-way) + web"
+      },
+      {
+        "name": "Tenex / Rosatom",
+        "ticker": null,
+        "public": false,
+        "segment": "Wzbogacanie — historycznie ~25% podazy USA",
+        "threat": "niskie (TAILWIND)",
+        "note": "Russian ban od 1.01.2028 (waivers do tego czasu) — to GLOWNY driver tezy Centrus, nie zagrozenie. Luka ~25% rynku do wypelnienia",
+        "source": "Congress 2024 sankcje + INN"
+      },
+      {
+        "name": "General Matter",
+        "ticker": null,
+        "public": false,
+        "segment": "HALEU startup — dostal $900M DOE (jak Centrus)",
+        "threat": "srednie",
+        "note": "Rownolegly award DOE, ale 4-6 lat za Centrus (brak NRC license, design phase). Thesis breaker watch: jesli wyprzedzi",
+        "source": "DOE $2.7B 3-way award"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "OK",
+        "uzasadnienie": "Wzbogacanie uranu — model zrozumialy (SWU x cena), choc kontrakty lagged i cost-plus HALEU dodaja zlozonosci"
+      },
+      "business_consistent_history": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Spolka istnieje dekady (USEC), ale model w transformacji: trading -> wlasna produkcja (Piketon), Tech Solutions od ~0"
+      },
+      "business_longterm_prospects": {
+        "ocena": "OK",
+        "uzasadnienie": "Russian ban 2028 + nuclear renaissance + jedyny US HALEU z NRC license = strukturalny tailwind dekadowy"
+      },
+      "mgmt_rational": {
+        "ocena": "OK",
+        "uzasadnienie": "Alokacja w Piketon/Oak Ridge ($560M) z DOE co-funding; net cash $692M bufor; bez pustych M&A"
+      },
+      "mgmt_candid": {
+        "ocena": "OK",
+        "uzasadnienie": "Q1 wprost o wzroscie advanced tech costs ($18.9M); jasny podzial backlog committed vs contingent"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "OK",
+        "uzasadnienie": "Buduje capacity przed potwierdzonym popytem (jak RHM) — odwazne, nie nasladowcze"
+      },
+      "fin_roe": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Zyskowna (NI Q1 $10M), ale FCF ujemny w fazie Piketon CapEx (base FCF S1 -12.1%)"
+      },
+      "fin_margins": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "LEU GM 32.2% solidne, ale Tech/HALEU cost-plus tylko 5.9%; blended 26.2%"
+      },
+      "fin_dollar_test": {
+        "ocena": "OK",
+        "uzasadnienie": "Net cash $692M ($30.8/akcje) = twardy floor; kurs ~5x w 2 lata na tezie"
+      },
+      "wniosek": "6xOK / 3xUWAGA -> moonshot (pre-komercyjny Piketon), MoS 25-30%; ALE cena >> FV wszystkich scenariuszy"
+    }
   },
   "CCJ": {
     "events": [
