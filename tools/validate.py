@@ -23,6 +23,7 @@ Sprawdza:
   W6  last_updated starsze niż 90 dni = WARN (świeżość)
   W7  Scenariusze Bear/Base/Bull obowiązkowe przy każdym DCF (Krok F, od 12.06.2026)
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
+  W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
 """
 import json, os, re, sys
 from datetime import datetime, date
@@ -163,6 +164,14 @@ def check_ticker(t, r):
     elif mode == "DCF":
         # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
         warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
+
+    # W9: renderowalność — czy app pokaże model w zakładce DCF (zasada z 2026-06-13).
+    # tab_dcf renderuje, gdy istnieje: stages | alt_valuation | scenarios | catalyst_sensitivity.
+    # Model "istnieje" dla walidatora (E1/E2) ≠ "app go wyrenderuje" — to był bug LEU.
+    if fv is not None and dcf and not (has_stages or has_alt or has_scen
+                                       or dcf.get("catalyst_sensitivity")):
+        errors.append("W9: model nierenderowalny — fair_value jest, ale brak stages/alt_valuation/"
+                      "scenarios/catalyst (zakładka DCF pokaże 'Brak modelu')")
 
     # W8: wyprowadzenie parametrów DCF ze źródłami (zasada z 2026-06-13)
     if mode == "DCF":

@@ -156,7 +156,7 @@ discount/premium (uzasadnij każdy pp) → EV = Rev × multiple → ± net cash 
 **Scenariusze**: warunki każdego → FV per scenariusz (policzony) → wagi z uzasadnieniem →
 FV_ważone = Σ(P_i × FV_i) z pokazanym działaniem.
 Zapis: `dcf.alt_valuation` {method, method_reason, inputs[{name,value,source}], steps[],
-fair_value_computed} — app renderuje krok po kroku.
+fair_value_computed} — app renderuje krok po kroku. **Scenariusze: `dcf.scenarios` (lista).** Aplikacja renderuje model gdy istnieje którekolwiek z: `stages` | `alt_valuation` | `scenarios` | `catalyst_sensitivity` — walidator pilnuje tego (W9). fair_value bez żadnego z nich = pusta zakładka DCF.
 
 ---
 
