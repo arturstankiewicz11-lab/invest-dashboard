@@ -2015,6 +2015,12 @@
     "events": [
       {
         "date": "2026-06-13",
+        "event": "Weryfikator: ZGODNA Z UWAGAMI (FV $537 + scenariusze 246/537/966 + weighted $571 odtworzone co do dolara; share count 12,238M total wszystkie klasy = POPRAWNY, unikniety klasyczny blad Alphabet Class C). Flaga ISTOTNA: baza $495B FY2026E jest high-end (+22.9% YoY vs Q1 annualized +21.8%); zawiera boost z Wiz $29.5B; przy bazie $439.6B FV ~$478 (-11%). Drobne: net cash $46.5B vs $46.535B (0.09%), literowka w logu.",
+        "impact": "neutral",
+        "fv_note": "FV $537 (base) — z flaga: agresywna baza revenue. Cena $358 < entry $385 -> BUY, upside +50%."
+      },
+      {
+        "date": "2026-06-13",
         "event": "Pelna rewizja wg nowych zasad (FV $537 bez zmian — base DCF odtworzony co do dolara). Dodane: scenariusze Bear $246/Base $537/Bull $966 (weighted $571); ceo_profile Pichai = GLODNY EKSPERT (inz. Chrome/Android, ale NAJEMNY — founderzy Page/Brin kontroluja glosy; comp $692M, sprzedaze 10b5-1); competitive_landscape (OpenAI/AI-search wysokie=egzystencjalne, Azure/AWS wysokie, TPU atut vs NVDA); buffett_tenets 8xOK/1xUWAGA (jedyna UWAGA: AI-search jako pierwsze zagrozenie Search od dekad). Krok 0 segmenty juz byl (Cloud +63%).",
         "impact": "neutral",
         "fv_note": "FV $537 bez zmian. Cena $358.16 < entry $385 -> BUY aktywny, upside +50%. Compounder, drabinka do bull $966."
@@ -2103,7 +2109,7 @@
       "notes": "Baza FY2026E $495B (Cloud ~$100B, Services ~$395B). Backlog $462B z >50% w 24 mies = strukturalne zobowiazanie popytu. Demand > supply przez 3-4 lata — energia wąskim gardłem. Purchase commitments $332B zakontraktowane. TPU hardware supply multiple GW do enterprise = nowy strumien przychodow w backlogu 2027.",
       "base_breakdown": {
         "label": "FY2026E — Cloud akceleruje powyżej TTM",
-        "ttm_note": "TTM ($422.5B) uśrednia Q2-Q4 2025, gdy Cloud rósł tylko 28-48%. Dziś Cloud rośnie +63% YoY — TTM zaniża punkt startowy. FY2026E $495B = Cloud ~$100B (+70% YoY) + Services ~$395B (+15% YoY).",
+        "ttm_note": "TTM ($422.5B) uśrednia Q2-Q4 2025, gdy Cloud rósł tylko 28-48%. Dziś Cloud rośnie +63% YoY — TTM zaniża punkt startowy. FY2026E $495B = Cloud ~$100B (+70% YoY) + Services ~$395B (+15% YoY). UWAGA (weryfikator): baza $495B = +22.9% YoY to HIGH-END — Q1 2026 annualized to $439.6B (+21.8%); trafienie $495B wymaga akceleracji + boost nieorganiczny z akwizycji Wiz $29.5B (zamkn. 11.03.2026, w Cloud). Przy bazie $439.6B FV bylaby ~11% nizej (~$478) — to najmocniejszy lewar wyceny.",
         "items": [
           {
             "segment": "Google Cloud",
