@@ -1585,6 +1585,54 @@
           "Jakikolwiek sygnal pricing ku $35k/kg = ruch ku $270",
           "Czy General Matter/Orano pojawia sie w narracji DOE (thesis breaker #4)"
         ]
+      },
+      "tam_analysis": {
+        "purpose": "Warstwa dyscypliny na UPSIDE (nie zamiennik DCF). Top-down: TAM x udzial x marza -> wartosc, dyskonto 10 lat @ WACC 11.9%. Pokazuje czy Bull/Premium sa TAM-spojne i co implikuje cena.",
+        "markets": [
+          {
+            "name": "Globalne wzbogacanie uranu (SWU)",
+            "size": "$22.2B by 2030",
+            "source": "Mordor Intelligence (web 13.06.2026)",
+            "leu_addressable": "~$5.5B US 2035 (ESTYMATA: US ~25% global; DOE finansuje 3 graczy: Centrus/Orano/General Matter)"
+          },
+          {
+            "name": "US HALEU (advanced reactors)",
+            "size": "$2.2B/rok by 2030, $6.2B by 2035 (>50 ton)",
+            "source": "market reports + DOE (web); HALEU global $1.37B'24->$9.43B'33 CAGR 21.9%",
+            "leu_addressable": "$6.2B US 2035 — LEU jedyny operacyjny US HALEU z NRC license (first-mover)"
+          }
+        ],
+        "bridge_cases": [
+          {
+            "label": "Konserwatywny",
+            "shares": "SWU 20% / HALEU 20%",
+            "rev_2035_b": 2.34,
+            "margin": 18,
+            "mult": 13,
+            "implied_fv": 110,
+            "note": "Spojny z naszym Base DCF $93 (TAM lekko wyzej bo pomija CapEx drag/dyskonto ryzyka)"
+          },
+          {
+            "label": "Realistyczny",
+            "shares": "SWU 25% / HALEU 35%",
+            "rev_2035_b": 3.54,
+            "margin": 20,
+            "mult": 15,
+            "implied_fv": 185,
+            "note": "Miedzy Bull $151 a Premium $270 — pokazuje ze te scenariusze sa TAM-spojne, nie fantazja"
+          },
+          {
+            "label": "Premium",
+            "shares": "SWU 30% / HALEU 55% (quasi-monopol)",
+            "rev_2035_b": 5.06,
+            "margin": 24,
+            "mult": 17,
+            "implied_fv": 330,
+            "note": "Powyzej naszego Premium $270 — wymaga utrzymania monopolu HALEU vs General Matter/Orano"
+          }
+        ],
+        "market_implied": "Cena $162.58 (mcap $3.6B) implikuje ~SWU 25% + HALEU ~28-30% udzial 2035 (marza 20%, 15x). Dla jedynego operacyjnego US HALEU z licencja NRC — NIE jest to zalozenie ekstremalne.",
+        "conclusion": "KLUCZOWE: czysty DCF (base $93) jest dla moonshota ZA OSTROZNY — w pelni karze sciezke CapEx/execution, nie kredytujac opcjonalnosci na TAM HALEU. TAM pokazuje, ze Bull $151/Premium $270 sa zakotwiczone w realnym udziale rynkowym, a cena $162 implikuje ~30% HALEU share (obronne dla first-movera). Reframe decyzji drabinki: nie 'przewartosciowane vs $93', tylko 'czy wierzysz w ~30% HALEU share LEU do 2035'. To legitymna teza HOLD dla kubla moonshot powyzej DCF base."
       }
     },
     "upcoming_events": [

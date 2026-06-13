@@ -832,6 +832,48 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
                     unsafe_allow_html=True)
 
 
+def _render_tam_analysis(ta: dict, price=None, fv_currency=""):
+    """Renderuje most TAM -> udział -> wartość (dcf.tam_analysis) — warstwa dyscypliny na upside."""
+    st.markdown('<div class="sh" style="margin-top:22px">🌍 Analiza TAM (dyscyplina upside)</div>', unsafe_allow_html=True)
+    purpose = ta.get("purpose", "")
+    # rynki
+    mk = ""
+    for m in ta.get("markets", []):
+        mk += (f'<div style="padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04)">'
+               f'<span style="color:#e2e8f0;font-size:12.5px;font-weight:600">{_e(m.get("name",""))}</span> '
+               f'<span style="color:#00d9a3;font-size:12px">{_e(m.get("size",""))}</span>'
+               f'<br><span style="color:#64748b;font-size:11px">addressable: {_e(m.get("leu_addressable",""))} '
+               f'· <span style="color:#334155">źródło: {_e(m.get("source",""))}</span></span></div>')
+    # mostek udzialow
+    rows = ""
+    for c in ta.get("bridge_cases", []):
+        fvc = c.get("implied_fv")
+        col = "#94a3b8"
+        if fvc is not None and price:
+            col = "#10b981" if fvc >= price else "#ef4444"
+        rows += (f'<div style="display:flex;gap:12px;align-items:baseline;padding:7px 0;'
+                 f'border-bottom:1px solid rgba(255,255,255,0.04)">'
+                 f'<span style="color:{col};font-weight:700;font-size:13px;min-width:56px">${fvc}</span>'
+                 f'<span style="flex:1"><span style="color:#e2e8f0;font-size:12px;font-weight:600">{_e(c.get("label",""))}</span> '
+                 f'<span style="color:#475569;font-size:11px">{_e(c.get("shares",""))} · rev35 ${c.get("rev_2035_b","")}B · '
+                 f'marża {c.get("margin","")}% · {c.get("mult","")}x</span>'
+                 f'<br><span style="color:#64748b;font-size:11px">{_e(c.get("note",""))}</span></span></div>')
+    mi = ta.get("market_implied", "")
+    concl = ta.get("conclusion", "")
+    st.markdown(f"""
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px 20px">
+        <div style="font-size:11px;color:#64748b;line-height:1.6;margin-bottom:12px">{_e(purpose)}</div>
+        <div style="font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Rynki (TAM)</div>
+        {mk}
+        <div style="font-size:10px;color:#475569;text-transform:uppercase;letter-spacing:1px;margin:14px 0 2px">Most udział → wartość (dyskonto 10 lat)</div>
+        {rows}
+        <div style="margin-top:12px;background:rgba(245,158,11,0.06);border-radius:8px;padding:8px 12px;font-size:11.5px;color:#94a3b8">
+            <b style="color:#f59e0b">Co implikuje cena:</b> {_e(mi)}</div>
+        <div style="margin-top:8px;font-size:11.5px;color:#cbd5e1;line-height:1.6;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px">
+            <b style="color:#00d9a3">Wniosek:</b> {_e(concl)}</div>
+    </div>""", unsafe_allow_html=True)
+
+
 def _render_catalyst_sensitivity(cs: dict):
     """Renderuje wrażliwość wyceny na nadchodzący katalizator (dcf.catalyst_sensitivity)."""
     st.markdown('<div class="sh" style="margin-top:22px">🎲 Wrażliwość na katalizator</div>', unsafe_allow_html=True)
@@ -864,7 +906,7 @@ def _render_catalyst_sensitivity(cs: dict):
     </div>""", unsafe_allow_html=True)
 
 
-def tab_dcf(rec: dict):
+def tab_dcf(rec: dict, price=None):
     dcf = rec.get("dcf")
     alt = dcf.get("alt_valuation") if dcf else None
     fv_currency = rec.get("fair_value_currency", "")
@@ -910,6 +952,8 @@ def tab_dcf(rec: dict):
                 _render_dcf_scenarios(dcf["scenarios"], dcf, rec)
             if has_catalyst:
                 _render_catalyst_sensitivity(dcf["catalyst_sensitivity"])
+            if dcf.get("tam_analysis"):
+                _render_tam_analysis(dcf["tam_analysis"], price, fv_currency)
             # base_breakdown (Krok 0) jeśli istnieje — wspólne dla obu ścieżek
             bb = dcf.get("base_breakdown")
             if bb and bb.get("items"):
@@ -1302,6 +1346,10 @@ Net cash/debt (wartość używana w Bridge) = <b style="color:{col}">{fmt_m(net_
     # Catalyst sensitivity (optional)
     if dcf.get("catalyst_sensitivity"):
         _render_catalyst_sensitivity(dcf["catalyst_sensitivity"])
+
+    # TAM analysis (optional — moonshoty)
+    if dcf.get("tam_analysis"):
+        _render_tam_analysis(dcf["tam_analysis"], price, fv_currency)
 
 # ─── TAB: DZIAŁANIA ───────────────────────────────────────────────────────────
 def tab_actions(rec: dict, row, prices: dict):
@@ -1785,7 +1833,7 @@ def page_detail(ticker, pos, prices, recs):
                 </div>""", unsafe_allow_html=True)
 
     with t_dcf:
-        tab_dcf(rec)
+        tab_dcf(rec, price=price)
 
     with t_actions:
         tab_actions(rec, row, prices)

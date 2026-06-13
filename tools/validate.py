@@ -24,6 +24,7 @@ Sprawdza:
   W7  Scenariusze Bear/Base/Bull obowiązkowe przy każdym DCF (Krok F, od 12.06.2026)
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
+  W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
 """
 import json, os, re, sys
 from datetime import datetime, date
@@ -172,6 +173,10 @@ def check_ticker(t, r):
                                        or dcf.get("catalyst_sensitivity")):
         errors.append("W9: model nierenderowalny — fair_value jest, ale brak stages/alt_valuation/"
                       "scenarios/catalyst (zakładka DCF pokaże 'Brak modelu')")
+
+    # W10: moonshot powinien mieć tam_analysis (dyscyplina upside, zasada z 2026-06-13)
+    if r.get("position_type") == "moonshot" and fv is not None and not dcf.get("tam_analysis"):
+        warns.append("W10: moonshot bez tam_analysis (warstwa dyscypliny upside — TAM x udział x marża)")
 
     # W8: wyprowadzenie parametrów DCF ze źródłami (zasada z 2026-06-13)
     if mode == "DCF":

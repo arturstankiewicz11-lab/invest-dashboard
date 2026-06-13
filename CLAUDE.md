@@ -155,6 +155,8 @@ discount/premium (uzasadnij każdy pp) → EV = Rev × multiple → ± net cash 
 **EV/EBITDA**: EBITDA = EBIT + D&A (składowe z raportu) → peers → mediana → korekta → bridge jw.
 **Scenariusze**: warunki każdego → FV per scenariusz (policzony) → wagi z uzasadnieniem →
 FV_ważone = Σ(P_i × FV_i) z pokazanym działaniem.
+
+**TAM analysis — OBOWIĄZKOWA dla moonshotów** (`position_type: moonshot`, pole `dcf.tam_analysis`). Warstwa dyscypliny na UPSIDE, nie zamiennik DCF. Czysty DCF zaniża moonshoty (karze ścieżkę CapEx/execution, nie kredytuje opcjonalności na TAM). Top-down: TAM (ze źródłem!) → realistyczny udział firmy → revenue → marża → terminal multiple → dyskonto N lat @ WACC. Cel podwójny: (1) sprawdzić, czy Bull/Premium są TAM-spójne (czy nie zakładają 80% rynku); (2) 'co musisz wierzyć' — jaki udział w TAM implikuje dzisiejsza cena. fair_value pozostaje = Base DCF (dół, dyscyplina); TAM jako kontekst dla Bull i decyzji drabinki.
 Zapis: `dcf.alt_valuation` {method, method_reason, inputs[{name,value,source}], steps[],
 fair_value_computed} — app renderuje krok po kroku. **Scenariusze: `dcf.scenarios` (lista).** Aplikacja renderuje model gdy istnieje którekolwiek z: `stages` | `alt_valuation` | `scenarios` | `catalyst_sensitivity` — walidator pilnuje tego (W9). fair_value bez żadnego z nich = pusta zakładka DCF.
 
