@@ -25,6 +25,7 @@ Sprawdza:
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
   W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
+  W13 shares dcf vs fundamentals (anty podwójne-liczenie; od 13.06.2026)
   W12 TAM deklaruje jedną shares_used (anty-mix current/forward; od 13.06.2026)
   W11 Pułapka tagu HTML ('<' + litera w tekście psuje render; od 13.06.2026)
 """
@@ -167,6 +168,20 @@ def check_ticker(t, r):
     elif mode == "DCF":
         # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
         warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
+
+    # W13: shares w dcf vs fundamentals (3. raz blad liczby akcji: RHM/CBRS/QNT). Zasada 2026-06-13.
+    # Dozwolony rozjazd tylko z nota 'forward'/'diluted' (legit forward-dilution moonshota, np. IONQ).
+    dcf_sh = dcf.get("shares_m") or dcf.get("shares_diluted_m")
+    fund_t, _ = latest_fundamentals(t)
+    if dcf_sh and fund_t:
+        fsh = fund_t.get("shares_diluted_m") or (fund_t.get("balance_sheet", {}) or {}).get("shares_diluted_m")
+        if fsh and abs(dcf_sh - fsh) / fsh > 0.05:
+            blob = (json.dumps(dcf.get("wacc_inputs", {}), ensure_ascii=False)
+                    + json.dumps(dcf.get("tam_analysis", {}), ensure_ascii=False)
+                    + json.dumps(dcf.get("alt_valuation", {}), ensure_ascii=False)).lower()
+            if "forward" not in blob:
+                errors.append(f"W13: shares dcf {dcf_sh}M vs fundamentals {fsh}M (>5%) bez noty 'forward diluted' "
+                              f"— sprawdź podwójne liczenie (wzorzec RHM/CBRS/QNT)")
 
     # W12: TAM musi deklarować JEDNĄ liczbę akcji (shares_used) — zapobiega mieszaniu
     # current vs forward-diluted między bridge_cases (bug IONQ 373 vs 420). Zasada 2026-06-13.
