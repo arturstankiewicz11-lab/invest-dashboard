@@ -152,6 +152,7 @@ aktywa bez cash flow (krypto, ETF — bez FV w ogóle).
 Kroki — ta sama dyscyplina co DCF (każdy input ze źródłem, działanie pokazane):
 **EV/Revenue**: forward revenue (źródło!) → lista peers z multiple'ami → mediana →
 discount/premium (uzasadnij każdy pp) → EV = Rev × multiple → ± net cash → /shares.
+**Cash-burn dla pre-profitable (lekcja XE):** NIE kredytuj pełnej gotówki dzisiejszej, jeśli spółka pali ją na drodze do rev docelowego. Odejmij skumulowany burn (op loss + CapEx) do roku docelowego — dodawanie pełnej gotówki DZIŚ + dyskontowanie przyszłego EV (które wymagało jej wydania) = podwójny optymizm (XE: base $24→$11). Mnożniki realne dla branży (nuclear/industrial 2–10x, nie software 12–18x).
 **EV/EBITDA**: EBITDA = EBIT + D&A (składowe z raportu) → peers → mediana → korekta → bridge jw.
 **Scenariusze**: warunki każdego → FV per scenariusz (policzony) → wagi z uzasadnieniem →
 FV_ważone = Σ(P_i × FV_i) z pokazanym działaniem.

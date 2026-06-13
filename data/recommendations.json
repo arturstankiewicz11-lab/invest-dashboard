@@ -3670,12 +3670,12 @@
   "XE": {
     "name": "X-Energy Inc.",
     "recommendation": "HOLD",
-    "fair_value": 24,
+    "fair_value": 11,
     "fair_value_currency": "USD",
-    "entry_point": 17,
+    "entry_point": 8,
     "position_type": "moonshot",
     "last_updated": "2026-06-13",
-    "thesis_short": "Advanced nuclear: HTGR Xe-100 (Dow Seadrift) + TRISO-X fuel (Part 70 license — picks&shovels). Rev Q1 $43.4M (+109%) ALE 92% rzadowe, UJEMNA marza brutto. mcap ekon. ~$7.6B/406M akcji, cash ~$2B post-IPO. FV base $24 (EV/Rev+TAM) — CENA $18.59 PONIZEJ base (jedyny taki moonshot). DOE $1.2B ARDP (10-Q), Amazon klient.",
+    "thesis_short": "Advanced nuclear: HTGR Xe-100 (Dow) + TRISO-X (Part 70 license). Rev Q1 $43.4M (+109%) ale 92% rzadowe, UJEMNA marza brutto, pali ~$264M/rok. FV base $11 (po netto-burn z $2B cash). Cena $18.59 POWYZEJ base (jak inne moonshoty). CEO Clay Sell ex-Deputy Sec of Energy. Najbardziej komercyjny moonshot, ale nie tani.",
     "thesis_full": "X-energy to advanced nuclear z dwoma motorami: (1) reaktor HTGR Xe-100 (TRISO, obiektywnie bezpieczniejszy niz sod OKLO) — projekt Dow Seadrift TX (NRC Environmental Assessment), UK GDA; (2) TRISO-X fuel z Part 70 NRC license = moze KOMERCYJNIE produkowac paliwo (picks&shovels dla calej branzy advanced reactors potrzebujacej TRISO). Bardziej komercyjny niz OKLO/IONQ/QNT: rev Q1 2026 $43.4M (+109% YoY), ALE 92% to rzad USA (DOE cost-share, nie komercja) i marza brutto UJEMNA (direct costs $65.4M > rev). Operating loss $66M/Q. Cash post-IPO ~$2.0B (liquid $944M + IPO $1.1B 27.04 @ $23). Up-C ~406M akcji ekonomicznych. CEO Clay Sell (ex-Deputy Secretary of Energy — idealny do 92% rzadowego biznesu), founder Ghaffarian (Intuitive Machines/Axiom). FV base $24; cena $18.59 PONIZEJ base = jedyny moonshot blisko strefy kupna. Backers: Amazon (klient/projekt Energy Northwest; $500M per doniesienia web, NIE w 10-Q), DOE $1.2B ARDP (potwierdzone 10-Q, 50/50 cost-share $2.4B do 2027).",
     "thesis_breaker": "Utrata finansowania DOE (92% rev = rzad — cost-share moze byc ciety) LUB Dow Seadrift anulowany/opozniony >2 lata LUB marza brutto pozostaje ujemna przy skali (model nie dziala) LUB TerraPower/OKLO/Kairos wyprzedzaja komercyjnie HTGR.",
     "risks": [
@@ -3778,7 +3778,7 @@
       "method": "EV/Revenue 2030E + scenariusze (pre-profitable, ujemna marza brutto)",
       "wacc_pct": 12,
       "revenue_base_fy2026e_m": 174,
-      "net_cash_m": 2000,
+      "net_cash_m": 700,
       "shares_diluted_m": 406.4,
       "wacc_inputs": {
         "rf_pct": 4.4,
@@ -3806,9 +3806,9 @@
             "source": "10-Q"
           },
           {
-            "name": "Cash post-IPO",
-            "value": "~$2.0B",
-            "source": "liquid $944M (10-Q) + IPO $1.1B"
+            "name": "Cash netto po burn do 2030",
+            "value": "~$0.7B",
+            "source": "$2.0B post-IPO - ~$1.3B skumulowany burn (op loss + CapEx reaktory). NIE pelne $2B (zuzyte na budowe)"
           },
           {
             "name": "Shares (economic, Up-C)",
@@ -3822,19 +3822,20 @@
           }
         ],
         "steps": [
-          "Base: rev30 $1.0B (~komercjalizacja Dow+TRISO) x 12x = EV30 $12B -> dzis $7.6B + cash $2.0B = $9.6B / 406.4M = $24",
-          "Bear $10 / Bull $64 / Ultra $156; weighted 30/40/20/10 = $41",
-          "Net cash floor $4.9"
+          "KOREKTA (poprzednio za optymistyczne): pelne $2B cash + rev30 $1B + 12x. Poprawione:",
+          "Cash netto: $2.0B - ~$1.3B skumulowany burn do 2030 (op loss ~$264M/rok + CapEx reaktory) = ~$0.7B",
+          "Base: rev30 $700M (z $174M gov-base, ~40% CAGR) x 9x = EV30 $6.3B + cash30 $0.7B = $7.0B; /1.574 = $4.45B; /406.4M = $11",
+          "Bear $5 / Bull $29 / Ultra $83; weighted (30/40/20/10) = $20; floor (cash30/shares) $1.7"
         ],
-        "fair_value_computed": 24
+        "fair_value_computed": 11
       },
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 30,
           "color": "ef4444",
-          "fair_value": 10,
-          "description": "DOE ciecie + Dow opoznienie, marza zostaje ujemna, rev30 $400M. Floor $4.9. [EV/Rev 8x]",
+          "fair_value": 5,
+          "description": "DOE ciecie + Dow opoznienie, marza zostaje ujemna, rev30 $400M. Floor $4.9. [EV/Rev 7x, cash netto po burn]",
           "assumptions": {
             "stage1_cagr_pct": 25,
             "stage2_cagr_pct": 10,
@@ -3850,8 +3851,8 @@
           "name": "Base",
           "probability_pct": 40,
           "color": "00d9a3",
-          "fair_value": 24,
-          "description": "Dow Seadrift rusza, TRISO-X komercyjne sprzedaze, rev30 $1.0B, marza ku dodatniej. [EV/Rev 12x]",
+          "fair_value": 11,
+          "description": "Dow Seadrift rusza, TRISO-X komercyjne sprzedaze, rev30 $1.0B, marza ku dodatniej. [EV/Rev 9x, cash netto po burn]",
           "assumptions": {
             "stage1_cagr_pct": 55,
             "stage2_cagr_pct": 30,
@@ -3867,8 +3868,8 @@
           "name": "Bull",
           "probability_pct": 20,
           "color": "f59e0b",
-          "fair_value": 64,
-          "description": "HTGR deployment skaluje + TRISO-X dostawca dla branzy, rev30 $2.5B. [EV/Rev 15x]",
+          "fair_value": 29,
+          "description": "HTGR deployment skaluje + TRISO-X dostawca dla branzy, rev30 $2.5B. [EV/Rev 12x, cash netto po burn]",
           "assumptions": {
             "stage1_cagr_pct": 75,
             "stage2_cagr_pct": 45,
@@ -3884,8 +3885,8 @@
           "name": "Ultra",
           "probability_pct": 10,
           "color": "a855f7",
-          "fair_value": 156,
-          "description": "Advanced nuclear renaissance, XE lider HTGR+TRISO, rev30 $5B. [EV/Rev 18x]",
+          "fair_value": 83,
+          "description": "Advanced nuclear renaissance, XE lider HTGR+TRISO, rev30 $5B. [EV/Rev 15x, cash netto po burn]",
           "assumptions": {
             "stage1_cagr_pct": 95,
             "stage2_cagr_pct": 60,
@@ -3898,12 +3899,12 @@
           "key_risk": "Scenariusz renesansu nuklearnego z XE jako liderem"
         }
       ],
-      "fair_value_weighted": 41,
-      "fair_value_weighted_formula": "0.30x$10 + 0.40x$24 + 0.20x$64 + 0.10x$156 = $41; fair_value = BASE $24 (konwencja)",
+      "fair_value_weighted": 20,
+      "fair_value_weighted_formula": "0.30x$5 + 0.40x$11 + 0.20x$29 + 0.10x$83 = $20; fair_value = BASE $11 (konwencja)",
       "tam_analysis": {
         "purpose": "Dyscyplina upside. SMR/advanced nuclear TAM + TRISO fuel. Build-sell model (nie IPP jak OKLO).",
         "shares_used": 406.4,
-        "note_shares": "economic ~406.4M (Class A + Class B/Units, Up-C); dyskonto 4 lata @12%, +net cash $2.0B",
+        "note_shares": "economic ~406.4M; cash30 ~$0.7B (po burn); dyskonto 4 lata @12%",
         "markets": [
           {
             "name": "SMR/advanced nuclear 2035",
@@ -3925,7 +3926,7 @@
             "rev_2035_b": 0.8,
             "margin": 0,
             "mult": 10,
-            "implied_fv": 17,
+            "implied_fv": 11,
             "note": "~entry $17; cena $18.59 tu siedzi"
           },
           {
@@ -3934,7 +3935,7 @@
             "rev_2035_b": 2.0,
             "margin": 0,
             "mult": 13,
-            "implied_fv": 46,
+            "implied_fv": 35,
             "note": "miedzy Base $24 a Bull $64"
           },
           {
@@ -3943,14 +3944,14 @@
             "rev_2035_b": 5.0,
             "margin": 0,
             "mult": 16,
-            "implied_fv": 130,
+            "implied_fv": 111,
             "note": "~Ultra $146 (zakotwiczony)"
           }
         ],
-        "market_implied": "Cena $18.59 implikuje ~konserwatywny TAM (rev30 $0.8B) — RYNEK SCEPTYCZNY (cena ponizej base $24). Najmniej wygorowana wycena z moonshotow.",
-        "conclusion": "Ultra $146 vs TAM-agresywny $130 — blisko (1.12x, bez ostrzezenia). Cena $18.59 < base $24 < TAM-real $46 = XE jest NAJTANSZY z moonshotow relatywnie do fundamentow. Rynek dyskontuje ujemna marze + 92% gov. JESLI komercjalizacja Dow+TRISO ruszy z dodatnia marza -> re-rating. To moonshot z realna opcja BUY (inne handluja powyzej base)."
+        "market_implied": "Cena $18.59 implikuje realistyczny TAM. Po korekcie cash XE NIE jest tani — handluje powyzej base $11 jak inne moonshoty.",
+        "conclusion": "KOREKTA: wczesniej blednie 'najtanszy moonshot ponizej base' — wynikalo z pelnego kredytu $2B cash. Po netto-burn base $11, cena $18.59 POWYZEJ base (jak OKLO/IONQ/QNT). XE wyrozinia sie realnym revenue + Part 70 + ex-DoE CEO, ale wycena NIE jest tania."
       },
-      "notes": "Inicjacja 13.06 z 10-Q Q1 2026 (EDGAR). Up-C ~406M akcji ekonomicznych (yfinance liczy tylko 287.5M Class A -> mcap zanizone)."
+      "notes": "Inicjacja 13.06 z 10-Q Q1 2026 (EDGAR). Up-C ~406M akcji ekonomicznych (yfinance liczy tylko 287.5M Class A -> mcap zanizone). | KOREKTA 13.06: base $24->$11 — pelny kredyt $2B cash byl bledny (XE pali ~$264M/rok + ciezki CapEx; netto po burn ~$0.7B); rev30 $1B->$700M; multiple 12x->9x. Cena $18.59 > base $11 (jak inne moonshoty)."
     },
     "upcoming_events": [
       {
@@ -3960,6 +3961,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "KOREKTA po feedbacku uzytkownika (za optymistyczne): base $24->$11. Bledy: (1) pelny kredyt $2.0B cash mimo ~$264M/rok burn + ciezki CapEx reaktorow (~$1.3B zuzyte do 2030 -> netto ~$0.7B); (2) rev30 $1B->$700M; (3) multiple 12x->9x (nuclear/industrial, nie software). Scenariusze 5/11/29/83 (weighted $20). WNIOSEK ODWROCONY: cena $18.59 POWYZEJ base $11 (jak OKLO/IONQ/QNT) — NIE 'najtanszy moonshot blisko strefy kupna'. Entry $17->$8.",
+        "impact": "negative",
+        "fv_note": "FV $24->$11 (korekta cash-burn + rev + multiple). Cena $18.59 > base -> HOLD. Entry $8."
+      },
       {
         "date": "2026-06-13",
         "event": "Weryfikator: ZGODNA Z UWAGAMI. KLUCZOWE: share count 406.4M POTWIERDZONY poprawny (Note 18, brak double-counting — powtarzalny blad uniknięty dzieki W13+uwadze z gory). Poprawki: Ultra $146->$156 (odtworzenie z zalozen), weighted $40->$41; Amazon $500M oznaczone jako web (NIE 10-Q); dodana Centrica (3. klient z 10-Q). Base FV $24 odtworzony ($23.69). Wszystkie liczby finansowe potwierdzone w 10-Q.",
