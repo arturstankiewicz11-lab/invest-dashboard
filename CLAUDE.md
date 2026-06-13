@@ -279,5 +279,9 @@ nie wchodzi do analizy.
 ### Lock-up (OBOWIĄZKOWE dla spółek < ~12 mies. po IPO): data wygaśnięcia (~180 dni od IPO,
   potwierdź w prospekcie 424B) + skala nawisu (akcje zablokowane vs float) jako `upcoming_events`.
   Świeże IPO z ceną > FV = insiderzy mają motyw sprzedaży po unlocku. Walidator W14 to pilnuje.
+### UWAGA — czynniki wpływające na wycenę (pole `caveats`, lista): non-obvious flagi, których nie
+  widać z FV/entry — korekty FV i ich powód, ujemna marża, pass-through revenue, struktura akcji
+  (Up-C), koncentracja, kontrola partnera. App renderuje sekcję "⚠️ Uwaga" w zakładce Działania pod
+  triggerami; lock-up dorzucany automatycznie z `upcoming_events`.
 ### Pozycja portfelowa (% portfela, zależnie od wyniku checklisty)
 ```

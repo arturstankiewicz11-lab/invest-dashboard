@@ -2438,7 +2438,11 @@
         "uzasadnienie": "Brak zatrzymanych zyskow"
       },
       "wniosek": "0xOK / 2xUWAGA / 7xBRAK -> NAJMNIEJSZA pozycja w portfelu (lottery ticket), MoS 30%+, entry $22"
-    }
+    },
+    "caveats": [
+      "FV skorygowane $31->$28 (korekta cash-burn 13.06): IonQ pali ~$151M/kwartal operacyjnie; netto gotowki po burn ~$2.0B, nie pelne $3.07B.",
+      "Wyscig modalnosci nierozstrzygniety: superconducting (IBM/Google) moze wygrac; quantum advantage komercyjny niedowiedziony."
+    ]
   },
   "GOOG": {
     "events": [
@@ -3384,7 +3388,12 @@
         "uzasadnienie": "Za krotka historia publiczna (IPO 13.05.2026)"
       },
       "wniosek": "2xOK / 4xUWAGA / 3xBRAK -> moonshot: MALA pozycja, MoS 30%+ (entry 0.70xFV), drabinka wyjscia aktywna"
-    }
+    },
+    "caveats": [
+      "Jakosc przychodow: pass-through costs (najem DC, prad) refakturowane BRUTTO jako revenue (~0% marzy) — zawyza top-line; patrz na rev 'czyste'.",
+      "OpenAI = partner-konkurent (wlasny ASIC) + >85% rev koncentracja; OpenAI moze miec do 12% akcji CBRS (warranty).",
+      "WSE-3 ekonomicznie obsluguje dzis glownie male modele (SemiAnalysis) — ograniczenie TAM krotkoterminowo."
+    ]
   },
   "QNT": {
     "name": "Quantinuum Inc.",
@@ -3709,6 +3718,11 @@
         "impact": "neutral",
         "fv_note": "Inicjacja FV $34, entry $24 (MoS 30% moonshot). IPO $47.50 / cena ~$55 > FV -> nie kupowac. Najmniejsza pozycja."
       }
+    ],
+    "caveats": [
+      "FV skorygowane $36->$33 (korekta cash-burn 13.06): op loss $199M/rok (FY2025, rosnacy); netto gotowki po burn ~$0.9B, nie pelne $1.6B.",
+      "Koncentracja EKSTREMALNA: jeden klient rzadowy = 60% rev FY2025 (90% Q1'25). Utrata = zalamanie.",
+      "Honeywell kontroluje 49.1% po IPO — decyzje strategiczne zalezne od partnera-wlasciciela."
     ]
   },
   "XE": {
@@ -4034,6 +4048,11 @@
         "impact": "neutral",
         "fv_note": "Inicjacja FV $24, entry $17 (MoS 30%). Cena $18.59: +29% do base, ale >entry -> HOLD blisko strefy kupna. Najtanszy moonshot."
       }
+    ],
+    "caveats": [
+      "FV skorygowane $24->$11 (korekta cash-burn 13.06): pelny kredyt $2B gotowki byl bledny — XE pali ~$264M/rok + CapEx reaktory. Cena $18.59 jest POWYZEJ base $11 — to NIE tani moonshot.",
+      "UJEMNA marza brutto: direct costs $65.4M > revenue $43.4M. 'Przychody' to dotowany przez DOE development, nie zyskowny biznes.",
+      "Struktura Up-C (406.4M economic = 287.5M Class A + 118.9M Common Units). yfinance liczy tylko Class A float -> myli mcap."
     ]
   }
 }
