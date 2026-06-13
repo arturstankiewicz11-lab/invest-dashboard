@@ -1738,21 +1738,23 @@ def page_detail(ticker, pos, prices, recs):
         dcf_d  = rec.get("dcf") or {}
         wfv    = dcf_d.get("fair_value_weighted") or dcf_d.get("weighted_fv")
         scen_d = dcf_d.get("scenarios") or (dcf_d.get("alt_valuation") or {}).get("scenarios")
-        bull_fv = None
+        bull_fv = None; top_name = "bull"
         if scen_d:
             items = list(scen_d.values()) if isinstance(scen_d, dict) else scen_d
-            fvs = [s.get("fair_value") or s.get("fv_per_share")
-                   for s in items if isinstance(s, dict)]
-            fvs = [v for v in fvs if v]
-            bull_fv = max(fvs) if fvs else None
+            pairs = [(s.get("fair_value") or s.get("fv_per_share"), s.get("name", "bull"))
+                     for s in items if isinstance(s, dict)]
+            pairs = [(v, n) for v, n in pairs if v]
+            if pairs:
+                bull_fv, top_name = max(pairs, key=lambda x: x[0])
+        tn = _e(str(top_name).lower())  # nazwa najwyższego scenariusza (bull/ultra/...)
         rungs = []   # (próg, etykieta, akcja, czy_trigger)
         if ptype == "compounder":
             if fv:      rungs.append((fv,      f"FV base {fv:.0f} {fv_c}",   "nie sprzedajemy — compounder, FV rośnie z czasem", False))
-            if bull_fv: rungs.append((bull_fv, f"&gt; bull {bull_fv:.0f} {fv_c}", "obowiązkowa decyzja: REDUCE albo rewizja scenariuszy", True))
+            if bull_fv: rungs.append((bull_fv, f"&gt; {tn} {bull_fv:.0f} {fv_c}", "obowiązkowa decyzja: REDUCE albo rewizja scenariuszy", True))
         elif ptype == "moonshot":
             if fv:      rungs.append((fv,      f"&ge; base {fv:.0f} {fv_c}",     "trim 25–33% — odzyskaj koszt", True))
             if wfv:     rungs.append((wfv,     f"&ge; weighted {wfv:.0f} {fv_c}", "trim do ~50% pozycji", True))
-            if bull_fv: rungs.append((bull_fv, f"&ge; bull {bull_fv:.0f} {fv_c}", "redukcja do rdzenia ~25% (rdzeń trzyma ogon)", True))
+            if bull_fv: rungs.append((bull_fv, f"&ge; {tn} {bull_fv:.0f} {fv_c}", "redukcja do rdzenia ~25% (rdzeń trzyma ogon)", True))
         if rungs:
             rows = ""
             for thr, lbl, act, is_trig in rungs:
