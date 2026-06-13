@@ -4901,7 +4901,7 @@
       "scenarios": [
         {
           "name": "Bear",
-          "probability_pct": 25,
+          "probability_pct": 20,
           "color": "ef4444",
           "fair_value": 101,
           "assumptions": {
@@ -4917,7 +4917,7 @@
         },
         {
           "name": "Base",
-          "probability_pct": 50,
+          "probability_pct": 45,
           "color": "f59e0b",
           "fair_value": 147,
           "assumptions": {
@@ -4946,10 +4946,26 @@
           },
           "description": "Apple Intelligence napedza supercycle wymiany iPhone + Services 15%+ + nowa kategoria (AI). CAGR 9%, EBIT 34-35%, WACC 9%.",
           "key_risk": "Nawet bull ($205) ponizej ceny $291 — trzeba zalozyc wzrost+marze powyzej bull, by uzasadnic cene."
+        },
+        {
+          "name": "Ultra",
+          "probability_pct": 10,
+          "color": "8b5cf6",
+          "fair_value": 243,
+          "assumptions": {
+            "stage1_cagr_pct": 11,
+            "stage2_cagr_pct": 6,
+            "ebit_margin_pct": 35,
+            "fcf_margin_s1_pct": 30,
+            "wacc_pct": 9,
+            "terminal_g_pct": 3.5
+          },
+          "description": "AGENTIC COMMERCE: Siri AI (App Intents + Mastercard Agent Pay) jako warstwa transakcyjna 1.4 mld urzadzen -> Apple bierze prowizje od rezerwacji/zakupow + share z subskrypcji AI (model App Store) + AI supercycle wymiany iPhone. Services przyspiesza, mix podnosi marze. CAGR 11%/6%, EBIT 35-37%.",
+          "key_risk": "Prowizja agentic NIEpotwierdzona ('fees a possibility'), opor deweloperow, i MAKSYMALNA ekspozycja regulacyjna — 30% take-rate to dokladnie to, co EU DMA/DOJ demontuja."
         }
       ],
-      "fair_value_weighted": 150,
-      "fair_value_weighted_formula": "0.25x$101 + 0.50x$147 + 0.25x$205 = $150; fair_value = BASE $147 (konwencja). Cena $291 powyzej WSZYSTKICH scenariuszy.",
+      "fair_value_weighted": 162,
+      "fair_value_weighted_formula": "0.20x$101 + 0.45x$147 + 0.25x$205 + 0.10x$243 = $162; fair_value = BASE $147 (konwencja). UWAGA: nawet Ultra $243 PONIZEJ ceny $291 — rynek wycenia agentic-commerce powyzej mojego Ultra.",
       "notes": "DCF 2-etapowy. Base FV $147 vs cena $291 = Apple ~2x wartosci wewnetrznej. Nawet bull $205 nie uzasadnia ceny — rynek placi premie za jakosc/bezpieczenstwo/buyback. Net debt ~$16B immaterialny dla FV. Dla profilu moonshot brak asymetrii."
     },
     "upcoming_events": [
@@ -4965,12 +4981,19 @@
     "events": [
       {
         "date": "2026-06-14",
+        "event": "Analiza tezy Apple Intelligence (WWDC26, 3 poziomy): (1) on-device wymaga 8-12GB RAM -> realny supercycle wymiany iPhone [potwierdzone]; (2) cloud = custom Gemini 1.2T params za ~$1B/rok = ~$0.70/urzadzenie (1.4 mld) — frontier AI tanio, chroni ekosystem [potwierdzone]; (3) agentic commerce — Siri via App Intents + Mastercard Agent Pay bookuje/kupuje; share z subskrypcji AI (model App Store). Dodany scenariusz Ultra $243.",
+        "impact": "positive",
+        "fv_note": "Ultra $243 (agentic commerce) dodany; weighted $147->$162. ALE nawet Ultra ponizej ceny $291 — agentic prowizja niepotwierdzona + max ekspozycja regulacyjna. Base $147 bez zmian."
+      },
+      {
+        "date": "2026-06-14",
         "event": "INICJACJA pokrycia: HOLD, FV base $147 (DCF 2-etapowy: WACC 9.5%, g 3%, CAGR 6%/4%, EBIT 33-34%). Cena $291 = ~2x wartosci wewnetrznej (PE 35 przy ~6% wzroscie). Wide-moat compounder klasy Buffetta, ale DROGI; brak asymetrii dla profilu moonshot. Nowy CEO Ternus od 01.09.2026.",
         "impact": "neutral",
         "fv_note": "FV base $147 vs cena $291 (-49%). Nawet bull $205 ponizej. Entry $110 (0.75x FV) — daleko. HOLD/unikać przy tej cenie."
       }
     ],
     "caveats": [
+      "AGENTIC COMMERCE (prawy ogon, teza bycza): Siri AI jako warstwa transakcyjna 1.4 mld urzadzen + share z subskrypcji AI moze byc nowym wysokomarzowym Services. Poziomy 1-2 potwierdzone (RAM-gating supercycle + tani Gemini $1B/rok). ALE prowizja agentic NIEpotwierdzona ('fees a possibility'), opor deweloperow, MAX ekspozycja regulacyjna (30% take-rate to to, co EU DMA/DOJ demontuja). Nawet pelny scenariusz Ultra ($243) PONIZEJ ceny $291.",
       "WYCENA: cena $291 to ~2x DCF FV $147; NAWET bull $205 jest ponizej ceny. Apple handluje na premii jakosci/bezpieczenstwa/buyback, nie na wzroscie (PE 35 przy ~6% rev growth). Kupno teraz = placenie 2x za jakosc.",
       "DOPASOWANIE: to NIE jest moonshot (10-50x). Bezpieczny wide-moat compounder bez asymetrii — kotwica defensywna, nie zrodlo asymetrii ktorej szukasz. Inny profil niz reszta portfela (AI/Energy/Space).",
       "ZMIANA CEO: Tim Cook -> Executive Chairman, John Ternus (inzynier, SVP Hardware) CEO od 01.09.2026. Pozytyw (inzynier w erze hardware/AI), ale niesprawdzony jako CEO + ryzyko tranzycji w czasie AI-lag.",
