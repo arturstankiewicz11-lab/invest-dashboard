@@ -878,15 +878,49 @@ def tab_dcf(rec: dict):
         </div>""", unsafe_allow_html=True)
         return
 
-    # If no DCF stages but alt_valuation exists — show alternative method (+ scenarios if present)
+    # Brak stages: pokaż metodę alternatywną (alt_valuation) i/lub scenariusze i/lub katalizator.
+    # Model scenariuszowy bywa zapisany wprost w dcf (LEU) albo owinięty w alt_valuation (CBRS/OKLO).
     has_stages = bool(dcf.get("stages"))
     if not has_stages:
-        if alt:
-            _render_alt_valuation(alt, fv_currency)
-            if dcf.get("scenarios"):
+        has_scen     = bool(dcf.get("scenarios"))
+        has_catalyst = bool(dcf.get("catalyst_sensitivity"))
+        if alt or has_scen or has_catalyst:
+            if alt:
+                _render_alt_valuation(alt, fv_currency)
+            elif dcf.get("method"):
+                # Metoda scenariuszowa bez alt_valuation — pokaż nagłówek metody + założenia wspólne
+                fvc = rec.get("fair_value_currency", "")
+                MONO = "font-family:'Courier New',monospace;font-size:12px;background:rgba(0,0,0,0.25);border-radius:8px;padding:14px 18px;line-height:1.9;color:#94a3b8;border:1px solid rgba(255,255,255,0.06)"
+                st.markdown(f'<div class="sh">📐 Metoda wyceny: {_e(dcf["method"])}</div>', unsafe_allow_html=True)
+                reason = dcf.get("notes") or dcf.get("weights_rationale") or ""
+                if reason:
+                    st.markdown(f'<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:10px 14px;font-size:12px;color:#94a3b8;margin-bottom:10px">{_e(reason)}</div>', unsafe_allow_html=True)
+                wacc_v = dcf.get("wacc_pct"); nc = dcf.get("net_cash_m"); sh = dcf.get("shares_diluted_m") or dcf.get("shares_m")
+                base_rev = dcf.get("revenue_base_fy2026e_m") or dcf.get("revenue_ttm_m")
+                fwf = dcf.get("fair_value_weighted_formula", "")
+                struct = dcf.get("scenario_structure_note", "")
+                st.markdown(f"""<div style="{MONO}">
+<b style="color:#64748b">Założenia wspólne:</b><br>
+&nbsp;&nbsp;WACC = <b style="color:#e2e8f0">{wacc_v}%</b>{f" &nbsp;·&nbsp; Revenue baza = <b style='color:#e2e8f0'>{fmt_m(base_rev)}</b>" if base_rev else ""}<br>
+&nbsp;&nbsp;Net cash = <b style="color:#10b981">{fmt_m(nc) if nc else '—'}</b> &nbsp;·&nbsp; Akcje = <b style="color:#e2e8f0">{sh}M</b><br>
+{f'&nbsp;&nbsp;<span style="color:#475569;font-size:11px">{_e(struct)}</span><br>' if struct else ''}
+{f'<br><b style="color:#64748b">Fair Value ważone:</b><br>&nbsp;&nbsp;<span style="color:#00d9a3">{_e(fwf)}</span>' if fwf else ''}
+</div>""", unsafe_allow_html=True)
+            if has_scen:
                 _render_dcf_scenarios(dcf["scenarios"], dcf, rec)
-            if dcf.get("catalyst_sensitivity"):
+            if has_catalyst:
                 _render_catalyst_sensitivity(dcf["catalyst_sensitivity"])
+            # base_breakdown (Krok 0) jeśli istnieje — wspólne dla obu ścieżek
+            bb = dcf.get("base_breakdown")
+            if bb and bb.get("items"):
+                rows = "".join(
+                    f'<tr><td style="padding:6px 8px;color:#e2e8f0">{_e(it.get("segment",""))}</td>'
+                    f'<td style="padding:6px 8px;color:#00d9a3;text-align:right">{fmt_m(it["revenue_m"]) if it.get("revenue_m") else "—"}</td>'
+                    f'<td style="padding:6px 8px;color:#64748b;font-size:11px">{_e(it.get("note",""))}</td></tr>'
+                    for it in bb["items"])
+                st.markdown(f'<div class="sh" style="margin-top:20px">🏗️ Krok 0 — Dekompozycja segmentowa</div>'
+                            f'<table style="width:100%;border-collapse:collapse;font-size:12px">{rows}</table>',
+                            unsafe_allow_html=True)
         else:
             st.markdown("""
             <div style="padding:40px;text-align:center;color:#475569">
