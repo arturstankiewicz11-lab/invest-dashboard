@@ -1005,7 +1005,7 @@
       "Export controls: eskalacja ograniczen na Bliski Wschód (Trump deals odwracalne) — utrata $15-30B/rok, FV -$25",
       "Rubin execution risk: opoznienie produkcji lub yields problem -> revenue gap H2 FY2027, FV -$20"
     ],
-    "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare, miliony certyfikowanych inzynierow), scale advantage R&D $18.5B/rok, pricing power (Rubin ASP 3x Blackwell), switching costs ekstremalne dla enterprise AI + sovereign AI (rzady nie moga zmienic platformy mid-build).",
+    "buffett_moat": "Wide — CUDA ecosystem lock-in (15+ lat developer mindshare, miliony certyfikowanych inzynierow), scale advantage R&D $18.5B/rok, pricing power (Rubin ASP 3x Blackwell), switching costs ekstremalne dla enterprise AI + sovereign AI (rzady nie moga zmienic platformy mid-build). Dodatkowo: licencja LPU Groqa (~$20B, XII.2025) + acqui-hire J. Rossa wzmacnia pozycje w inference.",
     "last_updated": "2026-06-03",
     "next_earnings": "2026-08-XX",
     "priority_action": "Dokupuj poniżej entry. Stop: thesis breaker.",
@@ -1318,6 +1318,12 @@
     },
     "events": [
       {
+        "date": "2025-12-24",
+        "event": "NVDA zlicencjonowala architekture LPU Groqa za ~$20B (non-exclusive) + acqui-hire foundera J. Rossa (ex-Google TPU) i prezesa. Wzmacnia moat w inference (gdzie custom ASICs hyperscalerow byly zagrozeniem). Groq dalej niezalezny (GroqCloud).",
+        "impact": "positive",
+        "fv_note": "Wzmacnia moat inference; nieujete osobno w FV $346 (jakosciowe wzmocnienie pozycji vs ASIC inference)."
+      },
+      {
         "date": "2026-06-04",
         "event": "Rekomendacja HOLD->BUY. Cena ~$235 < entry $260 (25% MoS od FV $346). entry_point $200->$260.",
         "impact": "positive",
@@ -1430,8 +1436,8 @@
         "source": "sektor"
       },
       {
-        "name": "Cerebras / Groq / SambaNova",
-        "ticker": "CBRS/-/-",
+        "name": "Cerebras / SambaNova",
+        "ticker": "CBRS/-",
         "public": true,
         "segment": "Inference accelerators (nisza)",
         "threat": "niskie-srednie",
@@ -1446,6 +1452,15 @@
         "threat": "niskie",
         "note": "Gaudi nie zdobyl trakcji; Intel zmaga sie z wlasnym foundry. Marginalny w AI compute.",
         "source": "10-K Competition + sektor"
+      },
+      {
+        "name": "Groq (LPU — zlicencjonowane przez NVDA)",
+        "ticker": null,
+        "public": false,
+        "segment": "Inference architecture (LPU)",
+        "threat": "niskie (zneutralizowane)",
+        "note": "XII.2025: NVDA zlicencjonowala architekture LPU Groqa za ~$20B (non-exclusive) + acqui-hire foundera Jonathana Rossa i prezesa Sunny Madra. Groq dziala dalej niezaleznie (GroqCloud, CEO Simon Edwards, zbiera $650M V.2026), ale jego IP inference WZMACNIA moat NVDA zamiast mu zagrazac.",
+        "source": "web: TechCrunch/Motley Fool/Yahoo (XII.2025-V.2026)"
       }
     ]
   },
