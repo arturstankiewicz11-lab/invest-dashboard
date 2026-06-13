@@ -2193,7 +2193,7 @@
         "erp_pct": 5.0,
         "note": "Re = 4.4 + 1.15 × 5.0 = 10.15% → WACC 10.5% (premia +0.35pp za ryzyko szczytowego CapEx cycle i dźwigni $119B LT debt)",
         "credit_rating": "AA (S&P) / A1 (Moody's) — do potwierdzenia w 10-K; powszechnie raportowany dla AMZN",
-        "full_wacc_calc": "Pelny WACC: E = $2.57T (mcap 13.06), D = LT debt $119.1B + finance leases (~$80B per 10-Q) -> D/V ~7%. Rd z ratingu AA: UST 4.4% + spread ~50bp = ~4.9% pre-tax, po 15% tax 4.17%. WACC ~ 0.93x10.15% + 0.07x4.17% = 9.73% vs uzywane 10.5%. UWAGA: net cash $24B (cash $143.1B - LT debt $119.1B) NIE uwzglednia finance leases (~$80B) — z nimi net DEBT ~$56B -> FV ~-$3/akcje (pomijalne). DECYZJA: WACC 10.5% (premia +0.35pp za szczyt CapEx + dzwignie) i net cash $24B utrzymane — konserwatywne."
+        "full_wacc_calc": "Pelny WACC: E = $2.57T (mcap 13.06), D = LT debt $119.1B + finance leases $11.7B (10-Q: PV finance lease liab $13.3B; UWAGA: $79.1B to OPERATING leases, NIE finance — czynsz jest w EBIT) -> D/V ~5%. Rd z ratingu AA: UST 4.4% + spread ~50bp = ~4.9% pre-tax, po 15% tax 4.17%. WACC ~ 0.95x10.15% + 0.05x4.17% = 9.85% vs uzywane 10.5%. Net cash $24B (cash $143.1B - LT debt $119.1B); z finance leases $11.7B net cash ~$12.3B -> FV ~-$1.2/akcje (pomijalne). DECYZJA: WACC 10.5% i net cash $24B utrzymane — konserwatywne (premia za szczyt CapEx)."
       },
       "terminal_growth_rationale": "g=3% < nominalny PKB USA (~4%). AWS cloud TAM strukturalnie rośnie przez dekadę — g=3% konserwatywne. Każde -0.5pp g obniża FV o ~$25.",
       "balance_sheet_inputs": {
@@ -2233,7 +2233,7 @@
       "enterprise_value_m": 4510503,
       "equity_value_m": 4534518,
       "fair_value_computed": 417.0,
-      "notes": "Baza FY2026E $840B = FY2025 $716.9B × 1.172. Rewizja 2026-06-01: Stage1 EBIT 15%→17%, Stage2 EBIT 22%→24% na podstawie SemiAnalysis Tokenomics Model (Bedrock EBIT ~55%, mix 37%→53% AWS AI revenue, Microsoft datacenter pause). Szczytowy CapEx 24.4% Q1 2026 kompresuje FCF — model wycenia powrót do 17% Stage1 i 8% Stage2. AWS Trainium2/Inferentia3 = własne chipy AI od 2026 → niższy COGS = wyższe EBIT.",
+      "notes": "Baza FY2026E $840B = FY2025 $716.9B × 1.172. Rewizja 2026-06-01: Stage1 EBIT 15%→17%, Stage2 EBIT 22%→24% na podstawie SemiAnalysis Tokenomics Model (Bedrock EBIT ~55%, mix 37% (projekcja ku 53%) AWS AI revenue, Microsoft datacenter pause). Szczytowy CapEx 24.4% Q1 2026 kompresuje FCF — model wycenia powrót do 17% Stage1 i 8% Stage2. AWS Trainium2/Inferentia3 = własne chipy AI od 2026 → niższy COGS = wyższe EBIT.",
       "bedrock_deal_mechanics": {
         "source": "SemiAnalysis Tokenomics Model + Token Factory (AI_Token_Factory.pdf)",
         "structure": "Anthropic jest seller of record — księguje pełne przychody z tokenów. AWS nie jest merchant of record (inaczej niż Microsoft w Azure Foundry).",
@@ -2404,6 +2404,12 @@
       "fair_value_weighted_formula": "0.20x$197 + 0.55x$417 + 0.25x$729 = $451; fair_value = BASE $417 (konwencja)"
     },
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Weryfikator: ZGODNA Z UWAGAMI (FV $417 + scenariusze 197/417/729 + weighted $451 odtworzone co do dolara; wszystkie inputy Q1 2026 potwierdzone w 10-Q). Poprawka ISTOTNA: finance leases to $11.7B (PV $13.3B), nie $80B — pomylilem z operating leases ($79.1B, czynsz w EBIT). Wplyw na FV ~-$1.2/akcje (nie -$3). Drobne: '53% AWS AI mix' oznaczone jako projekcja (zrodlo potwierdza 37% biezace).",
+        "impact": "neutral",
+        "fv_note": "FV $417 potwierdzone niezaleznie. Cena $238.55 < entry $313 -> BUY, upside +75%."
+      },
       {
         "date": "2026-06-13",
         "event": "Pelna rewizja wg nowych zasad (bez zmiany FV $417 — base DCF zweryfikowany co do dolara). Dodane: scenariusze Bear $197/Base $417/Bull $729 (weighted $451); ceo_profile Jassy = GLODNY EKSPERT (zalozyciel AWS, ekspertyza cloud bezdyskusyjna, equity-aligned $561M); competitive_landscape per segment (Azure/GCP wysokie, Walmart/Temu srednie, Trainium atut vs NVDA); buffett_tenets 8xOK/1xUWAGA; Rd z ratingu AA (pelny WACC ~9.7% vs uzywane 10.5% konserwatywne; finance leases ~$80B obnizaja net cash, wplyw ~-$3/akcje pomijalny). Krok 0 segmenty juz byl (wzorzec).",
