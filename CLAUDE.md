@@ -285,3 +285,11 @@ nie wchodzi do analizy.
   triggerami; lock-up dorzucany automatycznie z `upcoming_events`.
 ### Pozycja portfelowa (% portfela, zależnie od wyniku checklisty)
 ```
+
+**Schemat kompletności wpisu (egzekwuje walidator E7 — brak pola = ERROR; koniec z „ręcznym"
+niekompletnym wpisem).** Pełna rekomendacja spółki (z `position_type`) MUSI mieć pola:
+`name, recommendation, fair_value, fair_value_currency, entry_point, position_type, last_updated,
+thesis_short, thesis_full, thesis_breaker, risks, buffett_moat, ceo_profile, competitive_landscape,
+buffett_tenets, dcf, events, caveats`. W `ceo_profile`: wszystkie pola z §6b; w `buffett_tenets`:
+wszystkie z §6a; w `dcf.scenarios[]`: `assumptions`+`key_risk` (W15). `upcoming_events` opcjonalne
+(lock-up pilnuje W14). Nowe wpisy twórz wg tego schematu, nie z palca.

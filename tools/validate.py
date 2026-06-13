@@ -27,6 +27,8 @@ Sprawdza:
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
   W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
   W14 świeże IPO bez ryzyka lock-up (nawis podażowy; od 13.06.2026)
+  E7  Schemat kompletności pełnej rekomendacji (position_type) — brak pola = ERROR;
+      koniec z 'ręcznym' niekompletnym wpisem (od 13.06.2026)
   W13 shares dcf vs fundamentals (anty podwójne-liczenie; od 13.06.2026)
   W12 TAM deklaruje jedną shares_used (anty-mix current/forward; od 13.06.2026)
   W11 Pułapka tagu HTML ('<' + litera w tekście psuje render; od 13.06.2026)
@@ -39,6 +41,21 @@ REC_PATH  = os.path.join(ROOT, "data", "recommendations.json")
 FUND_DIR  = os.path.join(ROOT, "data", "fundamentals")
 
 TOL_OK, TOL_WARN = 0.03, 0.10   # progi zgodności FV z modelem
+
+# E7 — schemat kompletności pełnej rekomendacji spółki (position_type ustawiony).
+# Kodyfikuje wymogi CLAUDE.md: format §8 + ceo_profile §6b ("obowiązkowy") +
+# competitive_landscape §6c ("obowiązkowa") + buffett_tenets §6a (przy inicjacji).
+# Cel: koniec z "ręcznym" budowaniem wpisów — brak wymaganego pola = ERROR.
+# upcoming_events celowo OPCJONALNE (lock-up pilnuje W14). Od 2026-06-13.
+SCHEMA_TOP = ["name", "recommendation", "fair_value", "fair_value_currency", "entry_point",
+              "position_type", "last_updated", "thesis_short", "thesis_full", "thesis_breaker",
+              "risks", "buffett_moat", "ceo_profile", "competitive_landscape", "buffett_tenets",
+              "dcf", "events", "caveats"]
+SCHEMA_CEO = ["name", "ceo_since", "background", "founder_or_manager", "hunger", "domain_expertise",
+              "track_record", "skin_in_the_game", "red_flags", "verdict", "sources"]
+SCHEMA_TENETS = ["business_simple", "business_consistent_history", "business_longterm_prospects",
+                 "mgmt_rational", "mgmt_candid", "mgmt_institutional_imperative",
+                 "fin_roe", "fin_margins", "fin_dollar_test", "wniosek"]
 
 
 def implied_fv_from_stages(dcf):
@@ -114,6 +131,21 @@ def check_ticker(t, r):
     # ETF/krypto: brak FV i brak modelu = tylko tracking, pomijamy
     if fv is None and not dcf:
         return [], [], "tracking-only (bez FV — OK dla ETF/krypto)"
+
+    # E7: schemat kompletności pełnej rekomendacji spółki (gdy position_type ustawiony).
+    # Brak wymaganego pola = ERROR (koniec z "ręcznym" budowaniem niekompletnych wpisów).
+    if r.get("position_type"):
+        miss_top = [f for f in SCHEMA_TOP if not r.get(f)]
+        if miss_top:
+            errors.append(f"E7: brak wymaganych pól {miss_top} (schemat CLAUDE.md §8/§6)")
+        ceo = r.get("ceo_profile") or {}
+        miss_ceo = [f for f in SCHEMA_CEO if not ceo.get(f)]
+        if ceo and miss_ceo:
+            errors.append(f"E7: ceo_profile bez pól {miss_ceo} (CLAUDE.md §6b)")
+        ten = r.get("buffett_tenets") or {}
+        miss_ten = [f for f in SCHEMA_TENETS if not ten.get(f)]
+        if ten and miss_ten:
+            errors.append(f"E7: buffett_tenets bez pól {miss_ten} (CLAUDE.md §6a)")
 
     # W2: thesis breaker
     if fv is not None and not r.get("thesis_breaker"):
