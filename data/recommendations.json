@@ -3673,12 +3673,22 @@
     },
     "upcoming_events": [
       {
+        "date": "2026-11-17",
+        "event": "Lock-up expiry (~180 dni od IPO 21.05.2026, termin SZACOWANY — potwierdzic w prospekcie). Honeywell (49.1% po IPO) + pre-IPO holders zablokowani; IPO float ~21M akcji vs ~253.9M economic. Wygasniecie = potencjalny nawis, zwlaszcza udzialy Honeywell."
+      },
+      {
         "date": "2026-08-15",
         "event": "Pierwsze earnings publiczne (szac.) — czy rev wraca do wzrostu po lumpy Q1; bookings",
         "type": "earnings"
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Dodane ryzyko lock-up (luka systemowa, j.w. XE): QNT po IPO 21.05, lock-up ~17.11.2026. Honeywell 49.1% + pre-IPO zablokowani vs ~21M float. Wczesniej brak eventu.",
+        "impact": "negative",
+        "fv_note": "Bez zmiany FV; near-term nawis podazowy po lock-up (gl. Honeywell)."
+      },
       {
         "date": "2026-06-13",
         "event": "KOREKTA cash-burn (systemowa, po feedbacku XE): pelny kredyt $1.6B cash za optymistyczny — Quantinuum pali op loss $199M/rok (FY2025, rosnacy; net loss $192.6M). Netto po ~$0.7B burn do 2030 ~$0.9B. Kazdy scenariusz -$2.76/akcje. Base $36->$33, weighted $62->$59, floor $6.3->$3.5. Entry $25->$23.",
@@ -3713,7 +3723,8 @@
     "risks": [
       "Koncentracja rzadowa 92% rev: DOE cost-share, nie komercyjne przychody; ciecie budzetu = zalamanie. Komercjalizacja (Dow, Amazon/Energy Northwest, Centrica UK) dopiero przed nami",
       "UJEMNA marza brutto: direct costs $65.4M > rev $43.4M — 'revenue' to dotowany development, nie zyskowny biznes; sciezka do dodatniej marzy niepewna",
-      "Execution HTGR + TRISO scale: Dow Seadrift w procesie NRC; pierwsza komercyjna energia nie przed 2028-29; konkurencja (TerraPower permit, OKLO, Kairos/Google)"
+      "Execution HTGR + TRISO scale: Dow Seadrift w procesie NRC; pierwsza komercyjna energia nie przed 2028-29; konkurencja (TerraPower permit, OKLO, Kairos/Google)",
+      "Lock-up overhang (~24.10.2026): ~358M zablokowanych akcji vs ~48M IPO float (~7x). Wygasniecie lock-up = potencjalna fala podazy; przy cenie $18.59 > FV base $11 insiderzy maja motyw do sprzedazy. Termin szacowany 180 dni od IPO — potwierdzic w prospekcie."
     ],
     "buffett_moat": "NARROW->rosnacy: TRISO-X Part 70 license = realna przewaga (jedyny komercyjny TRISO supplier + wlasne reaktory); HTGR bezpieczniejszy niz sod; Amazon/Dow/DOE backing. ALE komercyjnie nieudowodniony.",
     "ceo_profile": {
@@ -3987,12 +3998,22 @@
     },
     "upcoming_events": [
       {
+        "date": "2026-10-24",
+        "event": "Lock-up expiry (~180 dni od IPO 27.04.2026, termin SZACOWANY — dokladny w prospekcie 424B). NAWIS PODAZOWY: IPO float ~48M akcji (~$1.1B/$23) vs ~358M zablokowanych (founder Ghaffarian/pre-IPO/Class B Common Units, economic 406.4M). ~7x float odblokowane. Kurs juz -19% od IPO; insiderzy moga sprzedawac w slabosc."
+      },
+      {
         "date": "2026-08-12",
         "event": "Q2 2026 earnings (szac.) — czy marza brutto sie poprawia, komercjalizacja Dow, TRISO-X sprzedaze",
         "type": "earnings"
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Dodane ryzyko lock-up (luka wykryta przez uzytkownika): XE dopiero po IPO (27.04), lock-up ~180 dni -> ~24.10.2026. ~358M zablokowanych vs ~48M float = ~7x nawis. Wczesniej pominiete.",
+        "impact": "negative",
+        "fv_note": "Bez zmiany FV; ryzyko techniczne near-term (podaz po lock-up). Wzmacnia ostroznosc przy cenie > base."
+      },
       {
         "date": "2026-06-13",
         "event": "KOREKTA po feedbacku uzytkownika (za optymistyczne): base $24->$11. Bledy: (1) pelny kredyt $2.0B cash mimo ~$264M/rok burn + ciezki CapEx reaktorow (~$1.3B zuzyte do 2030 -> netto ~$0.7B); (2) rev30 $1B->$700M; (3) multiple 12x->9x (nuclear/industrial, nie software). Scenariusze 5/11/29/83 (weighted $20). WNIOSEK ODWROCONY: cena $18.59 POWYZEJ base $11 (jak OKLO/IONQ/QNT) — NIE 'najtanszy moonshot blisko strefy kupna'. Entry $17->$8.",

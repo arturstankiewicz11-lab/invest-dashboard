@@ -25,6 +25,7 @@ Sprawdza:
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
   W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
+  W14 świeże IPO bez ryzyka lock-up (nawis podażowy; od 13.06.2026)
   W13 shares dcf vs fundamentals (anty podwójne-liczenie; od 13.06.2026)
   W12 TAM deklaruje jedną shares_used (anty-mix current/forward; od 13.06.2026)
   W11 Pułapka tagu HTML ('<' + litera w tekście psuje render; od 13.06.2026)
@@ -222,6 +223,17 @@ def check_ticker(t, r):
     # W10: moonshot powinien mieć tam_analysis (dyscyplina upside, zasada z 2026-06-13)
     if r.get("position_type") == "moonshot" and fv is not None and not dcf.get("tam_analysis"):
         warns.append("W10: moonshot bez tam_analysis (warstwa dyscypliny upside — TAM x udział x marża)")
+
+    # W14: świeże IPO musi ujmować ryzyko lock-up (luka wykryta 2026-06-13: XE/QNT bez nawisu).
+    # Sygnał WŁASNEGO świeżego IPO = data dzienna przy IPO ("IPO 27.04", "po IPO (21.05.2026)").
+    # Wzmianki cudze/historyczne ("IPO OpenAI $1", "od IPO" o zwrocie od 1997) nie mają dd.mm —
+    # nie łapane. Gdy jest taki własny-IPO sygnał, wymagaj wzmianki "lock-up" gdzieś w rekomendacji.
+    import re as _re14
+    _blob = json.dumps(r, ensure_ascii=False)
+    if _re14.search(r"IPO\b[^.\n]{0,10}\d{1,2}[.\-/]\d{1,2}", _blob, _re14.I) \
+            and not _re14.search(r"lock[\s\-]?up", _blob, _re14.I):
+        warns.append("W14: spółka po świeżym IPO bez ryzyka lock-up — dodaj nawis podażowy "
+                     "(data ~180 dni od IPO + skala zablokowane vs float) do upcoming_events/risks")
 
     # W8: wyprowadzenie parametrów DCF ze źródłami (zasada z 2026-06-13)
     if mode == "DCF":

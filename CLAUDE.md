@@ -276,5 +276,8 @@ nie wchodzi do analizy.
 ### Entry Point (cena / trigger / stop-loss = thesis breaker)
 ### Top 3 Ryzyka (z wpływem na FV)
 ### Czynnik geopolityczny
+### Lock-up (OBOWIĄZKOWE dla spółek < ~12 mies. po IPO): data wygaśnięcia (~180 dni od IPO,
+  potwierdź w prospekcie 424B) + skala nawisu (akcje zablokowane vs float) jako `upcoming_events`.
+  Świeże IPO z ceną > FV = insiderzy mają motyw sprzedaży po unlocku. Walidator W14 to pilnuje.
 ### Pozycja portfelowa (% portfela, zależnie od wyniku checklisty)
 ```
