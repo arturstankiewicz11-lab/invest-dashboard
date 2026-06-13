@@ -1568,10 +1568,9 @@ def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
     cal = []
     for t, r in recs.items():
         in_pf = t in pos_by_ticker
-        if not in_pf and r.get("recommendation") != "BUY":
-            continue  # ta sama reguła co priorytety: portfel lub aktywne BUY
+        active = in_pf or r.get("recommendation") == "BUY"  # portfel lub aktywne BUY
         ne = r.get("next_earnings")
-        if ne and "X" not in str(ne):
+        if active and ne and "X" not in str(ne):
             try:
                 d = datetime.strptime(str(ne), "%Y-%m-%d").date()
                 if d >= today:
@@ -1579,12 +1578,18 @@ def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
             except Exception:
                 pass
         for ev in r.get("upcoming_events") or []:
+            evtxt = ev.get("event", "")
+            is_lockup = "lock" in evtxt.lower()  # lock-up/lockup/lock up
+            # nie-aktywne (HOLD spoza portfela): przepuszczamy TYLKO lock-up (nawis podażowy
+            # bywa katalizatorem wejścia — chcemy go widzieć zanim kupimy)
+            if not active and not is_lockup:
+                continue
             try:
                 d = datetime.strptime(str(ev.get("date", "")), "%Y-%m-%d").date()
             except Exception:
                 continue
             if d >= today:
-                cal.append((d, t, ev.get("event", ""), ev.get("type", "catalyst")))
+                cal.append((d, t, evtxt, "lockup" if is_lockup else ev.get("type", "catalyst")))
     if cal:
         cal.sort(key=lambda x: x[0])
         st.markdown('<div class="sh">📅 Kalendarz wydarzeń</div>', unsafe_allow_html=True)
@@ -1593,7 +1598,7 @@ def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
             days = (d - today).days
             when = "DZIŚ" if days == 0 else "jutro" if days == 1 else f"za {days} dni"
             urg  = "#ef4444" if days <= 3 else "#f59e0b" if days <= 14 else "#64748b"
-            icon = "📊" if typ == "earnings" else "⚡"
+            icon = "📊" if typ == "earnings" else "🔓" if typ == "lockup" else "⚡"
             html += f"""<div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);
                         border:1px solid rgba(255,255,255,0.06);border-left:2px solid {urg};
                         border-radius:10px;padding:10px 16px;flex-wrap:wrap">

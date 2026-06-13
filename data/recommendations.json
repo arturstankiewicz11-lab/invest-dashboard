@@ -3122,7 +3122,8 @@
     "risks": [
       "OGRANICZENIE MALYCH MODELI (SemiAnalysis, data/AI/): WSE-3 ekonomicznie obsluguje dzis tylko male modele — GPT-5.3-Codex-Spark to DESTYLAT 120B (10x mniejszy od pelnego Codex); 'its tokens likely aren't worth $10B today'. Teza zalezy od trendu destylacji ('GPT 5.5-level w 120B za mniej niz rok'); modele >1T params = istotne tradeoffy kosztowe. Memory on-wafer + network bandwidth = strukturalny handicap skali",
       "Koncentracja + partner-konkurent: OpenAI (wlasny ASIC) + UAE >85% rev; OpenAI moze miec do 12% akcji CBRS (warrant) i ma demand registration rights. MRA: zerwanie z dowolnego powodu poza winą OpenAI = natychmiastowa splata $1B + OpenAI przejmuje kontrole nad dyspozycja srodkow — bear mechanics ostre",
-      "Jakosc przychodow: pass-through costs (najem DC, prad) refakturowane BRUTTO jako revenue (~0% marzy) — zawyzaja baze pod EV/Revenue; do tego BOM +$100k/rack (memory hike) i GM 42%->39%. Execution: do 2028 musza dostarczyc 10x wiecej serwerow niz przez cala historie firmy"
+      "Jakosc przychodow: pass-through costs (najem DC, prad) refakturowane BRUTTO jako revenue (~0% marzy) — zawyzaja baze pod EV/Revenue; do tego BOM +$100k/rack (memory hike) i GM 42%->39%. Execution: do 2028 musza dostarczyc 10x wiecej serwerow niz przez cala historie firmy",
+      "Lock-up overhang (~10.11.2026): 185M akcji insiders unlock vs 34.5M float (~5x). Wygasniecie = potencjalny nawis podazowy; przy cenie powyzej wartosci insiderzy maja motyw sprzedazy."
     ],
     "buffett_moat": "NARROW i kruchy. Wafer-scale to realna przewaga technologiczna w latency-critical inference (brak inter-chip communication overhead), ale: (1) brak ekosystemu software jak CUDA, (2) NVDA Rubin 10x cost-per-token zmniejsza przewage, (3) klienci (OpenAI, G42) maja zasoby na wlasne chipy. Moat zalezy od utrzymania 2-3 lat przewagi technologicznej — wyscig, nie fosa.",
     "last_updated": "2026-06-13",
@@ -3399,7 +3400,8 @@
     "risks": [
       "Koncentracja EKSTREMALNA: jeden klient rzadowy = 60% rev FY2025 (90% Q1'25); utrata = zalamanie przychodow",
       "Revenue lumpy i SPADA: Q1'26 -73% YoY przez jednorazowe sales-type lease; ~400x sprzedazy nie zostawia marginesu na rozczarowanie",
-      "Wyscig modalnosci nierozstrzygniety: superconducting (IBM/Google) moze wygrac; quantum advantage komercyjny niedowiedziony przez nikogo"
+      "Wyscig modalnosci nierozstrzygniety: superconducting (IBM/Google) moze wygrac; quantum advantage komercyjny niedowiedziony przez nikogo",
+      "Lock-up overhang (~17.11.2026): Honeywell 49.1% + pre-IPO holders odblokowani vs ~21M IPO float. Wygasniecie = potencjalna fala podazy, zwlaszcza udzialy Honeywell. Termin szacowany 180 dni od IPO — potwierdzic w prospekcie."
     ],
     "buffett_moat": "NARROW i niepewny — #1 jakosc trapped-ion + Honeywell pedigree, ale kategoria komercyjnie nieudowodniona; moat = przewaga technologiczna 1-2 lata, nie fosa.",
     "ceo_profile": {
