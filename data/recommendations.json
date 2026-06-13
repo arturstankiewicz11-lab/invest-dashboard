@@ -4254,28 +4254,44 @@
           "probability_pct": 35,
           "color": "ef4444",
           "fair_value": 1.6,
-          "description": "Short thesis trafiony: wzbogacanie ASP niekomercyjne, izotopy+HALEU bez wartosci, zostaje czesc helium Renergen. Pozew niekorzystny. EBITDA30 $40M x 8x, 200M akcji (distress). -76% od ceny."
+          "description": "Short thesis trafiony: wzbogacanie ASP niekomercyjne, izotopy+HALEU bez wartosci, zostaje czesc helium Renergen. Pozew niekorzystny. EBITDA30 $40M x 8x, 200M akcji (distress). -76% od ceny.",
+          "assumptions": {
+            "wacc_pct": 13
+          },
+          "key_risk": "Short thesis trafiony: tech wzbogacania niekomercyjna -> izotopy+HALEU bez wartosci, pozew niekorzystny. Tylko helium Renergen zostaje."
         },
         {
           "name": "Base",
           "probability_pct": 35,
           "color": "f59e0b",
           "fair_value": 8,
-          "description": "Renergen ramp ~$120M EBITDA (ponizej targetu $300M), izotopy ~$30M, HALEU minimalny. EBITDA30 $150M x 10x / 180M (dylucja). Cash zuzyty na buildout (nie doliczany)."
+          "description": "Renergen ramp ~$120M EBITDA (ponizej targetu $300M), izotopy ~$30M, HALEU minimalny. EBITDA30 $150M x 10x / 180M (dylucja). Cash zuzyty na buildout (nie doliczany).",
+          "assumptions": {
+            "wacc_pct": 13
+          },
+          "key_risk": "Renergen ramp wolniejszy niz target $300M; izotopy komercjalizuja sie czesciowo; ciezka dylucja na buildout."
         },
         {
           "name": "Bull",
           "probability_pct": 20,
           "color": "10b981",
           "fair_value": 23,
-          "description": "Renergen ~$270M (blisko targetu zarzadu), izotopy $60M, HALEU start z framework TerraPower. EBITDA30 $330M x 12x / 172M. Tech zwalidowana, pozew oddalony."
+          "description": "Renergen ~$270M (blisko targetu zarzadu), izotopy $60M, HALEU start z framework TerraPower. EBITDA30 $330M x 12x / 172M. Tech zwalidowana, pozew oddalony.",
+          "assumptions": {
+            "wacc_pct": 13
+          },
+          "key_risk": "Wykonanie 3 driverow naraz przy pozwie w tle; konwersja MOU HALEU na wiazace umowy niepewna."
         },
         {
           "name": "Ultra",
           "probability_pct": 10,
           "color": "8b5cf6",
           "fair_value": 42,
-          "description": "Wszystkie 3 drivery firalize + spin-off QLE unlock value + Si-28 quantum demand inflection. EBITDA30 $480M x 15x / 172M. Picks-and-shovels dla izotopow potwierdzone."
+          "description": "Wszystkie 3 drivery firalize + spin-off QLE unlock value + Si-28 quantum demand inflection. EBITDA30 $480M x 15x / 172M. Picks-and-shovels dla izotopow potwierdzone.",
+          "assumptions": {
+            "wacc_pct": 13
+          },
+          "key_risk": "Wymaga inflekcji Si-28 (quantum) + spin-off QLE + Renergen na targecie — wszystko jednoczesnie, niskie prawdopodobienstwo."
         }
       ],
       "fair_value_weighted": 12,

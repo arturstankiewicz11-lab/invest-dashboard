@@ -725,6 +725,13 @@ def _render_alt_valuation(alt: dict, fv_currency: str):
             </div>""", unsafe_allow_html=True)
 
 
+def _fmt_a(a: dict, key: str):
+    """Format scenario-assumption value as 'X%' or '—' when absent (np. scenariusze
+    EV/EBITDA jak ASPI nie mają pól DCF: CAGR/EBIT/g)."""
+    v = a.get(key)
+    return f"{v}%" if v is not None else "—"
+
+
 def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
     """Renders scenario analysis section inside an expander in the DCF tab."""
     weighted   = dcf.get("fair_value_weighted")
@@ -746,7 +753,7 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
             prob  = sc["probability_pct"]
             fv    = sc["fair_value"]
             bar_w = int(fv / max_fv * 100)
-            a     = sc["assumptions"]
+            a     = sc.get("assumptions", {})  # scenariusze EV/EBITDA (np. ASPI) nie maja pol DCF
             with col:
                 st.markdown(f"""
                 <div style="background:rgba(255,255,255,0.04);border:1px solid #{c}44;border-radius:12px;padding:14px 12px">
@@ -760,11 +767,11 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
                         <div style="background:#{c};width:{bar_w}%;height:100%;border-radius:3px"></div>
                     </div>
                     <div style="font-size:10px;color:#64748b;line-height:1.7">
-                        <div>CAGR S1 &nbsp;<b style="color:#94a3b8">{a['stage1_cagr_pct']}%</b></div>
-                        <div>CAGR S2 &nbsp;<b style="color:#94a3b8">{a['stage2_cagr_pct']}%</b></div>
-                        <div>EBIT &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['ebit_margin_pct']}%</b></div>
-                        <div>WACC &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['wacc_pct']}%</b></div>
-                        <div>g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['terminal_g_pct']}%</b></div>
+                        <div>CAGR S1 &nbsp;<b style="color:#94a3b8">{_fmt_a(a,'stage1_cagr_pct')}</b></div>
+                        <div>CAGR S2 &nbsp;<b style="color:#94a3b8">{_fmt_a(a,'stage2_cagr_pct')}</b></div>
+                        <div>EBIT &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{_fmt_a(a,'ebit_margin_pct')}</b></div>
+                        <div>WACC &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{_fmt_a(a,'wacc_pct')}</b></div>
+                        <div>g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{_fmt_a(a,'terminal_g_pct')}</b></div>
                     </div>
                     <div style="margin-top:10px;font-size:10px;color:#475569;line-height:1.5;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px">{_e(sc['description'])}</div>
                 </div>""", unsafe_allow_html=True)
@@ -789,17 +796,17 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
         # ── Assumptions table (jeden string — Streamlit domyka tagi per st.markdown!)
         rows_html = ""
         for sc in scenarios:
-            a = sc["assumptions"]
+            a = sc.get("assumptions", {})
             c = sc["color"]
             rows_html += f"""<tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
               <td style="padding:7px 6px;color:#{c};font-weight:600">{_e(sc['name'])}</td>
               <td style="padding:7px 6px;color:#64748b;text-align:center">{sc['probability_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage1_cagr_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage2_cagr_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['ebit_margin_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['fcf_margin_s1_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['wacc_pct']}%</td>
-              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['terminal_g_pct']}%</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{_fmt_a(a,'stage1_cagr_pct')}</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{_fmt_a(a,'stage2_cagr_pct')}</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{_fmt_a(a,'ebit_margin_pct')}</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{_fmt_a(a,'fcf_margin_s1_pct')}</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{_fmt_a(a,'wacc_pct')}</td>
+              <td style="padding:7px 6px;color:#94a3b8;text-align:right">{_fmt_a(a,'terminal_g_pct')}</td>
               <td style="padding:7px 6px;color:#{c};font-weight:700;text-align:right">${sc['fair_value']}</td>
             </tr>"""
         st.markdown(f"""
