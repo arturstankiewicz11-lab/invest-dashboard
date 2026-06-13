@@ -1366,6 +1366,87 @@
       "Koncentracja klientow: top 3 = 54% rev (Q1 FY27); capex cut 30% obniza FV o ~$80.",
       "Sovereign AI to OSOBNY driver wzrostu w DCF — jesli sie nie zmaterializuje, FV nizej. FV $346 zaklada Stage1 5 lat (nie 4).",
       "Export controls Bliski Wschod (deals Trump odwracalne) — utrata $15-30B/rok, FV -$25."
+    ],
+    "ceo_profile": {
+      "name": "Jensen Huang (Jen-Hsun Huang)",
+      "ceo_since": "1993 (co-founder, CEO + Chairman od poczatku — 33 lata)",
+      "background": "Wspolzalozyciel NVIDIA 1993. Wczesniej projektant mikroprocesorow w LSI Logic i AMD. Stanford MSEE, Oregon State BSEE — inzynier elektronik/projektant chipow z wyksztalcenia i praktyki.",
+      "founder_or_manager": "FOUNDER — jeden z nielicznych founder-CEO tej skali, prowadzi firme od inception.",
+      "hunger": "EKSTREMALNY — kultowa mentalnosc 'we are always 30 days from going out of business'; obsesja produktu i architektur (osobiscie napedza roadmape Hopper->Blackwell->Rubin), firma = zycie. Nie sprzedaje istotnie (10b5-1 to maly % holdings). Klasyczny glod.",
+      "domain_expertise": "NAJWYZSZA — inzynier chipow schodzacy do szczegolu technicznego architektur GPU/CUDA/networking w keynote'ach; definiuje rynek accelerated computing. Wzorzec eksperta, nie menedzera (test ekspertyzy w earnings calls: konkret techniczny, nie slogany).",
+      "track_record": "Wybitny — przeksztalcil gaming-GPU w monopol AI compute; rev FY2026 $215.9B (+ z ~$27B FY2023). Postawil na CUDA 15+ lat temu (wizja zrealizowana). Konsekwentnie trafia/przebija guidance.",
+      "skin_in_the_game": "~870-880M akcji = ~3.6% NVDA (~$175B przy obecnej cenie), najwiekszy indywidualny akcjonariusz. 10b5-1 (przyjety III.2025) do 6M akcji/rok (~$700M-1B) — % wlasnosci STABILNY (~3-3.8%, share count rosnie od grantow). Equity-heavy, mocno aligned.",
+      "red_flags": "Minimalne — programowy 10b5-1 selling (normalny dla foundera tej skali, NIE sygnal utraty wiary). Ryzyko key-man (firma silnie utozsamiana z Jensenem); status celebryty.",
+      "verdict": "GLODNY EKSPERT w czystej postaci — wzorcowy profil. Founder-inzynier z misja, ekstremalny skin-in-game, najwyzsza ekspertyza domenowa. Najwyzsza polka; ryzyko nie w CEO lecz w wycenie/cyklicznosci capex.",
+      "sources": "web: SEC 8-K (FY2026/Q1FY27), biografie (finance-monthly/investormint), fintel insider trading, Motley Fool 10b5-1; keynote'y NVIDIA"
+    },
+    "buffett_tenets": {
+      "business_simple": "OK/UWAGA — model prosty (projektuje i sprzedaje GPU + networking + software CUDA), choc technologia zlozona. Przychody/koszty/pricing power czytelne dla inwestora.",
+      "business_consistent_history": "OK — accelerated computing od 1993, ta sama domena; konsekwentna ewolucja gaming->datacenter AI. Founder od poczatku, bez turnaroundow.",
+      "business_longterm_prospects": "OK — AI compute sekularny wzrost, CUDA moat 15+ lat, brak bliskiego substytutu. Ryzyko: custom ASICs hyperscalerow (klienci=konkurenci) + cyklicznosc capex AI.",
+      "mgmt_rational": "OK — alokacja kapitalu wzorowa (R&D ~$18.5B/rok, buyback, brak pustych M&A); ROIC ekstremalny.",
+      "mgmt_candid": "OK — Jensen transparentny technicznie, uczciwe i konserwatywne guidance (czesto przebijane).",
+      "mgmt_institutional_imperative": "OK — definiuje rynek i wyprzedza (roadmapa Rubin), nie kopiuje konkurencji.",
+      "fin_roe": "OK — ROE/ROIC ekstremalnie wysokie; EBIT margin 60-65%.",
+      "fin_margins": "OK — marze najwyzsze w branzy i ROSNACE: 60.4% FY2026 -> 65.6% Q1 FY2027.",
+      "fin_dollar_test": "OK — zatrzymany dolar zysku tworzy znacznie >$1 wartosci rynkowej (test spelniony z duzym zapasem).",
+      "wniosek": "8-9 OK — rzadki wide-moat compounder klasy Buffetta. Uzasadnia position_type compounder i drabinke 'NIE sprzedawaj przy FV_base, trzymaj do >FV_bull'. Glowne ryzyko to nie jakosc biznesu, lecz CENA i cyklicznosc capex AI (top 3 klientow 54% rev)."
+    },
+    "competitive_landscape": [
+      {
+        "name": "AMD",
+        "ticker": "AMD",
+        "public": true,
+        "segment": "Data Center GPU",
+        "threat": "srednie-wysokie",
+        "note": "MI300/MI400 to jedyny realny GPU-konkurent, ale CUDA lock-in i ekosystem software trzymaja NVDA z przodu. AMD rosnie w inference.",
+        "source": "10-K Competition + sektor"
+      },
+      {
+        "name": "Hyperscaler custom ASICs (Google TPU, Amazon Trainium/Inferentia, MSFT Maia, Meta MTIA)",
+        "ticker": "GOOGL/AMZN/MSFT/META",
+        "public": true,
+        "segment": "AI accelerators (in-house)",
+        "threat": "wysokie (dlugoterminowo)",
+        "note": "Klienci=konkurenci: top klienci buduja wlasne chipy glownie pod inference/wewnetrzne workloady. Najwieksze strukturalne zagrozenie dla koncentracji 54%, ale training na froncie wciaz NVDA.",
+        "source": "10-K Competition + sektor"
+      },
+      {
+        "name": "Broadcom / Marvell",
+        "ticker": "AVGO/MRVL",
+        "public": true,
+        "segment": "Custom silicon design + networking",
+        "threat": "wysokie",
+        "note": "Enabler ASICs hyperscalerow (projektuja chipy dla Google/Meta) + konkurencja w networkingu (Ethernet/AI fabric vs NVLink/Spectrum).",
+        "source": "sektor"
+      },
+      {
+        "name": "Arista / Cisco",
+        "ticker": "ANET/CSCO",
+        "public": true,
+        "segment": "Networking (data center)",
+        "threat": "srednie",
+        "note": "Ethernet vs NVDA InfiniBand/NVLink/Spectrum-X. NVDA pcha NVLink jako moat lock-in rack-scale.",
+        "source": "sektor"
+      },
+      {
+        "name": "Cerebras / Groq / SambaNova",
+        "ticker": "CBRS/-/-",
+        "public": true,
+        "segment": "Inference accelerators (nisza)",
+        "threat": "niskie-srednie",
+        "note": "Wyspecjalizowane pod szybki inference; nisza, nie zagrazaja monopolowi training. CBRS ograniczony do malych modeli (SemiAnalysis).",
+        "source": "sektor + data/AI/"
+      },
+      {
+        "name": "Intel",
+        "ticker": "INTC",
+        "public": true,
+        "segment": "Data Center GPU / AI (Gaudi)",
+        "threat": "niskie",
+        "note": "Gaudi nie zdobyl trakcji; Intel zmaga sie z wlasnym foundry. Marginalny w AI compute.",
+        "source": "10-K Competition + sektor"
+      }
     ]
   },
   "RKLB": {
