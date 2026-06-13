@@ -4735,5 +4735,247 @@
       "CEO Seth Grae to PRAWNIK/policy-insider, NIE inzynier paliwa — ❌ na tescie 'glodny ekspert'. ~20 lat spolki bez przychodow. skin-in-the-game niepotwierdzone w sesji.",
       "SCIEZKA SMR: realny element bull case (greenfield omija retrofit, mozliwy klient federalny/wojskowy), ALE tylko SMR WODNE (NuScale/Holtec) — NIE OKLO (sodowy) ani XE (HTGR/TRISO). Nie skraca kwalifikacji (testy w ATR); twórcy SMR wola standardowe paliwo by zde-ryzykowac wlasne licencjonowanie."
     ]
+  },
+  "AAPL": {
+    "name": "Apple Inc.",
+    "recommendation": "HOLD",
+    "fair_value": 147,
+    "fair_value_currency": "USD",
+    "entry_point": 110,
+    "position_type": "compounder",
+    "last_updated": "2026-06-14",
+    "thesis_short": "Wide-moat compounder (ekosystem iOS, switching costs, brand). FY2025 rev $416B (+6.5%), EBIT 32%, Services $109B rosnie +15% przy marzy brutto 75% (mix shift podnosi marze). DCF FV $147 vs cena $291 — Apple ~2x wartosci wewnetrznej (PE 35 przy ~6% wzroscie). Swietny biznes, DROGA cena; brak asymetrii dla profilu moonshot. Nowy CEO John Ternus od 01.09.2026 (Cook -> Exec Chairman). HOLD/unikać przy tej cenie.",
+    "thesis_full": "Apple to wzorcowy wide-moat compounder: ekosystem iOS + 2.3 mld aktywnych urzadzen, ekstremalne switching costs, brand pricing power, najlepsza alokacja kapitalu (buyback ~$90B/rok). FY2025: rev $416.2B (+6.5%), op income $133.1B (marza 32%). DRIVER MARZY: Services $109.2B (26% rev) rosnie +15% przy marzy BRUTTO 75.3% (vs 36% produkty) — mix shift jak AWS w Amazonie, podnosi blended margin. iPhone $209.6B (50%) dojrzaly, ale rebound w Chinach (+38% YoY Q1, #1 z 22% udzialem) + cykl AI (Apple Intelligence + nowe Siri, WWDC26) moga napedzic wymiane. PROBLEM = WYCENA: DCF (WACC 9.5%, g 3%, CAGR blended 6%/4%, EBIT 33-34%) daje FV base $147; nawet bull (Services 15%+, AI supercycle) tylko $205 — wszystko PONIZEJ ceny $291. Apple handluje ~2x wartosci wewnetrznej; rynek placi premie za jakosc/bezpieczenstwo/buyback, nie za wzrost. PE 35 przy ~6% wzroscie revenue. RYZYKO: DOJ-Google TAC $15-20B (wysokomarzowy, ~czysty zysk) — sad pozwolil Google placic dalej (non-exclusive), ale DOJ apeluje (JPMorgan: ryzyko ~$12.5B). Chiny (geopolityka + popyt). AI-lag (Siri opozniony, Apple z tylu w genAI). Sukcesja: Tim Cook -> Exec Chairman, John Ternus (inzynier, SVP Hardware) CEO od 01.09.2026. Dla inwestora moonshot (10-50x): Apple to NIE jest dopasowanie — to bezpieczny compounder bez asymetrii, dzis drogi. Wartosciowy jako kotwica defensywna, nie jako zrodlo asymetrii.",
+    "thesis_breaker": "Erozja moatu ekosystemu: trwala utrata udzialu iPhone (zwlaszcza Chiny/AI-driven platform shift), LUB stagnacja Services ponizej 5% wzrostu (zalamanie mix-shift marzy), LUB regulacyjna utrata TAC Google ($15-20B) RAZEM z ciecyciem App Store take-rate — laczny cios w wysokomarzowe zyski.",
+    "risks": [
+      "WYCENA: cena $291 vs DCF FV $147 (~2x wartosci wewnetrznej); nawet bull $205 ponizej ceny. PE 35 przy ~6% wzroscie — re-rating w dol mozliwy przy kazdym rozczarowaniu. Glowne ryzyko: placic 2x za jakosc.",
+      "DOJ-Google TAC $15-20B (wysokomarzowy, niemal czysty zysk Services): sad pozwolil placic dalej (non-exclusive), ale DOJ apeluje. Utrata = -$12.5B revenue (JPMorgan), bezposrednio w EPS.",
+      "AI-lag + Chiny: Apple z tylu w genAI (Siri opozniony do 2026); jesli asystenci AI przesuna sile platformy, ekosystem-lock-in slabnie. Chiny = geopolityka (supply chain + popyt + cla)."
+    ],
+    "buffett_moat": "WIDE (wzorcowy) — ekosystem iOS z 2.3 mld urzadzen, ekstremalne switching costs (iMessage/iCloud/App Store/kontinuum urzadzen), brand pricing power, Services jako rosnacy wysokomarzowy pierscien (75% marza brutto). Najlepsza alokacja kapitalu (buyback). To jeden z najszerszych moatow na rynku — Buffett trzymal Apple jako najwieksza pozycje. Ryzyko moatu: genAI moze przesunac sile platformy; regulacje (App Store take-rate, TAC).",
+    "ceo_profile": {
+      "name": "John Ternus (CEO od 01.09.2026; Tim Cook -> Executive Chairman)",
+      "ceo_since": "2026-09-01 (nowy); Tim Cook byl CEO 2011-2026",
+      "background": "John Ternus (50 l.) dolaczyl do Apple w 2001, SVP Hardware Engineering od 2021 — INZYNIER, prowadzil rozwoj iPhone/iPad/Apple Silicon. Zastepuje Tima Cooka (mistrz operacji/supply chain, CEO 2011-2026), ktory przechodzi na Executive Chairman (policy/relacje rzadowe).",
+      "founder_or_manager": "Najemny menedzer (sukcesja wewnetrzna) — ani Ternus ani Cook nie sa founderami (Jobs zm. 2011).",
+      "hunger": "Do oceny — Ternus to inzynier-produktowiec (powrot do profilu produktowego po operacyjnym Cooku). Sygnal: Apple stawia na inzyniera w erze AI/hardware. Brak track record jako CEO (od 09.2026).",
+      "domain_expertise": "WYSOKA technicznie (Ternus = inzynier hardware, Apple Silicon/iPhone). Plus vs Cook (operacje/finanse). Pozytyw w erze, gdzie hardware+AI sa kluczowe.",
+      "track_record": "Jako CEO: ZERO (start 09.2026). Jako SVP Hardware: solidny (Apple Silicon M-series, przejscie z Intela — wielki sukces). Cook (poprzednik): wybitny — rev z $108B (2011) do $416B, ekosystem Services, najwieksza alokacja kapitalu w historii.",
+      "skin_in_the_game": "Ternus — equity SVP (do potwierdzenia % po objeciu). Cook net worth ~$3B (Forbes), glownie equity Apple. Standardowe wynagrodzenie equity-heavy dla top Apple.",
+      "red_flags": "Ryzyko tranzycji (nowy CEO w erze AI-lag); brak record Ternusa jako CEO; Apple = najemny menedzment (nie founder-led) — mniejszy 'glod' niz founder-CEO (Jensen/Zuckerberg).",
+      "verdict": "KOMPETENTNY INZYNIER-MENEDZER, nie glodny founder. Dla compoundera OK (Apple nie potrzebuje founder-hunger, ma moat), ale to NIE archetyp moonshota. Ternus = pozytywny sygnal (inzynier w erze hardware/AI), lecz niesprawdzony jako CEO.",
+      "sources": "web: Apple Newsroom + CNBC + 9to5Mac (sukcesja Cook->Ternus, 20.04.2026), Wikipedia (Ternus bio), Forbes (Cook net worth)"
+    },
+    "competitive_landscape": [
+      {
+        "name": "Samsung",
+        "ticker": "005930.KS",
+        "public": true,
+        "segment": "Smartfony (premium) + Wearables",
+        "threat": "srednie",
+        "note": "Glowny rywal Android premium; Apple wygrywa ekosystemem i marzami. Samsung dostawca komponentow (OLED) jednoczesnie.",
+        "source": "10-K Competition + sektor"
+      },
+      {
+        "name": "Chinscy OEM (Huawei, Xiaomi, Vivo, Oppo)",
+        "ticker": null,
+        "public": false,
+        "segment": "Smartfony (Chiny + EM)",
+        "threat": "wysokie (Chiny)",
+        "note": "Huawei odbudowal sie (chip domestic); presja na iPhone w Chinach (25% rev Apple). Rebound Apple Q1'26 (+38%), ale rywalizacja ostra.",
+        "source": "web (2026) + sektor"
+      },
+      {
+        "name": "Google",
+        "ticker": "GOOGL",
+        "public": true,
+        "segment": "Services (search/AI) + Android",
+        "threat": "srednie-wysokie",
+        "note": "Placi Apple $15-20B TAC za default search (ryzyko DOJ); rywal w AI (Gemini vs Apple Intelligence) i Android OS. Partner i konkurent.",
+        "source": "web (DOJ case 2026) + sektor"
+      },
+      {
+        "name": "Spotify / Netflix / dostawcy tresci",
+        "ticker": "SPOT/NFLX",
+        "public": true,
+        "segment": "Services (muzyka/wideo)",
+        "threat": "srednie",
+        "note": "Konkurencja w Apple Music/TV+; spory regulacyjne o App Store take-rate (Spotify/EU DMA).",
+        "source": "sektor"
+      },
+      {
+        "name": "Dell / HP / Lenovo (Windows)",
+        "ticker": "DELL/HPQ",
+        "public": true,
+        "segment": "Mac / PC",
+        "threat": "niskie-srednie",
+        "note": "Mac rosnie udzial dzieki Apple Silicon (M-series); PC Windows to wiekszy wolumen, ale Apple wygrywa premium/marze.",
+        "source": "sektor"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": "OK — sprzedaje urzadzenia + uslugi; przychody/koszty/pricing power skrajnie czytelne. Jeden z najprostszych do zrozumienia mega-capow.",
+      "business_consistent_history": "OK — spojna historia od dekad (iPhone od 2007, konsekwentna ewolucja + Services). Bez turnaroundow.",
+      "business_longterm_prospects": "OK — moat ekosystemu trwaly, Services rosnie; ryzyko genAI/platform shift + regulacje, ale perspektywy mocne.",
+      "mgmt_rational": "OK — wzorcowa alokacja kapitalu (buyback ~$90B/rok ponizej/okolo wartosci, dywidenda); brak pustych M&A. Sukcesja zaplanowana.",
+      "mgmt_candid": "OK — transparentne raportowanie, uczciwe guidance.",
+      "mgmt_institutional_imperative": "OK — Apple definiuje kategorie, nie kopiuje; choc AI-lag pokazal pewna ostroznosc/opoznienie.",
+      "fin_roe": "OK — ROE ekstremalne (>150%, podbite buybackiem); ROIC bardzo wysoki.",
+      "fin_margins": "OK — marze wysokie i rosnace (EBIT 32%, mix Services 75% marza brutto podnosi blended).",
+      "fin_dollar_test": "OK — historycznie zatrzymany dolar tworzyl >$1 wartosci (choc dzis wiekszosc zysku zwracana, nie reinwestowana).",
+      "wniosek": "8-9 OK — wzorcowy wide-moat compounder klasy Buffetta (Berkshire trzymal jako #1). ALE: jakosc biznesu != okazja cenowa. Przy cenie 2x DCF FV to compounder do TRZYMANIA jesli sie ma tanio kupiony, NIE do kupna teraz. Dla profilu moonshot (10-50x) — brak asymetrii."
+    },
+    "dcf": {
+      "method": "DCF 2-etapowy (compounder, stabilne zyski) — Krok 0 segmentowy + A-F",
+      "wacc_pct": 9.5,
+      "terminal_growth_pct": 3.0,
+      "base_revenue_m": 416200,
+      "net_debt_m": 16200,
+      "shares_m": 14690,
+      "base_breakdown": {
+        "iPhone": {
+          "fy2025_m": 209600,
+          "pct": 50.4,
+          "cagr_s1": 4,
+          "note": "Dojrzaly; AI upgrade cycle + rebound Chiny moga podbic, ale saturacja."
+        },
+        "Services": {
+          "fy2025_m": 109200,
+          "pct": 26.2,
+          "cagr_s1": 12,
+          "note": "DRIVER: +15% YoY, marza brutto 75.3%. Mix shift podnosi blended margin (jak AWS)."
+        },
+        "Wearables": {
+          "fy2025_m": 35700,
+          "pct": 8.6,
+          "cagr_s1": 3,
+          "note": "Dojrzaly (Watch/AirPods)."
+        },
+        "Mac": {
+          "fy2025_m": 33700,
+          "pct": 8.1,
+          "cagr_s1": 4,
+          "note": "Apple Silicon napedza udzial."
+        },
+        "iPad": {
+          "fy2025_m": 28000,
+          "pct": 6.7,
+          "cagr_s1": 2,
+          "note": "Najmniejszy, plaski."
+        },
+        "blended_cagr_s1_pct": 6,
+        "note": "Blended S1 = 0.50x4 + 0.262x12 + 0.086x3 + 0.081x4 + 0.067x2 = 5.9% -> 6%"
+      },
+      "wacc_inputs": {
+        "rf_pct": 4.2,
+        "beta": 1.086,
+        "erp_pct": 5.0,
+        "credit_rating": "AA+ (S&P)",
+        "full_wacc_calc": "Re = 4.2 + 1.086x5.0 = 9.63%. Rd ~4.5% (AA+, after-tax ~3.8%). D/V ~1.9% (dlug $85B / equity $4.28T) -> WACC = Re (uproszczenie dozwolone, D/V<5%). Wplyw dlugu na WACC <0.1pp. WACC = 9.5%.",
+        "note": "Rf=UST 10Y ~4.2% (06.2026). Beta 1.086 (yfinance). ERP 5.0%."
+      },
+      "terminal_growth_rationale": "g=3.0% (kotwica nominalny PKB US ~ inflacja 2% + realny 1-1.5%). Mega-cap dojrzaly, nie powinien rosnac szybciej niz gospodarka w nieskonczonosc. Wrazliwosc +-0.5pp: ~+-$12/akcje.",
+      "stages": [
+        {
+          "period": "FY2026-FY2030",
+          "n_years": 5,
+          "rev_cagr_pct": 6,
+          "ebit_margin_pct": 33,
+          "tax_pct": 16,
+          "da_pct": 2.8,
+          "capex_pct": 3.05,
+          "note": "Blended z segmentow (Krok 0): Services 12% + iPhone 4% + reszta. EBIT 33% (mix shift Services podnosi z 32%). Tax 16% (efektywny Apple). FCF% = 33x0.84 + 2.8 - 3.05 = 27.5%."
+        },
+        {
+          "period": "FY2031-FY2035",
+          "n_years": 5,
+          "rev_cagr_pct": 4,
+          "ebit_margin_pct": 34,
+          "tax_pct": 16,
+          "da_pct": 2.8,
+          "capex_pct": 3.0,
+          "note": "Dojrzewanie: Services decyleruje, iPhone plaski. EBIT 34% (dalszy mix shift). FCF% = 28.3%."
+        }
+      ],
+      "fair_value_computed": 147,
+      "scenarios": [
+        {
+          "name": "Bear",
+          "probability_pct": 25,
+          "color": "ef4444",
+          "fair_value": 101,
+          "assumptions": {
+            "stage1_cagr_pct": 3,
+            "stage2_cagr_pct": 2.5,
+            "ebit_margin_pct": 31,
+            "fcf_margin_s1_pct": 25,
+            "wacc_pct": 10,
+            "terminal_g_pct": 2.5
+          },
+          "description": "iPhone stagnacja + AI-lag + utrata TAC Google ($15-20B) + Chiny slabe. CAGR 3%, EBIT 31%, WACC 10%.",
+          "key_risk": "Regulacyjna utrata wysokomarzowego TAC + erozja iPhone w Chinach jednoczesnie."
+        },
+        {
+          "name": "Base",
+          "probability_pct": 50,
+          "color": "f59e0b",
+          "fair_value": 147,
+          "assumptions": {
+            "stage1_cagr_pct": 6,
+            "stage2_cagr_pct": 4,
+            "ebit_margin_pct": 33,
+            "fcf_margin_s1_pct": 27.5,
+            "wacc_pct": 9.5,
+            "terminal_g_pct": 3
+          },
+          "description": "Services +12%, iPhone +4% (AI cycle + Chiny), mix shift marzy. CAGR blended 6%/4%, EBIT 33-34%, WACC 9.5%.",
+          "key_risk": "Nawet base ($147) jest -49% pod cena $291 — rynek placi premie jakosci, nie wzrostu."
+        },
+        {
+          "name": "Bull",
+          "probability_pct": 25,
+          "color": "10b981",
+          "fair_value": 205,
+          "assumptions": {
+            "stage1_cagr_pct": 9,
+            "stage2_cagr_pct": 5,
+            "ebit_margin_pct": 34,
+            "fcf_margin_s1_pct": 28.5,
+            "wacc_pct": 9,
+            "terminal_g_pct": 3.5
+          },
+          "description": "Apple Intelligence napedza supercycle wymiany iPhone + Services 15%+ + nowa kategoria (AI). CAGR 9%, EBIT 34-35%, WACC 9%.",
+          "key_risk": "Nawet bull ($205) ponizej ceny $291 — trzeba zalozyc wzrost+marze powyzej bull, by uzasadnic cene."
+        }
+      ],
+      "fair_value_weighted": 150,
+      "fair_value_weighted_formula": "0.25x$101 + 0.50x$147 + 0.25x$205 = $150; fair_value = BASE $147 (konwencja). Cena $291 powyzej WSZYSTKICH scenariuszy.",
+      "notes": "DCF 2-etapowy. Base FV $147 vs cena $291 = Apple ~2x wartosci wewnetrznej. Nawet bull $205 nie uzasadnia ceny — rynek placi premie za jakosc/bezpieczenstwo/buyback. Net debt ~$16B immaterialny dla FV. Dla profilu moonshot brak asymetrii."
+    },
+    "upcoming_events": [
+      {
+        "date": "2026-08-31",
+        "event": "Tim Cook ostatni dzien jako CEO; John Ternus (inzynier, SVP Hardware) przejmuje 01.09.2026. Tranzycja przywodztwa w erze AI."
+      },
+      {
+        "date": "2026-10-30",
+        "event": "Q4 FY2026 earnings (szac.) — Services growth, iPhone 17/AI cycle, Chiny, marza."
+      }
+    ],
+    "events": [
+      {
+        "date": "2026-06-14",
+        "event": "INICJACJA pokrycia: HOLD, FV base $147 (DCF 2-etapowy: WACC 9.5%, g 3%, CAGR 6%/4%, EBIT 33-34%). Cena $291 = ~2x wartosci wewnetrznej (PE 35 przy ~6% wzroscie). Wide-moat compounder klasy Buffetta, ale DROGI; brak asymetrii dla profilu moonshot. Nowy CEO Ternus od 01.09.2026.",
+        "impact": "neutral",
+        "fv_note": "FV base $147 vs cena $291 (-49%). Nawet bull $205 ponizej. Entry $110 (0.75x FV) — daleko. HOLD/unikać przy tej cenie."
+      }
+    ],
+    "caveats": [
+      "WYCENA: cena $291 to ~2x DCF FV $147; NAWET bull $205 jest ponizej ceny. Apple handluje na premii jakosci/bezpieczenstwa/buyback, nie na wzroscie (PE 35 przy ~6% rev growth). Kupno teraz = placenie 2x za jakosc.",
+      "DOPASOWANIE: to NIE jest moonshot (10-50x). Bezpieczny wide-moat compounder bez asymetrii — kotwica defensywna, nie zrodlo asymetrii ktorej szukasz. Inny profil niz reszta portfela (AI/Energy/Space).",
+      "ZMIANA CEO: Tim Cook -> Executive Chairman, John Ternus (inzynier, SVP Hardware) CEO od 01.09.2026. Pozytyw (inzynier w erze hardware/AI), ale niesprawdzony jako CEO + ryzyko tranzycji w czasie AI-lag.",
+      "DOJ-Google TAC $15-20B (niemal czysty zysk): sad pozwolil placic dalej (non-exclusive), ale DOJ apeluje — ryzyko ~$12.5B revenue (JPMorgan) wisi nad Services.",
+      "Net debt ~$16B immaterialny dla FV (cash&equiv $45.6B + marketable securities vs dlug ~$85B; Apple ~neutralny). FCF nie wyciagniety wprost z dokumentu (z formuly ~$111B)."
+    ]
   }
 }

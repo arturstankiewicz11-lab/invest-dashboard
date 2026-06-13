@@ -1,0 +1,19 @@
+{
+  "ticker": "AAPL",
+  "period": "FY2025",
+  "period_end": "2025-09-27",
+  "report_type": "annual",
+  "source_file": "data/reports/AAPL/aapl-10k-FY2025.htm",
+  "extracted": "2026-06-14",
+  "revenue_m": 416200,
+  "ebit_m": 133100,
+  "ebit_margin_pct": 32.0,
+  "da_m": 11700,
+  "capex_m": 12700,
+  "fcf_m": null,
+  "net_debt_m": 16200,
+  "shares_diluted_m": 14690,
+  "guidance_revenue_m": null,
+  "guidance_notes": "Segmenty FY2025: iPhone $209.6B, Services $109.2B (+15%, marza brutto 75.3%), Wearables $35.7B, Mac $33.7B, iPad $28.0B.",
+  "notes": "SEC XBRL CIK 0000320193 (10-K FY2025, konczy 27.09.2025). Rev $416.2B (+6.5% YoY), op income $133.1B (marza 32.0%), D&A $11.7B, capex $12.7B. FCF nie wyciagniety wprost (OCF w cash flow); z formuly EBIT(1-tax)+D&A-capex ~$111B. Net debt ~$16B (cash&equiv $45.6B Mar'26 + marketable securities vs dlug ~$85B; ~neutralny, immaterialny dla FV). Tax efektywny ~16%."
+}

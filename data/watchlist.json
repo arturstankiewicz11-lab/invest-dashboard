@@ -20,6 +20,12 @@
       "name": "Alphabet Inc. Class C",
       "note": "Class C bez głosów — ekonomicznie identyczne do GOOGL, ale lepsza liquidity i często niższa cena. Founder-controlled przez Class B (Page/Brin), więc głosy GOOGL bezwartościowe. Thesis AI: Gemini + TPU stack + Waymo + YouTube cash machine. Defensywny anchor w AI bucket, nie moonshot 10x.",
       "added": "2026-05-18"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "note": "Wide-moat compounder (ekosystem iOS, Services 75% marza). DCF FV $147 vs cena $291 — ~2x wartosci wewnetrznej, PE 35 przy ~6% wzroscie. Swietny biznes, DROGI; brak asymetrii dla profilu moonshot. Nowy CEO Ternus od 01.09.2026. HOLD/unikać przy tej cenie; entry $110.",
+      "added": "2026-06-14"
     }
   ],
   "Energy": [
