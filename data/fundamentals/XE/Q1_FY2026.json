@@ -1,0 +1,32 @@
+{
+  "ticker": "XE",
+  "period": "Q1_FY2026",
+  "period_end": "2026-03-31",
+  "report_type": "quarterly",
+  "source_file": "data/reports/XE/xe-10q-Q1-2026.htm",
+  "extracted": "2026-06-13",
+  "revenue_m": 43.4,
+  "services_revenue_m": 39.9,
+  "grant_income_m": 3.5,
+  "revenue_prior_q1_m": 20.8,
+  "revenue_yoy_pct": 109,
+  "direct_costs_m": 65.4,
+  "gross_margin_note": "UJEMNA — direct costs $65.4M > revenue $43.4M",
+  "total_opex_m": 109.5,
+  "operating_loss_m": -66.1,
+  "cash_m": 224.1,
+  "st_investments_m": 449.5,
+  "lt_investments_m": 270.4,
+  "liquid_pre_ipo_m": 944,
+  "ipo_proceeds_m": 1100,
+  "net_cash_post_ipo_m": 2000,
+  "shares_class_a_m": 287.5,
+  "shares_class_b_m": 118.9,
+  "shares_diluted_m": 406.4,
+  "shares_note": "Up-C: 287.5M Class A + 118.9M Class B (bez praw ekonomicznych, ale sparowane 1:1 z Common Units redeemable->Class A). Ekonomiczne ~406.4M. yfinance liczy tylko Class A.",
+  "customer_concentration": {
+    "us_government_pct": 92,
+    "dow_pct": 4
+  },
+  "notes": "IPO 27.04.2026 @ $23.00 (50.9M Class A), net $1.1B. Part 70 TRISO-X license, Dow Seadrift NRC EA, UK GDA. Rev 92% rzadowe (DOE cost-share), ujemna marza brutto."
+}
