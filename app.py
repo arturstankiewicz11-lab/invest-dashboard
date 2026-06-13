@@ -1442,6 +1442,34 @@ def tab_actions(rec: dict, row, prices: dict):
             {"<div class='trigger-item ti-sell'><span class='ti-icon'>🎯</span><span>Cena osiąga Fair Value " + str(fv) + " " + rec.get('fair_value_currency','') + " — realizuj zysk lub redukuj pozycję</span></div>" if fv else ""}
         </div>""", unsafe_allow_html=True)
 
+        # ── ⚠️ UWAGA: lock-up + inne czynniki wpływające na wycenę (pod triggerami, lewa kolumna)
+        today_u = datetime.now().date()
+        uwagi = []  # (ikona, html)
+        # Auto: lock-up z upcoming_events — zawsze widoczny, nawet bez wpisu w caveats
+        for ev in rec.get("upcoming_events") or []:
+            et = ev.get("event", "")
+            if "lock" in et.lower():
+                try:
+                    d = datetime.strptime(str(ev.get("date", "")), "%Y-%m-%d").date()
+                    days = (d - today_u).days
+                    when = f"za {days} dni" if days > 0 else ("dziś" if days == 0 else "minęło")
+                    badge = f'<b style="color:#f59e0b">{d.day:02d}.{d.month:02d}.{d.year}</b> <span style="color:#f59e0b">({when})</span> — '
+                except Exception:
+                    badge = ""
+                uwagi.append(("🔓", badge + _e(et)))
+        # Kuratorowane: pole caveats (lista stringów lub {text, icon})
+        for cv in rec.get("caveats") or []:
+            if isinstance(cv, dict):
+                uwagi.append((cv.get("icon", "⚠️"), _e(cv.get("text", ""))))
+            else:
+                uwagi.append(("⚠️", _e(str(cv))))
+        if uwagi:
+            st.markdown('<div class="sh">⚠️ Uwaga — czynniki wpływające na wycenę</div>', unsafe_allow_html=True)
+            items = "".join(
+                f'<div class="trigger-item ti-hold"><span class="ti-icon">{ic}</span><span>{tx}</span></div>'
+                for ic, tx in uwagi)
+            st.markdown(f'<div class="trigger-section">{items}</div>', unsafe_allow_html=True)
+
     with col_r:
         # ── Events timeline
         events = rec.get("events", [])
@@ -1464,34 +1492,6 @@ def tab_actions(rec: dict, row, prices: dict):
                 </div>""", unsafe_allow_html=True)
         else:
             st.markdown('<div style="color:#475569;font-size:13px;padding:20px 0">Brak wydarzeń do wyświetlenia.</div>', unsafe_allow_html=True)
-
-    # ── ⚠️ UWAGA: lock-up + inne czynniki wpływające na wycenę (pełna szerokość, pod triggerami)
-    today_u = datetime.now().date()
-    uwagi = []  # (ikona, html)
-    # Auto: lock-up z upcoming_events — zawsze widoczny, nawet bez wpisu w caveats
-    for ev in rec.get("upcoming_events") or []:
-        et = ev.get("event", "")
-        if "lock" in et.lower():
-            try:
-                d = datetime.strptime(str(ev.get("date", "")), "%Y-%m-%d").date()
-                days = (d - today_u).days
-                when = f"za {days} dni" if days > 0 else ("dziś" if days == 0 else "minęło")
-                badge = f'<b style="color:#f59e0b">{d.day:02d}.{d.month:02d}.{d.year}</b> <span style="color:#f59e0b">({when})</span> — '
-            except Exception:
-                badge = ""
-            uwagi.append(("🔓", badge + _e(et)))
-    # Kuratorowane: pole caveats (lista stringów lub {text, icon})
-    for cv in rec.get("caveats") or []:
-        if isinstance(cv, dict):
-            uwagi.append((cv.get("icon", "⚠️"), _e(cv.get("text", ""))))
-        else:
-            uwagi.append(("⚠️", _e(str(cv))))
-    if uwagi:
-        st.markdown('<div class="sh">⚠️ Uwaga — czynniki wpływające na wycenę</div>', unsafe_allow_html=True)
-        items = "".join(
-            f'<div class="trigger-item ti-hold"><span class="ti-icon">{ic}</span><span>{tx}</span></div>'
-            for ic, tx in uwagi)
-        st.markdown(f'<div class="trigger-section">{items}</div>', unsafe_allow_html=True)
 
 # ─── PAGE: OVERVIEW ───────────────────────────────────────────────────────────
 def page_overview(pos, demo, recs, mkt_cap=None, prices=None):
