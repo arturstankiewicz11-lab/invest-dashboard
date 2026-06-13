@@ -22,6 +22,7 @@ Sprawdza:
   W5  "ESTYMATA" w inputach przy rekomendacji BUY
   W6  last_updated starsze niż 90 dni = WARN (świeżość)
   W7  Scenariusze Bear/Base/Bull obowiązkowe przy każdym DCF (Krok F, od 12.06.2026)
+  W15 Scenariusz bez assumptions/key_risk (renderer oczekuje; od 13.06.2026)
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
   W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
@@ -166,6 +167,14 @@ def check_ticker(t, r):
             errors.append(f"E5: wagi scenariuszy sumują się do {s}% (≠100%)")
         if len(items) < 3:
             warns.append(f"W7: tylko {len(items)} scenariusze — wymagane min. Bear/Base/Bull (Krok F)")
+        # W15: każdy scenariusz musi mieć assumptions + key_risk (oczekuje ich renderer
+        # _render_dcf_scenarios; brak = niespójność, dla EV/EBITDA daj assumptions z samym wacc_pct).
+        # Luka wykryta 2026-06-13 (ASPI: KeyError 'assumptions' w zakładce DCF).
+        miss15 = [x.get("name", "?") for x in items
+                  if isinstance(x, dict) and not (x.get("assumptions") and x.get("key_risk"))]
+        if miss15:
+            warns.append(f"W15: scenariusze bez assumptions/key_risk {miss15[:4]} "
+                         f"— renderer pokaże '—'; uzupełnij (EV/EBITDA: min. {{wacc_pct}} + key_risk)")
     elif mode == "DCF":
         # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
         warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
