@@ -3675,11 +3675,11 @@
     "entry_point": 17,
     "position_type": "moonshot",
     "last_updated": "2026-06-13",
-    "thesis_short": "Advanced nuclear: HTGR Xe-100 (Dow Seadrift) + TRISO-X fuel (Part 70 license — picks&shovels). Rev Q1 $43.4M (+109%) ALE 92% rzadowe, UJEMNA marza brutto. mcap ekon. ~$7.6B/406M akcji, cash ~$2B post-IPO. FV base $24 (EV/Rev+TAM) — CENA $18.59 PONIZEJ base (jedyny taki moonshot). Amazon $500M, DOE $1.2B.",
-    "thesis_full": "X-energy to advanced nuclear z dwoma motorami: (1) reaktor HTGR Xe-100 (TRISO, obiektywnie bezpieczniejszy niz sod OKLO) — projekt Dow Seadrift TX (NRC Environmental Assessment), UK GDA; (2) TRISO-X fuel z Part 70 NRC license = moze KOMERCYJNIE produkowac paliwo (picks&shovels dla calej branzy advanced reactors potrzebujacej TRISO). Bardziej komercyjny niz OKLO/IONQ/QNT: rev Q1 2026 $43.4M (+109% YoY), ALE 92% to rzad USA (DOE cost-share, nie komercja) i marza brutto UJEMNA (direct costs $65.4M > rev). Operating loss $66M/Q. Cash post-IPO ~$2.0B (liquid $944M + IPO $1.1B 27.04 @ $23). Up-C ~406M akcji ekonomicznych. CEO Clay Sell (ex-Deputy Secretary of Energy — idealny do 92% rzadowego biznesu), founder Ghaffarian (Intuitive Machines/Axiom). FV base $24; cena $18.59 PONIZEJ base = jedyny moonshot blisko strefy kupna. Backers: Amazon $500M, DOE $1.2B ARDP.",
+    "thesis_short": "Advanced nuclear: HTGR Xe-100 (Dow Seadrift) + TRISO-X fuel (Part 70 license — picks&shovels). Rev Q1 $43.4M (+109%) ALE 92% rzadowe, UJEMNA marza brutto. mcap ekon. ~$7.6B/406M akcji, cash ~$2B post-IPO. FV base $24 (EV/Rev+TAM) — CENA $18.59 PONIZEJ base (jedyny taki moonshot). DOE $1.2B ARDP (10-Q), Amazon klient.",
+    "thesis_full": "X-energy to advanced nuclear z dwoma motorami: (1) reaktor HTGR Xe-100 (TRISO, obiektywnie bezpieczniejszy niz sod OKLO) — projekt Dow Seadrift TX (NRC Environmental Assessment), UK GDA; (2) TRISO-X fuel z Part 70 NRC license = moze KOMERCYJNIE produkowac paliwo (picks&shovels dla calej branzy advanced reactors potrzebujacej TRISO). Bardziej komercyjny niz OKLO/IONQ/QNT: rev Q1 2026 $43.4M (+109% YoY), ALE 92% to rzad USA (DOE cost-share, nie komercja) i marza brutto UJEMNA (direct costs $65.4M > rev). Operating loss $66M/Q. Cash post-IPO ~$2.0B (liquid $944M + IPO $1.1B 27.04 @ $23). Up-C ~406M akcji ekonomicznych. CEO Clay Sell (ex-Deputy Secretary of Energy — idealny do 92% rzadowego biznesu), founder Ghaffarian (Intuitive Machines/Axiom). FV base $24; cena $18.59 PONIZEJ base = jedyny moonshot blisko strefy kupna. Backers: Amazon (klient/projekt Energy Northwest; $500M per doniesienia web, NIE w 10-Q), DOE $1.2B ARDP (potwierdzone 10-Q, 50/50 cost-share $2.4B do 2027).",
     "thesis_breaker": "Utrata finansowania DOE (92% rev = rzad — cost-share moze byc ciety) LUB Dow Seadrift anulowany/opozniony >2 lata LUB marza brutto pozostaje ujemna przy skali (model nie dziala) LUB TerraPower/OKLO/Kairos wyprzedzaja komercyjnie HTGR.",
     "risks": [
-      "Koncentracja rzadowa 92% rev: DOE cost-share, nie komercyjne przychody; ciecie budzetu = zalamanie. Komercjalizacja (Dow) dopiero przed nami",
+      "Koncentracja rzadowa 92% rev: DOE cost-share, nie komercyjne przychody; ciecie budzetu = zalamanie. Komercjalizacja (Dow, Amazon/Energy Northwest, Centrica UK) dopiero przed nami",
       "UJEMNA marza brutto: direct costs $65.4M > rev $43.4M — 'revenue' to dotowany development, nie zyskowny biznes; sciezka do dodatniej marzy niepewna",
       "Execution HTGR + TRISO scale: Dow Seadrift w procesie NRC; pierwsza komercyjna energia nie przed 2028-29; konkurencja (TerraPower permit, OKLO, Kairos/Google)"
     ],
@@ -3796,9 +3796,9 @@
             "source": "10-Q (services $39.9M + grant $3.5M)"
           },
           {
-            "name": "Koncentracja",
-            "value": "US gov 92%, Dow 4%",
-            "source": "10-Q"
+            "name": "Klienci",
+            "value": "US gov 92%, Dow 4%; takze Amazon (Energy Northwest), Centrica (UK)",
+            "source": "10-Q: 'Dow, Amazon, and Centrica'"
           },
           {
             "name": "Marza brutto",
@@ -3823,7 +3823,7 @@
         ],
         "steps": [
           "Base: rev30 $1.0B (~komercjalizacja Dow+TRISO) x 12x = EV30 $12B -> dzis $7.6B + cash $2.0B = $9.6B / 406.4M = $24",
-          "Bear $10 / Bull $64 / Ultra $146; weighted 30/40/20/10 = $40",
+          "Bear $10 / Bull $64 / Ultra $156; weighted 30/40/20/10 = $41",
           "Net cash floor $4.9"
         ],
         "fair_value_computed": 24
@@ -3884,7 +3884,7 @@
           "name": "Ultra",
           "probability_pct": 10,
           "color": "a855f7",
-          "fair_value": 146,
+          "fair_value": 156,
           "description": "Advanced nuclear renaissance, XE lider HTGR+TRISO, rev30 $5B. [EV/Rev 18x]",
           "assumptions": {
             "stage1_cagr_pct": 95,
@@ -3898,8 +3898,8 @@
           "key_risk": "Scenariusz renesansu nuklearnego z XE jako liderem"
         }
       ],
-      "fair_value_weighted": 40,
-      "fair_value_weighted_formula": "0.30x$10 + 0.40x$24 + 0.20x$64 + 0.10x$146 = $40; fair_value = BASE $24 (konwencja)",
+      "fair_value_weighted": 41,
+      "fair_value_weighted_formula": "0.30x$10 + 0.40x$24 + 0.20x$64 + 0.10x$156 = $41; fair_value = BASE $24 (konwencja)",
       "tam_analysis": {
         "purpose": "Dyscyplina upside. SMR/advanced nuclear TAM + TRISO fuel. Build-sell model (nie IPP jak OKLO).",
         "shares_used": 406.4,
@@ -3960,6 +3960,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Weryfikator: ZGODNA Z UWAGAMI. KLUCZOWE: share count 406.4M POTWIERDZONY poprawny (Note 18, brak double-counting — powtarzalny blad uniknięty dzieki W13+uwadze z gory). Poprawki: Ultra $146->$156 (odtworzenie z zalozen), weighted $40->$41; Amazon $500M oznaczone jako web (NIE 10-Q); dodana Centrica (3. klient z 10-Q). Base FV $24 odtworzony ($23.69). Wszystkie liczby finansowe potwierdzone w 10-Q.",
+        "impact": "neutral",
+        "fv_note": "FV base $24 bez zmian (zweryfikowany). Cena $18.59 < base = najtanszy moonshot."
+      },
       {
         "date": "2026-06-13",
         "event": "Inicjacja HOLD @ FV base $24 (EV/Rev+TAM, 10-Q Q1 2026). X-energy: HTGR Xe-100 (Dow Seadrift) + TRISO-X Part 70 license. Rev $43.4M Q1 (+109%) ale 92% rzadowe + UJEMNA marza brutto. Cash ~$2B post-IPO (27.04 @ $23). Up-C ~406M akcji ekonomicznych (NIE 287.5M Class A jak yfinance). CEO Clay Sell (ex-Deputy Secretary of Energy) = najlepiej dopasowany CEO moonshotow. Scenariusze 10/24/64/146 (weighted $40); tenets 4OK/1UWAGA/4BRAK (ujemna marza). CENA $18.59 PONIZEJ base $24 — jedyny moonshot blisko strefy kupna (entry $17).",
