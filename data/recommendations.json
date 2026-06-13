@@ -1769,6 +1769,12 @@
   "OKLO": {
     "events": [
       {
+        "date": "2026-06-13",
+        "event": "Uzupelnienie do nowych zasad + TAM. ceo_profile DeWitte = GLODNY EKSPERT z czerwona flaga (doktorat nuclear MIT, founder 2013, ALE insider selling co-founderow setki mln$). competitive_landscape (TerraPower wyprzedza permitem, X-energy/Amazon, Kairos/Google). buffett_tenets 3xOK/2xUWAGA/4xBRAK (czysty pre-revenue moonshot). TAM ODKRYCIE: scenariusze Moderate $75/Bull $150 ZA WYSOKIE — agresywny TAM (8GW) daje tylko $68; cena $57 juz wycenia ~8GW deployed (ponad polowa pipeline 14GW LOI). Odwrotnosc LEU: TAM podwaza upside.",
+        "impact": "negative",
+        "fv_note": "FV $63 (weighted) bez zmian na teraz, ALE TAM sygnalizuje rewizje scenariuszy w dol (Bull realniej ~$90-100). PROPOZYCJA czeka na akceptacje."
+      },
+      {
         "date": "2026-06-12",
         "event": "Integracja analizy scenariuszowej (rozmowa 13-16.05) do systemu. FV $90 'blended' nie mialo udokumentowanego wyliczenia — zastapione probability-weighted $63 (4 scenariusze, unit economics: 75MW x 92% CF x $95-110/MWh, EBITDA 60-75% mature, dilution 174M->215M akcji). Kontekst konkurencyjny: TerraPower MA construction permit (kwi 2026) przed Oklo; X-energy (Amazon $500M), Kairos (Google). Gateway: COLA Phase 1 target 2H 2026, criticality target koniec 2027 (realnie 1H 2028).",
         "impact": "neutral",
@@ -1794,7 +1800,7 @@
       }
     ],
     "recommendation": "HOLD",
-    "last_updated": "2026-06-12",
+    "last_updated": "2026-06-13",
     "name": "Oklo Inc.",
     "fair_value": 63.0,
     "fair_value_currency": "USD",
@@ -1947,9 +1953,156 @@
         }
       ],
       "fair_value_weighted": 63,
-      "fair_value_weighted_formula": "0.175x$150 + 0.325x$75 + 0.30x$35 + 0.20x$10 = $63"
+      "fair_value_weighted_formula": "0.175x$150 + 0.325x$75 + 0.30x$35 + 0.20x$10 = $63",
+      "tam_analysis": {
+        "purpose": "Warstwa dyscypliny na UPSIDE dla moonshota. OKLO = build-own-operate (sprzedaje PRAD przez 20-letnie PPA), wiec TAM liczony przez GW deployed x ekonomika, nie przez rynek sprzedazy reaktorow. Dyskonto 10 lat @ 12%.",
+        "markets": [
+          {
+            "name": "Rynek SMR / advanced nuclear (equipment)",
+            "size": "$8B-$100B by 2035 (rozrzut: CAGR 3% kons. vs 28% AI-driven)",
+            "source": "Spherical/Precedence/MarketResearchFuture (web 13.06) — ogromny rozrzut = niepewnosc moonshota",
+            "leu_addressable": "OKLO nie sprzedaje reaktorow — addressable = popyt na moc dla data center/AI. Pipeline 14GW (95% niewiazace LOI)"
+          },
+          {
+            "name": "Ekonomika jednostkowa OKLO",
+            "size": "~$847M revenue/GW/rok (1000MW x 8760h x 92% CF x $105/MWh)",
+            "source": "unit economics z analizy (PPA data center premium)",
+            "leu_addressable": "EBITDA 60-75% (fixed PPA, recykling paliwa), ale po D&A ($3000/kW capex) net margin ~22-28%"
+          }
+        ],
+        "bridge_cases": [
+          {
+            "label": "Konserwatywny",
+            "shares": "2GW deployed 2035",
+            "rev_2035_b": 1.7,
+            "margin": 22,
+            "mult": 16,
+            "implied_fv": 21,
+            "note": "Realistyczna konwersja czesci pipeline. ~nasz scenariusz Delays $35 (TAM nizej!)"
+          },
+          {
+            "label": "Realistyczny",
+            "shares": "4GW deployed 2035",
+            "rev_2035_b": 3.4,
+            "margin": 25,
+            "mult": 18,
+            "implied_fv": 34,
+            "note": "Solidna konwersja 14GW LOI. PONIZEJ naszego Moderate $75 — sygnal, ze scenariusze za wysokie"
+          },
+          {
+            "label": "Agresywny",
+            "shares": "8GW deployed 2035",
+            "rev_2035_b": 6.8,
+            "margin": 28,
+            "mult": 20,
+            "implied_fv": 68,
+            "note": "Ponad polowa pipeline skonwertowana. ~CENA $57. Nasz Bull $150 wymaga ~16GW lub ekstremalnej ekonomiki"
+          }
+        ],
+        "market_implied": "Cena $57 (mcap $10B) implikuje ~8GW deployed 2035 (agresywny — ponad polowa pipeline 14GW LOI). Metoda EV/EBITDA (margin 65%, 12x) dalaby ~30-40% wyzej, ale net-income approach (po heavy capex) jest uczciwszy dla kapitalochlonnego IPP.",
+        "conclusion": "KLUCZOWE ODKRYCIE: TAM ujawnia, ze nasze scenariusze Moderate $75/Bull $150 sa ZA WYSOKIE — nawet agresywny TAM (8GW, ponad polowa pipeline) daje tylko $68. Bull $150 implikuje ~16GW (powyzej calego pipeline 14GW) lub ekstremalna ekonomike (niski WACC + wysoki multiple). To odwrotnosc LEU (gdzie TAM bronil ceny): tutaj TAM PODWAZA upside i wzmacnia ostroznosc. Cena $57 juz wycenia agresywne deployment. Rekomendacja: rozwazyc rewizje scenariuszy w dol (Bull realniej ~$90-100, nie $150) — czeka na akceptacje."
+      }
     },
-    "position_type": "moonshot"
+    "position_type": "moonshot",
+    "ceo_profile": {
+      "name": "Jacob DeWitte (~40)",
+      "ceo_since": "2013 (co-founder; od 04.2025 takze Chairman po odejsciu Altmana)",
+      "background": "Doktorat nuclear engineering MIT; ~15 lat w branzy: GE, Sandia National Labs, Urenco US, naval reactor labs. Wspolzalozyciel Oklo 2013.",
+      "founder_or_manager": "Founder — od poczatku; po odejsciu Altmana z fotela Chairman (kwiecien 2025, konflikt interesow OpenAI) DeWitte laczy CEO+Chairman",
+      "hunger": "GLODNY z CZERWONA FLAGA: founder od 2013, obsesyjnie pcha Aurora przez dekade regulacji (przetrwal odmowe NRC 2022). ALE: co-founderzy sprzedali setki milionow $ akcji w 15 mies. (czerwona flaga skin in the game); Altman zredukowal stake. Glod misyjny realny, ale insider selling psuje obraz.",
+      "domain_expertise": "EKSPERT najwyzszej proby: doktorat nuclear MIT + Urenco (enrichment) + naval reactors. Rozumie fizyke SFR i HALEU od podszewki.",
+      "track_record": "Aurora od koncepcji do groundbreaking INL (09.2025); Reactor Pilot Program DOE; A3F fuel facility. ALE: 0 przychodow, pierwsza energia najwczesniej 2H2028.",
+      "skin_in_the_game": "CZERWONA FLAGA: co-founderzy sprzedali setki mln $ przez 15 mies. (DCD/web). Dokladny % DeWitte do weryfikacji z proxy.",
+      "red_flags": "Insider selling co-founderow; Altman odszedl z Chairman (konflikt OpenAI); pre-revenue do 2028; pojedyncza technologia (SFR sodowy)",
+      "verdict": "GLODNY EKSPERT z czerwona flaga skin-in-the-game (insider selling) — typowe dla moonshota; mala pozycja, wysoki MoS",
+      "sources": "Wikipedia, DCD, NucNet, Clay; web 13.06.2026"
+    },
+    "competitive_landscape": [
+      {
+        "name": "TerraPower (Natrium)",
+        "ticker": null,
+        "public": false,
+        "segment": "SFR sodowy — bezposrednia konkurencja",
+        "threat": "wysokie",
+        "note": "Bill Gates; construction permit PRZED Oklo (kwi 2026); 345MW + molten salt storage. Wyprzedza w deployment",
+        "source": "web/analiza 05.2026"
+      },
+      {
+        "name": "X-energy (Xe-100)",
+        "ticker": null,
+        "public": false,
+        "segment": "HTGR TRISO — advanced reactor",
+        "threat": "wysokie",
+        "note": "Amazon $500M, Dow project, DOE $1.2B. TRISO fuel obiektywnie bezpieczniejszy niz sod",
+        "source": "analiza 05.2026"
+      },
+      {
+        "name": "Kairos Power",
+        "ticker": null,
+        "public": false,
+        "segment": "FHR molten salt — deal Google",
+        "threat": "srednie",
+        "note": "Google 500MW, NRC construction permit 2023; konkurent o data-center PPA",
+        "source": "analiza"
+      },
+      {
+        "name": "NuScale",
+        "ticker": "SMR",
+        "public": true,
+        "segment": "LWR SMR — jedyny NRC-approved",
+        "threat": "srednie",
+        "note": "Pierwszy NRC design approval, realne revenue $31M; wiekszy (77MW), mniej AI-friendly",
+        "source": "analiza"
+      },
+      {
+        "name": "GE Hitachi BWRX-300",
+        "ticker": null,
+        "public": false,
+        "segment": "BWR 300MW — standardowy fuel cycle",
+        "threat": "srednie",
+        "note": "TVA/OPG/Polska; uzywa standardowego LEU (omija HALEU bottleneck) — przewaga supply chain",
+        "source": "analiza"
+      }
+    ],
+    "buffett_tenets": {
+      "business_simple": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Build-own-operate IPP zrozumialy, ALE technologia (SFR sodowy) + regulacja NRC zlozone i niesprawdzone komercyjnie"
+      },
+      "business_consistent_history": {
+        "ocena": "BRAK",
+        "uzasadnienie": "PRE-REVENUE; pierwsza energia najwczesniej 2H2028; zero historii operacyjnej"
+      },
+      "business_longterm_prospects": {
+        "ocena": "OK",
+        "uzasadnienie": "Nuclear renaissance + AI power demand + recykling paliwa = realny tailwind JESLI wykona"
+      },
+      "mgmt_rational": {
+        "ocena": "UWAGA",
+        "uzasadnienie": "Founder-ekspert pcha wizje, ALE insider selling co-founderow + dilution (ATM) psuje obraz alokacji"
+      },
+      "mgmt_candid": {
+        "ocena": "OK",
+        "uzasadnienie": "Jasny podzial pipeline binding vs LOI; transparentnie o timeline (choc optymistycznym)"
+      },
+      "mgmt_institutional_imperative": {
+        "ocena": "OK",
+        "uzasadnienie": "Build-own-operate + recykling to odwazny, niesladowczy model vs sprzedaz reaktorow"
+      },
+      "fin_roe": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Pre-revenue; straty operacyjne (-$51M Q1); FCF gleboko ujemny w fazie buildout"
+      },
+      "fin_margins": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Brak przychodow do wyceny marzy"
+      },
+      "fin_dollar_test": {
+        "ocena": "BRAK",
+        "uzasadnienie": "Brak historii zatrzymanych zyskow"
+      },
+      "wniosek": "3xOK / 2xUWAGA / 4xBRAK -> czysty moonshot: MALA pozycja (mniejsza niz LEU/CBRS), MoS 30%+, drabinka aktywna"
+    }
   },
   "IONQ": {
     "name": "IonQ",
