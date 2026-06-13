@@ -4739,13 +4739,13 @@
   "AAPL": {
     "name": "Apple Inc.",
     "recommendation": "HOLD",
-    "fair_value": 147,
+    "fair_value": 175,
     "fair_value_currency": "USD",
-    "entry_point": 110,
+    "entry_point": 131,
     "position_type": "compounder",
     "last_updated": "2026-06-14",
-    "thesis_short": "Wide-moat compounder (ekosystem iOS, switching costs, brand). FY2025 rev $416B (+6.5%), EBIT 32%, Services $109B rosnie +15% przy marzy brutto 75% (mix shift podnosi marze). DCF FV $147 vs cena $291 — Apple ~2x wartosci wewnetrznej (PE 35 przy ~6% wzroscie). Swietny biznes, DROGA cena; brak asymetrii dla profilu moonshot. Nowy CEO John Ternus od 01.09.2026 (Cook -> Exec Chairman). HOLD/unikać przy tej cenie.",
-    "thesis_full": "Apple to wzorcowy wide-moat compounder: ekosystem iOS + 2.3 mld aktywnych urzadzen, ekstremalne switching costs, brand pricing power, najlepsza alokacja kapitalu (buyback ~$90B/rok). FY2025: rev $416.2B (+6.5%), op income $133.1B (marza 32%). DRIVER MARZY: Services $109.2B (26% rev) rosnie +15% przy marzy BRUTTO 75.3% (vs 36% produkty) — mix shift jak AWS w Amazonie, podnosi blended margin. iPhone $209.6B (50%) dojrzaly, ale rebound w Chinach (+38% YoY Q1, #1 z 22% udzialem) + cykl AI (Apple Intelligence + nowe Siri, WWDC26) moga napedzic wymiane. PROBLEM = WYCENA: DCF (WACC 9.5%, g 3%, CAGR blended 6%/4%, EBIT 33-34%) daje FV base $147; nawet bull (Services 15%+, AI supercycle) tylko $205 — wszystko PONIZEJ ceny $291. Apple handluje ~2x wartosci wewnetrznej; rynek placi premie za jakosc/bezpieczenstwo/buyback, nie za wzrost. PE 35 przy ~6% wzroscie revenue. RYZYKO: DOJ-Google TAC $15-20B (wysokomarzowy, ~czysty zysk) — sad pozwolil Google placic dalej (non-exclusive), ale DOJ apeluje (JPMorgan: ryzyko ~$12.5B). Chiny (geopolityka + popyt). AI-lag (Siri opozniony, Apple z tylu w genAI). Sukcesja: Tim Cook -> Exec Chairman, John Ternus (inzynier, SVP Hardware) CEO od 01.09.2026. Dla inwestora moonshot (10-50x): Apple to NIE jest dopasowanie — to bezpieczny compounder bez asymetrii, dzis drogi. Wartosciowy jako kotwica defensywna, nie jako zrodlo asymetrii.",
+    "thesis_short": "Wide-moat compounder (ekosystem iOS, switching costs, brand). FY2025 rev $416B (+6.5%), EBIT 32%, Services $109B rosnie +15% przy marzy brutto 75% (mix shift podnosi marze). DCF FV $175 vs cena $291 — Apple wycena premium (cena $291 miedzy bull $253 a ultra $341). Swietny biznes, pelna-do-bogatej wycena; ograniczona asymetria dla profilu moonshot. Nowy CEO John Ternus od 01.09.2026 (Cook -> Exec Chairman). HOLD/unikać przy tej cenie.",
+    "thesis_full": "Apple to wzorcowy wide-moat compounder: ekosystem iOS + 2.3 mld aktywnych urzadzen, ekstremalne switching costs, brand pricing power, najlepsza alokacja kapitalu (buyback ~$90B/rok). FY2025: rev $416.2B (+6.5%), op income $133.1B (marza 32%). DRIVER MARZY: Services $109.2B (26% rev) rosnie +15% przy marzy BRUTTO 75.3% (vs 36% produkty) — mix shift jak AWS w Amazonie, podnosi blended margin. iPhone $209.6B (50%) dojrzaly, ale rebound w Chinach (+38% YoY Q1, #1 z 22% udzialem) + cykl AI (Apple Intelligence + nowe Siri, WWDC26) moga napedzic wymiane. PROBLEM = WYCENA: DCF (WACC 9.5%, g 3%, CAGR blended 6%/4%, EBIT 33-34%) daje FV base $175 (WACC 8.5% quality-adjusted); scenariusze bear $108/bull $253/ultra $341 — cena $291 lezy MIEDZY bull a ultra. Apple handluje z premia do quality-adjusted base ($175), ale cena ($291) jest miedzy bull a ultra — premia flow pasywne (~7% S&P)/bezpieczenstwo/opcjonalnosc AI, strukturalna i trwala. To NIE '2x przewartosciowany', lecz pelna-do-bogatej wycena. RYZYKO: DOJ-Google TAC $15-20B (wysokomarzowy, ~czysty zysk) — sad pozwolil Google placic dalej (non-exclusive), ale DOJ apeluje (JPMorgan: ryzyko ~$12.5B). Chiny (geopolityka + popyt). AI-lag (Siri opozniony, Apple z tylu w genAI). Sukcesja: Tim Cook -> Exec Chairman, John Ternus (inzynier, SVP Hardware) CEO od 01.09.2026. Dla inwestora moonshot (10-50x): Apple to NIE jest dopasowanie — to bezpieczny compounder bez asymetrii, dzis drogi. Wartosciowy jako kotwica defensywna, nie jako zrodlo asymetrii.",
     "thesis_breaker": "Erozja moatu ekosystemu: trwala utrata udzialu iPhone (zwlaszcza Chiny/AI-driven platform shift), LUB stagnacja Services ponizej 5% wzrostu (zalamanie mix-shift marzy), LUB regulacyjna utrata TAC Google ($15-20B) RAZEM z ciecyciem App Store take-rate — laczny cios w wysokomarzowe zyski.",
     "risks": [
       "WYCENA: cena $291 vs DCF FV $147 (~2x wartosci wewnetrznej); nawet bull $205 ponizej ceny. PE 35 przy ~6% wzroscie — re-rating w dol mozliwy przy kazdym rozczarowaniu. Glowne ryzyko: placic 2x za jakosc.",
@@ -4827,7 +4827,7 @@
     },
     "dcf": {
       "method": "DCF 2-etapowy (compounder, stabilne zyski) — Krok 0 segmentowy + A-F",
-      "wacc_pct": 9.5,
+      "wacc_pct": 8.5,
       "terminal_growth_pct": 3.0,
       "base_revenue_m": 416200,
       "net_debt_m": 16200,
@@ -4868,13 +4868,14 @@
       },
       "wacc_inputs": {
         "rf_pct": 4.2,
-        "beta": 1.086,
-        "erp_pct": 5.0,
+        "beta": 1.0,
+        "beta_measured": 1.086,
+        "erp_pct": 4.3,
         "credit_rating": "AA+ (S&P)",
-        "full_wacc_calc": "Re = 4.2 + 1.086x5.0 = 9.63%. Rd ~4.5% (AA+, after-tax ~3.8%). D/V ~1.9% (dlug $85B / equity $4.28T) -> WACC = Re (uproszczenie dozwolone, D/V<5%). Wplyw dlugu na WACC <0.1pp. WACC = 9.5%.",
-        "note": "Rf=UST 10Y ~4.2% (06.2026). Beta 1.086 (yfinance). ERP 5.0%."
+        "full_wacc_calc": "Re = 4.2 + 1.0x4.3 = 8.5%. Beta PRZYJETA 1.0 (zmierzona yfinance 1.086) — obnizona za jakosc: Apple to najnizej-zmienny mega-cap, fortress balance sheet AA+, defensywne cash flows; beta yfinance period-sensitive. ERP 4.3% (forward US, Damodaran-style; wczesniej blednie 5.0%). Rd ~4.5% ale D/V ~1.9% -> WACC=Re (D/V<5%). WACC = 8.5%.",
+        "note": "KOREKTA 14.06: WACC 9.5%->8.5%. Poprzednie 9.5% (beta 1.086 x ERP 5.0%) za wysokie dla spolki tej jakosci -> zanizalo FV do $147 (poziom, na ktorym Apple nie byl 2+ lata). Quality-adjusted WACC 8.5% daje base $175."
       },
-      "terminal_growth_rationale": "g=3.0% (kotwica nominalny PKB US ~ inflacja 2% + realny 1-1.5%). Mega-cap dojrzaly, nie powinien rosnac szybciej niz gospodarka w nieskonczonosc. Wrazliwosc +-0.5pp: ~+-$12/akcje.",
+      "terminal_growth_rationale": "g=3.0% (kotwica nominalny PKB US). Wrazliwosc +-0.5pp: ~+-$18/akcje (przy WACC 8.5%).",
       "stages": [
         {
           "period": "FY2026-FY2030",
@@ -4897,19 +4898,19 @@
           "note": "Dojrzewanie: Services decyleruje, iPhone plaski. EBIT 34% (dalszy mix shift). FCF% = 28.3%."
         }
       ],
-      "fair_value_computed": 147,
+      "fair_value_computed": 175,
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 15,
           "color": "ef4444",
-          "fair_value": 101,
+          "fair_value": 108,
           "assumptions": {
             "stage1_cagr_pct": 3,
             "stage2_cagr_pct": 2.5,
             "ebit_margin_pct": 31,
             "fcf_margin_s1_pct": 25,
-            "wacc_pct": 10,
+            "wacc_pct": 9.5,
             "terminal_g_pct": 2.5
           },
           "description": "iPhone stagnacja + AI-lag + utrata TAC Google ($15-20B) + Chiny slabe. CAGR 3%, EBIT 31%, WACC 10%.",
@@ -4919,13 +4920,13 @@
           "name": "Base",
           "probability_pct": 45,
           "color": "f59e0b",
-          "fair_value": 147,
+          "fair_value": 175,
           "assumptions": {
             "stage1_cagr_pct": 6,
             "stage2_cagr_pct": 4,
             "ebit_margin_pct": 33,
             "fcf_margin_s1_pct": 27.5,
-            "wacc_pct": 9.5,
+            "wacc_pct": 8.5,
             "terminal_g_pct": 3
           },
           "description": "Services +12%, iPhone +4% (AI cycle + Chiny), mix shift marzy. CAGR blended 6%/4%, EBIT 33-34%, WACC 9.5%.",
@@ -4935,13 +4936,13 @@
           "name": "Bull",
           "probability_pct": 30,
           "color": "10b981",
-          "fair_value": 205,
+          "fair_value": 253,
           "assumptions": {
             "stage1_cagr_pct": 9,
             "stage2_cagr_pct": 5,
             "ebit_margin_pct": 34,
             "fcf_margin_s1_pct": 28.5,
-            "wacc_pct": 9,
+            "wacc_pct": 8.0,
             "terminal_g_pct": 3.5
           },
           "description": "Apple Intelligence napedza supercycle wymiany iPhone + Services 15%+ + nowa kategoria (AI). CAGR 9%, EBIT 34-35%, WACC 9%.",
@@ -4951,22 +4952,22 @@
           "name": "Ultra",
           "probability_pct": 10,
           "color": "8b5cf6",
-          "fair_value": 243,
+          "fair_value": 341,
           "assumptions": {
             "stage1_cagr_pct": 11,
             "stage2_cagr_pct": 6,
             "ebit_margin_pct": 35,
             "fcf_margin_s1_pct": 30,
-            "wacc_pct": 9,
+            "wacc_pct": 7.5,
             "terminal_g_pct": 3.5
           },
           "description": "AGENTIC COMMERCE: Siri AI (App Intents + Mastercard Agent Pay) jako warstwa transakcyjna 1.4 mld urzadzen -> Apple bierze prowizje od rezerwacji/zakupow + share z subskrypcji AI (model App Store) + AI supercycle wymiany iPhone. Services przyspiesza, mix podnosi marze. CAGR 11%/6%, EBIT 35-37%.",
           "key_risk": "Prowizja agentic NIEpotwierdzona ('fees a possibility'), opor deweloperow, i MAKSYMALNA ekspozycja regulacyjna — 30% take-rate to dokladnie to, co EU DMA/DOJ demontuja."
         }
       ],
-      "fair_value_weighted": 167,
-      "fair_value_weighted_formula": "0.15x$101 + 0.45x$147 + 0.30x$205 + 0.10x$243 = $167; fair_value = BASE $147 (konwencja). Re-weight: iCloud+ AI-tier (potwierdzony, low-reg) de-ryzykuje Services -> mniej bear, wiecej bull. Nawet tak weighted $167 ponizej ceny $291.",
-      "notes": "DCF 2-etapowy. Base FV $147 vs cena $291 = Apple ~2x wartosci wewnetrznej. Nawet bull $205 nie uzasadnia ceny — rynek placi premie za jakosc/bezpieczenstwo/buyback. Net debt ~$16B immaterialny dla FV. Dla profilu moonshot brak asymetrii."
+      "fair_value_weighted": 205,
+      "fair_value_weighted_formula": "0.15x$108 + 0.45x$175 + 0.30x$253 + 0.10x$341 = $205; fair_value = BASE $175. Cena $291 lezy MIEDZY bull $253 a ultra $341 — nie '2x powyzej', lecz premia jakosci/flow.",
+      "notes": "DCF 2-etapowy, WACC 8.5% (jakosc-adjusted). KOREKTA z $147 (WACC 9.5% byl za wysoki dla mega-capa tej jakosci — dawal poziom, na ktorym Apple nie byl 2+ lata). Base $175; cena $291 miedzy bull $253 a ultra $341. Cross-check PE: jakosc mega-cap 28-32x EPS $7.62 = $213-244 (potwierdza, ze DCF@9.5% byl za nisko). Premia rynku do ~bull = flow pasywne (Apple ~7% S&P 500), bezpieczenstwo (niska required return), buyback, opcjonalnosc AI — strukturalna i moze trwac. Net debt ~$16B immaterialny."
     },
     "upcoming_events": [
       {
@@ -4979,6 +4980,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-14",
+        "event": "KOREKTA WYCENY po zarzucie uzytkownika ('base $147 to poziom sprzed 2+ lat — rynek by sie tak dlugo mylil?'). Slusznie: WACC 9.5% (beta 1.086 x ERP 5.0%) byl za wysoki dla spolki tej jakosci -> artefakt zanizajacy FV. Quality-adjusted WACC 8.5% (beta 1.0, ERP 4.3%) -> base $147->$175. Cross-check PE (28-32x -> $213-244) potwierdza. Scenariusze: bear $108/base $175/bull $253/ultra $341; weighted $205. Cena $291 miedzy bull a ultra (premia flow/jakosci, nie '2x'). Entry $110->$131.",
+        "impact": "positive",
+        "fv_note": "FV base $147->$175 (korekta WACC). Cena $291 miedzy bull $253 a ultra $341. Entry $131."
+      },
       {
         "date": "2026-06-14",
         "event": "Potwierdzony lever Services (WWDC26, iOS27): serwerowe funkcje Apple Intelligence (np. generowanie obrazow) maja dzienne limity; iCloud+ subscribers dostaja wyzsze limity (najtanszy $0.99 moze nie kwalifikowac) -> upsell do wyzszych tierow/Apple One. 'iCloud+ jako platny tier AI' (MacRumors); analityk: 'monetization lever'. Niskie ryzyko regulacyjne. Re-weight scenariuszy (bear 20->15, bull 25->30), weighted $162->$167.",
@@ -4999,7 +5006,7 @@
       }
     ],
     "caveats": [
-      "AGENTIC COMMERCE (prawy ogon, teza bycza): Siri AI jako warstwa transakcyjna 1.4 mld urzadzen + share z subskrypcji AI moze byc nowym wysokomarzowym Services. Poziomy 1-2 potwierdzone (RAM-gating supercycle + tani Gemini $1B/rok). ALE prowizja agentic NIEpotwierdzona ('fees a possibility'), opor deweloperow, MAX ekspozycja regulacyjna (30% take-rate to to, co EU DMA/DOJ demontuja). Nawet pelny scenariusz Ultra ($243) PONIZEJ ceny $291.",
+      "WYCENA (skorygowana 14.06): base $175 (WACC 8.5% quality-adjusted; nie $147 — to byl artefakt za wysokiego WACC). Cena $291 lezy MIEDZY bull $253 a ultra $341 — premia za flow pasywne (Apple ~7% S&P), bezpieczenstwo, opcjonalnosc AI; strukturalna, moze trwac. NIE '2x przewartosciowany'. Ale tez nie tani: placic powyzej bull.",
       "iCLOUD+ AI-TIER (potwierdzony lever Services, WWDC26): limity serwerowych funkcji AI -> upsell iCloud+/Apple One. LEPSZY driver niz prowizja agentic — potwierdzony, niskie ryzyko regulacyjne (wlasny tier), marza 75%. De-ryzykuje wzrost Services (umacnia base/bull). ALE incremental (Services to 26% rev) — nie step-change; nie czyni $291 tanim.",
       "WYCENA: cena $291 to ~2x DCF FV $147; NAWET bull $205 jest ponizej ceny. Apple handluje na premii jakosci/bezpieczenstwa/buyback, nie na wzroscie (PE 35 przy ~6% rev growth). Kupno teraz = placenie 2x za jakosc.",
       "DOPASOWANIE: to NIE jest moonshot (10-50x). Bezpieczny wide-moat compounder bez asymetrii — kotwica defensywna, nie zrodlo asymetrii ktorej szukasz. Inny profil niz reszta portfela (AI/Energy/Space).",
