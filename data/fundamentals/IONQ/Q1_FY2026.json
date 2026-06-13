@@ -3,9 +3,9 @@
   "period": "Q1_FY2026",
   "period_end": "2026-03-31",
   "report_type": "quarterly",
-  "source_file": null,
+  "source_file": "data/reports/IONQ/10-Q.pdf",
   "extracted": "2026-05-26",
-  "revenue_m": 49.5,
+  "revenue_m": 64.7,
   "ebit_m": -65,
   "ebit_margin_pct": -131.0,
   "da_m": null,
@@ -14,6 +14,9 @@
   "net_debt_m": -3070,
   "shares_diluted_m": 373,
   "guidance_revenue_m": 265,
-  "guidance_notes": "FY2026 guidance M. RPO M. Cash .1B.",
-  "notes": "Q1 2026: revenue +755% YoY. Pre-revenue path to profitability. Zastąp plikiem PDF z aktualnym raportem."
+  "guidance_notes": "FY2026 guidance $260-270M (+100% organicznie). RPO $470M. Net cash ~$3.09B.",
+  "notes": "KOREKTA 13.06 (weryfikator): revenue $64.7M (10-Q, bylo bledne $49.5M). Q1 op CF -$151M (pre-profitable).",
+  "revenue_yoy_pct": 755,
+  "net_cash_m": 3092,
+  "rpo_m": 470
 }

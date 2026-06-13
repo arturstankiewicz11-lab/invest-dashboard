@@ -2118,7 +2118,7 @@
     "entry_point": 22,
     "upside_pct": null,
     "thesis_short": "Lider trapped-ion quantum. Revenue $265M (+100%) ale mcap $21.6B = ~80x sprzedazy — wycena czysto na opcjonalnosci kategorii ($4B-$65B TAM 2030). FV base $31 (EV/Revenue+TAM), cena $58 = rynek wycenia Bull-Ultra. Net cash $3.07B = floor $7.3. Najmniejsza pozycja (0✅/2⚠️/7❌ tenets).",
-    "thesis_full": "IonQ to niekwestionowany lider trapped-ion quantum computing. Q1 2026: $64.7M revenue (+755% YoY), FY guidance podniesiony do $260-270M, RPO $470M (+554% YoY). Cash: $3.1B przy $30M długu = fort finansowy. Technologia trapped-ion oferuje najwyższe gate fidelities wśród wszystkich platform. Kluczowi klienci: DoD, NSA, US Airforce + komercja przez AWS/Azure/Google Cloud. Moat: patenty na trapped-ion, 6-letnia przewaga czasu na rynku nad INFQ. JEDNAK: przy cenie $55 spółka wyceniana jest na 67x 2026 revenue i $20.8B market cap — DCF FV base $16, bull $29. Rynek wycenia scenariusz ultra-bull ($3-4B revenue do 2030+). Nie kupuj teraz — obserwuj korektę do $30-35.",
+    "thesis_full": "IonQ to lider trapped-ion w wyscigu o quantum computing. Q1 2026: revenue $64.7M (+755% YoY), FY2026 guidance $260-270M (+100% organicznie), RPO $470M, net cash ~$3.07B (cash+inwestycje). Wycena: mcap $21.6B = ~80x revenue 2026E — czysto na opcjonalnosci. Metoda EV/Revenue 2030E + scenariusze (DCF bezsensowny, FCF gleboko ujemny). FV base $31 (rev30 $1.3B x 12x, ~25% udzial w TAM $12B), weighted $49. Bear $15 (quantum winter) / Bull $75 (inflection) / Ultra $171 (quantum advantage). Net cash floor $7.3/akcje — 87% ceny $58 to opcjonalnosc. CEO de Masi = SPAC-operator (nie quantum-ekspert), tenets 0OK/2UWAGA/7BRAK -> najmniejsza pozycja w portfelu. TAM quantum 2030 skrajnie niepewny: $4.2B-$65B (rozjazd 16x) = ryzyko samo w sobie. Wyscig modalnosci nierozstrzygniety.",
     "thesis_breaker": "Revenue growth spada poniżej 50% w 2027 LUB Google/IBM demonstruje quantum advantage na komercyjnych workloadach przed IonQ LUB top-3 klientów odpowiada za ponad 60% revenue (koncentracja).",
     "buffett_moat": "Narrow",
     "risks": [
@@ -2130,19 +2130,11 @@
     "last_updated": "2026-06-13",
     "dcf": {
       "wacc_pct": 12.0,
-      "terminal_growth_pct": 4.0,
       "shares_m": 373.27,
       "net_cash_m": 3070,
       "notes": "Base case (WACC 12%): FV $16. Bull case (WACC 10%, aggressive growth): FV $29. Cena $55 implikuje ultra-bull scenario z $3-4B revenue do 2030. Stages: 2026 $265M→2027 $530M→2028 $900M→2029 $1.3B→2030 $1.7B. FCF margin: -120%→-40%→-5%→+10%→+20% terminal 22%.",
-      "pv_fcf_m": 84,
-      "terminal_value_m": 4863,
-      "pv_terminal_m": 2760,
-      "enterprise_value_m": 2844,
-      "fair_value_base": 15.9,
-      "fair_value_bull": 29.0,
       "fair_value": 29.0,
       "valuation_method": "Scenariusz pre-revenue (FCF margin per stage). Base FV $15.9 (WACC 12%), Bull FV $29 (WACC 10%). Obliczona FV może się różnić od stored ze względu na uproszczenie marży FCF do jednolitej wartości per stage zamiast rok po roku.",
-      "revenue_ttm_m": 144,
       "method": "EV/Revenue forward + scenariusze (DCF bezsensowny przy FCF -55%)",
       "alt_valuation": {
         "method": "EV/Revenue 2030E + scenariusze",
@@ -2366,6 +2358,15 @@
         "threat": "srednie",
         "note": "Alternatywne modalnosci; Microsoft topological = high-risk high-reward",
         "source": "sektor"
+      },
+      {
+        "name": "Xanadu / Alpine Quantum",
+        "ticker": null,
+        "public": false,
+        "segment": "Fotonika (Xanadu) / trapped-ion (Alpine)",
+        "threat": "srednie",
+        "note": "Wymienieni wprost w Competition annual report IonQ; Alpine = bezposredni rywal trapped-ion",
+        "source": "IonQ AR 2025 (Competition)"
       }
     ],
     "buffett_tenets": {
