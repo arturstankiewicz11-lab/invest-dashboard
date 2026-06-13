@@ -25,6 +25,7 @@ Sprawdza:
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
   W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
+  W11 Pułapka tagu HTML ('<' + litera w tekście psuje render; od 13.06.2026)
 """
 import json, os, re, sys
 from datetime import datetime, date
@@ -165,6 +166,22 @@ def check_ticker(t, r):
     elif mode == "DCF":
         # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
         warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
+
+    # W11: pułapka tagu HTML — '<' + litera/slash/! w polach tekstowych psuje render
+    # (browser parsuje jako tag; np. '<rok' -> InvalidCharacterError). '<' + cyfra/spacja jest OK.
+    import re as _re11
+    def _scan_html(o, p=""):
+        out=[]
+        if isinstance(o,dict):
+            for k,vv in o.items(): out+=_scan_html(vv,p+"."+k)
+        elif isinstance(o,list):
+            for i,vv in enumerate(o): out+=_scan_html(vv,f"{p}[{i}]")
+        elif isinstance(o,str):
+            if _re11.search(r"<[a-zA-Z/!]", o): out.append(p)
+        return out
+    bad = _scan_html(r)
+    if bad:
+        errors.append(f"W11: pułapka tagu HTML ('<' + litera) w polach {bad[:3]} — psuje render (InvalidCharacterError); użyj 'poniżej'/'mniej niż' albo &lt;")
 
     # W9: renderowalność — czy app pokaże model w zakładce DCF (zasada z 2026-06-13).
     # tab_dcf renderuje, gdy istnieje: stages | alt_valuation | scenarios | catalyst_sensitivity.

@@ -1866,7 +1866,7 @@ def page_detail(ticker, pos, prices, recs):
         with col_r:
             st.markdown('<div class="sh">⚠️ Ryzyka</div>', unsafe_allow_html=True)
             for risk in rec.get("risks", []):
-                st.markdown(f'<div class="risk-item">· {risk}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="risk-item">· {_e(risk)}</div>', unsafe_allow_html=True)
 
             moat = rec.get("buffett_moat", "—")
             ne   = rec.get("next_earnings")
