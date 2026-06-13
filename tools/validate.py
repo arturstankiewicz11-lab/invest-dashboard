@@ -25,6 +25,7 @@ Sprawdza:
   W8  Wyprowadzenie parametrów WACC/g/CAGR ze źródłami (od 13.06.2026)
   W9  Renderowalność modelu w zakładce DCF (stages/alt/scenarios/catalyst; od 13.06.2026)
   W10 Moonshot bez tam_analysis (dyscyplina upside; od 13.06.2026)
+  W12 TAM deklaruje jedną shares_used (anty-mix current/forward; od 13.06.2026)
   W11 Pułapka tagu HTML ('<' + litera w tekście psuje render; od 13.06.2026)
 """
 import json, os, re, sys
@@ -166,6 +167,18 @@ def check_ticker(t, r):
     elif mode == "DCF":
         # W7: scenariusze Bear/Base/Bull obowiązkowe przy DCF (Krok F, zasada z 2026-06-12)
         warns.append("W7: brak scenariuszy Bear/Base/Bull (Krok F protokołu DCF, wymagane od 12.06.2026)")
+
+    # W12: TAM musi deklarować JEDNĄ liczbę akcji (shares_used) — zapobiega mieszaniu
+    # current vs forward-diluted między bridge_cases (bug IONQ 373 vs 420). Zasada 2026-06-13.
+    ta12 = dcf.get("tam_analysis")
+    if ta12 and ta12.get("bridge_cases"):
+        su = ta12.get("shares_used")
+        if su is None:
+            errors.append("W12: tam_analysis bez 'shares_used' — zadeklaruj jedną liczbę akcji dla wszystkich bridge_cases")
+        else:
+            canon12 = dcf.get("shares_m") or dcf.get("shares_diluted_m")
+            if canon12 and abs(su - canon12) / canon12 > 0.10 and "forward" not in str(ta12.get("note_shares","")).lower():
+                warns.append(f"W12: tam shares_used {su}M vs model {canon12:.0f}M (>10%) bez noty 'forward diluted'")
 
     # W11: pułapka tagu HTML — '<' + litera/slash/! w polach tekstowych psuje render
     # (browser parsuje jako tag; np. '<rok' -> InvalidCharacterError). '<' + cyfra/spacja jest OK.

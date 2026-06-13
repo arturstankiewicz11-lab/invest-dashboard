@@ -1638,7 +1638,9 @@
           }
         ],
         "market_implied": "Cena $162.58 (mcap $3.6B) implikuje ~SWU 25% + HALEU ~28-30% udzial 2035 (marza 20%, 15x). Dla jedynego operacyjnego US HALEU z licencja NRC — NIE jest to zalozenie ekstremalne.",
-        "conclusion": "KLUCZOWE: czysty DCF (base $93) jest dla moonshota ZA OSTROZNY — w pelni karze sciezke CapEx/execution, nie kredytujac opcjonalnosci na TAM HALEU. TAM pokazuje, ze Bull $151/Premium $270 sa zakotwiczone w realnym udziale rynkowym, a cena $162 implikuje ~30% HALEU share (obronne dla first-movera). Reframe decyzji drabinki: nie 'przewartosciowane vs $93', tylko 'czy wierzysz w ~30% HALEU share LEU do 2035'. To legitymna teza HOLD dla kubla moonshot powyzej DCF base."
+        "conclusion": "KLUCZOWE: czysty DCF (base $93) jest dla moonshota ZA OSTROZNY — w pelni karze sciezke CapEx/execution, nie kredytujac opcjonalnosci na TAM HALEU. TAM pokazuje, ze Bull $151/Premium $270 sa zakotwiczone w realnym udziale rynkowym, a cena $162 implikuje ~30% HALEU share (obronne dla first-movera). Reframe decyzji drabinki: nie 'przewartosciowane vs $93', tylko 'czy wierzysz w ~30% HALEU share LEU do 2035'. To legitymna teza HOLD dla kubla moonshot powyzej DCF base.",
+        "shares_used": 22.446,
+        "note_shares": "diluted (10-Q); dyskonto wg horyzontu, +net cash"
       }
     },
     "upcoming_events": [
@@ -2006,7 +2008,9 @@
           }
         ],
         "market_implied": "Cena $57 (mcap $10B) implikuje ~8GW deployed 2035 (agresywny — ponad polowa pipeline 14GW LOI). Metoda EV/EBITDA (margin 65%, 12x) dalaby ~30-40% wyzej, ale net-income approach (po heavy capex) jest uczciwszy dla kapitalochlonnego IPP.",
-        "conclusion": "KLUCZOWE ODKRYCIE: TAM ujawnia, ze nasze scenariusze Moderate $75/Bull $150 sa ZA WYSOKIE — nawet agresywny TAM (8GW, ponad polowa pipeline) daje tylko $68. Bull $150 implikuje ~16GW (powyzej calego pipeline 14GW) lub ekstremalna ekonomike (niski WACC + wysoki multiple). To odwrotnosc LEU (gdzie TAM bronil ceny): tutaj TAM PODWAZA upside i wzmacnia ostroznosc. Cena $57 juz wycenia agresywne deployment. Rekomendacja: rozwazyc rewizje scenariuszy w dol (Bull realniej ~$90-100, nie $150) — czeka na akceptacje."
+        "conclusion": "KLUCZOWE ODKRYCIE: TAM ujawnia, ze nasze scenariusze Moderate $75/Bull $150 sa ZA WYSOKIE — nawet agresywny TAM (8GW, ponad polowa pipeline) daje tylko $68. Bull $150 implikuje ~16GW (powyzej calego pipeline 14GW) lub ekstremalna ekonomike (niski WACC + wysoki multiple). To odwrotnosc LEU (gdzie TAM bronil ceny): tutaj TAM PODWAZA upside i wzmacnia ostroznosc. Cena $57 juz wycenia agresywne deployment. Rekomendacja: rozwazyc rewizje scenariuszy w dol (Bull realniej ~$90-100, nie $150) — czeka na akceptacje.",
+        "shares_used": 215,
+        "note_shares": "forward diluted (174M current + dilution do 2030); dyskonto wg horyzontu, +net cash"
       }
     },
     "position_type": "moonshot",
@@ -2292,7 +2296,8 @@
         ],
         "market_implied": "Cena $58 implikuje ~realistyczny TAM ($15B 2030, IonQ 22% -> FV $72) — rynek juz wycenia, ze quantum wypali I IonQ bedzie liderem. Wszystkie akcje liczone 420M (forward diluted).",
         "conclusion": "Spojne z LEU/scenariuszami (bull $75 vs TAM-real $80, rozjazd 6% — drabinka NIE dostanie ostrzezenia). ALE absolutny poziom: cena $58 wymaga uwierzyc w realistyczny-TAM scenariusz, ktory sam zaklada nierozstrzygniety wyscig modalnosci. Floor $7.3 (net cash) vs cena $58 = 87% wartosci to czysta opcjonalnosc. Najmniejsza pozycja, MoS 30%+.",
-        "note_shares": "Wszystkie bridge_cases: 420M akcji (forward diluted), dyskonto 4 lata @ WACC 12%, +net cash $3.07B"
+        "note_shares": "forward diluted (373M current + dilution); dyskonto wg horyzontu, +net cash",
+        "shares_used": 420
       }
     },
     "events": [
