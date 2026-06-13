@@ -4741,7 +4741,7 @@
     "recommendation": "HOLD",
     "fair_value": 175,
     "fair_value_currency": "USD",
-    "entry_point": 131,
+    "entry_point": 205,
     "position_type": "compounder",
     "last_updated": "2026-06-14",
     "thesis_short": "Wide-moat compounder (ekosystem iOS, switching costs, brand). FY2025 rev $416B (+6.5%), EBIT 32%, Services $109B rosnie +15% przy marzy brutto 75% (mix shift podnosi marze). DCF FV $175 vs cena $291 — Apple wycena premium (cena $291 miedzy bull $253 a ultra $341). Swietny biznes, pelna-do-bogatej wycena; ograniczona asymetria dla profilu moonshot. Nowy CEO John Ternus od 01.09.2026 (Cook -> Exec Chairman). HOLD/unikać przy tej cenie.",
@@ -4980,6 +4980,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-14",
+        "event": "KOREKTA ENTRY po analizie drawdownu (zarzut uzytkownika: entry $131 nieosiagalny). Dane 10 lat: max drawdown Apple -39% (2019), typowe gleboke korekty -31 do -33% (kwiecien 2025 dolek $172). Entry $131 (-55%) bez precedensu. ZMIANA REGULY (zatwierdzona): compounder entry = typowa korekta ~-30% (= weighted FV), nie 0.75xbase. Entry $131->$205.",
+        "impact": "neutral",
+        "fv_note": "Entry $131->$205 (= weighted FV $205 / ~-30% korekta). Realne okno kupna co 1-2 lata (np. kwiecien 2025 $172). Base FV $175 bez zmian."
+      },
       {
         "date": "2026-06-14",
         "event": "KOREKTA WYCENY po zarzucie uzytkownika ('base $147 to poziom sprzed 2+ lat — rynek by sie tak dlugo mylil?'). Slusznie: WACC 9.5% (beta 1.086 x ERP 5.0%) byl za wysoki dla spolki tej jakosci -> artefakt zanizajacy FV. Quality-adjusted WACC 8.5% (beta 1.0, ERP 4.3%) -> base $147->$175. Cross-check PE (28-32x -> $213-244) potwierdza. Scenariusze: bear $108/base $175/bull $253/ultra $341; weighted $205. Cena $291 miedzy bull a ultra (premia flow/jakosci, nie '2x'). Entry $110->$131.",

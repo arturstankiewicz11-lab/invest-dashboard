@@ -40,6 +40,11 @@ Inwestor biznesowy — tłumacz przez model biznesowy i operacje, nie żargon gi
 7. **Konwencje wyceny**: `fair_value` = scenariusz BASE (nie bull, nie weighted; weighted
    i scenariusze jako dodatkowa informacja w `dcf.scenarios`). Entry = FV_base × 0,75
    (MoS 25%; moonshoty z wieloma ❌ na checkliście Buffetta: 30%+ i mniejsza pozycja).
+   **Wyjątek COMPOUNDER** (zasada 14.06.2026): niskozmienny compounder, którego rynek
+   strukturalnie wycenia powyżej DCF, rzadko schodzi poniżej base FV (base ≈ dołek krachu —
+   AAPL: max drawdown 10 lat −39%, base $175 ≈ low IV.2025 $172). Dla compoundera entry
+   kotwiczony do typowej korekty ~−30% od szczytu (≈ weighted FV), MOŻE być powyżej base FV;
+   0,75×base bywa nieosiągalne i błędne. Walidator W1 rozróżnia typy (moonshot 0,75×base; compounder ≈ weighted).
    Struktura DCF: 2 etapy (zwykle 5+5 lat) + terminal.
    **Drabinka wyjścia** (typ pozycji z checklisty tenets, pole `position_type`):
    - Thesis breaker → SELL 100%, cena nieistotna (oba typy).

@@ -291,15 +291,24 @@ def check_ticker(t, r):
         if no_note and not dcf.get("cagr_context"):
             warns.append(f"W8: stages bez uzasadnienia CAGR w note: {no_note}")
 
-    # W1: entry vs konwencja 0.75×FV
+    # W1: entry vs konwencja — ROZNA dla moonshot vs compounder (zasada z 2026-06-14).
+    # Moonshot (szeroki rozklad): entry = 0.70-0.75×FV_base (duzy MoS); entry > base = blad.
+    # Compounder (niskozmienny, rynek strukturalnie powyzej DCF): base FV ~ dolek krachu,
+    # wiec 0.75×base nieosiagalne (lekcja AAPL: -55% nigdy w 10 lat, max -39%). Entry kotwiczony
+    # do typowej korekty ~-30% (~ weighted FV) — MOZE byc powyzej base FV; blad gdy > weighted.
     ep = r.get("entry_point")
     if fv and ep:
-        target = 0.75 * fv
-        dev = abs(ep - target) / target
-        if ep > fv:
-            errors.append(f"entry {ep} > FV {fv} — odwrotność margin of safety")
-        elif dev > 0.10:
-            warns.append(f"entry {ep} vs konwencja 0.75×FV={target:.0f} (odchylenie {dev:.0%})")
+        if r.get("position_type") == "compounder":
+            ref = dcf.get("fair_value_weighted") or fv
+            if ep > ref * 1.05:
+                warns.append(f"W1: entry {ep} > weighted FV {ref:.0f} (compounder: entry ~ typowa korekta/weighted, nie placic powyzej)")
+        else:
+            target = 0.75 * fv
+            dev = abs(ep - target) / target
+            if ep > fv:
+                errors.append(f"entry {ep} > FV {fv} — odwrotność margin of safety (moonshot)")
+            elif dev > 0.10:
+                warns.append(f"entry {ep} vs konwencja 0.75×FV={target:.0f} (odchylenie {dev:.0%})")
 
     # E6/W5: placeholder fundamentals i ESTYMATY przy BUY
     fund, _ = latest_fundamentals(t)
