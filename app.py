@@ -751,7 +751,7 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
                 st.markdown(f"""
                 <div style="background:rgba(255,255,255,0.04);border:1px solid #{c}44;border-radius:12px;padding:14px 12px">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-                        <span style="font-size:11px;font-weight:700;color:#{c};text-transform:uppercase;letter-spacing:1px">{sc['name']}</span>
+                        <span style="font-size:11px;font-weight:700;color:#{c};text-transform:uppercase;letter-spacing:1px">{_e(sc['name'])}</span>
                         <span style="font-size:10px;color:#475569;background:rgba(255,255,255,0.06);border-radius:4px;padding:2px 6px">{prob}%</span>
                     </div>
                     <div style="font-size:22px;font-weight:700;color:#{c};margin-bottom:2px">${fv}</div>
@@ -766,7 +766,7 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
                         <div>WACC &nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['wacc_pct']}%</b></div>
                         <div>g &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:#94a3b8">{a['terminal_g_pct']}%</b></div>
                     </div>
-                    <div style="margin-top:10px;font-size:10px;color:#475569;line-height:1.5;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px">{sc['description']}</div>
+                    <div style="margin-top:10px;font-size:10px;color:#475569;line-height:1.5;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px">{_e(sc['description'])}</div>
                 </div>""", unsafe_allow_html=True)
 
         # ── Weighted FV
@@ -792,7 +792,7 @@ def _render_dcf_scenarios(scenarios: list, dcf: dict, rec: dict):
             a = sc["assumptions"]
             c = sc["color"]
             rows_html += f"""<tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
-              <td style="padding:7px 6px;color:#{c};font-weight:600">{sc['name']}</td>
+              <td style="padding:7px 6px;color:#{c};font-weight:600">{_e(sc['name'])}</td>
               <td style="padding:7px 6px;color:#64748b;text-align:center">{sc['probability_pct']}%</td>
               <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage1_cagr_pct']}%</td>
               <td style="padding:7px 6px;color:#94a3b8;text-align:right">{a['stage2_cagr_pct']}%</td>
