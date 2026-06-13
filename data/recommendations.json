@@ -3363,13 +3363,13 @@
   "QNT": {
     "name": "Quantinuum Inc.",
     "recommendation": "HOLD",
-    "fair_value": 34,
+    "fair_value": 36,
     "fair_value_currency": "USD",
-    "entry_point": 24,
+    "entry_point": 25,
     "position_type": "moonshot",
     "last_updated": "2026-06-13",
-    "thesis_short": "Quantinuum = #1 trapped-ion (Helios 98q, ahead of IonQ), Honeywell+Cambridge Quantum. Rev FY2025 $30.9M (lumpy, Q1'26 spadek), bookings $79.3M, burn ~$160M/rok, cash post-IPO ~$1.6B. mcap ~$13B = ~400x revenue — czysta opcjonalnosc. FV base $34 (EV/Rev+TAM), IPO $47.50. Ekstremalna koncentracja (klient rzadowy 60%). Up-C ~275M akcji ekonomicznych.",
-    "thesis_full": "Quantinuum to lider trapped-ion quantum (JV Honeywell + Cambridge Quantum, 2021), uznawany za #1 w jakosci qubitow (Helios 98q, roadmap Apollo FTQC przed 2030). Pre-komercyjny: rev FY2025 $30.9M (+34% vs $23M FY2024, ale Q1'26 -73% przez lumpy sales-type lease), bookings FY2025 $79.3M, net loss $192.6M, accumulated deficit $881.4M, burn ops ~$160M/rok. Cash $677M (Q1'26) + IPO ~$0.95B net = ~$1.6B (runway lata). Wycena czysto na opcjonalnosci: mcap ~$13B na $30.9M rev = ~400x (vs IonQ 80x). FV base $34 (EV/Rev 2030E + TAM). Najwieksze ryzyka: koncentracja (klient rzadowy 60% rev FY2025), wyscig modalnosci nierozstrzygniety, dilution. Atut vs IonQ: lepsza jakosc qubitow + bilans Honeywell. Up-C: ~275M akcji ekonomicznych (25.9M Class A float + 228M Common Units + 21M IPO).",
+    "thesis_short": "Quantinuum = #1 trapped-ion (Helios 98q, ahead of IonQ), Honeywell+Cambridge Quantum. Rev FY2025 $30.9M (lumpy, Q1'26 spadek), bookings $79.3M, burn ~$160M/rok, cash post-IPO ~$1.6B. mcap ~$13B = ~360x revenue — czysta opcjonalnosc. FV base $34 (EV/Rev+TAM), IPO $47.50. Ekstremalna koncentracja (klient rzadowy 60%). Up-C ~275M akcji ekonomicznych.",
+    "thesis_full": "Quantinuum to lider trapped-ion quantum (JV Honeywell + Cambridge Quantum, 2021), uznawany za #1 w jakosci qubitow (Helios 98q, roadmap Apollo FTQC przed 2030). Pre-komercyjny: rev FY2025 $30.9M (+34% vs $23M FY2024, ale Q1'26 -73% przez lumpy sales-type lease), bookings FY2025 $79.3M, net loss $192.6M, accumulated deficit $881.4M, burn ops ~$160M/rok. Cash $677M (Q1'26) + IPO ~$0.95B net = ~$1.6B (runway lata). Wycena czysto na opcjonalnosci: mcap ~$13B na $30.9M rev = ~360x (vs IonQ ~80x). FV base $34 (EV/Rev 2030E + TAM). Najwieksze ryzyka: koncentracja (klient rzadowy 60% rev FY2025), wyscig modalnosci nierozstrzygniety, dilution. Atut vs IonQ: lepsza jakosc qubitow + bilans Honeywell. Up-C: ~275M akcji ekonomicznych (25.9M Class A float + 228M Common Units + 21M IPO).",
     "thesis_breaker": "Revenue nie wraca do wzrostu >40% w 2027 (lumpy lease maskuje stagnacje) LUB IonQ/Google/IBM demonstruje quantum advantage komercyjny przed Quantinuum LUB utrata kluczowego klienta rzadowego (60% rev) LUB Honeywell wyprzedaje stake po lock-up bez strategicznego nabywcy.",
     "risks": [
       "Koncentracja EKSTREMALNA: jeden klient rzadowy = 60% rev FY2025 (90% Q1'25); utrata = zalamanie przychodow",
@@ -3379,14 +3379,14 @@
     "buffett_moat": "NARROW i niepewny — #1 jakosc trapped-ion + Honeywell pedigree, ale kategoria komercyjnie nieudowodniona; moat = przewaga technologiczna 1-2 lata, nie fosa.",
     "ceo_profile": {
       "name": "Dr. Rajeeb Hazra (~58)",
-      "ceo_since": "2021 (od powstania JV)",
-      "background": "Doktorat (computing); ~25 lat w Intel — VP/GM Data Center & HPC (superkomputery, enterprise compute). Nie fizyk kwantowy — ekspert HPC/enterprise.",
+      "ceo_since": "2023-02",
+      "background": "Doktorat (computing). Bezposrednio przed Quantinuum: Micron SVP/GM Compute & Networking (2020-2023); wczesniej ~25 lat Intel (VP/GM Data Center & HPC). Ekspert HPC/enterprise, nie fizyk kwantowy.",
       "founder_or_manager": "Najemny menedzer; nauka kwantowa u founderow Cambridge Quantum (Ilyas Khan) + Honeywell. Hazra = operator komercyjny",
       "hunger": "Umiarkowany — doswiadczony enterprise-exec prowadzacy komercjalizacje; brak danych o insider dynamics (pre-IPO)",
       "domain_expertise": "MOCNA w HPC/enterprise compute (ex-Intel), ADJACENT do quantum; nie physicist ale rozumie infrastrukture obliczeniowa. Lepiej niz SPAC-operator (de Masi/IONQ)",
-      "track_record": "Intel HPC leadership; w Quantinuum dowiozl Helios 98q (#1 jakosc) i IPO. Komercyjnie: rev wciaz minimalne",
-      "skin_in_the_game": "BRAK POTWIERDZENIA (pre-IPO, brak Form 4); Honeywell kontroluje. Do weryfikacji z proxy po IPO",
-      "red_flags": "Honeywell 100% voting control Series B; klient rzadowy 60% rev; Up-C complexity; revenue spadek",
+      "track_record": "Intel + Micron HPC/compute leadership; w Quantinuum (CEO od 02.2023) dowiozl Helios 98q (#1 jakosc) i IPO. Komercyjnie: rev wciaz minimalne/lumpy.",
+      "skin_in_the_game": "BRAK POTWIERDZENIA insider (pre-IPO); Honeywell ~49.1% voting power. Do weryfikacji z proxy",
+      "red_flags": "Honeywell ~49.1% combined voting power (nie 100%); klient rzadowy 60% rev; Up-C complexity; revenue spadek",
       "verdict": "GLODNY EKSPERT (HPC-adjacent) — lepszy profil niz IONQ de Masi, ale nie founder-fizyk; moonshot -> mala pozycja",
       "sources": "Quantinuum S-1/A (26.05.2026, data/reports/QNT/), Intel bio; web"
     },
@@ -3472,7 +3472,7 @@
       "wacc_pct": 12,
       "revenue_base_fy2026e_m": 35,
       "net_cash_m": 1600,
-      "shares_diluted_m": 275,
+      "shares_diluted_m": 253.937,
       "wacc_inputs": {
         "rf_pct": 4.4,
         "beta": 1.6,
@@ -3505,8 +3505,8 @@
           },
           {
             "name": "Shares (economic, Up-C)",
-            "value": "~275M",
-            "source": "25.9M Class A + 228M Common Units + 21M IPO"
+            "value": "253.9M",
+            "source": "S-1: 25.9M Class A (zawiera 21M IPO) + 228M Common Units; NIE dodawac IPO osobno"
           },
           {
             "name": "WACC",
@@ -3515,19 +3515,19 @@
           }
         ],
         "steps": [
-          "Base: rev30 $1.0B (~18% TAM $12B) x 12x = EV30 $12B -> dzis $7.6B + cash $1.6B = $9.2B / 275M = $34",
-          "Bear $13 / Bull $92 / Ultra $214; weighted 30/40/20/10 = $57",
-          "Net cash floor $5.8"
+          "Base: rev30 $1.0B (~18% TAM $12B) x 12x = EV30 $12B -> dzis $7.6B + cash $1.6B = $9.2B / 253.9M = $36",
+          "Bear $14 / Bull $100 / Ultra $232; weighted 30/40/20/10 = $62",
+          "Net cash floor $6.3"
         ],
-        "fair_value_computed": 34
+        "fair_value_computed": 36
       },
       "scenarios": [
         {
           "name": "Bear",
           "probability_pct": 30,
           "color": "ef4444",
-          "fair_value": 13,
-          "description": "Quantum winter, rev30 $400M, utrata klienta rzadowego. Floor net cash $5.8.",
+          "fair_value": 14,
+          "description": "Quantum winter, rev30 $400M, utrata klienta rzadowego. Floor net cash $5.8. [EV/Rev 8x]",
           "assumptions": {
             "stage1_cagr_pct": 40,
             "stage2_cagr_pct": 10,
@@ -3543,8 +3543,8 @@
           "name": "Base",
           "probability_pct": 40,
           "color": "00d9a3",
-          "fair_value": 34,
-          "description": "Egzekucja: rev30 $1.0B (~18% TAM $12B), #1 trapped-ion utrzymane. Bookings $79.3M ku konwersji.",
+          "fair_value": 36,
+          "description": "Egzekucja: rev30 $1.0B (~18% TAM $12B), #1 trapped-ion utrzymane. Bookings $79.3M ku konwersji. [EV/Rev 12x]",
           "assumptions": {
             "stage1_cagr_pct": 80,
             "stage2_cagr_pct": 40,
@@ -3560,8 +3560,8 @@
           "name": "Bull",
           "probability_pct": 20,
           "color": "f59e0b",
-          "fair_value": 92,
-          "description": "Inflection, #1 pozycja, rev30 $2.5B, TAM $20B+. Cena IPO $47.50 zaklada ~baze-bull.",
+          "fair_value": 100,
+          "description": "Inflection, #1 pozycja, rev30 $2.5B, TAM $20B+. Cena IPO $47.50 zaklada ~baze-bull. [EV/Rev 15x]",
           "assumptions": {
             "stage1_cagr_pct": 95,
             "stage2_cagr_pct": 55,
@@ -3577,8 +3577,8 @@
           "name": "Ultra",
           "probability_pct": 10,
           "color": "a855f7",
-          "fair_value": 214,
-          "description": "Quantum advantage komercyjny, Quantinuum dominuje (FTQC Apollo), rev30 $5B, TAM $65B.",
+          "fair_value": 232,
+          "description": "Quantum advantage komercyjny, Quantinuum dominuje (FTQC Apollo), rev30 $5B, TAM $65B. [EV/Rev 18x]",
           "assumptions": {
             "stage1_cagr_pct": 110,
             "stage2_cagr_pct": 70,
@@ -3591,12 +3591,12 @@
           "key_risk": "Scenariusz marzenie — przelom + dominacja"
         }
       ],
-      "fair_value_weighted": 57,
-      "fair_value_weighted_formula": "0.30x$13 + 0.40x$34 + 0.20x$92 + 0.10x$214 = $57; fair_value = BASE $34 (konwencja)",
+      "fair_value_weighted": 62,
+      "fair_value_weighted_formula": "0.30x$14 + 0.40x$36 + 0.20x$100 + 0.10x$232 = $62; fair_value = BASE $36 (konwencja)",
       "tam_analysis": {
         "purpose": "Dyscyplina upside najczystszego moonshota. TAM quantum SAM ryzykiem (rozjazd 16x).",
-        "shares_used": 275,
-        "note_shares": "forward economic (Up-C ~275M); dyskonto 4 lata @12%, +net cash $1.6B",
+        "shares_used": 253.937,
+        "note_shares": "forward economic 253.9M (25.9M Class A [zawiera 21M IPO] + 228M Common Units, Up-C); dyskonto 4 lata @12%, +net cash $1.6B",
         "markets": [
           {
             "name": "Quantum computing 2030",
@@ -3618,7 +3618,7 @@
             "rev_2035_b": 1.26,
             "margin": 0,
             "mult": 12,
-            "implied_fv": 41,
+            "implied_fv": 44,
             "note": "~Base $34 (TAM lekko wyzej)"
           },
           {
@@ -3627,7 +3627,7 @@
             "rev_2035_b": 3.0,
             "margin": 0,
             "mult": 13,
-            "implied_fv": 96,
+            "implied_fv": 104,
             "note": "~Bull $92 — IPO $47.50 ponizej"
           },
           {
@@ -3636,12 +3636,12 @@
             "rev_2035_b": 8.8,
             "margin": 0,
             "mult": 15,
-            "implied_fv": 311,
+            "implied_fv": 337,
             "note": "powyzej Ultra — wymaga $40B+ TAM"
           }
         ],
         "market_implied": "IPO $47.50 / cena ~$55 implikuje ~base-bull (rev30 $1-1.5B). Floor $5.8; ~90% wartosci to opcjonalnosc.",
-        "conclusion": "Spojne ze scenariuszami (Ultra $214 < TAM-agresywny $311 -> upside zakotwiczony, drabinka bez ostrzezenia). ALE absolutny poziom: ~400x revenue, klient rzadowy 60%, rev SPADA. Najmniejsza pozycja, lottery ticket na #1 trapped-ion."
+        "conclusion": "Spojne ze scenariuszami (Ultra $232 < TAM-agresywny $337 -> zakotwiczony, drabinka bez ostrzezenia). ALE absolutny poziom: ~360x revenue, klient rzadowy 60%, rev SPADA. Najmniejsza pozycja, lottery ticket na #1 trapped-ion."
       },
       "notes": "Inicjacja 13.06.2026 z S-1/A. Pre-komercyjny quantum, Up-C ~275M akcji. yfinance mcap mylacy (liczy tylko Class A float)."
     },
@@ -3653,6 +3653,12 @@
       }
     ],
     "events": [
+      {
+        "date": "2026-06-13",
+        "event": "Weryfikator: ZGODNA Z UWAGAMI, finding KRYTYCZNY (znowu liczba akcji, wzorzec RHM): shares 275M = podwojne liczenie IPO (Class A 25.9M JUZ zawiera 21M IPO). Poprawione na 253.9M (zgodnie z fundamentals + S-1). FV $34->$36, scenariusze 14/36/100/232 (weighted $62), entry $24->$25. Naprawione tez: Honeywell ~49.1% voting (nie 100%), CEO Hazra od 02.2023 + Micron 2020-23 (nie sam Intel), mnozniki dopisane do scenariuszy.",
+        "impact": "neutral",
+        "fv_note": "FV $34->$36 (korekta akcji, konserwatywna). Entry $25. Cena ~$47-55 > FV -> nie kupowac."
+      },
       {
         "date": "2026-06-13",
         "event": "Inicjacja HOLD @ FV base $34 (EV/Rev+TAM). Quantinuum #1 trapped-ion (Helios 98q), Honeywell+Cambridge pedigree, cash ~$1.6B post-IPO. ALE: rev $30.9M lumpy (Q1'26 -73%), klient rzadowy 60%, ~400x sprzedazy, burn $160M/rok. CEO Hazra = HPC-ekspert (ex-Intel), lepszy niz SPAC-operator IONQ. Scenariusze 13/34/92/214 (weighted $57); tenets 0OK/2UWAGA/7BRAK; TAM quantum $4-65B (Ultra $214 < TAM-agr $311, zakotwiczony). Up-C ~275M akcji (yfinance mcap $1.7B mylacy — tylko Class A float).",
